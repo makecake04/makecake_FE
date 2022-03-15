@@ -193,7 +193,7 @@ textarea {
 input,
 textarea {
   font-size: 1.6rem;
-  font-family: "Noto Sans", serif; /*edit*/
+  font-family: "Noto Sans", serif; 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -222,6 +222,7 @@ button {
   border: 0;
   background-color: transparent;
   font-size: 1.6rem;
+
   font-family: "Noto Sans", serif; /*edit*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -231,11 +232,14 @@ button {
 button {
   /* padding: 0.2rem 1rem; */
   /*edit*/
+
   border: 1px solid #dddddd;
   cursor: pointer;
 }
 input {
+
   /* padding: 0.2rem 1rem; */
   /*edit*/
+
   border: 1px solid #dddddd;
 }

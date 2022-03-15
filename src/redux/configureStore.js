@@ -1,23 +1,22 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { createBrowserHistory } from "history";
-// import { connectRouter } from "connected-react-router";
 
-// import Cart from "./modules/cart";
-// import Post from "./modules/post";
-// import User from "./modules/user";
-// import Image from "./modules/image";
-// import Comment from "./modules/comment";
+
+import Store from "./modules/store";
+import Cake from "./modules/cake";
+import Design from "./modules/design";
+import User from "./modules/user";
+import search from "./modules/search";
 
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
-  // cart: Cart,
-  // post: Post,
-  // user: User,
-  // image: Image,
-  // comment: Comment,
-  // router: connectRouter(history),
+  user: User,
+  search: search,
+  store: Store,
+  cake: Cake,
+  design: Design,
 });
 
 const middlewares = [thunk.withExtraArgument({ history: history })];
