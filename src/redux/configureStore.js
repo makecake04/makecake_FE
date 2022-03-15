@@ -2,13 +2,13 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { createBrowserHistory } from "history";
 
-// import User from "./modules/user";
+
 import Store from "./modules/store";
 import Cake from "./modules/cake";
 import Design from "./modules/design";
 import User from "./modules/user";
 import search from "./modules/search";
-// import Comment from "./modules/comment";
+
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({

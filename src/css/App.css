@@ -1,42 +1,3 @@
-/* .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
-
 /* CSS 초기화*/
 *,
 *::before,
@@ -232,7 +193,7 @@ textarea {
 input,
 textarea {
   font-size: 1.6rem;
-  font-family: "Nanum Myeongjo", serif;
+  font-family: "Noto Sans", serif; 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -261,18 +222,24 @@ button {
   border: 0;
   background-color: transparent;
   font-size: 1.6rem;
-  font-family: "Nanum Myeongjo", serif;
+
+  font-family: "Noto Sans", serif; /*edit*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-weight: 700;
+  font-weight: 500; /*edit*/
 }
 
 button {
-  padding: 0.2rem 1rem;
+  /* padding: 0.2rem 1rem; */
+  /*edit*/
+
   border: 1px solid #dddddd;
   cursor: pointer;
 }
 input {
-  padding: 0.2rem 1rem;
+
+  /* padding: 0.2rem 1rem; */
+  /*edit*/
+
   border: 1px solid #dddddd;
 }

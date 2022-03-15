@@ -1,4 +1,3 @@
-
 import React from "react";
 import styled from "styled-components";
 import {
@@ -23,6 +22,7 @@ const Home = (props) => {
       <HotStoreList />
       <BestCake />
       <NewReview />
+
     </Container>
   );
 };
@@ -30,6 +30,7 @@ const Home = (props) => {
 const Container = styled.div`
   text-align: center;
   overflow-y: auto;
+
 `;
 
 export default Home;

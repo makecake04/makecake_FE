@@ -1,5 +1,12 @@
-import "../css/App.css";
 import { Route, Routes } from "react-router-dom";
+import styled from "styled-components";
+import { useDispatch } from 'react-redux';
+import { userActions } from '../redux/modules/user';
+
+//components
+import BottomNav from "../components/BottomNav";
+
+//pages
 import {
   Home,
   CakeList,
@@ -13,16 +20,14 @@ import {
   ReactCake,
   StoreDetail,
   Noti,
-  Login,Email,Nickname,Password,Search,LoginEmail,LoginPassword,SearchMap,FirstLogin
+  Login,Email,Nickname,Password,Search,LoginEmail,LoginPassword,SearchMap,FirstLogin, Design
 } from "../pages/page";
-import BottomNav from "../components/BottomNav";
-import styled from "styled-components";
-import { useDispatch } from 'react-redux';
-import { userActions } from '../redux/modules/user';
+
+//css
+import "../css/App.css";
 
 function App() {
   const dispatch = useDispatch();
-
   const is_session = localStorage.getItem("token");
 
   React.useEffect(() => {
@@ -42,6 +47,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/mydraw" element={<MyDraw />} />
             <Route path="Search" element={<Search/>}/>
+              {/* <Route path="/*" element={<NotFound />} /> */}
         </Route>
         <Route path="/reactwrite" element={<ReactWrite />} />
         <Route path="/reactstore" element={<ReactStore />} />
@@ -57,6 +63,7 @@ function App() {
             <Route path="FirstLogin" element={<FirstLogin/>}/>
               <Route path="SearchMap" element={<SearchMap/>}/>
           <Route path="SearchDetail" element={<SearchDetail/>}/>
+             <Route path="/design" element={<Design />} />
           
       </Routes>
     </MobileView>

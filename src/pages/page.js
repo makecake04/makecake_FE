@@ -1,4 +1,3 @@
-import Home from "./Home";
 import CakeList from "./CakeList";
 import SearchDetail from "./SearchDetail";
 import Mypage from "./Mypage";
@@ -19,6 +18,7 @@ import LoginEmail from './loginEmail';
 import LoginPassword from './loginPassword';
 import Search from './Search';
 import FirstLogin from './FirstLogin';
+import Design from "./Design";
 
 export {
   Home,
@@ -33,5 +33,6 @@ export {
   ReactCake,
   StoreDetail,
   Noti,
-   Login, Email, Nickname, Password, Search, LoginEmail, LoginPassword, SearchMap,FirstLogin
+   Login, Email, Nickname, Password, Search, LoginEmail, LoginPassword, SearchMap,FirstLogin, Design
 };
+
