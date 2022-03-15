@@ -11,7 +11,7 @@ const DESIGN_LIST = "DESIGN_LIST";
 const addDesign = createAction(ADD_DESIGN, (design) => ({
   design,
 }));
-const designList = createAction(DESIGN_LIST, (list) => ({ list, }));
+const designList = createAction(DESIGN_LIST, (list) => ({ list }));
 
 const initialState = {
   list: [],
@@ -52,6 +52,9 @@ const getDesignListDB = (page_num) => {
           let design_list = [];
           for (let i = 0; i < res.data.length; i++) {
             design_list.push(res.data[i]);
+          }
+          if (design_list.length === 0) {
+            return;
           }
           dispatch(designList(design_list));
         }

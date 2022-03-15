@@ -4,7 +4,7 @@ import axios from "axios";
 
 const instance = axios.create({
   baseURL: "http://3.38.153.67/",
-  /*baseURL: "http://3.38.115.32:8080//",*/
+  // baseURL: "http://3.38.115.32:8080//",
 
   headers: {
     "content-type": "application/json;charset=UTF-8", // 자바스크립트는 json형태로 받아와야 한다.
@@ -17,29 +17,13 @@ const instance = axios.create({
 // interceptors의 역할 => then이나 catch로 처리되기 전
 // 요청(request)이나 응답(response)을 가로채 어떠한 작업을 수행할 수 있게 한다. 참고 (https://yamoo9.github.io/axios/guide/interceptors.html)
 
-
 instance.interceptors.request.use(function (config) {
   const accessToken = localStorage.token;
   config.headers.common["Authorization"] = `${accessToken}`; // header에 토큰값을 넣는다 => header에 토큰값이 있어 앞으로 request를 자유자재로 할 수 있다.
   return config;
 });
-  
+
 export const api = {
-  // user
-  // login: (userEmail, password) =>
-  //   instance.post("/api/login", {
-  //     userEmail: userEmail,
-  //     password: password,
-  //   }),
-
-  // signup: (userEmail, userNickname, password, passwordConfirm) =>
-  //   instance.post("/api/join", {
-  //     userEmail: userEmail,
-  //     userNickname: userNickname,
-  //     password: password,
-  //     passwordConfirm: passwordConfirm,
-  //   }),
-
   getlist: () => instance.get(`api/home/`),
 
   getcake: () => instance.get(`api/cakes`),
@@ -50,16 +34,29 @@ export const api = {
 
   getdesign: () => instance.get(`api/designs`),
 
-  // getDetail: (placeId) => instance.get(`api/detail/${placeId}`),
+  postUsernameCheck: (username) =>
+    instance.post(`/user/usernameCheck`, { username: username }),
 
-  // getComment: (placeId) => instance.get(`api/detail/${placeId}`),
+  postNicknameCheck: (nickname) =>
+    instance.post(`/user/nicknameCheck`, { nickname: nickname }),
 
-  // addComment: (userNickname, commentContent, placeId) =>
-  //   instance.post(`api/detail/comments/${placeId}`, {
-  //     userNickname: userNickname,
-  //     commentContent: commentContent,
-  //   }),
+  postSignUp: (username, password, passwordCheck, nickname) =>
+    instance.post(`/user/signup`, {
+      username: username,
+      password: password,
+      passwordCheck: passwordCheck,
+      nickname: nickname,
+    }),
 
-  // deleteComment: (commentId) =>
-  //   instance.delete(`api/detail/comments/${commentId}`),
+  postLogin: (username, password) =>
+    instance.post(`/login`, { username: username, password: password }),
+
+  getLoginCheck: () => instance.post(`/user/loginCheck`),
+
+  postSearch: (searchType, searchText, sortType) =>
+    instance.post(`/api/search`, {
+      searchType: searchType,
+      searchText: searchText,
+      sortType: sortType,
+    }),
 };

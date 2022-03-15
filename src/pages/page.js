@@ -1,3 +1,4 @@
+import Home from "./Home";
 import CakeList from "./CakeList";
 import SearchDetail from "./SearchDetail";
 import Mypage from "./Mypage";
@@ -9,15 +10,15 @@ import ReactStore from "./ReactStore";
 import ReactCake from "./ReactCake";
 import StoreDetail from "./StoreDetail";
 import Noti from "./Noti";
-import Login from './login';
-import Email from './signupEmail';
-import Nickname from './signupNickname';
-import Password from './signupPassword';
-import SearchMap from './SearchMap';
-import LoginEmail from './loginEmail';
-import LoginPassword from './loginPassword';
-import Search from './Search';
-import FirstLogin from './FirstLogin';
+import Login from "./login";
+import Email from "./signupEmail";
+import Nickname from "./signupNickname";
+import Password from "./signupPassword";
+import SearchMap from "./SearchMap";
+import LoginEmail from "./loginEmail";
+import LoginPassword from "./loginPassword";
+import Search from "./Search";
+import FirstLogin from "./FirstLogin";
 import Design from "./Design";
 
 export {
@@ -33,6 +34,14 @@ export {
   ReactCake,
   StoreDetail,
   Noti,
-   Login, Email, Nickname, Password, Search, LoginEmail, LoginPassword, SearchMap,FirstLogin, Design
+  Login,
+  Email,
+  Nickname,
+  Password,
+  Search,
+  LoginEmail,
+  LoginPassword,
+  SearchMap,
+  FirstLogin,
+  Design,
 };
-

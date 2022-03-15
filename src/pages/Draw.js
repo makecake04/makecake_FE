@@ -110,7 +110,7 @@ const Draw = (props) => {
           }}
         >
           <FontAwesomeIcon icon={faXmark} className="xmark" />
-          <DrawingSvg className="draw" />
+          <DrawingSvg className="draw" onClick={() => navigate("/design")} />
           <WritingSvg className="write" />
         </div>
       )}

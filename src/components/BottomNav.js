@@ -18,8 +18,8 @@ const BottomNav = (props) => {
         <div>
           <HomeSvg
             onClick={() => {
-              setActiveNav((prevUrl) => (prevUrl = `/`));
-              navigate(`/`);
+              setActiveNav((prevUrl) => (prevUrl = `/home`));
+              navigate(`/home`);
             }}
             className={activeNav === `/` ? "active" : "nav-item"}
           />
