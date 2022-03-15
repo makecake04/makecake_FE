@@ -6,15 +6,17 @@ import { createBrowserHistory } from "history";
 import Store from "./modules/store";
 import Cake from "./modules/cake";
 import Design from "./modules/design";
+import User from "./modules/user";
+import search from "./modules/search";
 // import Comment from "./modules/comment";
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
-  //   user: User,
+  user: User,
+  search: search,
   store: Store,
   cake: Cake,
   design: Design,
-  //   comment: Comment,
 });
 
 const middlewares = [thunk.withExtraArgument({ history: history })];

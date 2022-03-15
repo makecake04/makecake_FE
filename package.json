@@ -34,6 +34,16 @@
     "react-scripts": "5.0.0",
     "react-slick": "^0.28.1",
     "react-spring": "^9.0.0-rc.3",
+    "connected-react-router": "^6.9.2",
+    "lodash": "^4.17.21",
+    
+    
+    "react-facebook-login": "^4.1.1",
+    "react-fontawesome": "^1.7.1",
+    "react-google-login": "^5.2.2",
+    "react-kakao-login": "^2.1.0",
+    "react-logger": "^1.1.0",
+    "react-naver-maps": "^0.0.13",
     "redux": "^4.1.2",
     "redux-actions": "^2.6.5",
     "redux-logger": "^3.0.6",
