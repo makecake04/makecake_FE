@@ -20,7 +20,7 @@ body {
   height: 100vh;
   background: #ffffff;
   font-size: 1.6rem;
-  font-family: "Nanum Myeongjo", serif;
+  font-family: "Noto Sans", sans-serif;
 }
 ::selection,
 ::-moz-selection {
@@ -193,7 +193,7 @@ textarea {
 input,
 textarea {
   font-size: 1.6rem;
-  font-family: "Noto Sans", serif; 
+  font-family: "Noto Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -223,7 +223,7 @@ button {
   background-color: transparent;
   font-size: 1.6rem;
 
-  font-family: "Noto Sans", serif; /*edit*/
+  font-family: "Noto Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 500; /*edit*/
@@ -237,7 +237,6 @@ button {
   cursor: pointer;
 }
 input {
-
   /* padding: 0.2rem 1rem; */
   /*edit*/
 

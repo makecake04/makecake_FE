@@ -1,154 +1,210 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-import { ReactComponent as WritingSvg } from "../svg/writing.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { actionCreators as designAction } from "../redux/modules/design";
+import { useInView } from "react-intersection-observer";
+import Modal from "react-modal";
+
+//svg
+import { ReactComponent as WriteIcon } from "../svg/Component 19.svg";
+import { ReactComponent as DeleteIcon } from "../svg/Component 31.svg";
 
 const MyDraw = (props) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [modalIsOpen, setModalIsOpen] = React.useState(false);
   const [toggleState, setToggleState] = React.useState(1);
+  const [post, setPost] = useState("nonpost");
+  const [pageNumber, setPageNumber] = useState(0);
+
+  const design_list = useSelector((state) => state.design.design_list);
+  const post_list = useSelector((state) => state.design.post_list);
+
+  const design_detail = useSelector((state) => state.design.design_detail);
+  const post_detail = useSelector((state) => state.design.post_detail);
+
+  const [ref, inView] = useInView();
+
+  // const getMoreDesign = async () => {
+  //   setPageNumber(pageNumber + 1);
+  // };
 
   const toggleTab = (index) => {
     setToggleState(index);
+    if (index === 1) {
+      setPost("nonpost");
+    } else {
+      setPost("post");
+    }
   };
+
+  useEffect(() => {
+    dispatch(designAction.getMyDesignListDB(pageNumber, post));
+  }, [pageNumber, toggleState]);
+  //page number should be added into dependency array as well
+
+  useEffect(() => {
+    if (inView) {
+      // getMoreDesign();
+      setPageNumber(pageNumber + 1);
+    }
+  }, [inView]);
 
   return (
     <MyDrawWrap>
-      <div>
-        <div className="title">
-          <FontAwesomeIcon
-            icon={faAngleLeft}
-            className="left"
-            onClick={() => {
-              navigate(`/mypage`);
-            }}
-          />
-          <h3>내가 그린 도안</h3>
+      <div className="title">
+        <FontAwesomeIcon
+          icon={faAngleLeft}
+          className="left"
+          onClick={() => {
+            navigate(-1);
+          }}
+        />
+        <h3>내가 그린 도안</h3>
+      </div>
+      <hr />
+      <div className="container">
+        <div className="bloc-tabs">
+          <button
+            className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
+            onClick={() => toggleTab(1)}
+          >
+            작성되지 않은 도안
+          </button>
+          <button
+            className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
+            onClick={() => toggleTab(2)}
+          >
+            작성된 도안
+          </button>
         </div>
-        <hr />
-        <div className="container">
-          <div className="bloc-tabs">
-            <button
-              className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
-              onClick={() => toggleTab(1)}
-            >
-              작성된 도안
-            </button>
-            <button
-              className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
-              onClick={() => toggleTab(2)}
-            >
-              작성되지 않은 도안
-            </button>
+        <div className="content-tabs">
+          <div className={toggleState === 1 ? "active-content" : "content"}>
+            {design_list &&
+              design_list.map((a, i) => {
+                return (
+                  <div key={i} ref={ref} className="img_wrap">
+                    <img
+                      src={a.img}
+                      alt="nopost design"
+                      onClick={() => {
+                        setModalIsOpen(true);
+                        dispatch(designAction.getDesignImageDB(a.designId));
+                      }}
+                    />
+                  </div>
+                );
+              })}
           </div>
-          <div className="content-tabs">
-            <div className={toggleState === 1 ? "active-content" : "content"}>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20210119_285%2F1611062747978xN03M_JPEG%2Fupload_f69f8a2c9ea06efa16fea9da41387abb.jpeg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20201224_220%2F1608771619144XHuGr_JPEG%2Fupload_5f61471841235b3cde5fb8871ed33df8.jpeg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAzMTdfMTkx%2FMDAxNjE1OTkxOTcyOTYz.KEB7mwrM5zNiSIXgwGjp_3c2wq44D6bKj1jhQwLhmHIg.4BdlsCSBCOmn5YIOKbBNYicOu9XnKvv9dWUFQQ8PlCcg.JPEG.yejin9302%2F2BD3B5E1-0641-4A86-987E-E326482CB6C5.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20201222_235%2F1608610159576EeMFS_JPEG%2Fupload_50cea665d3be1a79ae2957803b79f951.jpeg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20201221_35%2F1608518121134zGA2Y_JPEG%2Fupload_823e0a310acd88eb651b6e8a6ad20e45.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20201028_13%2F1603857476340CYTN4_JPEG%2Fupload_79960a96ea4fbf68b367310b9aed5894.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20201104_284%2F1604488357797LroI9_JPEG%2Fupload_b506db3790bcd2f21db3f82fe930cab3.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210529_77%2F162221632169812df5_JPEG%2FbNZY5g9l-SoxxWUId04brpJg.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210528_125%2F1622212613687XKcgw_JPEG%2FUVj0G8PL6HlsonNQZAXJfNmy.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210528_2%2F1622212413821I5DjC_JPEG%2FVxVSgwN7KmXBg_U3b48HZn7w.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20211026_248%2F1635186024910MlNE4_JPEG%2Fupload_a731022f4cca00aa84a67f5ee07face3.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210528_86%2F1622213297277xvsqA_JPEG%2FUi6GUi7Wdq1DQAa7IjPalphu.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20210815_70%2F16290307310817bC2R_JPEG%2Fupload_52d61b3cee3b2c60b9a0f62e8481d724.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210528_176%2F16222137451111I4cD_JPEG%2FXgglzfBnxrWaS5Z72wOK3RF0.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20210811_138%2F1628691796426GhP3X_JPEG%2Fupload_0699f35f840dc9339af8bdcaf41a6972.jpg"></img>
-              </div>
-            </div>
-
-            <div className={toggleState === 2 ? "active-content" : "content"}>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20201222_235%2F1608610159576EeMFS_JPEG%2Fupload_50cea665d3be1a79ae2957803b79f951.jpeg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20201221_35%2F1608518121134zGA2Y_JPEG%2Fupload_823e0a310acd88eb651b6e8a6ad20e45.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20201028_13%2F1603857476340CYTN4_JPEG%2Fupload_79960a96ea4fbf68b367310b9aed5894.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20201104_284%2F1604488357797LroI9_JPEG%2Fupload_b506db3790bcd2f21db3f82fe930cab3.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210529_77%2F162221632169812df5_JPEG%2FbNZY5g9l-SoxxWUId04brpJg.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210528_125%2F1622212613687XKcgw_JPEG%2FUVj0G8PL6HlsonNQZAXJfNmy.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210528_2%2F1622212413821I5DjC_JPEG%2FVxVSgwN7KmXBg_U3b48HZn7w.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20211026_248%2F1635186024910MlNE4_JPEG%2Fupload_a731022f4cca00aa84a67f5ee07face3.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210528_86%2F1622213297277xvsqA_JPEG%2FUi6GUi7Wdq1DQAa7IjPalphu.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20210815_70%2F16290307310817bC2R_JPEG%2Fupload_52d61b3cee3b2c60b9a0f62e8481d724.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210528_176%2F16222137451111I4cD_JPEG%2FXgglzfBnxrWaS5Z72wOK3RF0.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20210811_138%2F1628691796426GhP3X_JPEG%2Fupload_0699f35f840dc9339af8bdcaf41a6972.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20211026_248%2F1635186024910MlNE4_JPEG%2Fupload_a731022f4cca00aa84a67f5ee07face3.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210528_86%2F1622213297277xvsqA_JPEG%2FUi6GUi7Wdq1DQAa7IjPalphu.jpg"></img>
-              </div>
-              <div className="img_wrap">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20210815_70%2F16290307310817bC2R_JPEG%2Fupload_52d61b3cee3b2c60b9a0f62e8481d724.jpg"></img>
-              </div>
-              <WritingSvg className="write" />
-            </div>
+          <div className={toggleState === 2 ? "active-content" : "content"}>
+            {post_list &&
+              post_list.map((a, i) => {
+                return (
+                  <div key={i} ref={ref} className="img_wrap">
+                    <img
+                      src={a.img}
+                      alt="post design"
+                      onClick={() => {
+                        navigate(`/post/${a.postId}`);
+                      }}
+                    />
+                  </div>
+                );
+              })}
           </div>
         </div>
       </div>
+
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+        style={{
+          overlay: {
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(76, 76, 76, 0.7)",
+            zIndex: "20",
+          },
+          content: {
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            bottom: "auto",
+            width: "300px",
+            height: "auto",
+            padding: "0",
+            border: "solid 1px #eee",
+            overflow: "auto",
+            borderRadius: "5px",
+            transform: "translate(-50%,-50%)",
+            WebkitOverflowScrolling: "touch",
+          },
+        }}
+      >
+        {toggleState === 1 && (
+          <ModalWrap>
+            <img
+              alt="modal-img"
+              className="modal-img"
+              src={design_detail.img}
+              onClick={() => setModalIsOpen(false)}
+            />
+            <WriteIcon
+              className="write-icon"
+              onClick={() => navigate(`/post/write/${design_detail.designId}`)}
+            />
+            <DeleteIcon
+              className="delete-icon"
+              onClick={() =>
+                dispatch(designAction.deleteDesignDB(design_detail.designId))
+              }
+            />
+          </ModalWrap>
+        )}
+        {/* {toggleState === 2 && (
+          <ModalWrap>
+            <img
+              alt="modal-img"
+              className="modal-img"
+              // src={post_detail.img}
+              onClick={() => setModalIsOpen(false)}
+            />
+            <WriteIcon
+              className="write-icon"
+              onClick={() => navigate(`/post/edit/${post_detail.designId}`)}
+            />
+          </ModalWrap>
+        )} */}
+        {/* <ModalWrap>
+          <img
+            alt="modal-img"
+            className="modal-img"
+            src={design_detail.img}
+            onClick={() => setModalIsOpen(false)}
+          />
+          <WriteIcon
+            className="write-icon"
+            onClick={() => navigate(`/post/write/${design_detail.designId}`)}
+          />
+        </ModalWrap> */}
+      </Modal>
     </MyDrawWrap>
   );
 };
 
 const MyDrawWrap = styled.div`
+  overflow-y: auto;
+  height: 784px;
   .title {
-    margin: 40px 0px 20px 30px;
+    margin: 0px 0px 20px 30px;
+    padding-top: 4rem;
     display: flex;
     align-items: center;
   }
@@ -267,4 +323,26 @@ const MyDrawWrap = styled.div`
   }
 `;
 
+const ModalWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  .modal-img {
+    width: 30rem;
+    height: 30rem;
+    /* background: url(${(props) => props.src}) no-repeat center / cover; */
+    object-fit: cover;
+  }
+  .write-icon {
+    position: absolute;
+    top: 1rem;
+    right: 5rem;
+  }
+  .delete-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+`;
 export default MyDraw;

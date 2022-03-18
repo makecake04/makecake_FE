@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { userActions } from "../redux/modules/user";
+import KakaoLoginHandler from "./KakaoLoginHandler";
 
 //components
 import BottomNav from "../components/BottomNav";
@@ -21,7 +22,6 @@ import {
   ReactCake,
   StoreDetail,
   Noti,
-  Login,
   Email,
   Nickname,
   Password,
@@ -31,6 +31,9 @@ import {
   SearchMap,
   FirstLogin,
   Design,
+  PostWrite,
+  PostDetail,
+  ReviewWrite,
 } from "../pages/page";
 
 //css
@@ -50,31 +53,40 @@ function App() {
     <MobileView>
       <Routes>
         <Route element={<BottomNav />}>
+          {is_session && <Route path="/" element={<Home />} />}
+          {!is_session && <Route path="/home" element={<Home />} />}
           <Route path="/home" element={<Home />} />
           <Route path="/cake" element={<CakeList />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/draw" element={<Draw />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/mydraw" element={<MyDraw />} />
-          <Route path="Search" element={<Search />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/post/:id" element={<PostDetail />} />
+          <Route path="/post/write/:designid" element={<PostWrite />} />
+          <Route path="/post/write/:designid/:postid" element={<PostWrite />} />
           {/* <Route path="/*" element={<NotFound />} /> */}
         </Route>
-        <Route path="/" element={<FirstLogin />} />
+        {!is_session && <Route path="/" element={<FirstLogin />} />}
+
         <Route path="/reactwrite" element={<ReactWrite />} />
+
         <Route path="/reactstore" element={<ReactStore />} />
         <Route path="/reactcake" element={<ReactCake />} />
-        <Route path="storedetail" element={<StoreDetail />} />
+        <Route path="/storedetail/:storeid" element={<StoreDetail />} />
         <Route path="/noti" element={<Noti />} />
-        <Route path="login" element={<Login />} />
-        <Route path="Email" element={<Email />} />
-        <Route path="Nickname" element={<Nickname />} />
-        <Route path="Password" element={<Password />} />
-        <Route path="LoginEmail" element={<LoginEmail />} />
-        <Route path="LoginPassword" element={<LoginPassword />} />
+        <Route path="/email" element={<Email />} />
+        <Route path="/nickname" element={<Nickname />} />
+        <Route path="/password" element={<Password />} />
+        <Route path="/loginEmail" element={<LoginEmail />} />
+        <Route path="/loginPassword" element={<LoginPassword />} />
+        <Route path="/review" element={<ReviewWrite />} />
+        <Route path="/review/:reviewId" element={<ReviewWrite />} />
 
-        <Route path="SearchMap" element={<SearchMap />} />
-        <Route path="SearchDetail" element={<SearchDetail />} />
+        <Route path="/searchmap/:storeId" element={<SearchMap />} />
+        <Route path="/searchDetail" element={<SearchDetail />} />
         <Route path="/design" element={<Design />} />
+        <Route path="/user/kakao/callback" element={<KakaoLoginHandler />} />
       </Routes>
     </MobileView>
   );
@@ -86,7 +98,6 @@ const MobileView = styled.div`
   position: relative;
   height: 100vh;
   max-height: 844px;
-  border: 1px solid #ddd;
 `;
 
 export default App;

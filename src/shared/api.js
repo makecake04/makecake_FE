@@ -34,6 +34,9 @@ export const api = {
 
   getdesign: () => instance.get(`api/designs`),
 
+  getStore: (storeId) =>
+    instance.get(`api/stores/${storeId}`, { storeId: storeId }),
+
   postUsernameCheck: (username) =>
     instance.post(`/user/usernameCheck`, { username: username }),
 
@@ -52,11 +55,16 @@ export const api = {
     instance.post(`/login`, { username: username, password: password }),
 
   getLoginCheck: () => instance.post(`/user/loginCheck`),
-
+  getUserInfo: () => instance.get(`/mypage`),
   postSearch: (searchType, searchText, sortType) =>
     instance.post(`/api/search`, {
       searchType: searchType,
       searchText: searchText,
       sortType: sortType,
     }),
+
+  KakaoLogin: (code) => instance.get(`/user/kakao/callback?code=${code}`),
+  NaverLogin: (code, state) =>
+    instance.get(`/user/naver/callback?code=${code}&state=${state}`),
+  GoogleLogin: (code) => instance.get(`/user/google/callback?code=${code}`),
 };

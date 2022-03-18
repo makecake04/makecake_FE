@@ -5,15 +5,42 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { useInView } from "react-intersection-observer";
+import { actionCreators as storeAction } from "../redux/modules/store";
+import { actionCreators as reviewAction } from "../redux/modules/review";
+import { useDispatch, useSelector } from "react-redux";
 
 const ReactStore = (props) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [toggleState, setToggleState] = React.useState(1);
+  const [pageNumber, setPageNumber] = React.useState(0);
+
+  const likeStore = useSelector((state) => state.store.likeStore);
+  const myReview = useSelector((state) => state.store.myReview);
+
+  const [ref, inView] = useInView();
+
+  React.useEffect(() => {
+    dispatch(storeAction.getLikeStoreDB(pageNumber));
+    dispatch(storeAction.getMyReviewDB(pageNumber));
+  }, [pageNumber]);
+
+  const getMoreStore = async () => {
+    setPageNumber(pageNumber + 1);
+  };
 
   const toggleTab = (index) => {
     setToggleState(index);
   };
+
+  React.useEffect(() => {
+    if (inView) {
+      getMoreStore();
+    }
+  }, [inView]);
+
   return (
     <ReactStoreWrap>
       <div>
@@ -25,82 +52,83 @@ const ReactStore = (props) => {
               navigate(`/mypage`);
             }}
           />
-          <h3>내가 반응한 게시글</h3>
+          <h3>내가 반응한 매장</h3>
         </div>
         <hr />
         <div className="container">
           <div className="bloc-tabs">
             <button
               className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
-              onClick={() => toggleTab(1)}
+              onClick={() => {
+                toggleTab(1);
+              }}
             >
               좋아요 한 매장
             </button>
             <button
               className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
-              onClick={() => toggleTab(2)}
+              onClick={() => {
+                toggleTab(2);
+              }}
             >
               내가 남긴 후기
             </button>
           </div>
           <div className="content-tabs">
             <div className={toggleState === 1 ? "active-content" : "content"}>
-              <div>
-                <div className="img_wrap">
-                  <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210529_77%2F162221632169812df5_JPEG%2FbNZY5g9l-SoxxWUId04brpJg.jpg"></img>
-                  <FontAwesomeIcon icon={faHeart} className="heart" />
-                </div>
-                <p className="store">더케익스토리</p>
-                <div className="address_wrap">
-                  <FontAwesomeIcon icon={faLocationDot} className="location" />
-                  <p className="address">서울 강남구 신사동</p>
-                </div>
-              </div>
-              <div>
-                <div className="img_wrap">
-                  <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210528_125%2F1622212613687XKcgw_JPEG%2FUVj0G8PL6HlsonNQZAXJfNmy.jpg"></img>
-                  <FontAwesomeIcon icon={faHeart} className="heart" />
-                </div>
-                <p className="store">더케익스토리</p>
-                <div className="address_wrap">
-                  <FontAwesomeIcon icon={faLocationDot} className="location" />
-                  <p className="address">서울 강남구 신사동</p>
-                </div>
-              </div>
-              <div>
-                <div className="img_wrap">
-                  <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210528_2%2F1622212413821I5DjC_JPEG%2FVxVSgwN7KmXBg_U3b48HZn7w.jpg"></img>
-                  <FontAwesomeIcon icon={faHeart} className="heart" />
-                </div>
-                <p className="store">더케익스토리</p>
-                <div className="address_wrap">
-                  <FontAwesomeIcon icon={faLocationDot} className="location" />
-                  <p className="address">서울 강남구 신사동</p>
-                </div>
-              </div>
-              <div>
-                <div className="img_wrap">
-                  <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210528_86%2F1622213297277xvsqA_JPEG%2FUi6GUi7Wdq1DQAa7IjPalphu.jpg"></img>
-                  <FontAwesomeIcon icon={faHeart} className="heart" />
-                </div>
-                <p className="store">더케익스토리</p>
-                <div className="address_wrap">
-                  <FontAwesomeIcon icon={faLocationDot} className="location" />
-                  <p className="address">서울 강남구 신사동</p>
-                </div>
-              </div>
+              {likeStore &&
+                likeStore.map((v, idx) => {
+                  return (
+                    <div key={idx}>
+                      <div className="img_wrap">
+                        <img src={v.mainImg} alt="img" />
+                        <FontAwesomeIcon icon={faHeart} className="heart" />
+                      </div>
+                      <p className="store">{v.name}</p>
+                      <div className="address_wrap">
+                        <FontAwesomeIcon
+                          icon={faLocationDot}
+                          className="location"
+                        />
+                        <p className="address">{v.addressSimple}</p>
+                      </div>
+                    </div>
+                  );
+                })}
             </div>
             <div className={toggleState === 2 ? "active-contents" : "content"}>
-              <div className="comment_wrap">
-                <div className="title_wrap2">
-                  <p className="nickname">게시글 제목 일부</p>
-                  <p className="insert_dt">2020.3.10</p>
-                </div>
-                <p className="p_wrap">
-                  반갑습니다!dddddddddddddddddddddddddddddddddd
-                </p>
-                <hr className="hr_wrap" />
-              </div>
+              {myReview &&
+                myReview.map((v, idx) => {
+                  return (
+                    <div className="comment_wrap" key={idx}>
+                      <div className="title_wrap2">
+                        <p className="nickname">{v.name}</p>
+                        <p className="insert_dt">{v.createdDate}</p>
+                      </div>
+                      <p className="p_wrap">{v.content}</p>
+                      <div className="review_img" src={v.reviewImages} />
+                      <div className="button_wrap">
+                        <button
+                          className="edit_btn"
+                          onClick={() => {
+                            navigate(`/review/${v.reviewId}`);
+                          }}
+                        >
+                          수정하기
+                        </button>
+                        <button
+                          className="delete_btn"
+                          onClick={() => {
+                            dispatch(reviewAction.deleteReviewDB(v.reviewId));
+                          }}
+                        >
+                          삭제하기
+                        </button>
+                      </div>
+                      <hr className="hr_wrap" />
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>
@@ -270,6 +298,38 @@ const ReactStoreWrap = styled.div`
     margin-bottom: 20px;
   }
 
+  .review_img {
+    background: url(${(props) => props.src}) no-repeat center / cover;
+    position: relative;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .button_wrap {
+    margin-top: 20px;
+    display: flex;
+    justify-content: end;
+  }
+
+  .edit_btn {
+    width: 80px;
+    height: 35px;
+    font-size: 13px;
+    color: #777;
+    border: 1px solid #777;
+    border-radius: 20px;
+    margin-right: 10px;
+  }
+
+  .delete_btn {
+    width: 80px;
+    height: 35px;
+    font-size: 13px;
+    color: #e10000;
+    border: 1px solid #e10000;
+    border-radius: 20px;
+  }
+
   .hr_wrap {
     border: 0.7px solid #e5e5e5;
     width: 100%;
@@ -277,13 +337,14 @@ const ReactStoreWrap = styled.div`
   }
 
   .p_wrap {
-    word-break: break-all;
     display: -webkit-box;
     word-wrap: break-word;
+    word-break: break-all;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-bottom: 10px;
   }
 `;
 

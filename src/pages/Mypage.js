@@ -5,12 +5,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-modal";
 import Logo from "../images/logo.png";
+import { useSelector, useDispatch } from "react-redux";
+import { userActions } from "../redux/modules/user";
 
 const Mypage = (props) => {
   const { nickname, email } = props;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user_info = useSelector((state) => state.user.userInfo);
 
   const [modalIsOpen, setModalIsOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    dispatch(userActions.getUserInfoDB());
+  }, []);
 
   return (
     <MyWrap>
@@ -20,8 +28,8 @@ const Mypage = (props) => {
         <div className="profile_img"></div>
       </div>
       <div>
-        <p className="nickname">{nickname}</p>
-        <p className="email">{email}</p>
+        <p className="nickname">{user_info.nickname}</p>
+        <p className="email">{user_info.email}</p>
         <hr className="bold" />
       </div>
       <div className="content">
@@ -80,7 +88,12 @@ const Mypage = (props) => {
       </div>
       <hr className="profile_hr" />
       <div className="btn_wrap">
-        <button className="logout" onClick={() => setModalIsOpen(true)}>
+        <button
+          className="logout"
+          onClick={() => {
+            setModalIsOpen(true);
+          }}
+        >
           로그아웃
         </button>
       </div>
@@ -125,7 +138,14 @@ const Mypage = (props) => {
               돌아가기
             </button>
             <div className="vl" />
-            <button className="footer_two">확인</button>
+            <button
+              className="footer_two"
+              onClick={() => {
+                dispatch(userActions.logOutDB());
+              }}
+            >
+              확인
+            </button>
           </div>
         </ModalWrap>
       </Modal>
@@ -140,7 +160,7 @@ Mypage.defaultProps = {
 
 const MyWrap = styled.div`
   h3 {
-    margin: 40px 0px 20px 0px;
+    padding: 40px 0px 20px 0px;
     text-align: center;
     font-weight: 700;
     font-size: 19px;

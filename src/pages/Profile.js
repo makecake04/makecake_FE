@@ -6,11 +6,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../images/logo.png";
+import { userActions as userAction } from "../redux/modules/user";
 
 Modal.setAppElement("#root");
 
 const Profile = (props) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user_info = useSelector((state) => state.user.userInfo);
+
+  React.useEffect(() => {
+    dispatch(userAction.getUserInfoDB());
+  }, []);
 
   const [modalIsOpen1, setModalIsOpen1] = React.useState(false);
   const [modalIsOpen2, setModalIsOpen2] = React.useState(false);
@@ -36,18 +43,18 @@ const Profile = (props) => {
         <hr />
         <div>
           <div className="profile_img"></div>
-          <p className="nickname">케이크장인</p>
-          <p className="email">asdf@naver.com</p>
+          <p className="nickname">{user_info.nickname}</p>
+          <p className="email">{user_info.email}</p>
           <hr className="bold" />
         </div>
         <div className="content">
           <p className="contents">이메일</p>
-          <p>asdf@naver.com</p>
+          <p>{user_info.email}</p>
         </div>
         <hr className="profile_hr" />
         <div className="content">
           <p className="contents">닉네임</p>
-          <p>케이크장인</p>
+          <p>{user_info.nickname}</p>
           <button onClick={() => setModalIsOpen1(true)}>변경</button>
           <Modal
             isOpen={modalIsOpen1}
@@ -91,7 +98,12 @@ const Profile = (props) => {
         </div>
         <hr className="profile_hr" />
         <div className="btn_wrap">
-          <button className="signout" onClick={() => setModalIsOpen2(true)}>
+          <button
+            className="signout"
+            onClick={() => {
+              setModalIsOpen2(true);
+            }}
+          >
             회원탈퇴
           </button>
           <Modal
@@ -135,7 +147,14 @@ const Profile = (props) => {
                   돌아가기
                 </button>
                 <div className="vl" />
-                <button className="footer_two">탈퇴하기</button>
+                <button
+                  className="footer_two"
+                  onClick={() => {
+                    dispatch(userAction.resignDB());
+                  }}
+                >
+                  탈퇴하기
+                </button>
               </div>
             </ModalWrap>
           </Modal>
@@ -147,7 +166,7 @@ const Profile = (props) => {
 
 const ProfileWrap = styled.div`
   .title {
-    margin: 40px 0px 20px 30px;
+    padding: 40px 0px 20px 30px;
     display: flex;
     align-items: center;
   }
@@ -217,7 +236,7 @@ const ProfileWrap = styled.div`
     height: 30px;
     border: 1px solid #eaeaea;
     font-size: 13px;
-    margin: 0px 0px 0px 100px;
+    margin: 0px 0px 0px 16rem;
   }
 
   .profile_hr {

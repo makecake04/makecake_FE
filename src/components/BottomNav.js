@@ -11,18 +11,29 @@ const BottomNav = (props) => {
   const navigate = useNavigate();
   const url_param = window.location.pathname;
   const [activeNav, setActiveNav] = React.useState(url_param);
-
+  const is_session = localStorage.getItem("token");
   return (
     <>
       <NavWrap>
         <div>
-          <HomeSvg
-            onClick={() => {
-              setActiveNav((prevUrl) => (prevUrl = `/home`));
-              navigate(`/home`);
-            }}
-            className={activeNav === `/` ? "active" : "nav-item"}
-          />
+          {is_session && (
+            <HomeSvg
+              onClick={() => {
+                setActiveNav((prevUrl) => (prevUrl = `/`));
+                navigate(`/`);
+              }}
+              className={activeNav === `/` ? "active" : "nav-item"}
+            />
+          )}
+          {!is_session && (
+            <HomeSvg
+              onClick={() => {
+                setActiveNav((prevUrl) => (prevUrl = `/home`));
+                navigate(`/home`);
+              }}
+              className={activeNav === `/home` ? "active" : "nav-item"}
+            />
+          )}
         </div>
         <div>
           <CakeSvg
@@ -65,18 +76,18 @@ const NavWrap = styled.nav`
   left: 0;
   right: 0;
   height: 60px;
-  border-top: 1px #fff;
+  border-top: 1px #fafafa;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0px 3px 8px rgba(152, 153, 150, 0.3);
+  background-color: #fafafa;
+  /* box-shadow: 0px 3px 8px rgba(152, 153, 150, 0.3); */
 
   > div {
     text-align: center;
     float: left;
     width: 25%;
     margin-top: 5px;
-
+    background-color: #fafafa;
     height: 60px;
     line-height: 60px;
   }

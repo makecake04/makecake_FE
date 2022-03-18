@@ -4,8 +4,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { ReactComponent as RightSvg } from "../svg/right.svg";
 
 const BestCake = (props) => {
+  const navigate = useNavigate();
   const cake_list = useSelector((state) => state.store.list);
 
   const settings = {
@@ -19,7 +22,20 @@ const BestCake = (props) => {
   return (
     <CakeWrap>
       <div>
-        <h3>베스트 메잌케잌</h3>
+        <div className="cake_wrap">
+          <h3>베스트 메잌케잌</h3>
+          <div className="plus">
+            <p
+              className="p_wrap"
+              onClick={() => {
+                navigate(`/cake`);
+              }}
+            >
+              더보기
+            </p>
+            <RightSvg className="right" />
+          </div>
+        </div>
         <ImageWrap>
           <StyleSlider {...settings}>
             {cake_list.homeCakeDtoList &&
@@ -57,6 +73,30 @@ const CakeWrap = styled.div`
     border: 0.7px solid #e5e5e5;
     width: 100%;
     margin: auto;
+  }
+
+  .cake_wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .p_wrap {
+    margin: 10px 0px 10px 0px;
+    color: #777;
+    font-size: 15px;
+  }
+
+  .plus {
+    display: flex;
+    align-items: center;
+  }
+
+  .right {
+    width: 18px;
+    height: 18px;
+    path {
+      stroke: #777;
+    }
   }
 `;
 

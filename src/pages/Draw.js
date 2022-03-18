@@ -24,13 +24,13 @@ const Draw = (props) => {
   const design_list = useSelector((state) => state.design.list);
   const designs = useSelector((state) => state.design);
 
-  React.useEffect(() => {
-    dispatch(designAction.getDesignListDB(pageNumber));
-  }, [pageNumber]);
-
   const getMoreDesign = async () => {
     setPageNumber(pageNumber + 1);
   };
+
+  React.useEffect(() => {
+    dispatch(designAction.getDesignListDB(pageNumber));
+  }, [pageNumber]);
 
   React.useEffect(() => {
     if (inView) {
@@ -50,16 +50,17 @@ const Draw = (props) => {
             <div className="img_wrap" key={idx} ref={ref}>
               <img
                 src={v.img}
+                alt="post-img"
                 onClick={() => {
-                  setModalIsOpen(true);
-                  // dispatch(cakeAction.getCakeImageDB(v.cakeId));
+                  // setModalIsOpen(true);
+                  navigate(`/post/${v.postId}`);
                 }}
               />
             </div>
           );
         })}
       </ImageWrap>
-      <Modal
+      {/* <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
         style={{
@@ -88,10 +89,10 @@ const Draw = (props) => {
           },
         }}
       >
-        <ModalWrap>
-          {/* <img src={cake_img.img} onClick={() => setModalIsOpen(false)} /> */}
-        </ModalWrap>
-      </Modal>
+        <ModalWrap> */}
+      {/* <img src={cake_img.img} onClick={() => setModalIsOpen(false)} /> */}
+      {/* </ModalWrap>
+      </Modal> */}
 
       {toggle === false ? (
         <div
@@ -111,7 +112,7 @@ const Draw = (props) => {
         >
           <FontAwesomeIcon icon={faXmark} className="xmark" />
           <DrawingSvg className="draw" onClick={() => navigate("/design")} />
-          <WritingSvg className="write" />
+          <WritingSvg className="write" onClick={() => navigate("/mydraw")} />
         </div>
       )}
     </DrawWrap>
@@ -173,10 +174,11 @@ const DrawWrap = styled.div`
   .draw {
     display: flex;
     position: absolute;
-    right: -10px;
-    bottom: 100px;
-    width: 60px;
-    height: 60px;
+    right: -5px;
+    bottom: 110px;
+    width: 52.2px;
+    height: 52.2px;
+
     border-radius: 60px;
     justify-content: center;
     align-items: center;
@@ -187,11 +189,12 @@ const DrawWrap = styled.div`
     position: absolute;
     right: -10px;
     bottom: 40px;
-    width: 60px;
-    height: 60px;
+    width: 58px;
+    height: 58px;
     border-radius: 60px;
     justify-content: center;
     align-items: center;
+    padding-right: 1px;
   }
 `;
 

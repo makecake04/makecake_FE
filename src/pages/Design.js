@@ -1,20 +1,25 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { fabric } from "fabric";
 import "fabric-history";
 import { saveAs } from "file-saver";
 import disableScroll from "disable-scroll";
+import { useNavigate } from "react-router-dom";
+import Modal from "react-modal";
+import { useDispatch } from "react-redux";
+
+//reducer
+import { actionCreators as designAction } from "../redux/modules/design";
 
 //mui
 import { Box } from "@mui/material";
 import { Slider } from "@mui/material";
 
 //component
-import { Cream, Icons } from "../components/component";
+import { Cream, Icons, Text, Image, CanvasBg } from "../components/component";
 
 //image
-import deleteIcon from "../images/header/fi_trash-2.png";
-import download from "../images/header/fi_download.png";
+import deleteIcon from "../svg/delete.svg";
 import logo from "../images/header/Component 8.png";
 import square from "../images/cakesheet/Rectangle 5881 (1).png";
 import circle from "../images/cakesheet/Ellipse 59 (1).png";
@@ -23,44 +28,26 @@ import undoIcon from "../svg/Component 9.svg";
 import redoIcon from "../svg/Component 10.svg";
 import plusIcon from "../svg/Component 11.svg";
 import minusIcon from "../svg/Component 12.svg";
-import bringFrontIcon from "../svg/Component 13.svg";
-import sendBackIcon from "../svg/Component 14.svg";
+import bringFrontIcon from "../svg/Component 15.svg";
+import sendBackIcon from "../svg/Component 16.svg";
 
 const Design = () => {
   disableScroll.on();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [canvas, setCanvas] = useState("");
   const [cakeShape, setCakeShape] = useState("");
   const [isDrawing, setIsDrawing] = useState(false);
   const [originLength, setOriginLength] = useState(0);
   const [option, setOption] = useState("cream");
   const [icon, setIcon] = useState("");
-  const [fileName, setFileName] = useState("선택한 파일이 없습니다");
-  const undoRef = useRef(null);
-  const redoRef = useRef(null);
-  const fileInput = React.useRef();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
     setCanvas(initCanvas());
   }, []);
 
-  const selectFile = (e) => {
-    const reader = new FileReader();
-    const currentFile = fileInput.current.files[0];
-    setFileName(currentFile.name);
-    reader.readAsDataURL(currentFile);
-    reader.onloadend = () => {
-      if (currentFile.size > 5000000) {
-        alert("파일 사이즈가 너무 큽니다!");
-        return;
-      }
-      fabric.Image.fromURL(reader.result, (img) => {
-        img.scale(0.1);
-        canvas.add(img);
-        canvas.renderAll();
-      });
-    };
-  };
-
+  //color change
   const colorChange = (e) => {
     let obj = canvas.getActiveObject();
     if (icon === "backgroundColor" || (obj && icon === "backgroundColor")) {
@@ -81,7 +68,7 @@ const Design = () => {
         });
         obj.filters.push(tint);
         obj.applyFilters();
-        obj.filters.pop(); //reset the filter so the obj's color can be changed responsively
+        obj.filters.pop(); //reset the filter so the obj's color can be changed in response to the color picker
       } else {
         obj.set({ stroke: e.target.value });
       }
@@ -104,6 +91,7 @@ const Design = () => {
       width: 390,
       backgroundColor: "#eeeeee",
       preserveObjectStacking: true,
+      selection: false, //disable group selection
     });
 
   //Rect
@@ -113,6 +101,8 @@ const Design = () => {
       square.hasControls = false;
       square.lockMovementX = true;
       square.lockMovementY = true;
+      // canvas.selection = false;
+
       canvas.setActiveObject(square);
       canvas.add(square).centerObject(square).renderAll();
     });
@@ -142,17 +132,6 @@ const Design = () => {
     });
   };
 
-  //Text
-  const addText = (canvas) => {
-    const text = new fabric.IText("Tap & Edit", {
-      fontFamily: "noto sans",
-      fill: "#00000",
-      fontSize: 40,
-    });
-    canvas.setActiveObject(text);
-    canvas.add(text).centerObject(text).renderAll();
-  };
-
   //delete
   const remove = (canvas) => {
     if (canvas.getActiveObject().lockMovementX) {
@@ -169,11 +148,9 @@ const Design = () => {
   const drawing = (canvas) => {
     let originData = canvas._objects.length;
     setOriginLength(originData);
-    console.log(originLength);
-    console.log(canvas.historyUndo);
     setIsDrawing(true);
     canvas.isDrawingMode = true;
-    canvas.historyUndo = [];
+    // canvas.historyUndo = [];
     // canvas.freeDrawingCursor = "none";
     canvas.renderAll();
   };
@@ -200,7 +177,6 @@ const Design = () => {
   const brushWidth = (e) => {
     canvas.freeDrawingBrush.width = parseInt(e.target.value, 10);
     canvas.renderAll();
-    console.log(e.target.value);
   };
 
   //Brush Color
@@ -218,11 +194,12 @@ const Design = () => {
   };
 
   //save Canvas as image (png)
-  const complete = (canvas) => {
+  const complete = () => {
     const canvasImage = canvas.toDataURL({
       format: "png",
       multiplier: 1.5,
     });
+    dispatch(designAction.addDesignDB(canvasImage));
     saveAs(canvasImage, "my cake");
   };
 
@@ -246,7 +223,29 @@ const Design = () => {
         <div className="header">
           <div className="header-btns">
             <div className="header-btns-left">
-              {isDrawing && (
+              {cakeShape && isDrawing && (
+                <input
+                  id="drawing-line-color"
+                  type="color"
+                  defaultValue={"#000000"}
+                  onChange={brushColor}
+                />
+              )}
+              {cakeShape && !isDrawing && (
+                <input
+                  id="object-color"
+                  type="color"
+                  defaultValue="#ffadcb"
+                  onChange={colorChange}
+                />
+              )}
+              {cakeShape && (
+                <button onClick={() => remove(canvas)}>
+                  <img src={deleteIcon} alt="delete" />
+                </button>
+              )}
+
+              {/* {isDrawing && (
                 <input
                   id="drawing-line-color"
                   type="color"
@@ -262,20 +261,48 @@ const Design = () => {
                   onChange={colorChange}
                 />
               )}
-            </div>
-
-            <img
-              src={logo}
-              alt=""
-              style={{ width: "30%", height: "30%", marginLeft: "3.5rem" }}
-            />
-            <div className="header-btns-right">
               <button onClick={() => remove(canvas)}>
                 <img src={deleteIcon} alt="delete" />
-              </button>
-              <button onClick={() => complete(canvas)}>
-                <img src={download} alt="download" />
-              </button>
+              </button> */}
+            </div>
+
+            {cakeShape && (
+              <img
+                src={logo}
+                alt="Logo"
+                className="logo"
+                style={{
+                  width: "30%",
+                  height: "30%",
+                  marginRight: "2.7rem",
+                }}
+                onClick={() => navigate("/")}
+              />
+            )}
+            {!cakeShape && (
+              <img
+                src={logo}
+                alt="Logo"
+                className="logo"
+                style={{
+                  width: "30%",
+                  height: "30%",
+                  marginLeft: "2.2rem",
+                }}
+                onClick={() => navigate("/")}
+              />
+            )}
+
+            <div className="header-btns-right">
+              {cakeShape && (
+                <button
+                  onClick={() => setModalIsOpen(true)}
+                  style={{ color: "#ff679e" }}
+                >
+                  완료
+                </button>
+              )}
+              {/* {!cakeShape && <button style={{ color: "#ff679e" }}>완료</button>} */}
             </div>
           </div>
         </div>
@@ -283,42 +310,6 @@ const Design = () => {
         <canvas id="canvas" />
 
         <div className="options-wrap">
-          {isDrawing && (
-            <div className="drawing-buttons">
-              <button ref={undoRef} onClick={undo}>
-                <img src={undoIcon} alt="undo" />
-              </button>
-
-              <div className="drawing-buttons-zoom">
-                <button
-                  onClick={() => {
-                    if (canvas.viewportTransform[0] > 1)
-                      canvas.zoomToPoint(
-                        new fabric.Point(canvas.width / 2, canvas.height / 2),
-                        canvas.viewportTransform[0] * 0.8
-                      );
-                  }}
-                >
-                  <img src={minusIcon} alt="minusIcon" />
-                </button>
-
-                <button
-                  onClick={() => {
-                    canvas.zoomToPoint(
-                      new fabric.Point(canvas.width / 2, canvas.height / 2),
-                      canvas.viewportTransform[0] / 0.8
-                    );
-                  }}
-                >
-                  <img src={plusIcon} alt="plusIcon" />
-                </button>
-              </div>
-
-              <button ref={redoRef} onClick={redo}>
-                <img src={redoIcon} alt="redo" />
-              </button>
-            </div>
-          )}
           {!isDrawing && (
             <div className="default-buttons">
               <button onClick={() => sendBack(canvas)}>
@@ -405,6 +396,46 @@ const Design = () => {
             </div>
           )}
 
+          {isDrawing && (
+            <div className="drawing-buttons">
+              <button onClick={undo}>
+                <img src={undoIcon} alt="undo" />
+              </button>
+
+              <button
+                onClick={() => {
+                  setOption("cream");
+                  stopDrawing(canvas);
+                }}
+              >
+                크림 모양
+              </button>
+
+              <button
+                onClick={() => {
+                  setOption("icons");
+                  stopDrawing(canvas);
+                }}
+              >
+                꾸미기
+              </button>
+
+              <button
+                onClick={() => {
+                  setOption("drawing");
+                  drawing(canvas);
+                }}
+                style={{ color: "#ff679e" }}
+              >
+                데코펜
+              </button>
+
+              <button onClick={redo}>
+                <img src={redoIcon} alt="redo" />
+              </button>
+            </div>
+          )}
+
           {!cakeShape && (
             <div className="select-cake-shape">
               <h3>케이크 시트를 먼저 골라주세요!</h3>
@@ -444,73 +475,6 @@ const Design = () => {
 
           {cakeShape && (
             <div className="options">
-              {/* <div className="options-default">
-                {option === "cream" && (
-                  <button
-                    onClick={() => {
-                      setOption("cream");
-                      stopDrawing(canvas);
-                    }}
-                    style={{ color: "#ff679e" }}
-                  >
-                    크림 모양
-                  </button>
-                )}
-                {option !== "cream" && (
-                  <button
-                    onClick={() => {
-                      setOption("cream");
-                      stopDrawing(canvas);
-                    }}
-                  >
-                    크림 모양
-                  </button>
-                )}
-                {option === "icons" && (
-                  <button
-                    onClick={() => {
-                      setOption("icons");
-                      stopDrawing(canvas);
-                    }}
-                    style={{ color: "#ff679e" }}
-                  >
-                    꾸미기
-                  </button>
-                )}
-                {option !== "icons" && (
-                  <button
-                    onClick={() => {
-                      setOption("icons");
-                      stopDrawing(canvas);
-                    }}
-                  >
-                    꾸미기
-                  </button>
-                )}
-
-                {option === "drawing" && (
-                  <button
-                    onClick={() => {
-                      setOption("drawing");
-                      drawing(canvas);
-                    }}
-                    style={{ color: "#ff679e" }}
-                  >
-                    데코펜
-                  </button>
-                )}
-                {option !== "drawing" && (
-                  <button
-                    onClick={() => {
-                      setOption("drawing");
-                      drawing(canvas);
-                    }}
-                  >
-                    데코펜
-                  </button>
-                )}
-              </div> */}
-
               {option === "cream" && (
                 <Cream canvas={canvas} cakeShape={cakeShape} />
               )}
@@ -538,6 +502,7 @@ const Design = () => {
                           style={{
                             color: "#ff679e",
                             marginTop: "0.4rem",
+                            fontSize: "1.4rem",
                           }}
                         >
                           아이콘
@@ -545,7 +510,12 @@ const Design = () => {
                       </div>
                     )}
                     {icon !== "icons" && (
-                      <button onClick={() => setIcon("icons")}>아이콘</button>
+                      <button
+                        onClick={() => setIcon("icons")}
+                        style={{ fontSize: "1.5rem" }}
+                      >
+                        아이콘
+                      </button>
                     )}
 
                     {icon === "text" && (
@@ -566,11 +536,11 @@ const Design = () => {
                         <button
                           onClick={() => {
                             setIcon("text");
-                            addText(canvas);
                           }}
                           style={{
                             color: "#ff679e",
                             marginTop: "0.4rem",
+                            fontSize: "1.5rem",
                           }}
                         >
                           텍스트
@@ -581,8 +551,8 @@ const Design = () => {
                       <button
                         onClick={() => {
                           setIcon("text");
-                          addText(canvas);
                         }}
+                        style={{ fontSize: "1.5rem" }}
                       >
                         텍스트
                       </button>
@@ -604,39 +574,27 @@ const Design = () => {
                           }}
                         />
                         <button
-                          onClick={() => setIcon("image")}
+                          onClick={() => {
+                            setIcon("icon");
+                          }}
                           style={{
                             color: "#ff679e",
-                            marginTop: "0.1rem",
+                            marginTop: "0.4rem",
+                            fontSize: "1.5rem",
                           }}
                         >
-                          <label>
-                            이미지
-                            <input
-                              style={{ border: "none" }}
-                              type="file"
-                              accept=".jpg, .jpeg, .png"
-                              onClick={() => setIcon("image")}
-                              onChange={selectFile}
-                              ref={fileInput}
-                            />
-                          </label>
+                          이미지
                         </button>
                       </div>
                     )}
                     {icon !== "image" && (
-                      <button onClick={() => setIcon("image")}>
-                        <label>
-                          이미지
-                          <input
-                            style={{ border: "none" }}
-                            type="file"
-                            accept=".jpg, .jpeg, .png"
-                            onClick={() => setIcon("image")}
-                            onChange={selectFile}
-                            ref={fileInput}
-                          />
-                        </label>
+                      <button
+                        onClick={() => {
+                          setIcon("image");
+                        }}
+                        style={{ fontSize: "1.5rem" }}
+                      >
+                        이미지
                       </button>
                     )}
 
@@ -660,6 +618,7 @@ const Design = () => {
                           style={{
                             color: "#ff679e",
                             marginTop: "0.4rem",
+                            fontSize: "1.5rem",
                           }}
                         >
                           배경색
@@ -667,25 +626,27 @@ const Design = () => {
                       </div>
                     )}
                     {icon !== "backgroundColor" && (
-                      <button onClick={() => setIcon("backgroundColor")}>
+                      <button
+                        onClick={() => setIcon("backgroundColor")}
+                        style={{ fontSize: "1.5rem" }}
+                      >
                         배경색
                       </button>
                     )}
                   </div>
                   {icon === "icons" && <Icons canvas={canvas} />}
-                  {icon === "backgroundColor" && (
-                    <div className="background-change-text">
-                      <p>배경 색상을 변경해보세요!</p>
-                      <p>*좌측 상단의 컬러 피커를 활용하세요*</p>
-                    </div>
-                  )}
+                  {icon === "text" && <Text canvas={canvas} />}
+                  {icon === "image" && <Image canvas={canvas} />}
+                  {icon === "backgroundColor" && <CanvasBg />}
                 </>
               )}
 
               {option === "drawing" && (
                 <div className="drawing-options">
-                  <label>크기: </label>
-                  {/* <input
+                  <div className="drawing-options-brush">
+                    {" "}
+                    <label>크기: </label>
+                    {/* <input
                     id="drawing-line-width"
                     type="range"
                     min="1"
@@ -696,27 +657,104 @@ const Design = () => {
                     onTouchStart={enableScroll}
                     onTouchEnd={_disableScroll}
                   /> */}
-                  <Box>
-                    <Slider
-                      min={1}
-                      max={30}
-                      sx={{
-                        width: 130,
-                        height: 8,
-                        color: "#ff679e",
+                    <Box>
+                      <Slider
+                        min={1}
+                        max={30}
+                        sx={{
+                          width: 130,
+                          height: 8,
+                          color: "#ff679e",
+                        }}
+                        defaultValue={1}
+                        onChange={brushWidth}
+                      />
+                    </Box>
+                  </div>
+
+                  <div className="drawing-buttons-zoom">
+                    캔버스 크기:
+                    <button
+                      onClick={() => {
+                        if (canvas.viewportTransform[0] > 1)
+                          canvas.zoomToPoint(
+                            new fabric.Point(
+                              canvas.width / 2,
+                              canvas.height / 2
+                            ),
+                            canvas.viewportTransform[0] * 0.8
+                          );
                       }}
-                      defaultValue={1}
-                      onChange={brushWidth}
-                      // valueLabelDisplay="auto"
-                      // getAriaValueText={valuetext}
-                    />
-                  </Box>
+                    >
+                      <img src={minusIcon} alt="minusIcon" />
+                    </button>
+                    <button
+                      onClick={() => {
+                        canvas.zoomToPoint(
+                          new fabric.Point(canvas.width / 2, canvas.height / 2),
+                          canvas.viewportTransform[0] / 0.8
+                        );
+                      }}
+                    >
+                      <img src={plusIcon} alt="plusIcon" />
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
           )}
         </div>
       </div>
+
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+        style={{
+          overlay: {
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(76, 76, 76, 0.7)",
+            zIndex: "20",
+          },
+          content: {
+            position: "absolute",
+            top: "35%",
+            left: "50%",
+            bottom: "auto",
+            width: "300px",
+            height: "150px",
+            padding: "0",
+            border: "solid 1px #eee",
+            overflow: "auto",
+            borderRadius: "5px",
+            transform: "translate(-50%,-50%)",
+            WebkitOverflowScrolling: "touch",
+          },
+        }}
+      >
+        <ModalWrap>
+          <p className="title">저장하시겠어요?</p>
+          <p className="description">
+            완료를 누르시면 도안을 저장할 수 있어요.
+          </p>
+          <hr className="modal_hr" />
+          <div className="footer_wrap">
+            <button className="footer_one" onClick={() => complete()}>
+              완료
+            </button>
+            <div className="vl" />
+            <button
+              className="footer_two"
+              onClick={() => setModalIsOpen(false)}
+            >
+              취소
+            </button>
+          </div>
+        </ModalWrap>
+      </Modal>
     </Wrap>
   );
 };
@@ -724,9 +762,8 @@ const Design = () => {
 const Wrap = styled.div`
   max-height: 844px;
   text-align: center;
-  font-family: Roboto;
+
   button {
-    font-family: Roboto;
     border: none;
   }
   .canvas-wrap {
@@ -739,19 +776,20 @@ const Wrap = styled.div`
       padding-bottom: 1.2rem;
     }
     .header {
-      padding: 5px 5px 5px 0px;
+      padding: 0.5rem 0.5rem 1.2rem 0;
       button {
-        width: 40px;
-        height: 40px;
+        width: 4rem;
+        height: 4rem;
         border-radius: 50%;
       }
       button + button {
-        margin-left: 7px;
+        margin-left: 0.7rem;
       }
       input[type="color"] {
-        padding: 0px 2.5px;
-        width: 48px;
-        height: 48px;
+        padding: 0 0.25rem;
+        margin-top: 0.2rem;
+        width: 4.5rem;
+        height: 4.5rem;
         background-color: transparent;
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -760,16 +798,19 @@ const Wrap = styled.div`
         cursor: pointer;
         &::-webkit-color-swatch {
           border-radius: 50%;
-          border: 1px solid #e2e2e2;
+          border: 0.1rem solid #e2e2e2;
         }
       }
       .header-btns {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         .header-btns-left {
           display: flex;
-          .header-btns-left-zoom {
-            margin-top: 4px;
+
+          button {
+            margin-top: 0.25rem;
+            width: 4.5rem;
           }
         }
         .header-btns-right {
@@ -785,15 +826,23 @@ const Wrap = styled.div`
     flex: 2;
     background-color: #fee9ee;
     .default-buttons {
-      height: 62px;
+      height: 6.2rem;
       padding: 1rem 1.5rem 0.8rem;
       display: flex;
       justify-content: space-between;
+      button {
+        color: #777777;
+        font-weight: 600;
+      }
     }
     .drawing-buttons {
       padding: 1rem 1.5rem 0.8rem;
       display: flex;
       justify-content: space-between;
+      button {
+        color: #777777;
+        font-weight: 600;
+      }
     }
 
     .select-cake-shape {
@@ -817,7 +866,7 @@ const Wrap = styled.div`
       }
     }
     .options {
-      .options-default {
+      /* .options-default {
         padding: 0rem 4rem 1rem;
         margin-bottom: 0.3rem;
         display: flex;
@@ -826,17 +875,33 @@ const Wrap = styled.div`
           color: #777777;
           font-weight: 600;
         }
-      }
+      } */
       .icons-header {
         display: flex;
         justify-content: space-between;
+        padding: 0 5rem 0;
+        button {
+          color: #777777;
+        }
       }
       .drawing-options {
         display: flex;
         align-items: center;
-        justify-content: center;
-        padding-top: 2.5rem;
-
+        padding-top: 2rem;
+        flex-direction: column;
+        color: #777777;
+        .drawing-options-brush {
+          display: flex;
+          align-items: center;
+        }
+        .drawing-buttons-zoom {
+          display: flex;
+          align-items: center;
+          button {
+            margin-left: 0.3rem;
+            padding-top: 0.5rem;
+          }
+        }
         .MuiBox-root {
           margin-left: 1.5rem;
           padding-top: 0.4rem;
@@ -918,10 +983,59 @@ const Wrap = styled.div`
     input[type="file"] {
       width: 0;
     }
-    input[type="radio"] {
-      vertical-align: top;
-      margin-bottom: 7px;
-    }
   }
 `;
+
+const ModalWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+
+  .title {
+    color: #292929;
+    font-weight: 700;
+    margin: 20px 0px 10px 0px;
+  }
+
+  .description {
+    color: #292929;
+    font-size: 15px;
+    margin: 0px 0px 20px 0px;
+  }
+
+  .modal_hr {
+    border: 0.7px solid #e5e5e5;
+    width: 100%;
+    margin: 1.4rem 0 1rem;
+  }
+
+  .footer_wrap {
+    display: flex;
+    padding-top: 0.3rem;
+  }
+
+  .footer_one {
+    color: #ff679e;
+    font-weight: 700;
+    border: none;
+    width: 140px;
+  }
+
+  .vl {
+    border-left: 2px solid #e5e5e5;
+    height: 4.5rem;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+  }
+
+  .footer_two {
+    color: #c6c6c8;
+    font-weight: 700;
+    width: 140px;
+    border: none;
+  }
+`;
+
 export default Design;

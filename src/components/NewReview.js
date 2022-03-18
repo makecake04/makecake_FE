@@ -23,7 +23,7 @@ const NewReview = (props) => {
                 <div key={idx}>
                   <div className="wrap">
                     <div className="img_wrap">
-                      <img src={v.img} />
+                      <img src={v.img} alt="reiview-img" />
                     </div>
                   </div>
                   <div className="review_wrap">
@@ -87,6 +87,7 @@ const CommentWrap = styled.div`
     height: 100%;
     border-radius: 10px;
     object-fit: cover;
+    background: no-repeat;
   }
 
   .review_wrap {

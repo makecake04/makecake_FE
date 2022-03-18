@@ -4,9 +4,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const HotStoreList = (props) => {
   const store_list = useSelector((state) => state.store.list);
+  const storeId = store_list.homeStoreDtoList;
+  const navigate = useNavigate();
 
   const settings = {
     dots: true,
@@ -27,7 +30,12 @@ const HotStoreList = (props) => {
                 return (
                   <div key={idx}>
                     <div className="img_wrap">
-                      <ImgBox src={v.mainImg} />
+                      <ImgBox
+                        src={v.mainImg}
+                        onClick={() => {
+                          navigate(`/storedetail/${v.storeId}`);
+                        }}
+                      />
                     </div>
                     <div className="text">{v.name}</div>
                   </div>

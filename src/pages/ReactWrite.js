@@ -5,14 +5,49 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../images/logo.png";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { userActions } from "../redux/modules/mypage";
+import { userActions as commentActions } from "../redux/modules/comment";
+import { actionCreators as designAction } from "../redux/modules/design";
+import { useInView } from "react-intersection-observer";
+import { useState } from "react";
 
 const ReactWrite = (props) => {
   const navigate = useNavigate();
+  const likedesign = useSelector((state) => state.design.likeDesign);
   const [toggleState, setToggleState] = React.useState(1);
+  const [content, setContent] = useState("");
+  const [pageNumber, setPageNumber] = React.useState(0);
+  const [ref, inView] = useInView();
+
+  const dispatch = useDispatch();
+
+  const commentList = useSelector((state) => state.mypage.list);
+  console.log(commentList);
+
+  const deleteComment = (commentId) => {
+    dispatch(commentActions.deleteCommentDB(commentId));
+  };
 
   const toggleTab = (index) => {
     setToggleState(index);
   };
+
+  useEffect(() => {
+    dispatch(userActions.getCommentDB(pageNumber));
+    dispatch(designAction.getLikeDesignDB(pageNumber));
+  }, [pageNumber]);
+
+  const getMoreComment = async () => {
+    setPageNumber(pageNumber + 1);
+  };
+
+  React.useEffect(() => {
+    if (inView) {
+      getMoreComment();
+    }
+  }, [inView]);
 
   return (
     <ReactWriteWrap>
@@ -45,78 +80,55 @@ const ReactWrite = (props) => {
           </div>
           <div className="content-tabs">
             <div className={toggleState === 1 ? "active-content" : "content"}>
-              <div className="review_wrap">
-                <div className="title_wrap">
-                  <div className="profile"></div>
-                  <div className="info">
-                    <p className="insert_dt">2022.3.10</p>
-                    <p className="nickname">얌얌얌얌</p>
-                  </div>
-                </div>
-                <FontAwesomeIcon icon={faHeart} className="heart" />
-              </div>
-              <div className="content_wrap">
-                <p className="p_wrap">
-                  안녕하세요!ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-                </p>
-              </div>
-              <div className="img_wrap"></div>
-              <hr className="hr_wrap" />
-              <div className="review_wrap">
-                <div className="title_wrap">
-                  <div className="profile"></div>
-                  <div className="info">
-                    <p className="insert_dt">2022.3.10</p>
-                    <p className="nickname">쩝쩝쩝쩝</p>
-                  </div>
-                </div>
-                <FontAwesomeIcon icon={faHeart} className="heart" />
-              </div>
-              <div className="content_wrap">
-                <p>반갑습니다!dddddddddddddddddddddddddddddddddd</p>
-              </div>
-              <div className="img_wrap"></div>
-              <hr />
+              {likedesign &&
+                likedesign.map((v, idx) => {
+                  return (
+                    <div key={idx}>
+                      <div className="review_wrap">
+                        <div className="title_wrap">
+                          <div className="profile"></div>
+                          <div className="info">
+                            <p className="nickname">{v.nickname}</p>
+                          </div>
+                        </div>
+                        <FontAwesomeIcon icon={faHeart} className="heart" />
+                      </div>
+                      <div className="content_wrap">
+                        <p className="p_wrap">{v.content}</p>
+                      </div>
+                      <div className="img_wrap">
+                        <img src={v.img} alt="" />
+                      </div>
+                      <hr className="hr_wrap" />
+                    </div>
+                  );
+                })}
             </div>
             <div className={toggleState === 2 ? "active-content" : "content"}>
-              <div className="comment_wrap">
-                <div className="title_wrap2">
-                  <p className="nickname">게시글 제목 일부</p>
-                  <p className="insert_dt">2020.3.10</p>
-                </div>
-                <p className="p_wrap">
-                  반갑습니다!ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-                </p>
-                <div className="btn">
-                  <button className="modify">수정하기</button>
-                  <button className="delete">삭제하기</button>
-                </div>
-                <hr className="hr_wrap" />
-              </div>
-              <div className="comment_wrap">
-                <div className="title_wrap2">
-                  <p className="nickname">게시글 제목 일부</p>
-                  <p className="insert_dt">2020.3.10</p>
-                </div>
-                <p>반갑습니다!dddddddddddddddddddddddddddddddddd </p>
-                <div className="btn">
-                  <button className="modify">수정하기</button>
-                  <button className="delete">삭제하기</button>
-                </div>
-                <hr className="hr_wrap" />
-              </div>
-              <div className="comment_wrap">
-                <div className="title_wrap2">
-                  <p className="nickname">게시글 제목 일부</p>
-                  <p className="insert_dt">2020.3.10</p>
-                </div>
-                <p>반갑습니다!dddddddddddddddddddddddddddddddddd </p>
-                <div className="btn">
-                  <button className="modify">수정하기</button>
-                  <button className="delete">삭제하기</button>
-                </div>
-                <hr className="hr_wrap" />
-              </div>
+              {commentList &&
+                commentList.map((v, i) => {
+                  return (
+                    <div className="comment_wrap" key={i} ref={ref}>
+                      <p className="p_wrap" value={content}>
+                        {v.content}
+                      </p>
+
+                      <p className="insert_dt">{v.createdDate}</p>
+
+                      <div className="nicknameAndDelete">
+                        <p className="nickname">{v.postTitle}</p>
+                        <button
+                          className="delete"
+                          onClick={() => deleteComment(v.commentId)}
+                        >
+                          삭제하기
+                        </button>
+                      </div>
+
+                      <hr className="hr_wrap" />
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>
@@ -220,6 +232,13 @@ const ReactWriteWrap = styled.div`
     justify-content: space-between;
   }
 
+  .comment_wrap {
+    display: flex;
+    flex-direction: column;
+    width: 342px;
+    /* border-bottom: 1px solid #E5E5E5; */
+  }
+
   .title_wrap {
     display: flex;
   }
@@ -229,6 +248,8 @@ const ReactWriteWrap = styled.div`
   }
 
   .p_wrap {
+    color: #282828;
+    font-size: 14px;
     word-break: break-all;
     display: -webkit-box;
     word-wrap: break-word;
@@ -253,14 +274,22 @@ const ReactWriteWrap = styled.div`
   }
 
   .insert_dt {
-    margin: 0px 0px 5px 0px;
-    font-size: 13px;
+    margin: 10px 0px 5px 0px;
+    font-size: 12px;
     color: #777;
   }
 
+  .nicknameAndDelete {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+  }
+
   .nickname {
-    font-size: 15px;
-    color: #282828;
+    margin-top: 6px;
+    font-size: 18px;
+    color: #777777;
+    font-weight: 500px;
   }
 
   .heart {
@@ -272,8 +301,7 @@ const ReactWriteWrap = styled.div`
   .img_wrap {
     position: relative;
     width: 100%;
-    padding-bottom: 50%;
-    background-image: url("https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20210815_70%2F16290307310817bC2R_JPEG%2Fupload_52d61b3cee3b2c60b9a0f62e8481d724.jpg");
+
     border-radius: 5px;
     background-position: center;
     background-size: 100%;
@@ -309,12 +337,15 @@ const ReactWriteWrap = styled.div`
   }
 
   .delete {
-    width: 80px;
-    height: 35px;
-    font-size: 13px;
+    width: 64px;
+    height: 33px;
+    font-size: 12px;
     color: #e10000;
     border: 1px solid #e10000;
-    border-radius: 20px;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    font-family: "Noto Sans";
   }
 `;
 

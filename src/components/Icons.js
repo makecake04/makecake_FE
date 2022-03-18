@@ -175,8 +175,8 @@ const Icons = (props) => {
 
 const IconWrap = styled.div`
   .icons-wrap {
-    margin-top: 1.5rem;
-    padding: 0 2rem 0;
+    margin-top: 1.7rem;
+    padding: 0 2.8rem 0;
     .icons-wrap-first,
     .icons-wrap-second {
       display: flex;

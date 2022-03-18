@@ -4,9 +4,34 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { useInView } from "react-intersection-observer";
+import { actionCreators as cakeAction } from "../redux/modules/cake";
 
 const ReactCake = (props) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [pageNumber, setPageNumber] = React.useState(0);
+
+  const [ref, inView] = useInView();
+
+  const likeCake = useSelector((state) => state.cake.likeCake);
+
+  React.useEffect(() => {
+    dispatch(cakeAction.getLikeCakeDB(pageNumber));
+  }, [pageNumber]);
+
+  const getMoreCake = async () => {
+    setPageNumber(pageNumber + 1);
+  };
+
+  React.useEffect(() => {
+    if (inView) {
+      getMoreCake();
+    }
+  }, [inView]);
+
   return (
     <ReactCakeWrap>
       <div>
@@ -22,54 +47,17 @@ const ReactCake = (props) => {
         </div>
         <hr />
         <ImageWrap>
-          <div>
-            <div className="img_wrap">
-              <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210528_125%2F1622212613687XKcgw_JPEG%2FUVj0G8PL6HlsonNQZAXJfNmy.jpg" />
-              <FontAwesomeIcon icon={faHeart} className="heart" />
-            </div>
-            <p className="store">더케익스토리</p>
-            <p className="name">미니케이크</p>
-          </div>
-          <div>
-            <div className="img_wrap">
-              <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210528_125%2F1622212613687XKcgw_JPEG%2FUVj0G8PL6HlsonNQZAXJfNmy.jpg" />
-              <FontAwesomeIcon icon={faHeart} className="heart" />
-            </div>
-            <p className="store">더케익스토리</p>
-            <p className="name">미니케이크</p>
-          </div>
-          <div>
-            <div className="img_wrap">
-              <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210528_125%2F1622212613687XKcgw_JPEG%2FUVj0G8PL6HlsonNQZAXJfNmy.jpg" />
-              <FontAwesomeIcon icon={faHeart} className="heart" />
-            </div>
-            <p className="store">더케익스토리</p>
-            <p className="name">미니케이크</p>
-          </div>
-          <div>
-            <div className="img_wrap">
-              <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210528_125%2F1622212613687XKcgw_JPEG%2FUVj0G8PL6HlsonNQZAXJfNmy.jpg" />
-              <FontAwesomeIcon icon={faHeart} className="heart" />
-            </div>
-            <p className="store">더케익스토리</p>
-            <p className="name">미니케이크</p>
-          </div>
-          <div>
-            <div className="img_wrap">
-              <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210528_125%2F1622212613687XKcgw_JPEG%2FUVj0G8PL6HlsonNQZAXJfNmy.jpg" />
-              <FontAwesomeIcon icon={faHeart} className="heart" />
-            </div>
-            <p className="store">더케익스토리</p>
-            <p className="name">미니케이크</p>
-          </div>
-          <div>
-            <div className="img_wrap">
-              <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210528_125%2F1622212613687XKcgw_JPEG%2FUVj0G8PL6HlsonNQZAXJfNmy.jpg" />
-              <FontAwesomeIcon icon={faHeart} className="heart" />
-            </div>
-            <p className="store">더케익스토리</p>
-            <p className="name">미니케이크</p>
-          </div>
+          {likeCake &&
+            likeCake.map((v, idx) => {
+              return (
+                <div key={idx}>
+                  <div className="img_wrap">
+                    <img src={v.img} alt="img" />
+                  </div>
+                  <p className="store">{v.storeName}</p>
+                </div>
+              );
+            })}
         </ImageWrap>
       </div>
     </ReactCakeWrap>

@@ -4,9 +4,13 @@ import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as cakeAction } from "../redux/modules/cake";
 import { useInView } from "react-intersection-observer";
+import { actionCreators as storeAction } from "../redux/modules/store";
+import { ReactComponent as StoreSvg } from "../svg/store.svg";
+import { useNavigate } from "react-router-dom";
 
 Modal.setAppElement("#root");
 const CakeList = (props) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = React.useState(false);
   const [pageNumber, setPageNumber] = React.useState(0);
@@ -19,7 +23,7 @@ const CakeList = (props) => {
 
   const cake_lists = useSelector((state) => state.cake.list);
   const cake_img = useSelector((state) => state.cake.lists);
-  const cakes = useSelector((state) => state.cake);
+  const store_id = useSelector((state) => state.cake.lists);
 
   const getMoreCake = async () => {
     setPageNumber(pageNumber + 1);
@@ -61,6 +65,7 @@ const CakeList = (props) => {
                     setModalIsOpen(true);
                     dispatch(cakeAction.getCakeImageDB(v.cakeId));
                   }}
+                  alt="cakeImage"
                 />
               </div>
             );
@@ -82,13 +87,13 @@ const CakeList = (props) => {
           },
           content: {
             position: "absolute",
-            top: "45%",
+            top: "50%",
             left: "50%",
             bottom: "auto",
             width: "300px",
             height: "auto",
             padding: "0",
-            border: "solid 1px #eee",
+            border: "none",
             overflow: "auto",
             borderRadius: "5px",
             transform: "translate(-50%,-50%)",
@@ -97,7 +102,19 @@ const CakeList = (props) => {
         }}
       >
         <ModalWrap>
-          <img src={cake_img.img} onClick={() => setModalIsOpen(false)} />
+          <img
+            src={cake_img.img}
+            onClick={() => setModalIsOpen(false)}
+            className="src"
+            alt="cakeDetailImage"
+          />
+          <StoreSvg
+            className="store"
+            onClick={() => {
+              dispatch(storeAction.getStoreDetailDB(store_id.storeId));
+              navigate(`/storedetail/${store_id.storeId}`);
+            }}
+          />
         </ModalWrap>
       </Modal>
     </CakeContainer>
@@ -154,6 +171,19 @@ const ModalWrap = styled.div`
   flex-direction: column;
   text-align: center;
   align-items: center;
+
+  .src {
+    width: 300px;
+    height: 300px;
+    background: url(${(props) => props.src}) no-repeat center / cover;
+    object-fit: cover;
+  }
+
+  .store {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
 `;
 
 export default CakeList;
