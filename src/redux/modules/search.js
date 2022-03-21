@@ -12,7 +12,7 @@ const initialState = {
 };
 
 // 매장 불러오기
-const searchPlaceF = (searchType, searchText, sortType) => {
+const searchPlaceDB = (searchType, searchText, sortType) => {
   return function (dispatch, getState) {
     console.log(searchType, searchText, sortType);
     api
@@ -38,8 +38,8 @@ export default handleActions(
   initialState
 );
 
-const userActions = {
-  searchPlaceF,
+const actionCreators = {
+  searchPlaceDB,
 };
 
-export { userActions };
+export { actionCreators };

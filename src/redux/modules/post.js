@@ -128,7 +128,7 @@ const deletePostDB = (postId) => {
       .then((res) => {
         console.log(res);
         alert("게시글이 삭제되었습니다!");
-        window.location.replace("/mydraw");
+        window.location.replace("/mydesign");
       })
       .catch((error) => {
         console.log("게시글 삭제 에러:", error);

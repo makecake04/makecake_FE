@@ -20,7 +20,7 @@ body {
   height: 100vh;
   background: #ffffff;
   font-size: 1.6rem;
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Noto Sans KR";
 }
 ::selection,
 ::-moz-selection {
@@ -193,7 +193,7 @@ textarea {
 input,
 textarea {
   font-size: 1.6rem;
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Noto Sans KR";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -223,22 +223,17 @@ button {
   background-color: transparent;
   font-size: 1.6rem;
 
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Noto Sans KR";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-weight: 500; /*edit*/
-}
-
-button {
-  /* padding: 0.2rem 1rem; */
-  /*edit*/
-
+  font-weight: 500;
   border: 1px solid #dddddd;
   cursor: pointer;
 }
+
 input {
   /* padding: 0.2rem 1rem; */
   /*edit*/
-
+  font-family: "Noto Sans KR";
   border: 1px solid #dddddd;
 }

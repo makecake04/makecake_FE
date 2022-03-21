@@ -1,51 +1,56 @@
-import Home from "./Home";
-import CakeList from "./CakeList";
-import SearchDetail from "./SearchDetail";
-import Mypage from "./Mypage";
-import Draw from "./Draw";
-import Profile from "./Profile";
-import MyDraw from "./MyDraw";
-import ReactWrite from "./ReactWrite";
-import ReactStore from "./ReactStore";
-import ReactCake from "./ReactCake";
-import StoreDetail from "./StoreDetail";
-import Noti from "./Noti";
+import FirstPage from "./FirstPage/FirstPage";
 
-import Email from "./signupEmail";
-import Nickname from "./signupNickname";
-import Password from "./signupPassword";
-import SearchMap from "./SearchMap";
-import LoginEmail from "./loginEmail";
-import LoginPassword from "./loginPassword";
-import Search from "./Search";
-import FirstLogin from "./FirstLogin";
-import Design from "./Design";
-import PostWrite from "./PostWrite";
-import PostDetail from "./PostDetail";
-import ReviewWrite from "./ReviewWrite";
+import SignUpEmail from "./SignUp/SignUpEmail/SignUpEmail";
+import SignUpPassword from "./SignUp/SignUpPassword/SignUpPassword";
+import SignUpNickname from "./SignUp/SignUpNickname/SignUpNickname";
+
+import LoginEmail from "./Login/LoginEmail/LoginEmail";
+import LoginPassword from "./Login/LoginPassword/LoginPassword";
+
+import Home from "./Home/Home";
+import CakeList from "./CakeList/CakeList";
+import DesignList from "./DesignList/DesignList";
+import Noti from "./Noti/Noti";
+
+import MyPage from "./MyPageTab/MyPage/MyPage";
+import ProfileEdit from "./MyPageTab/ProfileEdit/ProfileEdit";
+import MyDesign from "./MyPageTab/MyDesign/MyDesign";
+import ReactPost from "./MyPageTab/ReactPost/ReactPost";
+import ReactStore from "./MyPageTab/ReactStore/ReactStore";
+import ReactCake from "./MyPageTab/ReactCake/ReactCake";
+import StoreDetail from "./StoreDetail/StoreDetail";
+
+import Search from "./Search/Search";
+import SearchMap from "./SearchMap/SearchMap";
+import SearchResult from "./SearchResult/SearchResult";
+
+import Drawing from "./Drawing/Drawing";
+import PostWrite from "./PostWrite/PostWrite";
+import PostDetail from "./PostDetail/PostDetail";
+import ReviewWrite from "./ReviewWrite/ReviewWrite";
 
 export {
   Home,
   CakeList,
-  SearchDetail,
-  Mypage,
-  Draw,
-  Profile,
-  MyDraw,
-  ReactWrite,
+  SearchResult,
+  MyPage,
+  DesignList,
+  ProfileEdit,
+  MyDesign,
+  ReactPost,
   ReactStore,
   ReactCake,
   StoreDetail,
   Noti,
-  Email,
-  Nickname,
-  Password,
+  SignUpEmail,
+  SignUpNickname,
+  SignUpPassword,
   Search,
   LoginEmail,
   LoginPassword,
   SearchMap,
-  FirstLogin,
-  Design,
+  FirstPage,
+  Drawing,
   PostWrite,
   PostDetail,
   ReviewWrite,

@@ -53,7 +53,7 @@ const addDesignDB = (design) => {
           .then((res) => {
             console.log("도안 이미지 전송 성공!: ", res.data);
             dispatch(addDesign(res.data.img));
-            window.location.replace("/mydraw");
+            window.location.replace("/mydesign");
           })
           .catch(function (error) {
             console.log(error);
@@ -64,6 +64,7 @@ const addDesignDB = (design) => {
 };
 
 const getDesignListDB = (page_num) => {
+  console.log(page_num);
   return function (dispatch, getState) {
     axios
       .get("http://3.38.153.67/api/designs", {
@@ -143,7 +144,7 @@ const deleteDesignDB = (designId) => {
       .then((res) => {
         console.log(res);
         alert("도안이 삭제되었습니다!");
-        window.location.replace("/mydraw");
+        window.location.replace("/mydesign");
       })
       .catch((error) => {
         console.log("게시글 삭제 에러:", error);
