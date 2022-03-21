@@ -9,7 +9,6 @@ import User from "./modules/user";
 import search from "./modules/search";
 import Comment from "./modules/comment";
 import Post from "./modules/post";
-import Mypage from "./modules/mypage";
 import Review from "./modules/review";
 
 export const history = createBrowserHistory();
@@ -22,7 +21,6 @@ const rootReducer = combineReducers({
   design: Design,
   post: Post,
   comment: Comment,
-  mypage: Mypage,
   review: Review,
 });
 

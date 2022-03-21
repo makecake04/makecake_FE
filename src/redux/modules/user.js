@@ -40,7 +40,7 @@ const initialState = {
 };
 
 // 이메일 중복검사
-const usernameCheckF = (username) => {
+const usernameCheckDB = (username) => {
   return function (dispatch, getState, { history }) {
     // const navigate = useNavigate();
 
@@ -57,7 +57,7 @@ const usernameCheckF = (username) => {
           // window.alert("사용 가능한 아이디입니다!");
         } else {
           window.alert("이미 사용 중인 아이디입니다!");
-          window.location.replace("/email");
+          window.location.replace("/signup/email");
         }
       })
       .catch((err) => {
@@ -68,7 +68,7 @@ const usernameCheckF = (username) => {
 };
 
 // 닉네임 중복검사
-const nicknameCheckF = (username, password, passwordCheck, nickname) => {
+const nicknameCheckDB = (username, password, passwordCheck, nickname) => {
   console.log(username, password, passwordCheck, nickname);
 
   return function (dispatch, getState) {
@@ -85,7 +85,7 @@ const nicknameCheckF = (username, password, passwordCheck, nickname) => {
                 window.location.replace("/");
               } else if (!res.data.signup) {
                 window.alert("회원가입에 실패하셨습니다!");
-                window.location.replace("/signup");
+                window.location.replace("/signup/nickname");
               }
             })
             .catch((err) => {
@@ -119,7 +119,7 @@ const kakaoLoginDB = (code) => {
       })
       .catch((err) => {
         console.log("카카오로그인 에러", err);
-        history.replace("/");
+        window.location.replace("/");
         dispatch(loading(false));
       });
   };
@@ -234,13 +234,13 @@ export default handleActions(
   initialState
 );
 
-const userActions = {
+const actionCreators = {
   setUsername,
   addPassword,
   addPasswordCheck,
   addNickname,
-  usernameCheckF,
-  nicknameCheckF,
+  usernameCheckDB,
+  nicknameCheckDB,
   kakaoLoginDB,
   logInDB,
   loginCheckDB,
@@ -248,4 +248,4 @@ const userActions = {
   logOutDB,
 };
 
-export { userActions };
+export { actionCreators };

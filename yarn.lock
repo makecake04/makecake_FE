@@ -1200,7 +1200,7 @@
 
 "@emotion/react@^11.8.2":
   version "11.8.2"
-  resolved "https://registry.npmjs.org/@emotion/react/-/react-11.8.2.tgz"
+  resolved "https://registry.yarnpkg.com/@emotion/react/-/react-11.8.2.tgz#e51f5e6372e22e82780836c9288da19af4b51e70"
   integrity sha512-+1bcHBaNJv5nkIIgnGKVsie3otS0wF9f1T1hteF3WeVvMNQEtfZ4YyFpnphGoot3ilU/wWMgP2SgIDuHLE/wAA==
   dependencies:
     "@babel/runtime" "^7.13.10"

@@ -15,7 +15,7 @@ const initialState = {
 
 const cakeList = createAction(CAKE_LIST, (list) => ({ list }));
 const cakeImage = createAction(CAKE_IMAGE, (img) => ({ img }));
-const likeCake = createAction(LIKE_CAKE, (likecake) => ({ likecake }));
+const likeCake = createAction(LIKE_CAKE, (likeCake) => ({ likeCake }));
 
 const getCakeListDB = (page_num) => {
   return function (dispatch, getState) {
@@ -90,7 +90,7 @@ export default handleActions(
       }),
     [LIKE_CAKE]: (state, action) =>
       produce(state, (draft) => {
-        draft.likeCake.push(...action.payload.likecake);
+        draft.likeCake.push(...action.payload.likeCake);
         //중복 검사
         draft.likeCake = draft.likeCake.reduce((acc, cur) => {
           if (acc.findIndex((a) => a.cakeId === cur.cakeId) === -1) {
