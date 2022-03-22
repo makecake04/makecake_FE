@@ -20,3 +20,10 @@ export const Container = styled.div`
       margin-top: 2px; */
   }
 `;
+
+export const GoogleButton = styled.div`
+  
+
+`;
+
+

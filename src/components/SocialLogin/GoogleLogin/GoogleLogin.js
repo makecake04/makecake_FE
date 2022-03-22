@@ -4,6 +4,7 @@ import React from "react";
 import { Container } from "./style";
 
 const GoogleLogin = (props) => {
+  
   let _clientId = "291461089259-e5riml4i90u5ej2ubfuc2t08aammtjld";
   let _callBack = "http://localhost:3000/user/google/callback";
 

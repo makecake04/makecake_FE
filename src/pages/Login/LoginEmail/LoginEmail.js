@@ -1,11 +1,10 @@
 import React from "react";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { actionCreators as userAction } from "../../../redux/modules/user";
 
 //import css
-import { Container } from "./style";
+import { Container, Input, NextButton, BlackBackButton, H, P } from "./style";
 
 const LoginEmail = () => {
   const navigate = useNavigate();
@@ -29,38 +28,30 @@ const LoginEmail = () => {
 
   return (
     <Container>
-      <button
-        className="backButton"
+      <BlackBackButton onClick={() => {navigate('/');}}/>
+
+      <H>반갑습니다!</H>
+      <P>MAKE CAKE 아이디를 입력해주세요.</P>
+ 
+      <Input
+        placeholder="아이디"
+        type="text"
+        value={username}
+        onChange={(e) => {
+          changeUsername(e.target.value);
+        }}
+        onKeyUp={checkActive}
+      />
+
+      <NextButton
+        disabled={active}
         onClick={() => {
-          navigate(-1);
+          saveUsername();
+          navigate("/login/password");
         }}
       >
-        &lt;
-      </button>
-      <h2 className="cakeText">반갑습니다!</h2>
-      <p className="signupText">MAKE CAKE 아이디를 입력해주세요.</p>
-      <div>
-        <input
-          className="inputEmail"
-          placeholder="아이디"
-          type="text"
-          value={username}
-          onChange={(e) => {
-            changeUsername(e.target.value);
-          }}
-          onKeyUp={checkActive}
-        ></input>
-        <button
-          className="nextButton"
-          disabled={active}
-          onClick={() => {
-            saveUsername();
-            navigate("/login/password");
-          }}
-        >
-          다음
-        </button>
-      </div>
+        다음
+      </NextButton>
     </Container>
   );
 };

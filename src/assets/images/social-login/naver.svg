@@ -1,0 +1,13 @@
+<svg
+    className="naverLogo"
+    width="23"
+    height="23"
+    viewBox="0 0 23 23"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    >
+    <path
+    d="M15.5966 12.3095L7.0699 0H0V23H7.40657V10.6905L15.9332 23H23V0H15.5966V12.3095Z"
+    fill="white"
+    />
+</svg>
