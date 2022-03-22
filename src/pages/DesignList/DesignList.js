@@ -1,17 +1,24 @@
 import React from "react";
-import styled from "styled-components";
-import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
 
 import { actionCreators as designAction } from "../../redux/modules/design";
 
 //import css
-import { DrawWrap, ImageWrap, ModalWrap, PaintIcon, WriteIcon } from "./style";
+import {
+  DrawWrap,
+  HrWrap,
+  ImageWrap,
+  ImgWrap,
+  ImgBox,
+  PlusOff,
+  PlusOn,
+  PlusIcon,
+  XIcon,
+  PaintIcon,
+  WriteIcon,
+} from "./style";
 
 const DesignList = (props) => {
   const navigate = useNavigate();
@@ -43,15 +50,13 @@ const DesignList = (props) => {
 
   return (
     <DrawWrap>
-      <div>
-        <h3>도안</h3>
-        <hr />
-      </div>
+      <h3>도안</h3>
+      <HrWrap />
       <ImageWrap>
         {design_list.map((v, idx) => {
           return (
-            <div className="img_wrap" key={idx} ref={ref}>
-              <img
+            <ImgWrap key={idx} ref={ref}>
+              <ImgBox
                 src={v.img}
                 alt="post-img"
                 onClick={() => {
@@ -59,64 +64,29 @@ const DesignList = (props) => {
                   navigate(`/post/${v.postId}`);
                 }}
               />
-            </div>
+            </ImgWrap>
           );
         })}
       </ImageWrap>
-      {/* <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
-        style={{
-          overlay: {
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(76, 76, 76, 0.7)",
-            zIndex: "20",
-          },
-          content: {
-            position: "absolute",
-            top: "45%",
-            left: "50%",
-            bottom: "auto",
-            width: "300px",
-            height: "auto",
-            padding: "0",
-            border: "solid 1px #eee",
-            overflow: "auto",
-            borderRadius: "5px",
-            transform: "translate(-50%,-50%)",
-            WebkitOverflowScrolling: "touch",
-          },
-        }}
-      >
-        <ModalWrap> */}
-      {/* <img src={cake_img.img} onClick={() => setModalIsOpen(false)} /> */}
-      {/* </ModalWrap>
-      </Modal> */}
 
       {toggle === false ? (
-        <div
-          className="more_off"
+        <PlusOff
           onClick={() => {
             setToggle(true);
           }}
         >
-          <FontAwesomeIcon icon={faPlus} className="ellipsis" />
-        </div>
+          <PlusIcon />
+        </PlusOff>
       ) : (
-        <div
-          className="more_on"
+        <PlusOn
           onClick={() => {
             setToggle(false);
           }}
         >
-          <FontAwesomeIcon icon={faXmark} className="xmark" />
-          <PaintIcon className="draw" onClick={() => navigate("/drawing")} />
-          <WriteIcon className="write" onClick={() => navigate("/design")} />
-        </div>
+          <XIcon />
+          <PaintIcon onClick={() => navigate("/drawing")} />
+          <WriteIcon onClick={() => navigate("/mydesign")} />
+        </PlusOn>
       )}
     </DrawWrap>
   );

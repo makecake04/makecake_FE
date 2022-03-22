@@ -7,7 +7,9 @@ import cake_store_icon from "./cake/cake-store-icon.svg";
 
 //design-toggle
 import paint from "./design-toggle/paint.svg";
-import write from "./design-toggle/paint.svg";
+import write from "./design-toggle/write.svg";
+import plus_button from "./design-toggle/plus-button.svg";
+import x_button from "./design-toggle/x-button.svg";
 
 //drawing
 ////action
@@ -93,6 +95,8 @@ export {
   cake_store_icon,
   paint,
   write,
+  plus_button,
+  x_button,
   bring_front,
   redo_icon,
   send_back,
