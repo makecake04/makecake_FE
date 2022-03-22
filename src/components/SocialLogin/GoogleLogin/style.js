@@ -12,7 +12,7 @@ export const GoogleButton = styled.img.attrs({
   alt: "img",
 })`width: 58.33px;
    height: 56px;
-   margin: 60px 25px 0 25px;
+   margin: 40px 25px 0 25px;
    `;
 
 

@@ -11,5 +11,5 @@ export const KakaoButton = styled.img.attrs({
   alt: "img",
 })`width: 58.33px;
    height: 56px;
-   margin-top: 60px;
+   margin-top: 40px;
    `;
