@@ -1,199 +1,158 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Wrapper = styled.section`
   height: 784px;
   position: relative;
   overflow-y: auto;
-  .header {
-    padding: 2rem 0;
-    display: flex;
+`;
 
-    align-items: center;
-    border-bottom: 1px solid #e5e5e5;
+export const Header = styled.header`
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+  img {
+    margin-left: 3%;
   }
-
-  .backButton {
-  }
-
-  .headerText {
-    margin-left: 135px;
+  h3 {
+    margin-left: 30%;
     vertical-align: middle;
   }
+`;
 
-  .body {
-    /* width: 390px;
-    height: 626px; */
-    /* background: orange; */
-  }
-
-  .headerInBody {
-    display: flex;
-  }
-
-  .profileImage {
-    width: 40px;
-    height: 40px;
-    margin-top: 15px;
-    margin-left: 24px;
-    img {
-      border-radius: 50%;
-    }
-  }
-
-  .edit-delete-buttons {
-    .edit-button {
-      color: #777777;
-      border: 1px solid #777777;
-      border-radius: 5rem;
-      width: 6.4rem;
-      font-size: 1.2rem;
-      padding: 1rem 1rem;
-      margin: 1.8rem 0 0 8rem;
-    }
-    .delete-button {
-      color: #e10000;
-      border: 1px solid #e10000;
-      border-radius: 5rem;
-      width: 6.4rem;
-      font-size: 1.2rem;
-      padding: 1rem 1rem;
-    }
-    button + button {
-      margin-left: 1.2rem;
-    }
-  }
-
-  .date {
-    /* height: 17px; */
+export const UserInfo = styled.div`
+  display: flex;
+  p {
     color: #777777;
     font-size: 12px;
     margin-top: 16px;
     margin-left: 5px;
   }
-
-  .nickname {
+  h4 {
     width: 80px;
     height: 20px;
     color: #282828;
     font-size: 14px;
     margin-top: 32px;
-    margin-left: -60px;
+    margin-left: -61px;
   }
+`;
 
-  .imgContainer {
-    padding: 1.7rem;
-    .img {
-      border-radius: 0.4rem;
+export const ProfileImage = styled.div`
+  width: 40px;
+  height: 40px;
+  margin-top: 15px;
+  margin-left: 24px;
+  img {
+    border-radius: 50%;
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  button {
+    border-radius: 5rem;
+    width: 7rem;
+    font-size: 1.2rem;
+    padding: 0.8rem 1rem;
+    &:first-child {
+      color: #777777;
+      border: 1px solid #777777;
+      margin: 1.8rem 0 0 7.2rem;
+    }
+    &:nth-of-type(2) {
+      color: #e10000;
+      border: 1px solid #e10000;
     }
   }
-  .img-bottom-line {
-    display: flex;
-    justify-content: space-between;
-    .likeAndEyeContainer {
-      /* display: flex; */
-      p + svg {
-        margin-left: 1rem;
-      }
-    }
-    .options {
-      button {
-        color: #ff679e;
-        background-color: rgba(255, 103, 158, 0.1);
-        border-radius: 9rem;
-        border: none;
-        font-size: 1.2rem;
-        padding: 0.3rem 1.1rem;
-        margin-top: 0.2rem;
-      }
-    }
-  }
-  .likeAndEyeContainer {
-    display: flex;
-    p + svg {
-      margin-left: 1rem;
-    }
-  }
-  .options {
-    padding-right: 1.6rem;
-    display: flex;
-    justify-content: flex-end;
-    button {
-      color: #ff679e;
-      background-color: rgba(255, 103, 158, 0.1);
-      border-radius: 9rem;
-      border: none;
-      font-size: 1.2rem;
-      padding: 0.3rem 1.1rem;
-      margin-left: 1rem;
-    }
-  }
-  .heart {
-    margin-left: 24px;
-  }
 
-  .likeCnt {
-    margin-left: 5px;
-    margin-top: 5px;
+  button + button {
+    margin-left: 1rem;
   }
+`;
 
-  .eye {
-    margin-top: 4px;
-    margin-left: 5px;
+export const ImageWrapper = styled.div`
+  padding: 1.5rem 2rem 1.2rem;
+  .img {
+    border-radius: 0.5rem;
   }
+`;
 
-  .seeCnt {
-    margin-top: 5px;
-    margin-left: 5px;
+export const ImageInfo = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const IconWrapper = styled.div`
+  display: flex;
+  padding-left: 1.8rem;
+  p {
+    margin-left: 0.5rem;
   }
+  img + p {
+    margin-right: 0.8rem;
+  }
+`;
 
-  .titleText {
+export const OptionWrapper = styled.div`
+  padding-right: 1.8rem;
+  display: flex;
+  justify-content: flex-end;
+  button {
+    color: #ff679e;
+    background-color: rgba(255, 103, 158, 0.1);
+    border-radius: 9rem;
+    border: none;
+    font-size: 1.2rem;
+    padding: 0.3rem 1.1rem;
+    margin-left: 1rem;
+  }
+`;
+
+export const PostInfo = styled.div`
+  h3 {
     color: #000000;
-    font-size: 18px;
     padding: 1.5rem 2.5rem 0.5rem;
   }
 
-  .content {
+  p {
     padding: 1rem 3rem;
     color: #777777;
     font-size: 14px;
-    /* height: 100%; */
     line-height: 2rem;
-    /* /* overflow-y: hidden; */
     overflow: auto;
   }
+`;
 
-  .commentContainer {
-    padding: 0.7rem 3rem;
-  }
-
-  .commentText {
-    font-size: 18px;
+export const CommentWrapper = styled.section`
+  padding: 0.7rem 2.5rem;
+  h3 {
     color: #000000;
     padding-bottom: 1rem;
   }
-
-  .commentCnt {
+  span {
+    padding-left: 0.5rem;
     color: #ff679e;
   }
+`;
 
-  .inputComment {
-    width: 100%;
-    height: 39px;
-    background: rgba(249, 201, 201, 0.2);
-    outline: none;
-    font-size: 12px;
-    padding: 1rem;
-    border: none;
-  }
-
-  .inputComment::placeholder {
+export const CommentInput = styled.input`
+  width: 100%;
+  height: 39px;
+  background: rgba(249, 201, 201, 0.2);
+  outline: none;
+  font-size: 12px;
+  padding: 1rem;
+  border: none;
+  padding-right: 4.5rem;
+  &::placeholder {
     color: rgba(255, 103, 158, 0.44);
   }
+`;
 
-  .submit {
-    border: none;
-    position: absolute;
-    right: 4rem;
-    padding-top: 1rem;
-  }
+export const SendButton = styled.button`
+  border: none;
+  width: 2rem;
+  position: absolute;
+  right: 4rem;
+  padding-top: 1rem;
 `;
