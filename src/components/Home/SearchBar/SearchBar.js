@@ -1,11 +1,8 @@
 import React from "react";
-
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 //import css
-import { SearchWrap, Search, NotiIcon } from "./style";
+import { SearchWrap, Search, NotiIcon, SearchIcon } from "./style";
 
 const SearchBar = (props) => {
   const navigate = useNavigate();
@@ -18,7 +15,7 @@ const SearchBar = (props) => {
         }}
       >
         <input placeholder="검색하기" />
-        <FontAwesomeIcon icon={faSearch} />
+        <SearchIcon />
       </Search>
       <NotiIcon />
     </SearchWrap>

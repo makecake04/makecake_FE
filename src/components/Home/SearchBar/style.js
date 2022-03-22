@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 // image
 import { noti_icon, search_button } from "../../../assets/images/image";
@@ -12,6 +11,11 @@ export const SearchWrap = styled.div`
   justify-content: space-between;
   position: relative;
   align-items: center;
+
+  .search {
+    color: #777777;
+    margin-left: 1.7rem;
+  }
 
   input {
     width: 85%;
@@ -37,7 +41,8 @@ export const NotiIcon = styled.img.attrs({
   margin-top: 0.7rem;
 `;
 
-export const SearchIcon = styled(faSearch)`
-  color: #777777;
+export const SearchIcon = styled.img.attrs({
+  src: `${search_button}`,
+})`
   margin-left: 1.7rem;
 `;
