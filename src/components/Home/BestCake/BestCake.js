@@ -54,7 +54,7 @@ const BestCake = (props) => {
             {cake_list.homeCakeDtoList &&
               cake_list.homeCakeDtoList.map((v, idx) => {
                 return (
-                  <ImagesWrap>
+                  <ImagesWrap key={idx}>
                     <Images>
                       <ImgBox src={v.mainImg} />
                     </Images>
