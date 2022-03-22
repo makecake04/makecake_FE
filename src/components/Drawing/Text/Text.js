@@ -2,13 +2,13 @@ import React from "react";
 import { fabric } from "fabric";
 
 //css
-import { TextWrap } from "./style";
+import { Wrapper, TextBox } from "./style";
 
 const Text = (props) => {
   const { canvas } = props;
   const addText = (canvas) => {
     const text = new fabric.IText("Tap & Edit", {
-      fontFamily: "noto sans",
+      fontFamily: "Noto Sans KR",
       fill: "#00000",
       fontSize: 40,
     });
@@ -17,12 +17,12 @@ const Text = (props) => {
   };
 
   return (
-    <TextWrap>
-      <div className="text-box" onClick={() => addText(canvas)}>
+    <Wrapper>
+      <TextBox onClick={() => addText(canvas)}>
         <p>특별한 텍스트를 담아보세요</p>
-        <span>*생일, 기념일, 이름 등*</span>
-      </div>
-    </TextWrap>
+        <p>*생일, 기념일, 이름 등*</p>
+      </TextBox>
+    </Wrapper>
   );
 };
 
