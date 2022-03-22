@@ -29,11 +29,34 @@ import {
   heart,
   square,
   remove_item,
-  logo,
 } from "../../assets/images/image";
 
 //css
-import { Wrap, ModalWrap } from "./style";
+import {
+  Wrapper,
+  CanvasWrapper,
+  Header,
+  ButtonWrapper,
+  LeftButtons,
+  RightButton,
+  Logo,
+  BodyWrapper,
+  DefaultButtons,
+  CreamButton,
+  DecoButton,
+  DecoPenButton,
+  DrawingButtons,
+  CakeShapeWrapper,
+  CakeShape,
+  DecoHeader,
+  DecoActivate,
+  DrawingOptions,
+  DrawingBrush,
+  ZoomButtons,
+  ModalWrap,
+  VerticalLine,
+  ModalChoice,
+} from "./style";
 
 const Design = () => {
   disableScroll.on();
@@ -78,14 +101,6 @@ const Design = () => {
       }
     }
     canvas.renderAll();
-  };
-
-  const enableScroll = () => {
-    disableScroll.off();
-  };
-
-  const _disableScroll = () => {
-    disableScroll.on();
   };
 
   //New Canvas
@@ -222,11 +237,11 @@ const Design = () => {
   };
 
   return (
-    <Wrap>
-      <div className="canvas-wrap">
-        <div className="header">
-          <div className="header-btns">
-            <div className="header-btns-left">
+    <Wrapper>
+      <CanvasWrapper>
+        <Header>
+          <ButtonWrapper>
+            <LeftButtons>
               {cakeShape && isDrawing && (
                 <input
                   id="drawing-line-color"
@@ -248,207 +263,118 @@ const Design = () => {
                   <img src={remove_item} alt="delete" />
                 </button>
               )}
+            </LeftButtons>
 
-              {/* {isDrawing && (
-                <input
-                  id="drawing-line-color"
-                  type="color"
-                  defaultValue={"#000000"}
-                  onChange={brushColor}
-                />
-              )}
-              {!isDrawing && (
-                <input
-                  id="object-color"
-                  type="color"
-                  defaultValue="#ffadcb"
-                  onChange={colorChange}
-                />
-              )}
-              <button onClick={() => remove(canvas)}>
-                <img src={remove_item} alt="delete" />
-              </button> */}
-            </div>
+            <Logo cakeShape={cakeShape} onClick={() => navigate("/")} />
 
             {cakeShape && (
-              <img
-                src={logo}
-                alt="Logo"
-                className="logo"
-                style={{
-                  width: "30%",
-                  height: "30%",
-                  marginRight: "2.7rem",
-                }}
-                onClick={() => navigate("/")}
-              />
+              <RightButton onClick={() => setModalIsOpen(true)}>
+                완료
+              </RightButton>
             )}
-            {!cakeShape && (
-              <img
-                src={logo}
-                alt="Logo"
-                className="logo"
-                style={{
-                  width: "30%",
-                  height: "30%",
-                  marginLeft: "2.2rem",
-                }}
-                onClick={() => navigate("/")}
-              />
-            )}
-
-            <div className="header-btns-right">
-              {cakeShape && (
-                <button
-                  onClick={() => setModalIsOpen(true)}
-                  style={{ color: "#ff679e" }}
-                >
-                  완료
-                </button>
-              )}
-              {/* {!cakeShape && <button style={{ color: "#ff679e" }}>완료</button>} */}
-            </div>
-          </div>
-        </div>
+          </ButtonWrapper>
+        </Header>
 
         <canvas id="canvas" />
 
-        <div className="options-wrap">
+        <BodyWrapper>
           {!isDrawing && (
-            <div className="default-buttons">
+            <DefaultButtons>
               <button onClick={() => sendBack(canvas)}>
-                <img src={send_back} alt="뒤로!" />
+                <img src={send_back} alt="send-back" />
               </button>
               {cakeShape && (
                 <>
-                  {option === "cream" && (
-                    <button
-                      onClick={() => {
-                        setOption("cream");
-                        stopDrawing(canvas);
-                      }}
-                      style={{ color: "#ff679e" }}
-                    >
-                      크림 모양
-                    </button>
-                  )}
-                  {option !== "cream" && (
-                    <button
-                      onClick={() => {
-                        setOption("cream");
-                        stopDrawing(canvas);
-                      }}
-                    >
-                      크림 모양
-                    </button>
-                  )}
-                  {option === "icons" && (
-                    <button
-                      onClick={() => {
-                        setOption("icons");
-                        stopDrawing(canvas);
-                      }}
-                      style={{ color: "#ff679e" }}
-                    >
-                      꾸미기
-                    </button>
-                  )}
-                  {option !== "icons" && (
-                    <button
-                      onClick={() => {
-                        setOption("icons");
-                        stopDrawing(canvas);
-                      }}
-                    >
-                      꾸미기
-                    </button>
-                  )}
+                  <CreamButton
+                    option={option}
+                    onClick={() => {
+                      setOption("cream");
+                      stopDrawing(canvas);
+                    }}
+                  >
+                    크림 모양
+                  </CreamButton>
 
-                  {option === "drawing" && (
-                    <button
-                      onClick={() => {
-                        setOption("drawing");
-                        drawing(canvas);
-                      }}
-                      style={{ color: "#ff679e" }}
-                    >
-                      데코펜
-                    </button>
-                  )}
-                  {option !== "drawing" && (
-                    <button
-                      onClick={() => {
-                        setOption("drawing");
-                        drawing(canvas);
-                      }}
-                    >
-                      데코펜
-                    </button>
-                  )}
+                  <DecoButton
+                    option={option}
+                    onClick={() => {
+                      setOption("icons");
+                      stopDrawing(canvas);
+                    }}
+                  >
+                    꾸미기
+                  </DecoButton>
+
+                  <DecoPenButton
+                    option={option}
+                    onClick={() => {
+                      setOption("drawing");
+                      drawing(canvas);
+                    }}
+                  >
+                    데코펜
+                  </DecoPenButton>
                 </>
               )}
               {!cakeShape && (
                 <>
-                  <button>크림 모양</button>
-                  <button>꾸미기</button>
-                  <button>데코펜</button>
+                  <span>크림 모양</span>
+                  <span>꾸미기</span>
+                  <span>데코펜</span>
                 </>
               )}
               <button onClick={() => bringFront(canvas)}>
-                <img src={bring_front} alt="위로!" />
+                <img src={bring_front} alt="bring-front" />
               </button>
-            </div>
+            </DefaultButtons>
           )}
 
           {isDrawing && (
-            <div className="drawing-buttons">
+            <DrawingButtons>
               <button onClick={undo}>
                 <img src={undo_icon} alt="undo" />
               </button>
 
-              <button
+              <CreamButton
                 onClick={() => {
                   setOption("cream");
                   stopDrawing(canvas);
                 }}
               >
                 크림 모양
-              </button>
+              </CreamButton>
 
-              <button
+              <DecoButton
                 onClick={() => {
                   setOption("icons");
                   stopDrawing(canvas);
                 }}
               >
                 꾸미기
-              </button>
+              </DecoButton>
 
-              <button
+              <DecoPenButton
+                option={option}
                 onClick={() => {
                   setOption("drawing");
                   drawing(canvas);
                 }}
-                style={{ color: "#ff679e" }}
               >
                 데코펜
-              </button>
+              </DecoPenButton>
 
               <button onClick={redo}>
                 <img src={redo_icon} alt="redo" />
               </button>
-            </div>
+            </DrawingButtons>
           )}
 
           {!cakeShape && (
-            <div className="select-cake-shape">
+            <CakeShapeWrapper>
               <h3>케이크 시트를 먼저 골라주세요!</h3>
+              <p>*시트는 한 번 고르시면, 바꾸실 수 없어요*</p>
 
-              <div className="select-cake-shape-caution">
-                *시트는 한 번 고르시면, 바꾸실 수 없어요*
-              </div>
-
-              <div className="cake-shape">
+              <CakeShape>
                 <button
                   onClick={() => {
                     addRect(canvas);
@@ -471,173 +397,93 @@ const Design = () => {
                     setCakeShape("heart");
                   }}
                 >
-                  <img className="heart" src={heart} alt="Heart" />
+                  <img src={heart} alt="Heart" />
                 </button>
-              </div>
-            </div>
+              </CakeShape>
+            </CakeShapeWrapper>
           )}
 
           {cakeShape && (
-            <div className="options">
+            <>
               {option === "cream" && (
                 <Cream canvas={canvas} cakeShape={cakeShape} />
               )}
 
               {option === "icons" && (
                 <>
-                  <div className="icons-header">
+                  <DecoHeader>
                     {icon === "icons" && (
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          flexDirection: "column",
-                        }}
-                      >
-                        <hr
-                          style={{
-                            border: "1px solid #ff679e",
-                            width: "2rem",
-                            borderRadius: "0.5rem",
-                          }}
-                        />
-                        <button
-                          onClick={() => setIcon("icons")}
-                          style={{
-                            color: "#ff679e",
-                            marginTop: "0.4rem",
-                            fontSize: "1.4rem",
-                          }}
-                        >
-                          아이콘
-                        </button>
-                      </div>
+                      <DecoActivate>
+                        <hr />
+                        <button onClick={() => setIcon("icons")}>아이콘</button>
+                      </DecoActivate>
                     )}
                     {icon !== "icons" && (
-                      <button
-                        onClick={() => setIcon("icons")}
-                        style={{ fontSize: "1.5rem" }}
-                      >
-                        아이콘
-                      </button>
+                      <button onClick={() => setIcon("icons")}>아이콘</button>
                     )}
 
                     {icon === "text" && (
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          flexDirection: "column",
-                        }}
-                      >
-                        <hr
-                          style={{
-                            border: "1px solid #ff679e",
-                            width: "2rem",
-                            borderRadius: "0.5rem",
-                          }}
-                        />
+                      <DecoActivate>
+                        <hr />
                         <button
                           onClick={() => {
                             setIcon("text");
                           }}
-                          style={{
-                            color: "#ff679e",
-                            marginTop: "0.4rem",
-                            fontSize: "1.5rem",
-                          }}
                         >
                           텍스트
                         </button>
-                      </div>
+                      </DecoActivate>
                     )}
                     {icon !== "text" && (
                       <button
                         onClick={() => {
                           setIcon("text");
                         }}
-                        style={{ fontSize: "1.5rem" }}
                       >
                         텍스트
                       </button>
                     )}
 
                     {icon === "image" && (
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          flexDirection: "column",
-                        }}
-                      >
-                        <hr
-                          style={{
-                            border: "1px solid #ff679e",
-                            width: "2rem",
-                            borderRadius: "0.5rem",
-                          }}
-                        />
+                      <DecoActivate>
+                        <hr />
                         <button
                           onClick={() => {
-                            setIcon("icon");
-                          }}
-                          style={{
-                            color: "#ff679e",
-                            marginTop: "0.4rem",
-                            fontSize: "1.5rem",
+                            setIcon("image");
                           }}
                         >
                           이미지
                         </button>
-                      </div>
+                      </DecoActivate>
                     )}
                     {icon !== "image" && (
                       <button
                         onClick={() => {
                           setIcon("image");
                         }}
-                        style={{ fontSize: "1.5rem" }}
                       >
                         이미지
                       </button>
                     )}
 
                     {icon === "backgroundColor" && (
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          flexDirection: "column",
-                        }}
-                      >
-                        <hr
-                          style={{
-                            border: "1px solid #ff679e",
-                            width: "2rem",
-                            borderRadius: "0.5rem",
-                          }}
-                        />
+                      <DecoActivate>
+                        <hr />
                         <button
-                          onClick={() => setIcon("backgroundColor")}
-                          style={{
-                            color: "#ff679e",
-                            marginTop: "0.4rem",
-                            fontSize: "1.5rem",
+                          onClick={() => {
+                            setIcon("backgroundColor");
                           }}
                         >
                           배경색
                         </button>
-                      </div>
+                      </DecoActivate>
                     )}
                     {icon !== "backgroundColor" && (
-                      <button
-                        onClick={() => setIcon("backgroundColor")}
-                        style={{ fontSize: "1.5rem" }}
-                      >
+                      <button onClick={() => setIcon("backgroundColor")}>
                         배경색
                       </button>
                     )}
-                  </div>
+                  </DecoHeader>
                   {icon === "icons" && <Icon canvas={canvas} />}
                   {icon === "text" && <Text canvas={canvas} />}
                   {icon === "image" && <Image canvas={canvas} />}
@@ -646,21 +492,9 @@ const Design = () => {
               )}
 
               {option === "drawing" && (
-                <div className="drawing-options">
-                  <div className="drawing-options-brush">
-                    {" "}
+                <DrawingOptions>
+                  <DrawingBrush>
                     <label>크기: </label>
-                    {/* <input
-                    id="drawing-line-width"
-                    type="range"
-                    min="1"
-                    max="30"
-                    step="1"
-                    defaultValue="1"
-                    onChange={brushWidth}
-                    onTouchStart={enableScroll}
-                    onTouchEnd={_disableScroll}
-                  /> */}
                     <Box>
                       <Slider
                         min={1}
@@ -674,9 +508,9 @@ const Design = () => {
                         onChange={brushWidth}
                       />
                     </Box>
-                  </div>
+                  </DrawingBrush>
 
-                  <div className="drawing-buttons-zoom">
+                  <ZoomButtons>
                     캔버스 크기:
                     <button
                       onClick={() => {
@@ -702,13 +536,13 @@ const Design = () => {
                     >
                       <img src={zoom_in} alt="plusIcon" />
                     </button>
-                  </div>
-                </div>
+                  </ZoomButtons>
+                </DrawingOptions>
               )}
-            </div>
+            </>
           )}
-        </div>
-      </div>
+        </BodyWrapper>
+      </CanvasWrapper>
 
       <Modal
         isOpen={modalIsOpen}
@@ -728,7 +562,7 @@ const Design = () => {
             top: "35%",
             left: "50%",
             bottom: "auto",
-            width: "300px",
+            width: "302px",
             height: "150px",
             padding: "0",
             border: "solid 1px #eee",
@@ -740,26 +574,17 @@ const Design = () => {
         }}
       >
         <ModalWrap>
-          <p className="title">저장하시겠어요?</p>
-          <p className="description">
-            완료를 누르시면 도안을 저장할 수 있어요.
-          </p>
-          <hr className="modal_hr" />
-          <div className="footer_wrap">
-            <button className="footer_one" onClick={() => complete()}>
-              완료
-            </button>
-            <div className="vl" />
-            <button
-              className="footer_two"
-              onClick={() => setModalIsOpen(false)}
-            >
-              취소
-            </button>
-          </div>
+          <p>저장하시겠어요?</p>
+          <p>완료를 누르시면 도안을 저장할 수 있어요.</p>
+          <hr />
+          <ModalChoice>
+            <button onClick={() => complete()}>완료</button>
+            <VerticalLine />
+            <button onClick={() => setModalIsOpen(false)}>취소</button>
+          </ModalChoice>
         </ModalWrap>
       </Modal>
-    </Wrap>
+    </Wrapper>
   );
 };
 
