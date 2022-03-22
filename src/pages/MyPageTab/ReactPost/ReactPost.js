@@ -23,7 +23,7 @@ const ReactWrite = (props) => {
 
   const dispatch = useDispatch();
 
-  const commentList = useSelector((state) => state.mypage.my_comment_list);
+  const commentList = useSelector((state) => state.comment.my_comment_list);
 
   const deleteComment = (commentId) => {
     dispatch(commentAction.deleteMyCommentDB(commentId));
