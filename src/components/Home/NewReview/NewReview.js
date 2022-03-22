@@ -4,7 +4,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as storeAction } from "../../../redux/modules/store";
 
 //import css
-import { ReviewWrap, CommentWrap } from "./style";
+import {
+  ReviewWrap,
+  SubWrap,
+  Title,
+  CommentWrap,
+  ReviewsWrap,
+  ImageWrap,
+  Image,
+  ImgBox,
+  Reviews,
+  InfoWrap,
+  Name,
+  CreatedDate,
+} from "./style";
 
 const NewReview = (props) => {
   const dispatch = useDispatch();
@@ -17,30 +30,30 @@ const NewReview = (props) => {
 
   return (
     <ReviewWrap>
-      <div>
-        <h3>최신 리뷰 👍</h3>
+      <SubWrap>
+        <Title>최신 리뷰 👍</Title>
         <CommentWrap>
           {review_list &&
             review_list.map((v, idx) => {
               return (
-                <div key={idx}>
-                  <div className="wrap">
-                    <div className="img_wrap">
-                      <img src={v.img} alt="reiview-img" />
-                    </div>
-                  </div>
-                  <div className="review_wrap">
+                <ReviewsWrap>
+                  <ImageWrap>
+                    <Image>
+                      <ImgBox src={v.img} alt="reiview-img" />
+                    </Image>
+                  </ImageWrap>
+                  <Reviews>
                     <p>{v.content}</p>
-                    <div className="info_wrap">
-                      <div className="name">{v.nickname}</div>
-                      <div>{v.createdDate}</div>
-                    </div>
-                  </div>
-                </div>
+                    <InfoWrap>
+                      <Name>{v.nickname}</Name>
+                      <CreatedDate>{v.createdDate}</CreatedDate>
+                    </InfoWrap>
+                  </Reviews>
+                </ReviewsWrap>
               );
             })}
         </CommentWrap>
-      </div>
+      </SubWrap>
     </ReviewWrap>
   );
 };
