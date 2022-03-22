@@ -36,7 +36,7 @@ const NewReview = (props) => {
           {review_list &&
             review_list.map((v, idx) => {
               return (
-                <ReviewsWrap>
+                <ReviewsWrap key={idx}>
                   <ImageWrap>
                     <Image>
                       <ImgBox src={v.img} alt="reiview-img" />

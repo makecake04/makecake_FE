@@ -40,7 +40,7 @@ const HotStoreList = (props) => {
             {store_list.homeStoreDtoList &&
               store_list.homeStoreDtoList.map((v, idx) => {
                 return (
-                  <ImagesWrap>
+                  <ImagesWrap key={idx}>
                     <Images>
                       <ImgBox
                         src={v.mainImg}
