@@ -2,17 +2,14 @@ import React, { useState } from "react";
 import { fabric } from "fabric";
 
 //css
-import { ImageWrap } from "./style";
+import { Wrapper, TextBox } from "./style";
 
 const Image = (props) => {
   const { canvas } = props;
-  const [fileName, setFileName] = useState("선택한 파일이 없습니다");
   const fileInput = React.useRef();
-
   const selectFile = (e) => {
     const reader = new FileReader();
     const currentFile = fileInput.current.files[0];
-    setFileName(currentFile.name);
     reader.readAsDataURL(currentFile);
     reader.onloadend = () => {
       if (currentFile.size > 5000000) {
@@ -27,21 +24,20 @@ const Image = (props) => {
   };
 
   return (
-    <ImageWrap>
-      <div className="image-box">
+    <Wrapper>
+      <TextBox>
         <label>
           <p>이미지를 불러오세요</p>
-          <span>*jpg,png 파일만 가능*</span>
+          <p>*jpg,png 파일만 가능*</p>
           <input
-            style={{ border: "none" }}
             type="file"
             accept=".jpg, .jpeg, .png"
             onChange={selectFile}
             ref={fileInput}
           />
         </label>
-      </div>
-    </ImageWrap>
+      </TextBox>
+    </Wrapper>
   );
 };
 
