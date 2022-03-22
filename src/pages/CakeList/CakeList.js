@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as cakeAction } from "../../redux/modules/cake";

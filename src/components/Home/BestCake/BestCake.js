@@ -5,7 +5,20 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 //import css
-import { CakeWrap, RightSvg, ImageWrap, ImgBox, StyleSlider } from "./style";
+import {
+  CakeWrap,
+  SubWrap,
+  CakesWrap,
+  TitleWrap,
+  PlusWrap,
+  Pwrap,
+  RightSvg,
+  ImageWrap,
+  ImagesWrap,
+  Images,
+  ImgBox,
+  StyleSlider,
+} from "./style";
 
 const BestCake = (props) => {
   const navigate = useNavigate();
@@ -21,37 +34,36 @@ const BestCake = (props) => {
 
   return (
     <CakeWrap>
-      <div>
-        <div className="cake_wrap">
-          <h3>베스트 메잌케잌 🍰</h3>
-          <div className="plus">
-            <p
-              className="p_wrap"
+      <SubWrap>
+        <CakesWrap>
+          <TitleWrap>베스트 메잌케잌 🍰</TitleWrap>
+          <PlusWrap>
+            <Pwrap
               onClick={() => {
                 navigate(`/cake`);
               }}
             >
               더보기
-            </p>
-            <RightSvg className="right" />
-          </div>
-        </div>
+            </Pwrap>
+            <RightSvg />
+          </PlusWrap>
+        </CakesWrap>
         <ImageWrap>
           <StyleSlider {...settings}>
             {cake_list.homeCakeDtoList &&
               cake_list.homeCakeDtoList.map((v, idx) => {
                 return (
-                  <div key={idx}>
-                    <div className="img_wrap">
+                  <ImagesWrap>
+                    <Images>
                       <ImgBox src={v.mainImg} />
-                    </div>
-                  </div>
+                    </Images>
+                  </ImagesWrap>
                 );
               })}
           </StyleSlider>
         </ImageWrap>
         <hr />
-      </div>
+      </SubWrap>
     </CakeWrap>
   );
 };

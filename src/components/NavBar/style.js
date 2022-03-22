@@ -5,7 +5,7 @@ import { cake, design, home, mypage } from "../../assets/images/image";
 
 export const NavWrap = styled.nav`
   overflow: hidden;
-  position: absolute;
+  position: fixed;
   z-index: 1;
   bottom: 0;
   left: 0;

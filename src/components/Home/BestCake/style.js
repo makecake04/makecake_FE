@@ -4,40 +4,35 @@ import Slider from "react-slick";
 //image
 import { swiper_arrow } from "../../../assets/images/image";
 
-export const CakeWrap = styled.div`
-  > div {
-    width: 90%;
-    margin: 0 auto;
-  }
+export const CakeWrap = styled.div``;
 
-  h3 {
-    margin: 20px 0px 10px 0px;
-    text-align: start;
-    font-weight: 700;
-    font-size: 19px;
-    color: #282828;
-  }
-  hr {
-    border: 0.7px solid #e5e5e5;
-    width: 100%;
-    margin: auto;
-  }
+export const SubWrap = styled.div`
+  width: 90%;
+  margin: 0 auto;
+`;
 
-  .cake_wrap {
-    display: flex;
-    justify-content: space-between;
-  }
+export const CakesWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
-  .p_wrap {
-    margin: 10px 0px 10px 0px;
-    color: #777;
-    font-size: 15px;
-  }
+export const TitleWrap = styled.h3`
+  margin: 20px 0px 10px 0px;
+  text-align: start;
+  font-weight: 700;
+  font-size: 19px;
+  color: #282828;
+`;
 
-  .plus {
-    display: flex;
-    align-items: center;
-  }
+export const PlusWrap = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const Pwrap = styled.p`
+  margin: 10px 0px 10px 0px;
+  color: #777;
+  font-size: 15px;
 `;
 
 export const RightSvg = styled.img`
@@ -54,24 +49,19 @@ export const ImageWrap = styled.div`
   display: flex;
   margin-bottom: 20px;
   text-align: start;
+`;
 
-  > div {
-    flex: 1;
-  }
-  .img_wrap {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-  }
+export const ImagesWrap = styled.div`
+  flex: 1;
+`;
 
-  img {
-    position: absolute;
-    display: block;
-    object-fit: cover;
-  }
+export const Images = styled.div`
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  border-radius: 10px;
+  overflow: hidden;
 `;
 
 export const ImgBox = styled.div`
@@ -81,6 +71,7 @@ export const ImgBox = styled.div`
   width: 100%;
   height: 100%;
   background: url(${(props) => props.src}) no-repeat center / cover;
+  object-fit: cover;
 `;
 
 export const StyleSlider = styled(Slider)`
@@ -134,4 +125,10 @@ export const StyleSlider = styled(Slider)`
       }
     }
   }
+`;
+
+export const HrWrap = styled.hr`
+  border: 0.7px solid #e5e5e5;
+  width: 100%;
+  margin: auto;
 `;

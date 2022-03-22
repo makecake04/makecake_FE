@@ -3,18 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
-// import { ReactComponent as MarkerSvg } from "../svg/marker.svg";
-// import { ReactComponent as UsersSvg } from "../svg/fi_phone.svg";
-// import { ReactComponent as ClockSvg } from "../svg/clock.svg";
-// import { ReactComponent as RightSvg } from "../svg/right.svg";
-// import { ReactComponent as ShopSvg } from "../svg/Shop.svg";
-// import { ReactComponent as ReviewSvg } from "../svg/Review.svg";
 import { actionCreators as storeAction } from "../../redux/modules/store";
 import { actionCreators as reviewAction } from "../../redux/modules/review";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
-// import Logo from "../images/logo.png";
 
 //import css
 import {
