@@ -18,6 +18,7 @@ import {
   Images,
   ImgBox,
   StyleSlider,
+  HrWrap,
 } from "./style";
 
 const BestCake = (props) => {
@@ -62,7 +63,7 @@ const BestCake = (props) => {
               })}
           </StyleSlider>
         </ImageWrap>
-        <hr />
+        <HrWrap />
       </SubWrap>
     </CakeWrap>
   );

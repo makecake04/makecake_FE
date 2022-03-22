@@ -5,7 +5,18 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 //import css
-import { StoreWrap, ImageWrap, ImgBox, StyleSlider } from "./style";
+import {
+  StoreWrap,
+  SubWrap,
+  Title,
+  ImageWrap,
+  ImagesWrap,
+  Images,
+  ImgBox,
+  Text,
+  StyleSlider,
+  HrWrap,
+} from "./style";
 
 const HotStoreList = (props) => {
   const store_list = useSelector((state) => state.store.list);
@@ -22,30 +33,30 @@ const HotStoreList = (props) => {
 
   return (
     <StoreWrap>
-      <div>
-        <h3>핫 매장 리스트 ✨</h3>
+      <SubWrap>
+        <Title>핫 매장 리스트 ✨</Title>
         <ImageWrap>
           <StyleSlider {...settings}>
             {store_list.homeStoreDtoList &&
               store_list.homeStoreDtoList.map((v, idx) => {
                 return (
-                  <div key={idx}>
-                    <div className="img_wrap">
+                  <ImagesWrap>
+                    <Images>
                       <ImgBox
                         src={v.mainImg}
                         onClick={() => {
                           navigate(`/storedetail/${v.storeId}`);
                         }}
                       />
-                    </div>
-                    <div className="text">{v.name}</div>
-                  </div>
+                    </Images>
+                    <Text>{v.name}</Text>
+                  </ImagesWrap>
                 );
               })}
           </StyleSlider>
         </ImageWrap>
-        <hr />
-      </div>
+        <HrWrap />
+      </SubWrap>
     </StoreWrap>
   );
 };
