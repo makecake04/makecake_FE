@@ -1,48 +1,17 @@
 import styled from "styled-components";
 
-import { image_upload, preview_delete } from "../../assets/images/image";
+//image
+import {
+  image_upload,
+  preview_delete,
+  black_back_button,
+} from "../../assets/images/image";
 
 export const ReviewWrap = styled.div`
-  .title {
-    padding: 40px 0px 20px 30px;
-    display: flex;
-    align-items: center;
-  }
-  .left {
-    color: #646464;
-    margin: 0px 70px 0px 0px;
-  }
-
   h3 {
     font-weight: 700;
     font-size: 19px;
     color: #282828;
-  }
-
-  hr {
-    border: 0.7px solid #e5e5e5;
-    width: 100%;
-  }
-
-  .enter {
-    margin-left: 50px;
-    font-weight: 700;
-    color: #ff679e;
-  }
-
-  .top {
-    text-align: center;
-    padding: 30px;
-  }
-
-  .p {
-    margin-top: 10px;
-  }
-
-  .area {
-    margin: 0 auto;
-    width: 90%;
-    height: auto;
   }
 
   textarea {
@@ -50,20 +19,6 @@ export const ReviewWrap = styled.div`
     height: 200px;
     padding: 10px;
     border-radius: 4px;
-  }
-
-  .plus_btn {
-    margin: 20px auto 0px auto;
-    width: 90%;
-    background-color: #fff0f6;
-    border-radius: 4px;
-  }
-
-  .image_plus {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
   }
 
   input[type="file"] {
@@ -76,30 +31,65 @@ export const ReviewWrap = styled.div`
     clip: rect(0, 0, 0, 0);
     border: 0;
   }
-
-  .plusSvg {
-    path {
-      stroke: #ff679e;
-      fill: none;
-    }
-  }
-
-  .btn {
-    margin-top: 0px;
-    margin-left: 10px;
-    color: #ff679e;
-    font-weight: 600;
-    font-size: 16px;
-  }
-
-  .delete_btn {
-    position: absolute;
-    bottom: 75px;
-    left: 75px;
-  }
 `;
 
-export const ImageBox = styled.div`
+export const SubWrap = styled.div``;
+
+export const Title = styled.div`
+  padding: 40px 0px 20px 30px;
+  display: flex;
+  align-items: center;
+`;
+
+export const BlackBackIcon = styled.img.attrs({
+  src: `${black_back_button}`,
+})`
+  margin: 0px 70px 0px 0px;
+`;
+
+export const Enter = styled.p`
+  margin-left: 50px;
+  font-weight: 700;
+  color: #ff679e;
+`;
+
+export const HrWrap = styled.hr`
+  border: 0.7px solid #e5e5e5;
+  width: 100%;
+`;
+
+export const TopWrap = styled.div`
+  text-align: center;
+  padding: 30px;
+`;
+
+export const P = styled.p`
+  margin-top: 10px;
+`;
+
+export const AreaWrap = styled.div`
+  margin: 0 auto;
+  width: 90%;
+  height: auto;
+`;
+
+export const PlusButton = styled.div`
+  margin: 20px auto 0px auto;
+  width: 90%;
+  background-color: #fff0f6;
+  border-radius: 4px;
+`;
+
+export const LabelWrap = styled.label``;
+
+export const PlusImg = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+`;
+
+export const ImageWrap = styled.div`
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -107,28 +97,32 @@ export const ImageBox = styled.div`
   gap: 20px;
   margin-top: 10px;
   overflow: hidden;
-
-  .img_wrap {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%;
-  }
-
-  img {
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-    object-fit: cover;
-  }
 `;
 
-export const ImageUpload = styled.img`
-  src: ${image_upload};
+export const ImageBox = styled.div`
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
 `;
 
-export const PreviewDelete = styled.img`
-  src: ${preview_delete};
+export const ImgBox = styled.img`
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+`;
+
+export const ImageUpload = styled.img.attrs({
+  src: `${image_upload}`,
+})``;
+
+export const PreviewDelete = styled.img.attrs({
+  src: `${preview_delete}`,
+})`
+  position: absolute;
+  bottom: 75px;
+  left: 75px;
 `;
