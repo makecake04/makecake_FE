@@ -15,11 +15,11 @@ export const CakeContainer = styled.div`
     font-size: 19px;
     color: #282828;
   }
+`;
 
-  hr {
-    border: 0.7px solid #e5e5e5;
-    width: 100%;
-  }
+export const HrWrap = styled.hr`
+  border: 0.7px solid #e5e5e5;
+  width: 100%;
 `;
 
 export const ImageWrap = styled.div`
@@ -30,22 +30,22 @@ export const ImageWrap = styled.div`
   gap: 20px;
   margin-top: 10px;
   overflow: hidden;
+`;
 
-  .img_wrap {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%;
-  }
+export const ImgWrap = styled.div`
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+`;
 
-  img {
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-    object-fit: cover;
-  }
+export const ImgBox = styled.img`
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  object-fit: cover;
 `;
 
 export const ModalWrap = styled.div`
@@ -53,22 +53,20 @@ export const ModalWrap = styled.div`
   flex-direction: column;
   text-align: center;
   align-items: center;
+`;
 
-  .src {
-    width: 300px;
-    height: 300px;
-    background: url(${(props) => props.src}) no-repeat center / cover;
-    object-fit: cover;
-  }
-
-  .store {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-  }
+export const ModalImg = styled.img`
+  width: 300px;
+  height: 300px;
+  background: url(${(props) => props.src}) no-repeat center / cover;
+  object-fit: cover;
 `;
 
 export const StoreIcon = styled.img.attrs({
   src: `${cake_store_icon}`,
   alt: "img",
-})``;
+})`
+  position: absolute;
+  top: 10px;
+  left: 10px;
+`;

@@ -4,7 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 
 //css
-import { NavWrap, HomeIcon, CakeIcon, DrawIcon, MypageIcon } from "./style";
+import {
+  NavWrap,
+  SubWrap,
+  HomeIcon,
+  CakeIcon,
+  DrawIcon,
+  MypageIcon,
+} from "./style";
 const NavBar = (props) => {
   const navigate = useNavigate();
   const url_param = window.location.pathname;
@@ -13,14 +20,15 @@ const NavBar = (props) => {
   return (
     <>
       <NavWrap>
-        <div>
+        <SubWrap>
           {is_session && (
             <HomeIcon
               onClick={() => {
-                setActiveNav((prevUrl) => (prevUrl = `/`));
-                navigate(`/`);
+                setActiveNav((prevUrl) => (prevUrl = "/"));
+                navigate("/");
               }}
-              className={activeNav === `/` ? "active" : "nav-item"}
+              // className={activeNav === `/` ? "active" : "nav-item"}
+              props={activeNav}
             />
           )}
           {!is_session && (
@@ -29,37 +37,41 @@ const NavBar = (props) => {
                 setActiveNav((prevUrl) => (prevUrl = `/home`));
                 navigate(`/home`);
               }}
-              className={activeNav === `/home` ? "active" : "nav-item"}
+              // className={activeNav === `/home` ? "active" : "nav-item"}
+              props={activeNav}
             />
           )}
-        </div>
-        <div>
+        </SubWrap>
+        <SubWrap>
           <CakeIcon
             onClick={() => {
               setActiveNav((prevUrl) => (prevUrl = `/cake`));
               navigate(`/cake`);
             }}
-            className={activeNav === `/cake` ? "active" : "nav-item"}
+            // className={activeNav === `/cake` ? "active" : "nav-item"}
+            props={activeNav}
           />
-        </div>
-        <div>
+        </SubWrap>
+        <SubWrap>
           <DrawIcon
             onClick={() => {
               setActiveNav((prevUrl) => (prevUrl = `/design/list`));
               navigate(`/design/list`);
             }}
-            className={activeNav === `/design/list` ? "active" : "nav-item"}
+            // className={activeNav === `/design/list` ? "active" : "nav-item"}
+            props={activeNav}
           />
-        </div>
-        <div>
+        </SubWrap>
+        <SubWrap>
           <MypageIcon
             onClick={() => {
               setActiveNav((prevUrl) => (prevUrl = `/mypage`));
               navigate(`/mypage`);
             }}
-            className={activeNav === `/mypage` ? "active" : "nav-item"}
+            // className={activeNav === `/mypage` ? "active" : "nav-item"}
+            props={activeNav}
           />
-        </div>
+        </SubWrap>
       </NavWrap>
       <Outlet />
     </>

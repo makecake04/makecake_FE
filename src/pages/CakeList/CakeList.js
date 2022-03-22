@@ -7,7 +7,16 @@ import { actionCreators as storeAction } from "../../redux/modules/store";
 import { useNavigate } from "react-router-dom";
 
 //import css
-import { CakeContainer, ImageWrap, ModalWrap, StoreIcon } from "./style";
+import {
+  CakeContainer,
+  HrWrap,
+  ImageWrap,
+  ImgWrap,
+  ImgBox,
+  ModalWrap,
+  ModalImg,
+  StoreIcon,
+} from "./style";
 
 Modal.setAppElement("#root");
 const CakeList = (props) => {
@@ -39,13 +48,13 @@ const CakeList = (props) => {
   return (
     <CakeContainer>
       <h3>케이크 모아보기</h3>
-      <hr />
+      <HrWrap />
       <ImageWrap>
         {cake_lists &&
           cake_lists.map((v, idx) => {
             return (
-              <div className="img_wrap" key={idx} ref={ref}>
-                <img
+              <ImgWrap key={idx} ref={ref}>
+                <ImgBox
                   src={v.img}
                   onClick={() => {
                     setModalIsOpen(true);
@@ -53,7 +62,7 @@ const CakeList = (props) => {
                   }}
                   alt="cakeImage"
                 />
-              </div>
+              </ImgWrap>
             );
           })}
       </ImageWrap>
@@ -88,14 +97,12 @@ const CakeList = (props) => {
         }}
       >
         <ModalWrap>
-          <img
+          <ModalImg
             src={cake_img.img}
             onClick={() => setModalIsOpen(false)}
-            className="src"
             alt="cakeDetailImage"
           />
           <StoreIcon
-            className="store"
             onClick={() => {
               dispatch(storeAction.getStoreDetailDB(store_id.storeId));
               navigate(`/storedetail/${store_id.storeId}`);
