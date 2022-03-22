@@ -1,16 +1,15 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  .naver {
-    width: 58.33px;
-    height: 56px;
-    border-radius: 45px;
-    background-color: #03c75a;
-    margin-top: 60px;
-  }
+//image
+import { naver } from "../../../assets/images/image";
 
-  .naverLogo {
-    margin-left: 17px;
-    margin-top: 16px;
-  }
+export const Container = styled.div`
 `;
+
+export const NaverButton = styled.img.attrs({
+  src: `${naver}`,
+  alt: "img",
+})`width: 58.33px;
+   height: 56px;
+   margin-top: 60px;
+   `;

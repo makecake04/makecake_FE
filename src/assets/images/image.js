@@ -71,9 +71,9 @@ import home from "./nav-bar/home.svg";
 import mypage from "./nav-bar/mypage.svg";
 
 //social-login
-// import google from './social-login/google.svg';
-// import kakao from './social-login/kakao.svg';
-// import naver from './social-login/naver.svg';
+import google from './social-login/google.svg';
+import kakao from './social-login/kakao.svg';
+import naver from './social-login/naver.svg';
 
 //store-detail
 import clock from "./store-detail/clock.svg";
@@ -137,9 +137,9 @@ export {
   design,
   home,
   mypage,
-  // google,
-  // kakao,
-  // naver,
+  google,
+  kakao,
+  naver,
   clock,
   location,
   phone,
