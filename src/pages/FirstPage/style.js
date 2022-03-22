@@ -1,105 +1,85 @@
+import { style } from "@mui/system";
 import styled from "styled-components";
 
 //image
 import { logo } from "../../assets/images/image";
 
 export const Container = styled.div`
-  .mainLogo {
-    margin-left: 101.5px;
-    margin-top: 160px;
-  }
+`;
 
-  .mainText {
-    width: 266px;
-    height: 26px;
-    color: #ff679e;
-    font-weight: bold;
-    margin-left: 62px;
-    margin-top: -20px;
-    text-align: center;
-    font-size: 18px;
-  }
+export const HeaderText = styled.p`
+  color: #ff679e;
+  font-weight: bold;
+  text-align: center;
+  font-size: 18px;
+`;
 
-  .loginDiv {
-    width: 337px;
-    height: 49px;
-    background-color: #ff8fa5;
-    border-radius: 45px;
-    margin-left: 26.5px;
-    margin-top: 270px;
-  }
+export const LoginWrap = styled.div`
+  width: 337px;
+  height: 49px;
+  background-color: #ff8fa5;
+  border-radius: 45px;
+  margin: 250px auto 0 auto;
+  
+`;
 
-  .loginText {
-    width: 204px;
-    height: 22px;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: bold;
-    margin-left: 80px;
-    padding-top: 15px;
+export const LoginText = styled.p`
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 45px;
+`;
 
-    /* margin: 10px auto 0 auto; */
-  }
+export const NoLoginWrap = styled.div`
+  width: 337px;
+  height: 49px;
+  background-color: #ffffff;
+  border: 2px solid #ff8fa5;
+  border-radius: 45px;
+  margin: 10px auto 0 auto;
+`;
 
-  .signupDiv {
-    width: 337px;
-    height: 49px;
-    background-color: #ffffff;
-    border: 2px solid #ff8fa5;
-    border-radius: 45px;
-    margin-left: 26.5px;
-    margin-top: 10px;
-  }
+export const NoLoginText = styled.p`
+  text-align: center;
+  color: #ff8fa5;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 45px;
+`;
 
-  .justSee {
-    width: 204px;
-    height: 22px;
-    color: #ff8fa5;
-    font-size: 16px;
-    font-weight: bold;
-    margin-left: 143px;
-    margin-top: 13px;
-  }
+export const QuestionText = styled.p`
+  margin-top: 10px;
+  text-align: center;
+  color: #6b6b6b;
+  font-size: 12px;
 
-  .noLogin {
-    width: 120px;
-    height: 14px;
-    color: #6b6b6b;
-    font-size: 12px;
-    margin-top: 20px;
-    margin-left: 110px;
-  }
+`;
 
-  .signupText {
-    width: 120px;
-    height: 14px;
-    color: #6b6b6b;
-    font-size: 12px;
-    font-weight: bold;
-    margin-top: 25px;
-    margin-left: 110px;
-    text-decoration: underline;
-  }
+export const SignupText = styled.p`
+  text-align: center;
+  color: #6b6b6b;
+  font-size: 12px;
 
-  .noLoginText2 {
-    width: 230px;
-    height: 14px;
-    color: #6b6b6b;
-    font-size: 12px;
-    margin-top: 5px;
-    margin-left: 15px;
-  }
+`;
 
-  .loginBox {
-    height: 0;
-    display: flex;
-    margin-left: 80px;
-  }
+export const Span = styled.span`
+  text-align: center;
+  color: #6b6b6b;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: underline;
+`;
+
+export const SocialLoginWrap = styled.div`
+  display: flex;
+  margin-left: 82.5px;
 `;
 
 export const MainLogo = styled.img.attrs({
   src: `${logo}`,
   alt: "logo",
 })`
-  margin-top: 2rem;
+  margin-left: 100px;
+  margin-top: 150px;
 `;
