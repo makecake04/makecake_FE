@@ -53,6 +53,7 @@ import sprinkle from "./drawing/icon/sprinkle.png";
 import noti_icon from "./home/noti-icon.svg";
 import search_button from "./home/search-button.svg";
 import swiper_arrow from "./home/swiper-arrow.svg";
+import search_icon from './home/search-icon.svg'
 
 //logo
 import main_logo from "./logo/main-logo.svg";
@@ -131,6 +132,7 @@ export {
   noti_icon,
   search_button,
   swiper_arrow,
+  search_icon,
   main_logo,
   profile_image,
   grey,

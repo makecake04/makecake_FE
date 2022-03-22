@@ -1,14 +1,11 @@
 import React from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as searchAction } from "../../redux/modules/search";
 
 //css
-import { SDetailWrap, SearchWrap, Bell } from "./style";
+import { SDetailWrap, HeaderWrap, SearchWrap , Select, Option, Input, SearchIcon, Bell, EmptySpace, Container, CommendText, PlaceList1, PlaceList2, Place, Place2, Place3  } from "./style";
 
 const Search = (props) => {
   const navigate = useNavigate();
@@ -33,74 +30,60 @@ const Search = (props) => {
 
   return (
     <SDetailWrap>
-      <SearchWrap>
-        <div className="search_wrap">
-          <select defaultValue="default" onChange={changeSelectOption}>
-            <option value="default" disabled hidden>
-              검색옵션
-            </option>
-            <option value="store">매장</option>
-            <option value="address">주소</option>
-            <option value="place">핫플</option>
-          </select>
-          <input
-            placeholder="검색 옵션을 선택해주세요!"
-            onChange={changeInput}
-          />
-          <FontAwesomeIcon
-            icon={faSearch}
-            className="search"
-            onClick={() => {
-              if (!selected || !searchInput) return;
-              mapSearching();
-            }}
-          />
-        </div>
+      <HeaderWrap>
+        <SearchWrap className="search_wrap">
+          <Select defaultValue="default" onChange={changeSelectOption}>
+            <Option value="default" disabled hidden>검색옵션</Option>
+            <Option value="store">매장</Option>
+            <Option value="address">주소</Option>
+            <Option value="place">핫플</Option>
+          </Select>
+          <Input placeholder="검색 옵션을 선택해주세요!" onChange={changeInput}/>
+          <SearchIcon/>
+        </SearchWrap>
+        <Bell/>
+      </HeaderWrap>
 
-        <Bell className="bell" />
-      </SearchWrap>
-      <div className="emptySpace"></div>
-      <div className="container">
-        <div className="commend">플레이스 추천</div>
-        <div className="oneList">
-          <div className="one_one">터틀힙</div>
-          <div className="one_two">래빗힙</div>
-          <div className="one_three">베니케이크</div>
-        </div>
+      <EmptySpace/>
 
-        <div className="twoList">
-          <div className="one_four">더케이크스토리</div>
-          <div className="one_five">두두케이크</div>
-        </div>
-      </div>
+      <Container>
+        <CommendText>플레이스 추천</CommendText>
+        <PlaceList1>
+          <Place>터틀힙</Place>
+          <Place>래빗힙</Place>
+          <Place>베니케이크</Place>
+        </PlaceList1>
+        <PlaceList2 >
+          <Place>더케이크스토리</Place>
+          <Place>두두케이크</Place>
+        </PlaceList2>
+      </Container>
 
-      <div className="container">
-        <div className="commend">매장 추천</div>
-        <div className="oneList">
-          <div className="two_one">터틀힙</div>
-          <div className="two_two">래빗힙</div>
-          <div className="two_three">베니케이크</div>
-        </div>
+      <Container>
+        <CommendText>매장 추천</CommendText>
+        <PlaceList1>
+          <Place2>터틀힙</Place2>
+          <Place2>래빗힙</Place2>
+          <Place2>베니케이크</Place2>
+        </PlaceList1>
+        <PlaceList2>
+          <Place2>더케이크스토리</Place2>
+          <Place2>두두케이크</Place2>
+        </PlaceList2>
+      </Container>
 
-        <div className="twoList">
-          <div className="two_four">더케이크스토리</div>
-          <div className="two_five">두두케이크</div>
-        </div>
-      </div>
-
-      <div className="container">
-        <div className="commend">주소 추천</div>
-        <div className="oneList">
-          <div className="three_one">터틀힙</div>
-          <div className="three_two">래빗힙</div>
-          <div className="three_three">베니케이크</div>
-        </div>
-
-        <div className="twoList">
-          <div className="three_four">더케이크스토리</div>
-          <div className="three_five">두두케이크</div>
-        </div>
-      </div>
+      <Container>
+        <CommendText>주소 추천</CommendText>
+        <PlaceList1>
+          <Place3>터틀힙</Place3>
+          <Place3>래빗힙</Place3>
+          <Place3>베니케이크</Place3>
+        </PlaceList1>
+        <PlaceList2>
+          <Place3>더케이크스토리</Place3>
+          <Place3>두두케이크</Place3>
+        </PlaceList2>
+      </Container>
     </SDetailWrap>
   );
 };
