@@ -14,7 +14,7 @@ import {
 } from "../../../assets/images/image";
 
 //css
-import { IconWrap } from "./style";
+import { Wrapper, IconRow } from "./style";
 
 const Icons = (props) => {
   const { canvas } = props;
@@ -78,102 +78,92 @@ const Icons = (props) => {
     }
   };
   return (
-    <IconWrap>
-      <div className="icons-wrap">
-        <div className="icons-wrap-first">
-          <input
-            type="image"
-            src={cloud}
-            alt="cloud"
-            style={{ width: "6rem" }}
-            name="shape"
-            value="cloud"
-            onClick={(e) => {
-              addIcon(e.target.value);
-            }}
-          />
-          <input
-            type="image"
-            src={sprinkle}
-            alt="sprinkle"
-            style={{ width: "6rem" }}
-            name="shape"
-            value="sprinkle"
-            onClick={(e) => {
-              addIcon(e.target.value);
-            }}
-          />
-          <input
-            type="image"
-            src={cherry}
-            alt="cherry"
-            style={{ width: "6rem" }}
-            name="shape"
-            value="cherry"
-            onClick={(e) => {
-              addIcon(e.target.value);
-            }}
-          />
-          <input
-            type="image"
-            src={heart_icon}
-            alt="heart_icon"
-            style={{ width: "6rem" }}
-            name="shape"
-            value="heart_icon"
-            onClick={(e) => {
-              addIcon(e.target.value);
-            }}
-          />
-        </div>
-        <div className="icons-wrap-second">
-          <input
-            type="image"
-            src={flower_icon}
-            alt="flower_icon"
-            style={{ width: "6rem" }}
-            name="shape"
-            value="flower_icon"
-            onClick={(e) => {
-              addIcon(e.target.value);
-            }}
-          />
-          <input
-            type="image"
-            src={carrot}
-            alt="carrot"
-            style={{ width: "6rem" }}
-            name="shape"
-            value="carrot"
-            onClick={(e) => {
-              addIcon(e.target.value);
-            }}
-          />
-          <input
-            type="image"
-            src={balloon}
-            alt="balloon"
-            style={{ width: "6rem" }}
-            name="shape"
-            value="balloon"
-            onClick={(e) => {
-              addIcon(e.target.value);
-            }}
-          />
-          <input
-            type="image"
-            src={pearl}
-            alt="pearl"
-            style={{ width: "6rem" }}
-            name="shape"
-            value="pearl"
-            onClick={(e) => {
-              addIcon(e.target.value);
-            }}
-          />
-        </div>
-      </div>
-    </IconWrap>
+    <Wrapper>
+      <IconRow>
+        <input
+          type="image"
+          src={cloud}
+          alt="cloud"
+          name="shape"
+          value="cloud"
+          onClick={(e) => {
+            addIcon(e.target.value);
+          }}
+        />
+        <input
+          type="image"
+          src={sprinkle}
+          alt="sprinkle"
+          name="shape"
+          value="sprinkle"
+          onClick={(e) => {
+            addIcon(e.target.value);
+          }}
+        />
+        <input
+          type="image"
+          src={cherry}
+          alt="cherry"
+          name="shape"
+          value="cherry"
+          onClick={(e) => {
+            addIcon(e.target.value);
+          }}
+        />
+        <input
+          type="image"
+          src={heart_icon}
+          alt="heart_icon"
+          name="shape"
+          value="heart_icon"
+          onClick={(e) => {
+            addIcon(e.target.value);
+          }}
+        />
+      </IconRow>
+      <IconRow>
+        <input
+          type="image"
+          src={flower_icon}
+          alt="flower_icon"
+          name="shape"
+          value="flower_icon"
+          onClick={(e) => {
+            addIcon(e.target.value);
+          }}
+        />
+        <input
+          type="image"
+          src={carrot}
+          alt="carrot"
+          name="shape"
+          value="carrot"
+          onClick={(e) => {
+            addIcon(e.target.value);
+          }}
+        />
+        <input
+          type="image"
+          src={balloon}
+          alt="balloon"
+          name="shape"
+          value="balloon"
+          onClick={(e) => {
+            addIcon(e.target.value);
+          }}
+        />
+        <input
+          type="image"
+          src={pearl}
+          alt="pearl"
+          name="shape"
+          value="pearl"
+          onClick={(e) => {
+            addIcon(e.target.value);
+          }}
+        />
+      </IconRow>
+    </Wrapper>
   );
 };
 
