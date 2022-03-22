@@ -53,7 +53,7 @@ import sprinkle from "./drawing/icon/sprinkle.png";
 import noti_icon from "./home/noti-icon.svg";
 import search_button from "./home/search-button.svg";
 import swiper_arrow from "./home/swiper-arrow.svg";
-import search_icon from './home/search-icon.svg'
+import search_icon from "./home/search-icon.svg";
 
 //logo
 import main_logo from "./logo/main-logo.svg";
@@ -73,10 +73,15 @@ import design from "./nav-bar/design.svg";
 import home from "./nav-bar/home.svg";
 import mypage from "./nav-bar/mypage.svg";
 
+//post-detail
+import like from "./post-detail/like.svg";
+import view from "./post-detail/view.svg";
+import send from "./post-detail/send.svg";
+
 //social-login
-import google from './social-login/google.svg';
-import kakao from './social-login/kakao.svg';
-import naver from './social-login/naver.svg';
+import google from "./social-login/google.svg";
+import kakao from "./social-login/kakao.svg";
+import naver from "./social-login/naver.svg";
 
 //store-detail
 import clock from "./store-detail/clock.svg";
@@ -143,6 +148,9 @@ export {
   design,
   home,
   mypage,
+  like,
+  view,
+  send,
   google,
   kakao,
   naver,
