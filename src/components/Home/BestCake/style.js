@@ -35,8 +35,9 @@ export const Pwrap = styled.p`
   font-size: 15px;
 `;
 
-export const RightSvg = styled.img`
-  src: ${swiper_arrow};
+export const RightSvg = styled.img.attrs({
+  src: `${swiper_arrow}`,
+})`
   width: 18px;
   height: 18px;
   path {

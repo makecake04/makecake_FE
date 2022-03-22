@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
@@ -63,7 +62,7 @@ const MyPage = (props) => {
           icon={faAngleRight}
           className="right"
           onClick={() => {
-            navigate("/reactwrite");
+            navigate("/react/post");
           }}
         />
       </div>
