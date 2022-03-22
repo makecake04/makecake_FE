@@ -1,169 +1,168 @@
 import styled from "styled-components";
 
 //image
-import { white_back_button } from "../../assets/images/image";
+import { white_back_button, search_icon, star_icon } from "../../assets/images/image";
+
 
 export const Container = styled.div`
   overflow-y: auto;
   height: 844px;
-
-  .header {
-    display: flex;
-    width: 100%;
-    height: 15vh;
-    background-color: #f9c9c9;
-  }
-
-  .inputWrap {
-    display: flex;
-    border: none;
-    width: 75%;
-    height: 15vh;
-  }
-
-  .select {
-    height: 27px;
-    margin-top: 77px;
-    border: none;
-    background-color: #ffffff;
-    color: #777777;
-    text-align: center;
-  }
-
-  .input {
-    display: block;
-    margin-top: 77px;
-    width: 95%;
-    height: 27px;
-    border: none;
-    padding-left: 10px;
-    font-size: 13px;
-  }
-
-  .inputButton {
-    margin-top: 77px;
-    background-color: #ffffff;
-  }
-
-  .sortType {
-    display: flex;
-  }
-
-  .star {
-    display: flex;
-    margin-top: 20px;
-    margin-left: 15px;
-  }
-
-  .sortLikeAndReview {
-    color: #b3b3b3;
-    margin-top: -5px;
-    font-size: 14px;
-  }
-
-  .line {
-    border: 1px solid #e4e4e4;
-    margin-top: -10px;
-  }
-
-  .one {
-    border-top: 1px solid #e5e5e5;
-    display: flex;
-    height: 100px;
-    margin-top: 10px;
-    margin-bottom: 40px;
-  }
-  .store {
-    display: flex;
-    color: #282828;
-    width: 340px;
-    margin-top: 35px;
-    margin-left: 55px;
-    font-size: 19px;
-    font-weight: bold;
-  }
-
-  .address {
-    width: 340px;
-    color: #9c9cdc;
-    font-size: 13px;
-    margin-top: 65px;
-    margin-left: -224px;
-  }
-
-  .likeAndReview {
-    width: 200px;
-    color: #777777;
-    font-size: 13px;
-    margin-top: 100px;
-    margin-left: -105px;
-  }
-
-  .searchView {
-    width: 117px;
-    height: 89px;
-    background: #c4c4c4;
-    border-radius: 10px;
-    margin-left: 20px;
-    margin-top: 30px;
-  }
 `;
 
-export const WhiteBackBtn = styled.img`
-  src: ${white_back_button};
-`;
-
-export const SearchWrap = styled.div`
+export const HeaderWrap = styled.div`
   padding: 20px;
   padding-top: 40px;
   background-color: #f9c9c9;
   display: flex;
-  /* justify-content: space-between; */
   position: relative;
   align-items: center;
   height: 115.5px;
-  select {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border: none;
-    background-color: #fff;
-    color: #777777;
-  }
-  .search_wrap {
-    height: 3.5rem;
-    display: flex;
-    align-items: center;
-    flex: auto;
-    margin-right: 10px;
-    background-color: #fff;
-  }
+`;
 
-  .search {
-    color: #777777;
-    padding-left: 1.5rem;
-  }
+export const WhiteBackButton = styled.img.attrs({
+  src: `${white_back_button}`,
+  alt: "logo",
+})`margin-right: 10px;
+   cursor: pointer;
+`;
 
-  input {
-    width: 65%;
-    padding: 8px 5px 8px 5px;
-    box-sizing: border-box;
-    border: none;
-    color: #777777;
-    outline: none;
-  }
+export const Searchgwrap = styled.div`
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  flex: auto;
+  margin-right: 10px;
+  background-color: #fff;
+`;
 
-  .notice_wrap {
-    display: felx;
-    align-items: center;
-    justify-content: center;
-    width: 35px;
-    height: 35px;
-    border-radius: 35px;
-    border: 1px solid #ebebeb;
-    background-color: #fff;
-  }
+export const Select = styled.select`
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: none;
+  background-color: #fff;
+  color: #777777;
+  cursor: pointer;
+`;
 
-  .bell {
-    margin-top: 0.85rem;
+export const Option = styled.option`
+`;
+
+export const Input = styled.input`
+  height: 35px;
+  font-size: 13px;
+  box-sizing: border-box;
+  border: none;
+  color: #777777;
+  outline: none;
+  padding-left: 10px;
+`;
+
+export const SearchIcon = styled.img.attrs({
+  src: `${search_icon}`,
+  alt: "logo",
+})`margin-left: 30px;
+   cursor: pointer;
+`;
+
+export const SortType = styled.div`
+  display: flex;
+`;
+
+export const LikeWrap = styled.div`
+  display: flex;
+  margin-top: 20px;
+  margin-left: 15px;
+  >svg path {
+    ${props => props.on? "fill : #FF679E;" : "fill : #B3B3B3;"}
   }
 `;
+
+export const SortPopularWrap = styled.div`
+`;
+
+export const SortPopular = styled.h3`
+  color: #b3b3b3;
+  margin-top: -5px;
+  font-size: 14px;
+  font-weight: bold;
+  ${props => props.on? "color : #FF679E;" : "color : #B3B3B3;"}
+  cursor: pointer;
+`;
+
+export const ReviewWrap = styled.div`
+  display: flex;
+  margin-top: 20px;
+  margin-left: 15px;
+  >svg path {
+    ${props => props.on? "fill : #FF679E;" : "fill : #B3B3B3;"}
+  }
+`;
+
+export const SortReview = styled.h3`
+  color: #b3b3b3;
+  margin-top: -5px;
+  font-size: 14px;
+  font-weight: bold;
+  ${props => props.on? "color : #FF679E;" : "color : #B3B3B3;"}
+  cursor: pointer;
+`;
+
+export const StarIcon = styled.img.attrs({
+  src: `${star_icon}`,
+  alt: "logo",
+})``;
+
+export const LikeAndReview = styled.p`
+  width: 200px;
+  color: #777777;
+  font-size: 13px;
+  margin-top: 110px;
+  margin-left: -100px;
+`;
+
+export const StoreInfoWrap = styled.div`
+  border-top: 1px solid #e5e5e5;
+  display: flex;
+  height: 100px;
+  margin-top: 10px;
+  margin-bottom: 40px; 
+`;
+
+export const ImageWrap = styled.div`
+  margin-left: 10px;
+  margin-top: 25px;
+`;
+
+export const Img = styled.img`
+  width: 145px; 
+  height: 89px; 
+  background: #c4c4c4;
+  border-radius: 10px;
+`;
+
+export const StoreInfo = styled.div`
+`;
+
+export const StoreName = styled.h3`
+  word-break: break-all;
+  color: #282828;
+  width: 250px;
+  font-size: 19px;
+  font-weight: bold;
+  margin-left: 25px;
+  margin-top: 25px;
+  cursor: pointer;
+`;
+
+export const Address = styled.p`
+  width: 250px;
+  color: #9c9cdc;
+  font-size: 13px;
+  margin-left: 25px;
+  word-break: keep-all;
+`;
+
+
+
+

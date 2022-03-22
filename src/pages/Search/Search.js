@@ -25,7 +25,7 @@ const Search = (props) => {
   const mapSearching = () => {
     console.log(selected, searchInput);
     dispatch(searchAction.searchPlaceDB(selected, searchInput, "null"));
-    navigate("/searchDetail");
+    navigate("/search/result");
   };
 
   return (
@@ -39,7 +39,7 @@ const Search = (props) => {
             <Option value="place">핫플</Option>
           </Select>
           <Input placeholder="검색 옵션을 선택해주세요!" onChange={changeInput}/>
-          <SearchIcon/>
+          <SearchIcon onClick={() => {mapSearching();}}/>
         </SearchWrap>
         <Bell/>
       </HeaderWrap>

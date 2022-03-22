@@ -1,20 +1,15 @@
 import React, { useState } from "react";
-
-import { RenderAfterNavermapsLoaded } from "react-naver-maps";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-
 import { actionCreators as searchAction } from "../../redux/modules/search";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-// import { ReactComponent as BackIcon } from "../svg/fi_chevron-left.svg";
 
 //component
 import { KakaoMap } from "../../components/component";
 
 //css
-import { Container, SearchWrap, BackIcon } from "./style";
+import { Container, HeaderWrap, WhiteBackButton, SearchWrap, Select, Option, Input, SearchIcon, 
+         StoreInfoWrap, ImgWrap, Img, StoreInfo, StoreName, Address, LikeAndReview } from "./style";
+
 
 const SearchMap = () => {
   const dispatch = useDispatch();
@@ -52,60 +47,41 @@ const SearchMap = () => {
   const mapSearching = () => {
     console.log(selected, searchInput);
     dispatch(searchAction.searchPlaceDB(selected, searchInput, "null"));
-    navigate("/searchDetail");
+    navigate("/search/result");
   };
 
   return (
     <Container>
-      <SearchWrap>
-        <div className="back-icon">
-          <BackIcon onClick={() => navigate(-1)} />
-        </div>
-        <div className="search_wrap">
-          <select defaultValue="default" onChange={changeSelectOption}>
-            <option value="default" disabled hidden>
-              검색옵션
-            </option>
-            <option value="store">매장</option>
-            <option value="address">주소</option>
-            <option value="place">핫플</option>
-          </select>
-          <input
-            placeholder="검색 옵션을 선택해주세요!"
-            onChange={changeInput}
-          />
-          <FontAwesomeIcon
-            icon={faSearch}
-            className="search"
-            onClick={() => {
-              if (!selected || !searchInput) return;
-              mapSearching();
-            }}
-          />
-        </div>
-      </SearchWrap>
+      <HeaderWrap>
+        <WhiteBackButton onClick={() => {navigate(-1)}}/>
+        <SearchWrap>
+          <Select defaultValue="default" onChange={changeSelectOption}>
+            <Option value="default" disabled hidden>검색옵션</Option>
+            <Option value="store">매장</Option>
+            <Option value="address">주소</Option>
+            <Option value="place">핫플</Option>
+          </Select>
+          <Input placeholder="검색 옵션을 선택해주세요!" onChange={changeInput}/>
+          <SearchIcon/>
+        </SearchWrap>
+      </HeaderWrap>
 
       <KakaoMap />
 
       {storeData.map((v, i) => {
         return (
-          <div
-            className="storeInformation"
-            key={i}
-            onClick={() => {
-              navigate(`/storedetail/${storeId}`);
-            }}
-          >
-            <div>
-              <img src={v.mainImg} className="img"></img>
-            </div>
+          <StoreInfoWrap key={i} onClick={() => {navigate(`/storedetail/${storeId}`);}}>
+            <ImgWrap>
+              <Img src={v.mainImg}></Img>
+            </ImgWrap>
+            
+            <StoreInfo>
+              <StoreName>{v.name}</StoreName>
+              <Address>{v.roadAddress}</Address>
+            </StoreInfo>
 
-            <h3 className="store">{v.name}</h3>
-            <p className="addressAndOpneClose">{v.addressSimple}</p>
-            <p className="likeAndReview">
-              좋아요 {v.likeCnt} &nbsp;&nbsp;&nbsp; 리뷰 {v.reviewCnt}
-            </p>
-          </div>
+            <LikeAndReview>좋아요 {v.likeCnt} &nbsp;&nbsp;&nbsp; 리뷰 {v.reviewCnt}</LikeAndReview>
+          </StoreInfoWrap>
         );
       })}
     </Container>

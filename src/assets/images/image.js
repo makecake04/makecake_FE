@@ -54,6 +54,7 @@ import noti_icon from "./home/noti-icon.svg";
 import search_button from "./home/search-button.svg";
 import swiper_arrow from "./home/swiper-arrow.svg";
 import search_icon from './home/search-icon.svg'
+import star_icon from './home/star-icon.svg'
 
 //logo
 import main_logo from "./logo/main-logo.svg";
@@ -133,6 +134,7 @@ export {
   search_button,
   swiper_arrow,
   search_icon,
+  star_icon,
   main_logo,
   profile_image,
   grey,
