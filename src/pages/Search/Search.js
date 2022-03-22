@@ -57,11 +57,13 @@ const Search = (props) => {
             <Option value="address">주소</Option>
             <Option value="place">핫플</Option>
           </Select>
+
           <Input
             placeholder="검색 옵션을 선택해주세요!"
             onChange={changeInput}
           />
           <SearchIcon onClick={mapSearching} />
+            
         </SearchWrap>
         <Bell />
       </HeaderWrap>
