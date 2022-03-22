@@ -1,33 +1,36 @@
 import styled from "styled-components";
 
+//image
+import {black_back_button} from '../../../assets/images/image'
+
 export const Container = styled.div`
   button:disabled {
     background-color: lightgray;
   }
+`;
 
-  .backButton {
-    width: 20px;
-    height: 20px;
-    margin: 40px 0 0 30px;
-    border: none;
-    background: white;
-    font-size: 30px;
-    color: #282828;
-  }
+export const BlackBackButton = styled.img.attrs({
+  src: `${black_back_button}`,
+  alt: "img",
+})`width: 30px;
+   height: 30px;
+   margin-top: 20px;
+   margin-left: 18px;
+   `;
 
-  .cakeText {
+export const H = styled.h2`
     width: 187px;
     height: 35px;
-    margin: 60px 0 0 30px;
+    margin: 30px 0 0 30px;
     font-style: normal;
     font-weight: bold;
     font-size: 24px;
     line-height: 35px;
     letter-spacing: -0.02em;
     color: #282828;
-  }
+`;
 
-  .signupText {
+export const P = styled.p`
     width: 261px;
     height: 21px;
     margin: 5px 0 0 30px;
@@ -36,9 +39,9 @@ export const Container = styled.div`
     font-size: 15px;
     line-height: 130%;
     color: #282828;
-  }
+`;
 
-  .inputEmail {
+export const Input = styled.input`
     display: block;
     width: 337px;
     height: 49px;
@@ -47,9 +50,9 @@ export const Container = styled.div`
     border-radius: 45px;
     border: none;
     padding-left: 20px;
-  }
+`;
 
-  .nextButton {
+export const NextButton = styled.button`
     display: block;
     width: 337px;
     height: 49px;
@@ -60,5 +63,10 @@ export const Container = styled.div`
     font-weight: bold;
     font-size: 16px;
     color: white;
-  }
 `;
+
+
+
+
+
+
