@@ -254,7 +254,7 @@ const StoreDetail = (props) => {
               <ReviewSvg
                 className="review"
                 onClick={() => {
-                  navigate(`/review`);
+                  navigate(`/review/write`);
                   dispatch(storeAction.getStoreDetailDB(store_id));
                 }}
               />

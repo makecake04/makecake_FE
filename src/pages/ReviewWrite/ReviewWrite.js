@@ -4,15 +4,29 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { actionCreators as reviewAction } from "../../redux/modules/review";
-import { actionCreators as storeAction } from "../../redux/modules/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-//image
-import { image_upload, preview_delete } from "../../assets/images/image";
-
 //css
-import { ReviewWrap, ImageBox, ImageUpload, PreviewDelete } from "./style";
+import {
+  ReviewWrap,
+  SubWrap,
+  Title,
+  BlackBackIcon,
+  Enter,
+  HrWrap,
+  TopWrap,
+  P,
+  AreaWrap,
+  PlusButton,
+  LabelWrap,
+  PlusImg,
+  ImageWrap,
+  ImageBox,
+  ImgBox,
+  ImageUpload,
+  PreviewDelete,
+} from "./style";
 
 const ReviewWrite = (props) => {
   const dispatch = useDispatch();
@@ -81,32 +95,26 @@ const ReviewWrite = (props) => {
 
   return (
     <ReviewWrap>
-      <div>
-        <div className="title">
-          <FontAwesomeIcon
-            icon={faAngleLeft}
-            className="left"
+      <SubWrap>
+        <Title>
+          <BlackBackIcon
             onClick={() => {
               navigate("/react/store");
             }}
           />
           <h3>{is_edit ? "매장 리뷰 수정하기" : "매장 리뷰 작성하기"}</h3>
           {is_edit ? (
-            <p className="enter" onClick={editReview}>
-              완료
-            </p>
+            <Enter onClick={editReview}>완료</Enter>
           ) : (
-            <p className="enter" onClick={addReview}>
-              등록
-            </p>
+            <Enter onClick={addReview}>등록</Enter>
           )}
-        </div>
-        <hr />
-        <div className="top">
+        </Title>
+        <HrWrap />
+        <TopWrap>
           <p>이용하신 매장은 만족스러우셨나요?</p>
-          <p className="p">해당 매장의 리뷰를 남겨주세요.</p>
-        </div>
-        <div className="area">
+          <P>해당 매장의 리뷰를 남겨주세요.</P>
+        </TopWrap>
+        <AreaWrap>
           {is_edit ? (
             <textarea
               placeholder="내용을 입력하세요."
@@ -119,25 +127,25 @@ const ReviewWrite = (props) => {
               onChange={changeContent}
             />
           )}
-        </div>
-        <div className="plus_btn">
-          <label>
+        </AreaWrap>
+        <PlusButton>
+          <LabelWrap>
             <input
               type="file"
               multiple
               ref={fileInput}
               onChange={selectFiles}
               accept=".jpg,.jpeg,.png"
-            ></input>
-            <div className="image_plus">
-              <ImageUpload className="plusSvg" />
+            />
+            <PlusImg>
+              <ImageUpload />
               <p className="btn">이미지 추가하기</p>
-            </div>
-          </label>
-        </div>
-        <ImageBox>
-          <div className="img_wrap">
-            <img
+            </PlusImg>
+          </LabelWrap>
+        </PlusButton>
+        <ImageWrap>
+          <ImageBox>
+            <ImgBox
               src={
                 preview
                   ? preview
@@ -145,10 +153,10 @@ const ReviewWrite = (props) => {
               }
               alt="reviewImage"
             />
-            <PreviewDelete onClick={deleteImg} className="delete_btn" />
-          </div>
-        </ImageBox>
-      </div>
+            <PreviewDelete onClick={deleteImg} />
+          </ImageBox>
+        </ImageWrap>
+      </SubWrap>
     </ReviewWrap>
   );
 };
