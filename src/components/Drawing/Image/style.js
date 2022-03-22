@@ -22,5 +22,6 @@ export const TextBox = styled.div`
   }
   input {
     border: none;
+    width: 0;
   }
 `;
