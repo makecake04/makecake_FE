@@ -73,9 +73,9 @@ import home from "./nav-bar/home.svg";
 import mypage from "./nav-bar/mypage.svg";
 
 //social-login
-import google from './social-login/google.svg';
-import kakao from './social-login/kakao.svg';
-import naver from './social-login/naver.svg';
+import google from "./social-login/google.svg";
+import kakao from "./social-login/kakao.svg";
+import naver from "./social-login/naver.svg";
 
 //store-detail
 import clock from "./store-detail/clock.svg";
@@ -84,6 +84,8 @@ import phone from "./store-detail/phone.svg";
 import review_write from "./store-detail/review-write.svg";
 import shop from "./store-detail/shop.svg";
 import more_button from "./store-detail/more-button.svg";
+import heart_button from "./store-detail/heart-button.svg";
+import call from "./store-detail/call.svg";
 
 //store-review
 import image_upload from "./store-review/image-upload.svg";
@@ -149,6 +151,8 @@ export {
   phone,
   review_write,
   shop,
+  heart_button,
+  call,
   more_button,
   image_upload,
   preview_delete,
