@@ -22,6 +22,13 @@ import {
   ProfileHr,
   ButtonWrap,
   LogoutButton,
+  TitleP,
+  DescriptionP,
+  ModalHr,
+  FooterWrap,
+  BackButton,
+  Vl,
+  EnterButton,
 } from "./style";
 
 const MyPage = (props) => {
@@ -48,54 +55,49 @@ const MyPage = (props) => {
         <EmailP>{user_info.email}</EmailP>
         <BoldHr />
       </SubWrap>
-      <Content>
+      <Content
+        onClick={() => {
+          navigate("/profile/edit");
+        }}
+      >
         <ContenteP>프로필 수정하기</ContenteP>
-        <FontAwesomeIcon
-          icon={faAngleRight}
-          onClick={() => {
-            navigate("/profile/edit");
-          }}
-        />
+        <FontAwesomeIcon icon={faAngleRight} />
       </Content>
       <ProfileHr />
-      <Content>
+      <Content
+        onClick={() => {
+          navigate("/mydesign");
+        }}
+      >
         <ContenteP>내가 그린 도안</ContenteP>
-        <FontAwesomeIcon
-          icon={faAngleRight}
-          onClick={() => {
-            navigate("/mydesign");
-          }}
-        />
+        <FontAwesomeIcon icon={faAngleRight} />
       </Content>
       <ProfileHr />
-      <Content>
+      <Content
+        onClick={() => {
+          navigate("/react/post");
+        }}
+      >
         <ContenteP>내가 반응한 게시글</ContenteP>
-        <FontAwesomeIcon
-          icon={faAngleRight}
-          onClick={() => {
-            navigate("/react/post");
-          }}
-        />
+        <FontAwesomeIcon icon={faAngleRight} />
       </Content>
       <ProfileHr />
-      <Content>
+      <Content
+        onClick={() => {
+          navigate("/react/store");
+        }}
+      >
         <ContenteP>내가 반응한 매장</ContenteP>
-        <FontAwesomeIcon
-          icon={faAngleRight}
-          onClick={() => {
-            navigate("/react/store");
-          }}
-        />
+        <FontAwesomeIcon icon={faAngleRight} />
       </Content>
       <ProfileHr />
-      <Content>
+      <Content
+        onClick={() => {
+          navigate("/react/cake");
+        }}
+      >
         <ContenteP>내가 반응한 케이크</ContenteP>
-        <FontAwesomeIcon
-          icon={faAngleRight}
-          onClick={() => {
-            navigate("/react/cake");
-          }}
-        />
+        <FontAwesomeIcon icon={faAngleRight} />
       </Content>
       <ProfileHr />
       <ButtonWrap>
@@ -122,11 +124,11 @@ const MyPage = (props) => {
           },
           content: {
             position: "absolute",
-            top: "45%",
+            top: "50%",
             left: "50%",
             bottom: "auto",
             width: "300px",
-            height: "150px",
+            height: "160px",
             padding: "0",
             border: "solid 1px #eee",
             overflow: "auto",
@@ -137,26 +139,22 @@ const MyPage = (props) => {
         }}
       >
         <ModalWrap>
-          <p className="title">로그아웃</p>
-          <p className="description">다시 돌아오실거죠..?</p>
-          <hr className="modal_hr" />
-          <div className="footer_wrap">
-            <button
-              className="footer_one"
-              onClick={() => setModalIsOpen(false)}
-            >
+          <TitleP>로그아웃</TitleP>
+          <DescriptionP>다시 돌아오실거죠..?</DescriptionP>
+          <ModalHr />
+          <FooterWrap>
+            <BackButton onClick={() => setModalIsOpen(false)}>
               돌아가기
-            </button>
-            <div className="vl" />
-            <button
-              className="footer_two"
+            </BackButton>
+            <Vl />
+            <EnterButton
               onClick={() => {
                 dispatch(userAction.logOutDB());
               }}
             >
               확인
-            </button>
-          </div>
+            </EnterButton>
+          </FooterWrap>
         </ModalWrap>
       </Modal>
     </MyWrap>

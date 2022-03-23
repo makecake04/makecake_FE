@@ -3,12 +3,37 @@ import styled from "styled-components";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { actionCreators as userAction } from "../../../redux/modules/user";
 
 //import css
-import { ProfileWrap, ModalWrap } from "./style";
+import {
+  ProfileWrap,
+  SubWrap,
+  Header,
+  BlackBackButton,
+  HrWrap,
+  ContentWrap,
+  ProfileImage,
+  NicknameP,
+  EmailP,
+  BoldHr,
+  Content,
+  ContentP,
+  ProfileHr,
+  EditButton,
+  ButtonWrap,
+  SignoutButton,
+  TitleP,
+  DescriptionP,
+  ModalInput,
+  ModalHr,
+  EditBtn,
+  FooterWrap,
+  BackButton,
+  Vl,
+  DropOutButton,
+  ModalWrap,
+} from "./style";
 
 Modal.setAppElement("#root");
 
@@ -31,33 +56,27 @@ const Profile = (props) => {
 
   return (
     <ProfileWrap>
-      <div>
-        <div className="title">
-          <FontAwesomeIcon
-            icon={faAngleLeft}
-            className="left"
-            onClick={() => {
-              navigate(`/mypage`);
-            }}
-          />
+      <SubWrap>
+        <Header>
+          <BlackBackButton onClick={() => navigate(-1)} />
           <h3>프로필 수정하기</h3>
-        </div>
-        <hr />
-        <div>
-          <div className="profile_img"></div>
-          <p className="nickname">{user_info.nickname}</p>
-          <p className="email">{user_info.email}</p>
-          <hr className="bold" />
-        </div>
-        <div className="content">
-          <p className="contents">이메일</p>
+        </Header>
+        <HrWrap />
+        <ContentWrap>
+          <ProfileImage />
+          <NicknameP>{user_info.nickname}</NicknameP>
+          <EmailP>{user_info.email}</EmailP>
+          <BoldHr />
+        </ContentWrap>
+        <Content>
+          <ContentP>이메일</ContentP>
           <p>{user_info.email}</p>
-        </div>
-        <hr className="profile_hr" />
-        <div className="content">
-          <p className="contents">닉네임</p>
+        </Content>
+        <ProfileHr />
+        <Content>
+          <ContentP>닉네임</ContentP>
           <p>{user_info.nickname}</p>
-          <button onClick={() => setModalIsOpen1(true)}>변경</button>
+          <EditButton onClick={() => setModalIsOpen1(true)}>변경</EditButton>
           <Modal
             isOpen={modalIsOpen1}
             onRequestClose={() => setModalIsOpen1(false)}
@@ -73,11 +92,11 @@ const Profile = (props) => {
               },
               content: {
                 position: "absolute",
-                top: "45%",
+                top: "50%",
                 left: "50%",
                 bottom: "auto",
                 width: "300px",
-                height: "200px",
+                height: "220px",
                 padding: "0",
                 border: "solid 1px #eee",
                 overflow: "auto",
@@ -88,26 +107,24 @@ const Profile = (props) => {
             }}
           >
             <ModalWrap>
-              <p className="title">닉네임 변경</p>
-              <p className="description">변경할 닉네임을 입력해주세요.</p>
-              <input className="modal_input"></input>
-              <hr className="modal_hr" />
-              <button className="footer" onClick={changeNickname}>
-                변경하기
-              </button>
+              <TitleP>닉네임 변경</TitleP>
+              <DescriptionP>변경할 닉네임을 입력해주세요.</DescriptionP>
+              <ModalInput />
+              <ModalHr />
+              <EditBtn onClick={changeNickname}>변경하기</EditBtn>
             </ModalWrap>
           </Modal>
-        </div>
-        <hr className="profile_hr" />
-        <div className="btn_wrap">
-          <button
+        </Content>
+        <ProfileHr />
+        <ButtonWrap>
+          <SignoutButton
             className="signout"
             onClick={() => {
               setModalIsOpen2(true);
             }}
           >
             회원탈퇴
-          </button>
+          </SignoutButton>
           <Modal
             isOpen={modalIsOpen2}
             onRequestClose={() => setModalIsOpen2(false)}
@@ -123,11 +140,11 @@ const Profile = (props) => {
               },
               content: {
                 position: "absolute",
-                top: "45%",
+                top: "50%",
                 left: "50%",
                 bottom: "auto",
                 width: "300px",
-                height: "150px",
+                height: "160px",
                 padding: "0",
                 border: "solid 1px #eee",
                 overflow: "auto",
@@ -138,30 +155,30 @@ const Profile = (props) => {
             }}
           >
             <ModalWrap>
-              <p className="title">회원탈퇴</p>
-              <p className="description">다시 돌아오실거죠..?</p>
-              <hr className="modal_hr" />
-              <div className="footer_wrap">
-                <button
+              <TitleP>회원탈퇴</TitleP>
+              <DescriptionP>다시 돌아오실거죠..?</DescriptionP>
+              <ModalHr />
+              <FooterWrap>
+                <BackButton
                   className="footer_one"
                   onClick={() => setModalIsOpen2(false)}
                 >
                   돌아가기
-                </button>
-                <div className="vl" />
-                <button
+                </BackButton>
+                <Vl />
+                <DropOutButton
                   className="footer_two"
                   onClick={() => {
                     dispatch(userAction.resignDB());
                   }}
                 >
                   탈퇴하기
-                </button>
-              </div>
+                </DropOutButton>
+              </FooterWrap>
             </ModalWrap>
           </Modal>
-        </div>
-      </div>
+        </ButtonWrap>
+      </SubWrap>
     </ProfileWrap>
   );
 };
