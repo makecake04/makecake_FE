@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { actionCreators as userAction } from "../../../redux/modules/user";
 
 //css
-import { Container } from "./style";
+import { Container, BlackBackButton, CakeText, SignupText, InputAndButton, Input, CheckText, NextButton } from "./style";
 
 const SignUpEmail = () => {
   const dispatch = useDispatch();
@@ -46,17 +46,6 @@ const SignUpEmail = () => {
     }
   };
 
-  //   const checkUsername = () => {
-  //     if (username === "") {
-  //         window.alert("이메일이 공란입니다!")
-  //         return;
-  //     }
-
-  //     console.log(username, "의 중복확인 요청을 dispatch 했습니다.");
-  //     dispatch(userActions.usernameCheckF(username, false));
-  //     setIsCheckUsername(true)
-  // }
-
   const saveUsername = () => {
     dispatch(userAction.usernameCheckDB(username));
 
@@ -65,52 +54,24 @@ const SignUpEmail = () => {
 
   return (
     <Container>
-      <button
-        className="backButton"
-        onClick={() => {
-          navigate("/");
-        }}
-      >
-        &lt;
-      </button>
-      <h2 className="cakeText">케이크를 만들어요!</h2>
-      <p className="signupText">회원가입을 위한 이메일을 입력해주세요.</p>
-      <div>
-        <input
-          className="inputEmail"
-          placeholder="이메일"
-          type="text"
-          value={username}
-          onChange={is_Username}
-          onKeyUp={checkActive}
-        ></input>
+      <BlackBackButton onClick={() => navigate('/')}/>
+      <CakeText>케이크를 만들어요!</CakeText>
+      <SignupText>회원가입을 위한 이메일을 입력해주세요.</SignupText>
+      
+      <InputAndButton>
+        <Input placeholder="이메일" type="text" value={username} onChange={is_Username} onKeyUp={checkActive}/>
 
         {username.length > 0 && (
           <>
-            <p
-              style={{
-                color: `${(props) =>
-                  props.className === "success" ? "green" : "red"}`,
-                marginLeft: "20px",
-                fontSize: "14px",
-              }}
-              className={`${isUsername ? "success" : "error"}`}
-            >
+            <CheckText className={`${isUsername ? "success" : "error"}`}>
               {usernameMessage}
-            </p>
+            </CheckText>
           </>
-        )}
-        <button
-          className="nextButton"
-          disabled={active}
-          onClick={() => {
-            // checkUsername()
-            saveUsername();
-          }}
-        >
+          )}
+        <NextButton disabled={active} onClick={() => { saveUsername() }}>
           다음
-        </button>
-      </div>
+        </NextButton>
+      </InputAndButton>
     </Container>
   );
 };

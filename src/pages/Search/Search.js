@@ -5,24 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as searchAction } from "../../redux/modules/search";
 
 //css
-import {
-  SDetailWrap,
-  HeaderWrap,
-  SearchWrap,
-  Select,
-  Option,
-  Input,
-  SearchIcon,
-  Bell,
-  EmptySpace,
-  Container,
-  CommendText,
-  PlaceList1,
-  PlaceList2,
-  Place,
-  Place2,
-  Place3,
-} from "./style";
+import { SDetailWrap, HeaderWrap, SearchWrap , Select, Option, Input, SearchIcon, Bell, EmptySpace, Container, CommendText, PlaceList1, PlaceList2, Place, Place2, Place3  } from "./style";
 
 const Search = (props) => {
   const navigate = useNavigate();
@@ -50,25 +33,18 @@ const Search = (props) => {
       <HeaderWrap>
         <SearchWrap className="search_wrap">
           <Select defaultValue="default" onChange={changeSelectOption}>
-            <Option value="default" disabled hidden>
-              검색옵션
-            </Option>
+            <Option value="default" disabled hidden>검색옵션</Option>
             <Option value="store">매장</Option>
             <Option value="address">주소</Option>
             <Option value="place">핫플</Option>
           </Select>
-
-          <Input
-            placeholder="검색 옵션을 선택해주세요!"
-            onChange={changeInput}
-          />
-          <SearchIcon onClick={mapSearching} />
-            
+          <Input placeholder="검색 옵션을 선택해주세요!" onChange={changeInput}/>
+          <SearchIcon onClick={mapSearching}/>
         </SearchWrap>
-        <Bell />
+        <Bell/>
       </HeaderWrap>
 
-      <EmptySpace />
+      <EmptySpace/>
 
       <Container>
         <CommendText>플레이스 추천</CommendText>
@@ -77,7 +53,7 @@ const Search = (props) => {
           <Place>래빗힙</Place>
           <Place>베니케이크</Place>
         </PlaceList1>
-        <PlaceList2>
+        <PlaceList2 >
           <Place>더케이크스토리</Place>
           <Place>두두케이크</Place>
         </PlaceList2>
