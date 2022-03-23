@@ -10,21 +10,25 @@ export const Container = styled.div`
 `;
 
 export const HeaderWrap = styled.div`
-  margin: 40px 0px 20px 30px;
-  display: flex;
+  display:flex;
+  padding: 2rem 0;
   align-items: center;
+  
 `;
 
 export const BlackBackButton = styled.img.attrs({
   src: `${black_back_button}`,
   alt: "BlackBackButton",
-})`cursor: pointer;`;
+})`cursor: pointer;
+   margin-left: 3%;
+   `;
 
 export const HeaderText = styled.h3`
   font-weight: 700;
   font-size: 19px;
   color: #282828;
-  margin-left: 50px;
+  margin-left: 21%;
+  vertical-align: middle;
 `;
 
 export const ImageWrap = styled.div`
