@@ -1,180 +1,234 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const ReactStoreWrap = styled.div`
-  .title {
-    margin: 40px 0px 20px 30px;
-    display: flex;
-    align-items: center;
-  }
-  .left {
-    color: #646464;
-    margin: 0px 80px 0px 0px;
-  }
-
-  h3 {
-    font-weight: 700;
-    font-size: 19px;
-    color: #282828;
-  }
-
+export const Wrapper = styled.div`
   hr {
     border: 0.7px solid #e5e5e5;
     width: 100%;
   }
+`;
 
-  .img_wrap {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%;
-  }
-
+export const Header = styled.header`
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
   img {
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-    object-fit: cover;
+    margin-left: 3%;
   }
-
-  .heart {
-    font-size: 30px;
-    color: #ff679e;
-    margin-top: 10px;
-    position: absolute;
-    right: 10px;
+  h3 {
+    margin-left: 22%;
+    vertical-align: middle;
   }
+`;
 
-  .store {
-    margin: 10px 0px;
+export const Tab = styled.div`
+  display: flex;
+  margin: 0px 20px;
+`;
+
+export const LikeStore = styled.button`
+  ${(props) =>
+    props.toggleState === 1
+      ? css`
+          background: #fff;
+          padding: 15px;
+          text-align: center;
+          width: 50%;
+          cursor: pointer;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          border-bottom: 2px solid #ff679e;
+          box-sizing: content-box;
+          outline: none;
+          font-size: 15px;
+          font-weight: 400;
+          color: #ff679e;
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% + 2px);
+            height: 5px;
+            background: #fff;
+          }
+        `
+      : css`
+          padding: 15px;
+          text-align: center;
+          width: 50%;
+          background: #fff;
+          cursor: pointer;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          border-bottom: 2px solid #e5e5e5;
+          box-sizing: content-box;
+          outline: none;
+          font-size: 15px;
+          font-weight: 400;
+          color: #777;
+        `}
+`;
+export const MyReview = styled.button`
+  ${(props) =>
+    props.toggleState === 2
+      ? css`
+          background: #fff;
+          padding: 15px;
+          text-align: center;
+          width: 50%;
+          cursor: pointer;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          border-bottom: 2px solid #ff679e;
+          box-sizing: content-box;
+          outline: none;
+          font-size: 15px;
+          font-weight: 400;
+          color: #ff679e;
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% + 2px);
+            height: 5px;
+            background: #fff;
+          }
+        `
+      : css`
+          padding: 15px;
+          text-align: center;
+          width: 50%;
+          background: #fff;
+          cursor: pointer;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          border-bottom: 2px solid #e5e5e5;
+          box-sizing: content-box;
+          outline: none;
+          font-size: 15px;
+          font-weight: 400;
+          color: #777;
+        `}
+`;
+
+export const Body = styled.section`
+  flex-grow: 1;
+`;
+
+export const StoreList = styled.div`
+  ${(props) =>
+    props.toggleState === 1
+      ? css`
+          position: relative;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          padding: 20px;
+          gap: 20px;
+          margin-top: 10px;
+        `
+      : css`
+          background: #fff;
+          padding: 20px;
+          width: 100%;
+          height: 100%;
+          border: none;
+          display: none;
+        `}
+`;
+
+export const ReviewList = styled.div`
+  ${(props) =>
+    props.toggleState === 2
+      ? css`
+          position: relative;
+          display: grid;
+          padding: 20px;
+          gap: 20px;
+          margin-top: 10px;
+        `
+      : css`
+          background: #fff;
+          padding: 20px;
+          width: 100%;
+          height: 100%;
+          border: none;
+          display: none;
+        `}
+`;
+
+export const OneStore = styled.div`
+  p {
+    margin: 0.5rem 0;
     color: #282828;
   }
+`;
 
-  .address_wrap {
-    display: flex;
-  }
-
-  .address {
+export const StoreAddress = styled.div`
+  display: flex;
+  p {
     margin-bottom: 10px;
     margin-left: 5px;
     color: #777;
-    font-size: 15px;
+    font-size: 13px;
   }
+  img {
+    width: 2rem;
+  }
+`;
 
-  .location {
-    color: #777;
-  }
-
-  .bloc-tabs {
-    display: flex;
-    margin: 0px 20px;
-  }
-  .tabs {
-    padding: 15px;
-    text-align: center;
-    width: 50%;
-    background: #fff;
-    cursor: pointer;
-    border-bottom: 2px solid #e5e5e5;
-    box-sizing: content-box;
-    outline: none;
-    font-size: 15px;
-    font-weight: 400;
-    color: #777;
-  }
-
-  .active-tabs {
-    background: #fff;
-    padding: 15px;
-    text-align: center;
-    width: 50%;
-    cursor: pointer;
-    border-bottom: 2px solid #ff679e;
-    box-sizing: content-box;
-    outline: none;
-    font-size: 15px;
-    font-weight: 400;
-    color: #ff679e;
-  }
-
-  .active-tabs::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% + 2px);
-    height: 5px;
-    background: #fff;
-  }
-
-  button {
-    border: none;
-  }
-
-  .content-tabs {
-    flex-grow: 1;
-  }
-
-  .content {
-    background: #fff;
-    padding: 20px;
+export const OneReview = styled.div`
+  img {
+    position: relative;
     width: 100%;
-    height: 100%;
-    border: none;
-    display: none;
+    object-fit: cover;
   }
 
-  .active-content {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    padding: 20px;
-    gap: 20px;
-    margin-top: 10px;
+  hr {
+    margin: 25px 0px;
   }
+`;
 
-  .active-contents {
-    position: relative;
-    display: grid;
-    padding: 20px;
-    gap: 20px;
-    margin-top: 10px;
+export const ReviewHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  span:first-child {
+    font-size: 15px;
+    color: #282828;
   }
-
-  .insert_dt {
+  p {
     margin: 0px 0px 5px 0px;
     font-size: 13px;
     color: #777;
   }
+`;
 
-  .nickname {
-    font-size: 15px;
-    color: #282828;
-  }
+export const ReviewContent = styled.p`
+  display: -webkit-box;
+  word-wrap: break-word;
+  word-break: break-all;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 10px;
+  font-size: 14px;
+`;
 
-  .title_wrap2 {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-
-  .review_img {
-    background: url(${(props) => props.src}) no-repeat center / cover;
-    position: relative;
-    width: 100%;
-    object-fit: cover;
-  }
-
-  .button_wrap {
-    margin-top: 20px;
-    display: flex;
-    justify-content: end;
-  }
-
-  .edit_btn {
+export const ButtonWrapper = styled.div`
+  margin-top: 20px;
+  display: flex;
+  justify-content: end;
+  button:first-child {
     width: 80px;
     height: 35px;
     font-size: 13px;
@@ -183,30 +237,12 @@ export const ReactStoreWrap = styled.div`
     border-radius: 20px;
     margin-right: 10px;
   }
-
-  .delete_btn {
+  button:nth-of-type(2) {
     width: 80px;
     height: 35px;
     font-size: 13px;
     color: #e10000;
     border: 1px solid #e10000;
     border-radius: 20px;
-  }
-
-  .hr_wrap {
-    border: 0.7px solid #e5e5e5;
-    width: 100%;
-    margin: 25px 0px;
-  }
-
-  .p_wrap {
-    display: -webkit-box;
-    word-wrap: break-word;
-    word-break: break-all;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-bottom: 10px;
   }
 `;
