@@ -8,7 +8,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { actionCreators as userAction } from "../../../redux/modules/user";
 
 //css
-import { MyWrap, ModalWrap } from "./style";
+import {
+  MyWrap,
+  ModalWrap,
+  SubWrap,
+  HrWrap,
+  ProfileImage,
+  NicknameP,
+  EmailP,
+  BoldHr,
+  Content,
+  ContenteP,
+  ProfileHr,
+  ButtonWrap,
+  LogoutButton,
+} from "./style";
 
 const MyPage = (props) => {
   const { nickname, email } = props;
@@ -24,81 +38,75 @@ const MyPage = (props) => {
 
   return (
     <MyWrap>
-      <div>
+      <SubWrap>
         <h3>MY PAGE</h3>
-        <hr />
-        <div className="profile_img"></div>
-      </div>
-      <div>
-        <p className="nickname">{user_info.nickname}</p>
-        <p className="email">{user_info.email}</p>
-        <hr className="bold" />
-      </div>
-      <div className="content">
-        <p className="contents">프로필 수정하기</p>
+        <HrWrap />
+        <ProfileImage />
+      </SubWrap>
+      <SubWrap>
+        <NicknameP>{user_info.nickname}</NicknameP>
+        <EmailP>{user_info.email}</EmailP>
+        <BoldHr />
+      </SubWrap>
+      <Content>
+        <ContenteP>프로필 수정하기</ContenteP>
         <FontAwesomeIcon
           icon={faAngleRight}
-          className="right"
           onClick={() => {
             navigate("/profile/edit");
           }}
         />
-      </div>
-      <hr className="profile_hr" />
-      <div className="content">
-        <p className="contents">내가 그린 도안</p>
+      </Content>
+      <ProfileHr />
+      <Content>
+        <ContenteP>내가 그린 도안</ContenteP>
         <FontAwesomeIcon
           icon={faAngleRight}
-          className="right"
           onClick={() => {
             navigate("/mydesign");
           }}
         />
-      </div>
-      <hr className="profile_hr" />
-      <div className="content">
-        <p className="contents">내가 반응한 게시글</p>
+      </Content>
+      <ProfileHr />
+      <Content>
+        <ContenteP>내가 반응한 게시글</ContenteP>
         <FontAwesomeIcon
           icon={faAngleRight}
-          className="right"
           onClick={() => {
             navigate("/react/post");
           }}
         />
-      </div>
-      <hr className="profile_hr" />
-      <div className="content">
-        <p className="contents">내가 반응한 매장</p>
+      </Content>
+      <ProfileHr />
+      <Content>
+        <ContenteP>내가 반응한 매장</ContenteP>
         <FontAwesomeIcon
           icon={faAngleRight}
-          className="right"
           onClick={() => {
             navigate("/react/store");
           }}
         />
-      </div>
-      <hr className="profile_hr" />
-      <div className="content">
-        <p className="contents">내가 반응한 케이크</p>
+      </Content>
+      <ProfileHr />
+      <Content>
+        <ContenteP>내가 반응한 케이크</ContenteP>
         <FontAwesomeIcon
           icon={faAngleRight}
-          className="right"
           onClick={() => {
             navigate("/react/cake");
           }}
         />
-      </div>
-      <hr className="profile_hr" />
-      <div className="btn_wrap">
-        <button
-          className="logout"
+      </Content>
+      <ProfileHr />
+      <ButtonWrap>
+        <LogoutButton
           onClick={() => {
             setModalIsOpen(true);
           }}
         >
           로그아웃
-        </button>
-      </div>
+        </LogoutButton>
+      </ButtonWrap>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}

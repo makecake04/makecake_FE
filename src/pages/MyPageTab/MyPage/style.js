@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { profile_image } from "../../../assets/images/image";
 
 export const MyWrap = styled.div`
+  overflow: auto;
+  height: 784px;
   h3 {
     padding: 40px 0px 20px 0px;
     text-align: center;
@@ -11,79 +13,77 @@ export const MyWrap = styled.div`
     font-size: 19px;
     color: #282828;
   }
+`;
 
-  hr {
-    border: 0.7px solid #e5e5e5;
-    width: 100%;
-  }
+export const SubWrap = styled.div``;
 
-  .profile_img {
-    width: 100px;
-    height: 100px;
-    margin: 50px auto 20px auto;
-    border-radius: 100px;
-    background-color: #ddd;
-    background-image: url(${profile_image});
-    background-position: center;
-    background-size: 100px;
-  }
+export const HrWrap = styled.hr`
+  border: 0.7px solid #e5e5e5;
+  width: 100%;
+`;
 
-  .nickname {
-    text-align: center;
-    font-weight: 700;
-    font-size: 16px;
-    color: #282828;
-    margin: 0 auto 5px auto;
-  }
+export const ProfileImage = styled.div`
+  width: 100px;
+  height: 100px;
+  margin: 50px auto 20px auto;
+  border-radius: 100px;
+  background-color: #ddd;
+  background-image: url(${profile_image});
+  background-position: center;
+  background-size: 100px;
+`;
 
-  .email {
-    text-align: center;
-    font-weight: 400;
-    font-size: 14px;
-    color: #646464;
-    margin: 0 auto 40px auto;
-  }
+export const NicknameP = styled.p`
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #282828;
+  margin: 0 auto 5px auto;
+`;
 
-  .bold {
-    border: 3px solid #f7f7f7;
-    width: 100%;
-  }
+export const EmailP = styled.p`
+  text-align: center;
+  font-weight: 400;
+  font-size: 14px;
+  color: #646464;
+  margin: 0 auto 40px auto;
+`;
 
-  .content {
-    display: flex;
-    justify-content: space-between;
-    margin: 30px 30px;
-  }
+export const BoldHr = styled.hr`
+  border: 3px solid #f7f7f7;
+  width: 100%;
+`;
 
-  .contents {
-    font-weight: 400;
-    font-size: 16px;
-    color: #282828;
-  }
+export const Content = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 30px;
+`;
 
-  .right {
-    color: #646464;
-  }
+export const ContenteP = styled.p`
+  font-weight: 400;
+  font-size: 16px;
+  color: #282828;
+`;
 
-  .profile_hr {
-    border: 0.7px solid #eaeaea;
-    width: 90%;
-    margin: 0 auto;
-  }
+export const ProfileHr = styled.hr`
+  border: 0.7px solid #eaeaea;
+  width: 90%;
+  margin: 0 auto;
+`;
 
-  .btn_wrap {
-    display: flex;
-    justify-content: end;
-  }
+export const ButtonWrap = styled.div`
+  display: flex;
+  justify-content: end;
+`;
 
-  .logout {
-    width: 80px;
-    height: 20px;
-    margin: 10px 20px 0px 0px;
-    color: #777;
-    font-size: 13px;
-    border: none;
-  }
+export const LogoutButton = styled.button`
+  width: 80px;
+  height: 20px;
+  margin: 20px 20px 20px 0px;
+  color: #777;
+  font-size: 13px;
+  border: none;
 `;
 
 export const ModalWrap = styled.div`
