@@ -75,7 +75,6 @@ import {
   ImgWrap,
   ImgBox,
 } from "./style";
-// import { Description } from "@material-ui/icons";
 
 //component
 
