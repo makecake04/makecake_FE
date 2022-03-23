@@ -1,97 +1,304 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const WriteWrap = styled.div`
+export const Wrapper = styled.div`
   width: 100%;
   margin: 0 auto;
   overflow-y: auto;
   height: 784px;
   padding-bottom: 3rem;
-  .header {
-    margin: 0px 0px 20px 30px;
-    padding: 4rem 3rem 0 0;
-    display: flex;
-    align-items: center;
-    .back-icon {
-      color: #646464;
-      margin-right: 7.7rem;
-      font-size: 2.3rem;
-    }
-    h3 {
-      margin-left: 2.2rem;
-      font-weight: 700;
-      font-size: 19px;
-      color: #282828;
-    }
-    p {
-      color: #ff8fa5;
-      font-size: 1.8rem;
-      padding-left: 6.5rem;
-    }
+`;
+
+export const Header = styled.header`
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+  img {
+    margin-left: 3%;
+  }
+  h3 {
+    margin-left: 22%;
+    vertical-align: middle;
   }
 
-  hr {
-    border: 0.7px solid #e5e5e5;
+  span {
+    color: #ff8fa5;
+    font-size: 1.8rem;
+    padding-left: 6.8rem;
+  }
+`;
+
+export const Title = styled.title`
+  display: flex;
+  padding: 0.8rem 0.5rem 1rem 1.5rem;
+  input {
+    display: flex;
     width: 100%;
-  }
-
-  .title {
-    display: flex;
-    padding: 0.8rem 0.5rem 1rem 1.5rem;
-    .title-input {
-      display: flex;
-      width: 100%;
-      height: 3.5rem;
-      border: none;
-      font-size: 1.8rem;
-      outline: none;
-      &::placeholder {
-        color: #e5e5e5;
-        font-weight: 700;
-      }
-    }
-  }
-
-  .comment {
-    textarea {
-      width: 32.2rem;
-      height: 6rem;
-      overflow: scroll;
-      font-size: 1.4rem;
-      border: none;
-      outline: none;
-      margin: 0 3rem;
-      &::placeholder {
-        color: #777777;
-      }
-    }
-  }
-
-  .design-img {
-    margin: 3rem 3rem;
-  }
-  .options {
-    padding: 0 3rem;
-    h3 {
-      font-size: 1.9rem;
+    height: 3.5rem;
+    border: none;
+    font-size: 1.8rem;
+    outline: none;
+    &::placeholder {
+      color: #e5e5e5;
       font-weight: 700;
-      color: #282828;
-      /* padding-left: 1rem; */
-    }
-    h3 + button {
-      margin-top: 1rem;
-    }
-    div + div {
-      margin-top: 1.5rem;
-    }
-    button {
-      color: #777777;
-      /* background-color: rgba(196, 196, 196, 0.16); */
-      background-color: rgba(196, 196, 196, 0.16);
-      border-radius: 9rem;
-      border: none;
-      font-size: 1.5rem;
-      padding: 0.5rem 1.2rem;
-      margin-left: 1rem;
     }
   }
+`;
+
+export const Content = styled.div`
+  textarea {
+    width: 32.2rem;
+    height: 6rem;
+    overflow: scroll;
+    font-size: 1.4rem;
+    border: none;
+    outline: none;
+    margin: 0 3rem;
+    &::placeholder {
+      color: #777777;
+    }
+  }
+`;
+
+export const DesignImage = styled.div`
+  margin: 3rem 3rem;
+`;
+
+export const Options = styled.section`
+  padding: 0 3rem;
+`;
+
+export const Size = styled.div`
+  margin-bottom: 1.5rem;
+  h3 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #282828;
+  }
+  h3 + button {
+    margin-top: 1rem;
+  }
+
+  button {
+    border-radius: 9rem;
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.5rem 1.2rem;
+    font-weight: 700;
+    margin-left: 1rem;
+  }
+`;
+
+export const Shape = styled(Size)``;
+export const Purpose = styled(Size)``;
+export const Made = styled(Size)``;
+
+export const MiniSize = styled.button`
+  ${(props) =>
+    (props.size || props.postSize) === "도시락"
+      ? css`
+          background-color: rgba(255, 103, 158, 0.1);
+          color: #ff679e;
+        `
+      : css`
+          background-color: rgba(196, 196, 196, 0.16);
+          color: #777777;
+        `}
+`;
+export const OneSize = styled.button`
+  ${(props) =>
+    (props.size || props.postSize) === "1호"
+      ? css`
+          background-color: rgba(255, 103, 158, 0.1);
+          color: #ff679e;
+        `
+      : css`
+          background-color: rgba(196, 196, 196, 0.16);
+          color: #777777;
+        `}
+`;
+export const TwoSize = styled.button`
+  ${(props) =>
+    (props.size || props.postSize) === "2호"
+      ? css`
+          background-color: rgba(255, 103, 158, 0.1);
+          color: #ff679e;
+        `
+      : css`
+          background-color: rgba(196, 196, 196, 0.16);
+          color: #777777;
+        `}
+`;
+export const ThreeSize = styled.button`
+  ${(props) =>
+    (props.size || props.postSize) === "3호"
+      ? css`
+          background-color: rgba(255, 103, 158, 0.1);
+          color: #ff679e;
+        `
+      : css`
+          background-color: rgba(196, 196, 196, 0.16);
+          color: #777777;
+        `}
+`;
+export const OtherSize = styled.button`
+  ${(props) =>
+    (props.size || props.postSize) === "기타"
+      ? css`
+          background-color: rgba(255, 103, 158, 0.1);
+          color: #ff679e;
+        `
+      : css`
+          background-color: rgba(196, 196, 196, 0.16);
+          color: #777777;
+        `}
+`;
+
+export const Square = styled.button`
+  ${(props) =>
+    (props.shape || props.postShape) === "네모"
+      ? css`
+          background-color: rgba(255, 103, 158, 0.1);
+          color: #ff679e;
+        `
+      : css`
+          background-color: rgba(196, 196, 196, 0.16);
+          color: #777777;
+        `}
+`;
+export const Heart = styled.button`
+  ${(props) =>
+    (props.shape || props.postShape) === "하트"
+      ? css`
+          background-color: rgba(255, 103, 158, 0.1);
+          color: #ff679e;
+        `
+      : css`
+          background-color: rgba(196, 196, 196, 0.16);
+          color: #777777;
+        `}
+`;
+export const Circle = styled.button`
+  ${(props) =>
+    (props.shape || props.postShape) === "원형"
+      ? css`
+          background-color: rgba(255, 103, 158, 0.1);
+          color: #ff679e;
+        `
+      : css`
+          background-color: rgba(196, 196, 196, 0.16);
+          color: #777777;
+        `}
+`;
+export const Birthday = styled.button`
+  ${(props) =>
+    (props.purpose || props.postPurpose) === "생일"
+      ? css`
+          background-color: rgba(255, 103, 158, 0.1);
+          color: #ff679e;
+        `
+      : css`
+          background-color: rgba(196, 196, 196, 0.16);
+          color: #777777;
+        `}
+`;
+export const Parents = styled.button`
+  ${(props) =>
+    (props.purpose || props.postPurpose) === "부모님"
+      ? css`
+          background-color: rgba(255, 103, 158, 0.1);
+          color: #ff679e;
+        `
+      : css`
+          background-color: rgba(196, 196, 196, 0.16);
+          color: #777777;
+        `}
+`;
+export const Friends = styled.button`
+  ${(props) =>
+    (props.purpose || props.postPurpose) === "친구"
+      ? css`
+          background-color: rgba(255, 103, 158, 0.1);
+          color: #ff679e;
+        `
+      : css`
+          background-color: rgba(196, 196, 196, 0.16);
+          color: #777777;
+        `}
+`;
+export const Lovers = styled.button`
+  ${(props) =>
+    (props.purpose || props.postPurpose) === "연인"
+      ? css`
+          background-color: rgba(255, 103, 158, 0.1);
+          color: #ff679e;
+        `
+      : css`
+          background-color: rgba(196, 196, 196, 0.16);
+          color: #777777;
+        `}
+`;
+export const Celebration = styled.button`
+  ${(props) =>
+    (props.purpose || props.postPurpose) === "축하"
+      ? css`
+          background-color: rgba(255, 103, 158, 0.1);
+          color: #ff679e;
+        `
+      : css`
+          background-color: rgba(196, 196, 196, 0.16);
+          color: #777777;
+        `}
+`;
+
+export const NewPostMadeTrue = styled.button`
+  ${(props) =>
+    props.made
+      ? css`
+          background-color: rgba(255, 103, 158, 0.1);
+          color: #ff679e;
+        `
+      : css`
+          background-color: rgba(196, 196, 196, 0.16);
+          color: #777777;
+        `}
+`;
+
+export const NewPostMadeFalse = styled.button`
+  ${(props) =>
+    props.made
+      ? css`
+          background-color: rgba(196, 196, 196, 0.16);
+          color: #777777;
+        `
+      : css`
+          background-color: rgba(255, 103, 158, 0.1);
+          color: #ff679e;
+        `}
+`;
+
+export const EditPostMadeTrue = styled.button`
+  ${(props) =>
+    props.made
+      ? css`
+          background-color: rgba(255, 103, 158, 0.1);
+          color: #ff679e;
+        `
+      : css`
+          background-color: rgba(196, 196, 196, 0.16);
+          color: #777777;
+        `}
+`;
+
+export const EditPostMadeFalse = styled.button`
+  ${(props) =>
+    props.made
+      ? css`
+          background-color: rgba(196, 196, 196, 0.16);
+          color: #777777;
+        `
+      : css`
+          background-color: rgba(255, 103, 158, 0.1);
+          color: #ff679e;
+        `}
 `;
