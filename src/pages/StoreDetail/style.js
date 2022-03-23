@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 //image
 import {
@@ -6,8 +6,11 @@ import {
   location,
   review_write,
   shop,
+  call,
   profile_image,
   more_button,
+  white_back_button,
+  heart_button,
 } from "../../assets/images/image";
 
 export const StoreDetailContainer = styled.div`
@@ -15,378 +18,455 @@ export const StoreDetailContainer = styled.div`
   height: 844px;
   position: relative;
 
-  .title {
-    display: flex;
-  }
-
-  .left {
-    color: #646464;
-    position: absolute;
-    margin-top: 40px;
-    margin-left: 40px;
-  }
-
-  .hr_wrap {
-    border: 0.7px solid #e5e5e5;
-    width: 100%;
-    margin-top: 190px;
-    z-index: 1;
-  }
-
-  .title_wrap {
-    position: relative;
-    z-index: 2;
-    left: 10%;
-    top: -50px;
-    width: 80%;
-    height: 100px;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0px 3px 8px rgba(152, 153, 150, 0.3);
-    padding: 16px;
-  }
-
-  .container {
-    position: relative;
-    top: -40px;
-  }
-
-  .info_box {
-    width: 100%;
-  }
-
-  .top_wrap {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-
-  .info_wrap {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .store {
-    font-weight: 700;
-  }
-
-  .shop_wrap {
-    display: flex;
-  }
-
-  .shop {
-    height: 24px;
-    width: 24px;
-  }
-
-  .heart {
-    color: #ff679e;
-    font-size: 20px;
-  }
-
-  .nomal {
-    flex: 1;
-    padding-left: 5px;
-    font-size: 13px;
-  }
-
   .insta {
     flex: 1;
     padding-left: 30px;
   }
+`;
 
-  .bloc-tabs {
-    display: flex;
-    margin: 0px 20px;
-  }
-  .tabs {
-    padding: 15px;
-    text-align: center;
-    width: 50%;
-    background: #fff;
-    cursor: pointer;
-    border-bottom: 2px solid #e5e5e5;
-    box-sizing: content-box;
-    outline: none;
-    font-size: 15px;
-    font-weight: 400;
-    color: #777;
-  }
+export const DetailWrap = styled.div``;
 
-  .active-tabs {
-    background: #fff;
-    padding: 15px;
-    text-align: center;
-    width: 50%;
-    cursor: pointer;
-    border-bottom: 2px solid #ff679e;
-    box-sizing: content-box;
-    outline: none;
-    font-size: 15px;
-    font-weight: 400;
-    color: #ff679e;
-  }
+export const Title = styled.div`
+  display: flex;
+`;
 
-  .active-tabs::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% + 2px);
-    height: 5px;
-    background: #fff;
-  }
+export const WhiteBackIcon = styled.img.attrs({
+  src: `${white_back_button}`,
+})`
+  position: absolute;
+  margin-top: 40px;
+  margin-left: 20px;
+`;
 
-  button {
-    border: none;
-  }
+export const HrWrap = styled.hr`
+  border: 0.7px solid #e5e5e5;
+  width: 100%;
+  margin-top: 190px;
+  z-index: 1;
+`;
 
-  .content-tabs {
-    flex-grow: 1;
-  }
+export const TitleWrap = styled.div`
+  position: relative;
+  z-index: 2;
+  left: 10%;
+  top: -50px;
+  width: 80%;
+  height: 100px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0px 3px 8px rgba(152, 153, 150, 0.3);
+  padding: 16px;
+`;
 
-  .content {
-    background: #fff;
-    padding: 20px;
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: none;
-  }
+export const InfoBox = styled.div`
+  width: 100%;
+`;
 
-  .active-content {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
+export const TopWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+`;
 
-  .content_wrap {
-    padding: 20px;
-  }
+export const Store = styled.div`
+  font-weight: 700;
+`;
 
-  .icon_wrap {
-    display: flex;
-    margin-bottom: 20px;
-    flex: 1;
-  }
+export const InfoWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
-  .icon {
-    margin-right: 10px;
-    width: 20px;
-    height: 20px;
-    path {
-      stroke: #777;
-    }
-  }
+export const ShopWrap = styled.div`
+  display: flex;
+`;
 
-  .description {
-    font-size: 15px;
-    color: #777;
-    flex: 1;
-    span + span {
-      margin-left: 0.5rem;
-    }
-    span + span + span {
-      margin-left: 0.5rem;
-    }
-    span + span + span + span {
-      margin-left: 0.5rem;
-    }
-  }
+export const Nomal = styled.div`
+  flex: 1;
+  padding-left: 5px;
+  font-size: 13px;
+`;
 
-  .users_wrap {
-    display: flex;
-  }
+export const ContainerBox = styled.div`
+  position: relative;
+  top: -40px;
+`;
 
-  .bottom {
-    border: 3px solid #f7f7f7;
-    width: 100%;
-  }
+export const BlocTab = styled.div`
+  display: flex;
+  margin: 0px 20px;
+`;
 
-  .picture_wrap {
-    margin: 10px 20px 0px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+export const OneButton = styled.button`
+  ${(props) =>
+    props.toggleState === 1
+      ? css`
+          background: #fff;
+          padding: 15px;
+          text-align: center;
+          width: 50%;
+          cursor: pointer;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          border-bottom: 2px solid #ff679e;
+          box-sizing: content-box;
+          outline: none;
+          font-size: 15px;
+          font-weight: 400;
+          color: #ff679e;
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% + 2px);
+            height: 5px;
+            background: #fff;
+          }
+        `
+      : css`
+          padding: 15px;
+          text-align: center;
+          width: 50%;
+          background: #fff;
+          cursor: pointer;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          border-bottom: 2px solid #e5e5e5;
+          box-sizing: content-box;
+          outline: none;
+          font-size: 15px;
+          font-weight: 400;
+          color: #777;
+        `}
+`;
 
-  .picture {
-    color: #282828;
-    font-weight: 700;
-  }
+export const TwoButton = styled.button`
+  ${(props) =>
+    props.toggleState === 2
+      ? css`
+          background: #fff;
+          padding: 15px;
+          text-align: center;
+          width: 50%;
+          cursor: pointer;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          border-bottom: 2px solid #ff679e;
+          box-sizing: content-box;
+          outline: none;
+          font-size: 15px;
+          font-weight: 400;
+          color: #ff679e;
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% + 2px);
+            height: 5px;
+            background: #fff;
+          }
+        `
+      : css`
+          padding: 15px;
+          text-align: center;
+          width: 50%;
+          background: #fff;
+          cursor: pointer;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          border-bottom: 2px solid #e5e5e5;
+          box-sizing: content-box;
+          outline: none;
+          font-size: 15px;
+          font-weight: 400;
+          color: #777;
+        `}
+`;
 
-  .plus {
-    color: #777;
-    font-size: 15px;
-  }
+export const ThreeButton = styled.button`
+  ${(props) =>
+    props.toggleState === 3
+      ? css`
+          background: #fff;
+          padding: 15px;
+          text-align: center;
+          width: 50%;
+          cursor: pointer;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          border-bottom: 2px solid #ff679e;
+          box-sizing: content-box;
+          outline: none;
+          font-size: 15px;
+          font-weight: 400;
+          color: #ff679e;
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% + 2px);
+            height: 5px;
+            background: #fff;
+          }
+        `
+      : css`
+          padding: 15px;
+          text-align: center;
+          width: 50%;
+          background: #fff;
+          cursor: pointer;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          border-bottom: 2px solid #e5e5e5;
+          box-sizing: content-box;
+          outline: none;
+          font-size: 15px;
+          font-weight: 400;
+          color: #777;
+        `}
+`;
 
-  .right_wrap {
-    display: flex;
-    align-items: center;
-  }
+export const FourButton = styled.button`
+  ${(props) =>
+    props.toggleState === 4
+      ? css`
+          background: #fff;
+          padding: 15px;
+          text-align: center;
+          width: 50%;
+          cursor: pointer;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          border-bottom: 2px solid #ff679e;
+          box-sizing: content-box;
+          outline: none;
+          font-size: 15px;
+          font-weight: 400;
+          color: #ff679e;
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% + 2px);
+            height: 5px;
+            background: #fff;
+          }
+        `
+      : css`
+          padding: 15px;
+          text-align: center;
+          width: 50%;
+          background: #fff;
+          cursor: pointer;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          border-bottom: 2px solid #e5e5e5;
+          box-sizing: content-box;
+          outline: none;
+          font-size: 15px;
+          font-weight: 400;
+          color: #777;
+        `}
+`;
 
-  .right {
-    width: 18px;
-    height: 18px;
-    path {
-      stroke: #777;
-    }
-  }
+export const ContentTab = styled.div`
+  flex-grow: 1;
+`;
 
-  .img_box {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 20px;
-    gap: 20px;
-    overflow: hidden;
-  }
+export const ContentOne = styled.div`
+  ${(props) =>
+    props.toggleState === 1
+      ? css`
+          position: relative;
+          width: 100%;
+          height: 100%;
+        `
+      : css`
+          background: #fff;
+          padding: 20px;
+          width: 100%;
+          height: 100%;
+          border: none;
+          display: none;
+        `}
+`;
 
-  .img_wrap {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-  }
+export const ContentTwo = styled.div`
+  ${(props) =>
+    props.toggleState === 2
+      ? css`
+          position: relative;
+          width: 100%;
+          height: 100%;
+        `
+      : css`
+          background: #fff;
+          padding: 20px;
+          width: 100%;
+          height: 100%;
+          border: none;
+          display: none;
+        `}
+`;
 
-  .kind {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
+export const ContentThree = styled.div`
+  ${(props) =>
+    props.toggleState === 3
+      ? css`
+          position: relative;
+          width: 100%;
+          height: 100%;
+        `
+      : css`
+          background: #fff;
+          padding: 20px;
+          width: 100%;
+          height: 100%;
+          border: none;
+          display: none;
+        `}
+`;
 
-  .kind2 {
-    display: flex;
-    justify-content: space-between;
-  }
+export const ContentFour = styled.div`
+  ${(props) =>
+    props.toggleState === 4
+      ? css`
+          position: relative;
+          width: 100%;
+          height: 100%;
+        `
+      : css`
+          background: #fff;
+          padding: 20px;
+          width: 100%;
+          height: 100%;
+          border: none;
+          display: none;
+        `}
+`;
 
-  .type {
-    display: flex;
-  }
+export const ContentBox = styled.div``;
 
-  .size {
-    color: #777;
-    font-size: 15px;
-    margin-right: 5px;
-  }
+export const ContentWrap = styled.div`
+  padding: 20px;
+`;
 
-  .line {
-    color: #dadada;
-  }
+export const IconWrap = styled.div`
+  display: flex;
+  margin-bottom: 20px;
+  flex: 1;
+`;
 
-  .price {
-    font-size: 15px;
-    font-weight: 700;
+export const Description = styled.div`
+  font-size: 15px;
+  color: #777;
+  flex: 1;
+  span + span {
+    margin-left: 0.5rem;
   }
+  span + span + span {
+    margin-left: 0.5rem;
+  }
+  span + span + span + span {
+    margin-left: 0.5rem;
+  }
+`;
 
-  .insert_dt {
-    margin: 0px 0px 5px 0px;
-    font-size: 13px;
-    color: #777;
-  }
+export const CallWrap = styled.div`
+  display: flex;
+`;
 
-  .nickname {
-    font-size: 15px;
-    color: #282828;
-  }
+export const BottomHr = styled.hr`
+  border: 3px solid #f7f7f7;
+  width: 100%;
+`;
 
-  .title_wrap2 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-  }
+export const PictureBox = styled.div``;
 
-  .hr_wrap2 {
-    border: 0.7px solid #e5e5e5;
-    width: 100%;
-    margin: 25px 0px 0px 0px;
-  }
+export const PictureWrap = styled.div`
+  margin: 10px 20px 0px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 
-  .p_wrap {
-    word-break: break-all;
-    display: -webkit-box;
-    word-wrap: break-word;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 0px 20px;
-  }
+export const Picture = styled.p`
+  color: #282828;
+  font-weight: 700;
+`;
 
-  .review {
-    position: absolute;
-    /* bottom: 1.3rem;
-  right: 1.3rem; */
-    width: 4.8rem;
-    height: 4.8rem;
-    margin-top: 48rem;
-    bottom: 1rem;
-    right: 1.3rem;
-    z-index: 10;
-  }
+export const RightWrap = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
-  .profile {
-    width: 45px;
-    height: 45px;
-    border-radius: 45px;
-    background-color: #ddd;
-    background-image: url(${profile_image});
-    background-position: center;
-    background-size: 50px;
-  }
+export const PlusP = styled.p`
+  color: #777;
+  font-size: 15px;
+`;
 
-  .info_wrap2 {
-    display: flex;
-    align-items: center;
-  }
+export const ImageBox = styled.div`
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 20px;
+  gap: 20px;
+  overflow: hidden;
+`;
 
-  .info {
-    margin: 0px 0px 0px 10px;
-  }
+export const Images = styled.div`
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+`;
 
-  .nickname {
-    font-size: 15px;
-    color: #282828;
-  }
+export const Kind = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+`;
 
-  .img_wrap2 {
-    position: relative;
-    width: 90%;
-    background: url(${(props) => props.src}) no-repeat center / cover;
-    border-radius: 5px;
-    object-fit: cover;
-    margin: 10px auto 0 auto;
-  }
+export const Kind2 = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
-  .button_wrap {
-    margin: 20px 20px 0px 0px;
-    display: flex;
-    justify-content: end;
-  }
+export const Type = styled.div`
+  display: flex;
+`;
 
-  .edit_btn {
-    width: 80px;
-    height: 35px;
-    font-size: 13px;
-    color: #777;
-    border: 1px solid #777;
-    border-radius: 20px;
-    margin-right: 10px;
-  }
+export const SizeP = styled.p`
+  color: #777;
+  font-size: 15px;
+  margin-right: 5px;
+`;
 
-  .delete_btn {
-    width: 80px;
-    height: 35px;
-    font-size: 13px;
-    color: #e10000;
-    border: 1px solid #e10000;
-    border-radius: 20px;
-  }
+export const PriceP = styled.p`
+  font-size: 15px;
+  font-weight: 700;
 `;
 
 export const ImgWrap = styled.div`
@@ -403,32 +483,155 @@ export const ImgBox = styled.div`
   background: url(${(props) => props.src}) no-repeat center / cover;
 `;
 
+export const ProfileImage = styled.div`
+  width: 45px;
+  height: 45px;
+  border-radius: 45px;
+  background-color: #ddd;
+  background-image: url(${profile_image});
+  background-position: center;
+  background-size: 50px;
+`;
+
+export const CommentWrap = styled.div``;
+
+export const TitleTwo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+`;
+
+export const InfoTwo = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const Info = styled.div`
+  margin: 0px 0px 0px 10px;
+`;
+
+export const NicknameP = styled.p`
+  font-size: 15px;
+  color: #282828;
+`;
+
+export const CreatedDateP = styled.p`
+  margin: 0px 0px 5px 0px;
+  font-size: 13px;
+  color: #777;
+`;
+
+export const Pwrap = styled.p`
+  word-break: break-all;
+  display: -webkit-box;
+  word-wrap: break-word;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0px 20px;
+`;
+
+export const ImgWrapTwo = styled.div`
+  position: relative;
+  width: 90%;
+  background: url(${(props) => props.src}) no-repeat center / cover;
+  border-radius: 5px;
+  object-fit: cover;
+  margin: 10px auto 0 auto;
+`;
+
+export const ButtonWrap = styled.div`
+  margin: 20px 20px 0px 0px;
+  display: flex;
+  justify-content: end;
+`;
+
+export const EditButton = styled.button`
+  width: 80px;
+  height: 35px;
+  font-size: 13px;
+  color: #777;
+  border: 1px solid #777;
+  border-radius: 20px;
+  margin-right: 10px;
+`;
+
+export const DeleteButton = styled.button`
+  width: 80px;
+  height: 35px;
+  font-size: 13px;
+  color: #e10000;
+  border: 1px solid #e10000;
+  border-radius: 20px;
+`;
+
+export const HrWrapTwo = styled.hr`
+  border: 0.7px solid #e5e5e5;
+  width: 100%;
+  margin: 25px 0px 0px 0px;
+`;
+
 export const ShopSvg = styled.img.attrs({
   src: `${shop}`,
   alt: "img",
-})``;
+})`
+  height: 24px;
+  width: 24px;
+`;
 
 export const MarkerSvg = styled.img.attrs({
   src: `${location}`,
   alt: "img",
-})``;
+})`
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+`;
 
 export const ClockSvg = styled.img.attrs({
   src: `${clock}`,
   alt: "img",
-})``;
+})`
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+`;
 
-export const UsersSvg = styled.img.attrs({
-  src: `${profile_image}`,
+export const CallSvg = styled.img.attrs({
+  src: `${call}`,
   alt: "img",
-})``;
+})`
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+`;
 
 export const RightSvg = styled.img.attrs({
   src: `${more_button}`,
   alt: "img",
-})``;
+})`
+  width: 18px;
+  height: 18px;
+`;
 
 export const ReviewSvg = styled.img.attrs({
   src: `${review_write}`,
+  alt: "img",
+})`
+  position: absolute;
+  /* bottom: 1.3rem;
+right: 1.3rem; */
+  width: 4.8rem;
+  height: 4.8rem;
+  margin-top: 48rem;
+  bottom: 1rem;
+  right: 1.3rem;
+  z-index: 10;
+`;
+
+export const HeartSvg = styled.img.attrs({
+  src: `${heart_button}`,
   alt: "img",
 })``;

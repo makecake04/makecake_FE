@@ -91,6 +91,8 @@ import phone from "./store-detail/phone.svg";
 import review_write from "./store-detail/review-write.svg";
 import shop from "./store-detail/shop.svg";
 import more_button from "./store-detail/more-button.svg";
+import heart_button from "./store-detail/heart-button.svg";
+import call from "./store-detail/call.svg";
 
 //store-review
 import image_upload from "./store-review/image-upload.svg";
@@ -161,6 +163,8 @@ export {
   phone,
   review_write,
   shop,
+  heart_button,
+  call,
   more_button,
   image_upload,
   preview_delete,
