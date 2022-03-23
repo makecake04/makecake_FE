@@ -5,17 +5,13 @@ import { ReactComponent as HomeSvg } from "../../assets/images/nav-bar/home.svg"
 import { cake, design, home, mypage } from "../../assets/images/image";
 
 export const NavWrap = styled.nav`
-  overflow: hidden;
-  position: absolute;
-  z-index: 1;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
   height: 60px;
-  border-top: 1px #fafafa;
+  position: absolute;
+  bottom: 0;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  background-color: #fafafa;
+  background-color: #f3f3f3;
 
   svg {
     padding: 3px 3px;
@@ -46,7 +42,7 @@ export const SubWrap = styled.div`
   text-align: center;
   float: left;
   width: 25%;
-  margin-top: 5px;
+  padding-top: 5px;
   background-color: #fafafa;
   height: 60px;
   line-height: 60px;

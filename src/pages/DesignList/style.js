@@ -4,8 +4,11 @@ import styled from "styled-components";
 import { paint, write, plus_button, x_button } from "../../assets/images/image";
 
 export const DrawWrap = styled.div`
-  overflow-y: auto;
-  height: 800px;
+  text-align: center;
+  overflow: scroll;
+  height: calc(100% - 6rem);
+  box-sizing: border-box;
+  width: 100%;
   h3 {
     margin: 40px 0px 20px 0px;
     text-align: center;

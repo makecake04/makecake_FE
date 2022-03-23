@@ -4,6 +4,10 @@ import styled from "styled-components";
 import { noti_icon, search_icon } from "../../assets/images/image";
 
 export const SDetailWrap = styled.div`
+  overflow: scroll;
+  height: calc(100% - 6rem);
+  box-sizing: border-box;
+  width: 100%;
 `;
 
 export const HeaderWrap = styled.div`
@@ -34,8 +38,7 @@ export const Select = styled.select`
   color: #777777;
 `;
 
-export const Option = styled.option`
-`;
+export const Option = styled.option``;
 
 export const Input = styled.input`
   height: 35px;
@@ -50,19 +53,22 @@ export const Input = styled.input`
 export const SearchIcon = styled.img.attrs({
   src: `${search_icon}`,
   alt: "search_icon",
-})`margin-left: 50px;
+})`
+  margin-left: 50px;
 `;
 
 export const Bell = styled.img.attrs({
   src: `${noti_icon}`,
   alt: "noti_icon",
-})`margin-top: 0.85rem;`;
+})`
+  margin-top: 0.85rem;
+`;
 
 export const EmptySpace = styled.div`
   width: 390px;
   height: 8vh;
   background-color: white;
-  margin: auto; 
+  margin: auto;
 `;
 
 export const Container = styled.div`
@@ -89,7 +95,7 @@ export const PlaceList1 = styled.div`
   margin-left: 15px;
   margin-top: 15px;
   border-radius: 10px;
-`
+`;
 
 export const PlaceList2 = styled.div`
   display: flex;
@@ -119,7 +125,7 @@ export const Place2 = styled.div`
   margin-right: 10px;
   border-radius: 50px;
   background: rgba(156, 156, 220, 0.1);
-  color: #9C9CDC;
+  color: #9c9cdc;
   font-size: 15px;
   padding: 10px;
 `;
@@ -131,11 +137,8 @@ export const Place3 = styled.div`
   align-items: center;
   margin-right: 10px;
   border-radius: 50px;
-  background: #EDEDED;
+  background: #ededed;
   color: #777777;
   font-size: 15px;
   padding: 10px;
 `;
-
-
-
