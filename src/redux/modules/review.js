@@ -47,12 +47,17 @@ const addReviewDB = (storeId, content, img) => {
 
 const editReviewDB = (reviewId, content, img, imgurl) => {
   const token = localStorage.getItem("token");
-  console.log(reviewId, content, img, imgurl);
+  // console.log(reviewId, content, img, imgurl);
   return function (dispatch, getState) {
     const form = new FormData();
     form.append("content", content);
-    form.append("imgFiles", img);
-    form.append("imgUrls", imgurl);
+    if (img) {
+      form.append("imgFiles", img);
+      form.append("imgUrls", "");
+    } else if (!img) {
+      // form.append("imgFiles", "");
+      form.append("imgUrls", imgurl);
+    }
     axios
       .put(`http://3.38.153.67/reviews/${reviewId}`, form, {
         headers: {

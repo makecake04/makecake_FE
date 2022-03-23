@@ -295,7 +295,7 @@ const StoreDetail = (props) => {
             <ContentFour toggleState={toggleState}>
               <ReviewSvg
                 onClick={() => {
-                  navigate(`/review/write`);
+                  navigate("/review/write");
                   dispatch(storeAction.getStoreDetailDB(store_id));
                 }}
               />
@@ -324,7 +324,11 @@ const StoreDetail = (props) => {
 
                       {v.writerNickname === user_nickname.nickname && (
                         <ButtonWrap>
-                          <EditButton>수정하기</EditButton>
+                          <EditButton
+                            onClick={() => navigate(`/review/${v.reviewId}`)}
+                          >
+                            수정하기
+                          </EditButton>
                           <DeleteButton
                             onClick={() => {
                               dispatch(reviewAction.deleteReviewDB(v.reviewId));
