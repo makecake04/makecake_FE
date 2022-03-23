@@ -8,8 +8,24 @@ import { actionCreators as designAction } from "../../../redux/modules/design";
 import { useInView } from "react-intersection-observer";
 import Modal from "react-modal";
 
-//import css
-import { MyDrawWrap, ModalWrap, DeleteIcon, WriteIcon } from "./style";
+//css
+import {
+  Wrapper,
+  Header,
+  Tab,
+  Post,
+  NotPost,
+  Body,
+  DesignList,
+  PostList,
+  ImageList,
+  ModalWrap,
+  DeleteIcon,
+  WriteIcon,
+} from "./style";
+
+//image
+import { black_back_button } from "../../../assets/images/image";
 
 const MyDraw = (props) => {
   const navigate = useNavigate();
@@ -54,69 +70,60 @@ const MyDraw = (props) => {
   }, []);
 
   return (
-    <MyDrawWrap>
-      <div className="title">
-        <FontAwesomeIcon
-          icon={faAngleLeft}
-          className="left"
-          onClick={() => {
-            navigate(-1);
-          }}
+    <Wrapper>
+      <Header>
+        <img
+          src={black_back_button}
+          alt="back-button"
+          onClick={() => navigate(-1)}
         />
         <h3>내가 그린 도안</h3>
-      </div>
+      </Header>
       <hr />
-      <div className="container">
-        <div className="bloc-tabs">
-          <button
-            className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
-            onClick={() => toggleTab(1)}
-          >
-            작성되지 않은 도안
-          </button>
-          <button
-            className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
-            onClick={() => toggleTab(2)}
-          >
-            작성된 도안
-          </button>
-        </div>
-        <div className="content-tabs">
-          <div className={toggleState === 1 ? "active-content" : "content"}>
-            {design_list &&
-              design_list.map((a, i) => {
-                return (
-                  <div key={i} ref={ref} className="img_wrap">
-                    <img
-                      src={a.img}
-                      alt="nopost design"
-                      onClick={() => {
-                        setModalIsOpen(true);
-                        dispatch(designAction.getDesignImageDB(a.designId));
-                      }}
-                    />
-                  </div>
-                );
-              })}
-          </div>
-          <div className={toggleState === 2 ? "active-content" : "content"}>
-            {post_list &&
-              post_list.map((a, i) => {
-                return (
-                  <div key={i} ref={ref} className="img_wrap">
-                    <img
-                      src={a.img}
-                      alt="post design"
-                      onClick={() => {
-                        navigate(`/post/${a.postId}`);
-                      }}
-                    />
-                  </div>
-                );
-              })}
-          </div>
-        </div>
-      </div>
+
+      <Tab>
+        <NotPost toggleState={toggleState} onClick={() => toggleTab(1)}>
+          작성되지 않은 도안
+        </NotPost>
+        <Post toggleState={toggleState} onClick={() => toggleTab(2)}>
+          작성된 도안
+        </Post>
+      </Tab>
+      <Body>
+        <DesignList toggleState={toggleState}>
+          {design_list &&
+            design_list.map((a, i) => {
+              return (
+                <ImageList key={i} ref={ref}>
+                  <img
+                    src={a.img}
+                    alt="nopost design"
+                    onClick={() => {
+                      setModalIsOpen(true);
+                      dispatch(designAction.getDesignImageDB(a.designId));
+                    }}
+                  />
+                </ImageList>
+              );
+            })}
+        </DesignList>
+        <PostList toggleState={toggleState}>
+          {post_list &&
+            post_list.map((a, i) => {
+              return (
+                <ImageList key={i} ref={ref} className="img_wrap">
+                  <img
+                    src={a.img}
+                    alt="post design"
+                    onClick={() => {
+                      navigate(`/post/${a.postId}`);
+                    }}
+                  />
+                </ImageList>
+              );
+            })}
+        </PostList>
+      </Body>
 
       <Modal
         isOpen={modalIsOpen}
@@ -151,50 +158,21 @@ const MyDraw = (props) => {
           <ModalWrap>
             <img
               alt="modal-img"
-              className="modal-img"
               src={design_detail.img}
               onClick={() => setModalIsOpen(false)}
             />
             <WriteIcon
-              className="write-icon"
               onClick={() => navigate(`/post/write/${design_detail.designId}`)}
             />
             <DeleteIcon
-              className="delete-icon"
               onClick={() =>
                 dispatch(designAction.deleteDesignDB(design_detail.designId))
               }
             />
           </ModalWrap>
         )}
-        {/* {toggleState === 2 && (
-          <ModalWrap>
-            <img
-              alt="modal-img"
-              className="modal-img"
-              // src={post_detail.img}
-              onClick={() => setModalIsOpen(false)}
-            />
-            <WriteIcon
-              className="write-icon"
-              onClick={() => navigate(`/post/edit/${post_detail.designId}`)}
-            />
-          </ModalWrap>
-        )} */}
-        {/* <ModalWrap>
-          <img
-            alt="modal-img"
-            className="modal-img"
-            src={design_detail.img}
-            onClick={() => setModalIsOpen(false)}
-          />
-          <WriteIcon
-            className="write-icon"
-            onClick={() => navigate(`/post/write/${design_detail.designId}`)}
-          />
-        </ModalWrap> */}
       </Modal>
-    </MyDrawWrap>
+    </Wrapper>
   );
 };
 
