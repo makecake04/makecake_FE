@@ -10,7 +10,38 @@ import { actionCreators as postAction } from "../../redux/modules/post";
 import { useDispatch, useSelector } from "react-redux";
 
 //css
-import { WriteWrap } from "./style";
+import {
+  Wrapper,
+  Header,
+  Title,
+  Content,
+  DesignImage,
+  Options,
+  Size,
+  Shape,
+  Purpose,
+  Made,
+  MiniSize,
+  OneSize,
+  TwoSize,
+  ThreeSize,
+  OtherSize,
+  Square,
+  Heart,
+  Circle,
+  Birthday,
+  Parents,
+  Friends,
+  Lovers,
+  Celebration,
+  NewPostMadeTrue,
+  NewPostMadeFalse,
+  EditPostMadeTrue,
+  EditPostMadeFalse,
+} from "./style";
+
+//image
+import { black_back_button } from "../../assets/images/image";
 
 const PostWrite = () => {
   const navigate = useNavigate();
@@ -26,7 +57,7 @@ const PostWrite = () => {
   const [size, setSize] = useState(post_id ? post.size : "");
   const [shape, setShape] = useState(post_id ? post.shape : "");
   const [purpose, setPurpose] = useState(post_id ? post.purpose : "");
-  const [made, setMade] = useState(post_id ? post.made : false);
+  const [made, setMade] = useState(post_id ? post.made : "");
   console.log(post_id);
   console.log(title, content, size, shape, purpose, made, design_id, post_id);
   const addTitle = (e) => {
@@ -63,356 +94,170 @@ const PostWrite = () => {
   }, []);
 
   return (
-    <WriteWrap>
-      <div className="header">
-        <FontAwesomeIcon
-          icon={faAngleLeft}
-          className="back-icon"
-          onClick={() => {
-            navigate(-1);
-          }}
+    <Wrapper>
+      <Header>
+        <img
+          src={black_back_button}
+          alt="back-button"
+          onClick={() => navigate(-1)}
         />
         <h3>{post_id ? "게시글 수정하기" : "게시글 작성하기"}</h3>
-
         {post_id ? (
-          <p onClick={() => editPost()}>수정</p>
+          <span onClick={() => editPost()}>수정</span>
         ) : (
-          <p onClick={() => addPost()}>등록</p>
+          <span onClick={() => addPost()}>등록</span>
         )}
-      </div>
+      </Header>
 
-      <hr />
-
-      <div className="title">
+      <Title>
         {post_id ? (
-          <input
-            className="title-input"
-            type="text"
-            defaultValue={post.title}
-            onChange={addTitle}
-          />
+          <input type="text" defaultValue={post.title} onChange={addTitle} />
         ) : (
-          <input
-            className="title-input"
-            type="text"
-            placeholder="제목"
-            onChange={addTitle}
-          />
+          <input type="text" placeholder="제목" onChange={addTitle} />
         )}
-      </div>
+      </Title>
 
-      <div className="comment">
+      <Content>
         {post_id ? (
-          <textarea
-            className="comment-box"
-            defaultValue={post.content}
-            onChange={addContent}
-          />
+          <textarea defaultValue={post.content} onChange={addContent} />
         ) : (
-          <textarea
-            className="comment-box"
-            placeholder="내용을 입력하세요"
-            onChange={addContent}
-          />
+          <textarea placeholder="내용을 입력하세요" onChange={addContent} />
         )}
-      </div>
+      </Content>
 
-      <div className="design-img">
+      <DesignImage>
         <img src={design_img} alt="design-img" />
-      </div>
+      </DesignImage>
 
-      <div className="options">
-        <div className="size">
+      <Options>
+        <Size>
           <h3>사이즈</h3>
-          {(size || post.size) !== "도시락" && (
-            <button onClick={() => setSize("도시락")}>도시락</button>
-          )}
+          <MiniSize
+            size={size}
+            postSize={post.size}
+            onClick={() => setSize("도시락")}
+          >
+            도시락
+          </MiniSize>
+          <OneSize
+            size={size}
+            postSize={post.size}
+            onClick={() => setSize("1호")}
+          >
+            1호
+          </OneSize>
+          <TwoSize
+            size={size}
+            postSize={post.size}
+            onClick={() => setSize("2호")}
+          >
+            2호
+          </TwoSize>
+          <ThreeSize
+            size={size}
+            postSize={post.size}
+            onClick={() => setSize("3호")}
+          >
+            3호
+          </ThreeSize>
+          <OtherSize
+            size={size}
+            postSize={post.size}
+            onClick={() => setSize("기타")}
+          >
+            도시락
+          </OtherSize>
+        </Size>
 
-          {(size || post.size) === "도시락" && (
-            <button
-              onClick={() => setSize("도시락")}
-              style={{
-                backgroundColor: "rgba(255, 103, 158, 0.1)",
-                color: "#ff679e",
-                fontWeight: "700",
-              }}
-            >
-              도시락
-            </button>
-          )}
-          {(size || post.size) !== "1호" && (
-            <button onClick={() => setSize("1호")}>1호</button>
-          )}
-
-          {(size || post.size) === "1호" && (
-            <button
-              onClick={() => setSize("1호")}
-              style={{
-                backgroundColor: "rgba(255, 103, 158, 0.1)",
-                color: "#ff679e",
-                fontWeight: "700",
-              }}
-            >
-              1호
-            </button>
-          )}
-          {(size || post.size) !== "2호" && (
-            <button onClick={() => setSize("2호")}>2호</button>
-          )}
-
-          {(size || post.size) === "2호" && (
-            <button
-              onClick={() => setSize("2호")}
-              style={{
-                backgroundColor: "rgba(255, 103, 158, 0.1)",
-                color: "#ff679e",
-                fontWeight: "700",
-              }}
-            >
-              2호
-            </button>
-          )}
-          {(size || post.size) !== "3호" && (
-            <button onClick={() => setSize("3호")}>3호</button>
-          )}
-
-          {(size || post.size) === "3호" && (
-            <button
-              onClick={() => setSize("3호")}
-              style={{
-                backgroundColor: "rgba(255, 103, 158, 0.1)",
-                color: "#ff679e",
-                fontWeight: "700",
-              }}
-            >
-              3호
-            </button>
-          )}
-          {(size || post.size) !== "기타" && (
-            <button onClick={() => setSize("기타")}>기타</button>
-          )}
-
-          {(size || post.size) === "기타" && (
-            <button
-              onClick={() => setSize("기타")}
-              style={{
-                backgroundColor: "rgba(255, 103, 158, 0.1)",
-                color: "#ff679e",
-                fontWeight: "700",
-              }}
-            >
-              기타
-            </button>
-          )}
-        </div>
-
-        <div className="shape">
+        <Shape>
           <h3>모양</h3>
-          {(shape || post.shape) !== "네모" && (
-            <button onClick={() => setShape("네모")}>네모</button>
-          )}
+          <Square
+            shape={shape}
+            postShape={post.shape}
+            onClick={() => setShape("네모")}
+          >
+            네모
+          </Square>
+          <Heart
+            shape={shape}
+            postShape={post.shape}
+            onClick={() => setShape("하트")}
+          >
+            하트
+          </Heart>
+          <Circle
+            shape={shape}
+            postShape={post.shape}
+            onClick={() => setShape("원형")}
+          >
+            원형
+          </Circle>
+        </Shape>
 
-          {(shape || post.shape) === "네모" && (
-            <button
-              onClick={() => setShape("네모")}
-              style={{
-                backgroundColor: "rgba(255, 103, 158, 0.1)",
-                color: "#ff679e",
-                fontWeight: "700",
-              }}
-            >
-              네모
-            </button>
-          )}
-          {(shape || post.shape) !== "하트" && (
-            <button onClick={() => setShape("하트")}>하트</button>
-          )}
-
-          {(shape || post.shape) === "하트" && (
-            <button
-              onClick={() => setShape("하트")}
-              style={{
-                backgroundColor: "rgba(255, 103, 158, 0.1)",
-                color: "#ff679e",
-                fontWeight: "700",
-              }}
-            >
-              하트
-            </button>
-          )}
-          {(shape || post.shape) !== "원형" && (
-            <button onClick={() => setShape("원형")}>원형</button>
-          )}
-
-          {(shape || post.shape) === "원형" && (
-            <button
-              onClick={() => setShape("원형")}
-              style={{
-                backgroundColor: "rgba(255, 103, 158, 0.1)",
-                color: "#ff679e",
-                fontWeight: "700",
-              }}
-            >
-              원형
-            </button>
-          )}
-        </div>
-        <div className="purpose">
+        <Purpose>
           <h3>용도</h3>
-          {(purpose || post.purpose) !== "생일" && (
-            <button onClick={() => setPurpose("생일")}>생일</button>
-          )}
 
-          {(purpose || post.purpose) === "생일" && (
-            <button
-              onClick={() => setShape("생일")}
-              style={{
-                backgroundColor: "rgba(255, 103, 158, 0.1)",
-                color: "#ff679e",
-                fontWeight: "700",
-              }}
-            >
-              생일
-            </button>
-          )}
-          {(purpose || post.purpose) !== "부모님" && (
-            <button onClick={() => setPurpose("부모님")}>부모님</button>
-          )}
-
-          {(purpose || post.purpose) === "부모님" && (
-            <button
-              onClick={() => setShape("부모님")}
-              style={{
-                backgroundColor: "rgba(255, 103, 158, 0.1)",
-                color: "#ff679e",
-                fontWeight: "700",
-              }}
-            >
-              부모님
-            </button>
-          )}
-          {(purpose || post.purpose) !== "친구" && (
-            <button onClick={() => setPurpose("친구")}>친구</button>
-          )}
-
-          {(purpose || post.purpose) === "친구" && (
-            <button
-              onClick={() => setShape("친구")}
-              style={{
-                backgroundColor: "rgba(255, 103, 158, 0.1)",
-                color: "#ff679e",
-                fontWeight: "700",
-              }}
-            >
-              친구
-            </button>
-          )}
-          {(purpose || post.purpose) !== "연인" && (
-            <button onClick={() => setPurpose("연인")}>연인</button>
-          )}
-
-          {(purpose || post.purpose) === "연인" && (
-            <button
-              onClick={() => setShape("연인")}
-              style={{
-                backgroundColor: "rgba(255, 103, 158, 0.1)",
-                color: "#ff679e",
-                fontWeight: "700",
-              }}
-            >
-              연인
-            </button>
-          )}
-          {(purpose || post.purpose) !== "축하" && (
-            <button onClick={() => setPurpose("축하")}>축하</button>
-          )}
-
-          {(purpose || post.purpose) === "축하" && (
-            <button
-              onClick={() => setShape("축하")}
-              style={{
-                backgroundColor: "rgba(255, 103, 158, 0.1)",
-                color: "#ff679e",
-                fontWeight: "700",
-              }}
-            >
-              축하
-            </button>
-          )}
-        </div>
-        <div className="made">
-          <h3>제작 여부</h3>
+          <Birthday
+            purpose={purpose}
+            postPurpose={post.purpose}
+            onClick={() => setPurpose("생일")}
+          >
+            생일
+          </Birthday>
+          <Parents
+            purpose={purpose}
+            postPurpose={post.purpose}
+            onClick={() => setPurpose("부모님")}
+          >
+            부모님
+          </Parents>
+          <Friends
+            purpose={purpose}
+            postPurpose={post.purpose}
+            onClick={() => setPurpose("친구")}
+          >
+            친구
+          </Friends>
+          <Lovers
+            purpose={purpose}
+            postPurpose={post.purpose}
+            onClick={() => setPurpose("연인")}
+          >
+            연인
+          </Lovers>
+          <Celebration
+            purpose={purpose}
+            postPurpose={post.purpose}
+            onClick={() => setPurpose("축하")}
+          >
+            축하
+          </Celebration>
+        </Purpose>
+        <Made>
+          <h3>주문 여부</h3>
           {!post_id && (
             <>
-              {made === false && (
-                <>
-                  <button onClick={() => setMade(true)}>예</button>
-                  <button
-                    onClick={() => setMade(false)}
-                    style={{
-                      backgroundColor: "rgba(255, 103, 158, 0.1)",
-                      color: "#ff679e",
-                      fontWeight: "700",
-                    }}
-                  >
-                    아니요
-                  </button>
-                </>
-              )}
-              {made === true && (
-                <>
-                  <button
-                    onClick={() => setMade(true)}
-                    style={{
-                      backgroundColor: "rgba(255, 103, 158, 0.1)",
-                      color: "#ff679e",
-                      fontWeight: "700",
-                    }}
-                  >
-                    예
-                  </button>
-                  <button onClick={() => setMade(false)}>아니요</button>
-                </>
-              )}
+              <NewPostMadeTrue made={made} onClick={() => setMade(true)}>
+                예
+              </NewPostMadeTrue>
+              <NewPostMadeFalse made={made} onClick={() => setMade(false)}>
+                아니요
+              </NewPostMadeFalse>
             </>
           )}
           {post_id && (
             <>
-              {(made || post.made) === false && (
-                <>
-                  <button onClick={() => setMade(true)}>예</button>
-                  <button
-                    onClick={() => setMade(false)}
-                    style={{
-                      backgroundColor: "rgba(255, 103, 158, 0.1)",
-                      color: "#ff679e",
-                      fontWeight: "700",
-                    }}
-                  >
-                    아니요
-                  </button>
-                </>
-              )}
-              {(made || post.made) === true && (
-                <>
-                  <button
-                    onClick={() => setMade(true)}
-                    style={{
-                      backgroundColor: "rgba(255, 103, 158, 0.1)",
-                      color: "#ff679e",
-                      fontWeight: "700",
-                    }}
-                  >
-                    예
-                  </button>
-                  <button onClick={() => setMade(false)}>아니요</button>
-                </>
-              )}
+              <EditPostMadeTrue made={made} onClick={() => setMade(true)}>
+                예
+              </EditPostMadeTrue>
+              <EditPostMadeFalse made={made} onClick={() => setMade(false)}>
+                아니요
+              </EditPostMadeFalse>
             </>
           )}
-        </div>
-      </div>
-    </WriteWrap>
+        </Made>
+      </Options>
+    </Wrapper>
   );
 };
 
