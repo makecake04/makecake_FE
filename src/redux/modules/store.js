@@ -104,7 +104,7 @@ const getMyReviewDB = (page_num) => {
         },
       })
       .then((res) => {
-        dispatch(myReview(res.data));
+        dispatch(myReview(res.data.reverse()));
       })
       .catch((err) => {
         console.log(err);

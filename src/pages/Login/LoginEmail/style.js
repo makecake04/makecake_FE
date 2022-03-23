@@ -12,10 +12,9 @@ export const Container = styled.div`
 export const BlackBackButton = styled.img.attrs({
   src: `${black_back_button}`,
   alt: "img",
-})`width: 30px;
-   height: 30px;
+})`
    margin-top: 20px;
-   margin-left: 18px;
+   margin-left: 30px;
    `;
 
 export const H = styled.h2`
