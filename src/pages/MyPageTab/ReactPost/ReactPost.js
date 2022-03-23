@@ -8,9 +8,37 @@ import { useInView } from "react-intersection-observer";
 import { useState } from "react";
 
 //import css
-import { ReactWriteWrap, Container, HeaderWrap, BlackBackButton, HeaderText, Line, Wrap, LikeAndCommentWrap, LikeButton, 
-         CommentButton, ContentTabs, PostWrapOne, PostWrap, ReviewWrap, TitleWrap, Profile, Info, NickName, HeartIcon, ContentWrap, ContentText, ImgWrap, Img, HrWrap,
-         PostWrapTwo, CommentWrap, InsertDt, NicknameAndDelete, Delete   } from "./style";
+import {
+  ReactWriteWrap,
+  Container,
+  HeaderWrap,
+  BlackBackButton,
+  HeaderText,
+  Line,
+  Wrap,
+  LikeAndCommentWrap,
+  LikeButton,
+  CommentButton,
+  ContentTabs,
+  PostWrapOne,
+  PostWrap,
+  ReviewWrap,
+  TitleWrap,
+  Profile,
+  Info,
+  NickName,
+  HeartIcon,
+  ContentWrap,
+  ContentText,
+  ImgWrap,
+  Img,
+  HrWrap,
+  PostWrapTwo,
+  CommentWrap,
+  InsertDt,
+  NicknameAndDelete,
+  Delete,
+} from "./style";
 
 const ReactWrite = (props) => {
   const navigate = useNavigate();
@@ -23,7 +51,7 @@ const ReactWrite = (props) => {
   const dispatch = useDispatch();
 
   const commentList = useSelector((state) => state.comment.my_comment_list);
-
+  console.log(commentList);
   const deleteComment = (commentId) => {
     dispatch(commentAction.deleteMyCommentDB(commentId));
   };
@@ -51,23 +79,27 @@ const ReactWrite = (props) => {
     <ReactWriteWrap>
       <Container>
         <HeaderWrap>
-          <BlackBackButton  onClick={() => { navigate(`/mypage`); }}/>
+          <BlackBackButton
+            onClick={() => {
+              navigate(`/mypage`);
+            }}
+          />
           <HeaderText>내가 반응한 게시글</HeaderText>
         </HeaderWrap>
-        <Line/>
+        <Line />
         <Wrap>
           <LikeAndCommentWrap>
-            <LikeButton
-              onClick={() => toggleTab(1)} toggleState={toggleState}>
+            <LikeButton onClick={() => toggleTab(1)} toggleState={toggleState}>
               좋아요 한 게시글
             </LikeButton>
             <CommentButton
-              onClick={() => toggleTab(2)} toggleState={toggleState}>
+              onClick={() => toggleTab(2)}
+              toggleState={toggleState}
+            >
               내가 남긴 댓글
             </CommentButton>
           </LikeAndCommentWrap>
           <ContentTabs>
-
             <PostWrapOne toggleState={toggleState}>
               {likedesign &&
                 likedesign.map((v, idx) => {
@@ -80,15 +112,15 @@ const ReactWrite = (props) => {
                             <NickName>{v.nickname}</NickName>
                           </Info>
                         </TitleWrap>
-                        <HeartIcon/>
+                        <HeartIcon />
                       </ReviewWrap>
                       <ContentWrap>
                         <ContentText>{v.content}</ContentText>
                       </ContentWrap>
                       <ImgWrap>
-                        <Img src={v.img} alt=""/>
+                        <Img src={v.img} alt="" />
                       </ImgWrap>
-                      <HrWrap/>
+                      <HrWrap />
                     </PostWrap>
                   );
                 })}
@@ -110,7 +142,7 @@ const ReactWrite = (props) => {
                         </Delete>
                       </NicknameAndDelete>
 
-                      <HrWrap/>
+                      <HrWrap />
                     </CommentWrap>
                   );
                 })}

@@ -46,7 +46,7 @@ const NewReview = (props) => {
                     <p>{v.content}</p>
                     <InfoWrap>
                       <Name>{v.nickname}</Name>
-                      <CreatedDate>{v.createdDate}</CreatedDate>
+                      <CreatedDate>{v.createdDate?.split(" ")[0]}</CreatedDate>
                     </InfoWrap>
                   </Reviews>
                 </ReviewsWrap>

@@ -51,10 +51,6 @@ const usernameCheckDB = (username) => {
         console.log(res.data);
         if (!res.data.isTrue) {
           dispatch(setUsername(username, res.data.isTrue));
-          // navigate('/password')
-          history.push("/password");
-          // window.location.href = '/password'
-          // window.alert("사용 가능한 아이디입니다!");
         } else {
           window.alert("이미 사용 중인 아이디입니다!");
           window.location.replace("/signup/email");

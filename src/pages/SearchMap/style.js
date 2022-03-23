@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { white_back_button, search_icon } from "../../assets/images/image";
 
 export const Container = styled.div`
-  overflow-y: auto;
   height: 844px;
 `;
 
@@ -21,8 +20,9 @@ export const HeaderWrap = styled.div`
 export const WhiteBackButton = styled.img.attrs({
   src: `${white_back_button}`,
   alt: "BackButton",
-})`margin-right: 10px;
-   cursor: pointer;
+})`
+  margin-right: 10px;
+  cursor: pointer;
 `;
 
 export const SearchWrap = styled.div`
@@ -44,8 +44,7 @@ export const Select = styled.select`
   cursor: pointer;
 `;
 
-export const Option = styled.option`
-`;
+export const Option = styled.option``;
 
 export const Input = styled.input`
   height: 35px;
@@ -60,15 +59,16 @@ export const Input = styled.input`
 export const SearchIcon = styled.img.attrs({
   src: `${search_icon}`,
   alt: "SearchIcon",
-})`margin-left: 30px;
-   cursor: pointer;
+})`
+  margin-left: 30px;
+  cursor: pointer;
 `;
 
 export const StoreInfoWrap = styled.div`
   display: flex;
   height: 100px;
   margin-top: 10px;
-  margin-bottom: 40px; 
+  margin-bottom: 40px;
 `;
 
 export const ImgWrap = styled.div`
@@ -77,15 +77,13 @@ export const ImgWrap = styled.div`
 `;
 
 export const Img = styled.img`
-  width: 145px; 
-  height: 89px; 
+  width: 145px;
+  height: 89px;
   background: #c4c4c4;
   border-radius: 10px;
 `;
 
-export const StoreInfo = styled.div`
-
-`;
+export const StoreInfo = styled.div``;
 
 export const StoreName = styled.h3`
   word-break: break-all;
