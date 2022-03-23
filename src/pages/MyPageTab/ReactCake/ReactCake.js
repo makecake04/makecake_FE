@@ -1,15 +1,11 @@
 import React from "react";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import { actionCreators as cakeAction } from "../../../redux/modules/cake";
 
 //import css
-import { ReactCakeWrap, ImageWrap } from "./style";
+import { ReactCakeWrap, Container, BlackBackButton, HeaderText, HeaderWrap, Line, ImageWrap, PostWrap, ImgWrap, Img, StoreName } from "./style";
 
 const ReactCake = (props) => {
   const navigate = useNavigate();
@@ -37,32 +33,26 @@ const ReactCake = (props) => {
 
   return (
     <ReactCakeWrap>
-      <div>
-        <div className="title">
-          <FontAwesomeIcon
-            icon={faAngleLeft}
-            className="left"
-            onClick={() => {
-              navigate(`/mypage`);
-            }}
-          />
-          <h3>내가 반응한 케이크</h3>
-        </div>
-        <hr />
+      <Container>
+        <HeaderWrap>
+          <BlackBackButton onClick={() => { navigate(`/mypage`); }}/>
+          <HeaderText>내가 반응한 케이크</HeaderText>
+        </HeaderWrap>
+        <Line/>
         <ImageWrap>
           {likeCake &&
             likeCake.map((v, idx) => {
               return (
-                <div key={idx}>
-                  <div className="img_wrap">
-                    <img src={v.img} alt="img" />
-                  </div>
-                  <p className="store">{v.storeName}</p>
-                </div>
+                <PostWrap key={idx}>
+                  <ImgWrap>
+                    <Img src={v.img} alt="img" />
+                  </ImgWrap>
+                  <StoreName>{v.storeName}</StoreName>
+                </PostWrap>
               );
             })}
         </ImageWrap>
-      </div>
+      </Container>
     </ReactCakeWrap>
   );
 };
