@@ -10,8 +10,26 @@ import { actionCreators as storeAction } from "../../../redux/modules/store";
 import { actionCreators as reviewAction } from "../../../redux/modules/review";
 import { useDispatch, useSelector } from "react-redux";
 
-//import css
-import { ReactStoreWrap } from "./style";
+//css
+import {
+  Wrapper,
+  Header,
+  Tab,
+  LikeStore,
+  MyReview,
+  Body,
+  StoreList,
+  ReviewList,
+  OneStore,
+  StoreAddress,
+  OneReview,
+  ReviewHeader,
+  ReviewContent,
+  ButtonWrapper,
+} from "./style";
+
+//image
+import { black_back_button, location } from "../../../assets/images/image";
 
 const ReactStore = (props) => {
   const navigate = useNavigate();
@@ -45,98 +63,74 @@ const ReactStore = (props) => {
   }, [inView]);
 
   return (
-    <ReactStoreWrap>
-      <div>
-        <div className="title">
-          <FontAwesomeIcon
-            icon={faAngleLeft}
-            className="left"
-            onClick={() => {
-              navigate(`/mypage`);
-            }}
-          />
-          <h3>내가 반응한 매장</h3>
-        </div>
-        <hr />
-        <div className="container">
-          <div className="bloc-tabs">
-            <button
-              className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
-              onClick={() => {
-                toggleTab(1);
-              }}
-            >
-              좋아요 한 매장
-            </button>
-            <button
-              className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
-              onClick={() => {
-                toggleTab(2);
-              }}
-            >
-              내가 남긴 후기
-            </button>
-          </div>
-          <div className="content-tabs">
-            <div className={toggleState === 1 ? "active-content" : "content"}>
-              {likeStore &&
-                likeStore.map((v, idx) => {
-                  return (
-                    <div key={idx}>
-                      <div className="img_wrap">
-                        <img src={v.mainImg} alt="img" />
-                        <FontAwesomeIcon icon={faHeart} className="heart" />
-                      </div>
-                      <p className="store">{v.name}</p>
-                      <div className="address_wrap">
-                        <FontAwesomeIcon
-                          icon={faLocationDot}
-                          className="location"
-                        />
-                        <p className="address">{v.addressSimple}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-            </div>
-            <div className={toggleState === 2 ? "active-contents" : "content"}>
-              {myReview &&
-                myReview.map((v, idx) => {
-                  return (
-                    <div className="comment_wrap" key={idx}>
-                      <div className="title_wrap2">
-                        <p className="nickname">{v.name}</p>
-                        <p className="insert_dt">{v.createdDate}</p>
-                      </div>
-                      <p className="p_wrap">{v.content}</p>
-                      <div className="review_img" src={v.reviewImages} />
-                      <div className="button_wrap">
-                        <button
-                          className="edit_btn"
-                          onClick={() => {
-                            navigate(`/review/${v.reviewId}`);
-                          }}
-                        >
-                          수정하기
-                        </button>
-                        <button
-                          className="delete_btn"
-                          onClick={() => {
-                            dispatch(reviewAction.deleteReviewDB(v.reviewId));
-                          }}
-                        >
-                          삭제하기
-                        </button>
-                      </div>
-                      <hr className="hr_wrap" />
-                    </div>
-                  );
-                })}
-            </div>
-          </div>
-        </div>
-      </div>
-    </ReactStoreWrap>
+    <Wrapper>
+      <Header>
+        <img
+          src={black_back_button}
+          alt="back-button"
+          onClick={() => navigate(-1)}
+        />
+        <h3>내가 반응한 매장</h3>
+      </Header>
+      <hr />
+      <Tab>
+        <LikeStore toggleState={toggleState} onClick={() => toggleTab(1)}>
+          좋아요한 매장
+        </LikeStore>
+        <MyReview toggleState={toggleState} onClick={() => toggleTab(2)}>
+          내가 남긴 후기
+        </MyReview>
+      </Tab>
+      <Body>
+        <StoreList toggleState={toggleState}>
+          {likeStore &&
+            likeStore.map((v, idx) => {
+              return (
+                <OneStore key={idx}>
+                  <img src={v.mainImg} alt="store-img" />
+                  <p>{v.name}</p>
+                  <StoreAddress>
+                    <img src={location} alt="" />
+                    <p>{v.addressSimple}</p>
+                  </StoreAddress>
+                </OneStore>
+              );
+            })}
+        </StoreList>
+        <ReviewList toggleState={toggleState}>
+          {myReview &&
+            myReview.map((v, idx) => {
+              return (
+                <OneReview key={idx}>
+                  <ReviewHeader>
+                    <span>{v.name}</span>
+                    <p>{v.createdDate?.split(" ")[0]}</p>
+                  </ReviewHeader>
+                  <ReviewContent>{v.content}</ReviewContent>
+                  <img src={v.reviewImages} />
+                  <ButtonWrapper>
+                    <button
+                      onClick={() => {
+                        navigate(`/review/${v.reviewId}`);
+                      }}
+                    >
+                      수정하기
+                    </button>
+                    <button
+                      onClick={() => {
+                        dispatch(reviewAction.deleteReviewDB(v.reviewId));
+                      }}
+                    >
+                      삭제하기
+                    </button>
+                  </ButtonWrapper>
+                  <hr />
+                </OneReview>
+              );
+            })}
+        </ReviewList>
+      </Body>
+    </Wrapper>
   );
 };
 
