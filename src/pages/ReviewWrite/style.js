@@ -36,7 +36,7 @@ export const ReviewWrap = styled.div`
 export const SubWrap = styled.div``;
 
 export const Title = styled.div`
-  padding: 40px 0px 20px 30px;
+  padding: 40px 0px 20px 20px;
   display: flex;
   align-items: center;
 `;
