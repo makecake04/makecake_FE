@@ -3,7 +3,13 @@ import styled from "styled-components";
 //image
 import { profile_image, black_back_button } from "../../../assets/images/image";
 
-export const ProfileWrap = styled.div``;
+export const ProfileWrap = styled.div`
+  text-align: center;
+  overflow: scroll;
+  height: calc(100% - 6rem);
+  box-sizing: border-box;
+  width: 100%;
+`;
 
 export const SubWrap = styled.div``;
 
@@ -90,7 +96,7 @@ export const EditButton = styled.button`
   height: 30px;
   border: 1px solid #eaeaea;
   font-size: 13px;
-  margin: 0px 0px 0px 16rem;
+  margin: 0px 0px 0px 6rem;
 `;
 
 export const ButtonWrap = styled.div`
