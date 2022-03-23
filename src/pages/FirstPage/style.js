@@ -20,7 +20,7 @@ export const LoginWrap = styled.div`
   background-color: #ff8fa5;
   border-radius: 45px;
   margin: 250px auto 0 auto;
-  
+  cursor: pointer;
 `;
 
 export const LoginText = styled.p`
@@ -38,6 +38,7 @@ export const NoLoginWrap = styled.div`
   border: 2px solid #ff8fa5;
   border-radius: 45px;
   margin: 10px auto 0 auto;
+  cursor: pointer;
 `;
 
 export const NoLoginText = styled.p`
@@ -69,11 +70,13 @@ export const Span = styled.span`
   font-size: 12px;
   font-weight: bold;
   text-decoration: underline;
+  cursor: pointer;
 `;
 
 export const SocialLoginWrap = styled.div`
   display: flex;
   margin-left: 82.5px;
+  cursor: pointer;
 `;
 
 export const MainLogo = styled.img.attrs({

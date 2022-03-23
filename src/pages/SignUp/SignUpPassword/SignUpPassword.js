@@ -5,7 +5,7 @@ import { pwdCheck } from "../../../shared/SignUpRule";
 import { useSelector } from "react-redux";
 import { actionCreators as userAction } from "../../../redux/modules/user";
 
-import { Container } from "./style";
+import { Container, BlackBackButton, PwText, PwRuleText, InputAndButton, InputPw, CheckText, InputPwCheck, NextButton} from "./style";
 
 const SignUpPassword = () => {
   const username = useSelector((state) => state.user.username);
@@ -81,77 +81,34 @@ const SignUpPassword = () => {
 
   return (
     <Container>
-      <button
-        className="backButton"
-        onClick={() => {
-          navigate("/email");
-        }}
-      >
-        &lt;
-      </button>
-      <h1 className="passwordText">비밀번호를 알려주세요!</h1>
-      <p className="passwordRule">
-        * 영문자, 숫자 각각 하나 이상 포함, 10자리 이상
-      </p>
+      <BlackBackButton onClick={() => navigate('/signup/email')}/>
+      <PwText>비밀번호를 알려주세요!</PwText>
+      <PwRuleText>* 영문자, 숫자 각각 하나 이상 포함, 10자리 이상</PwRuleText>
 
-      <div>
-        <input
-          className="inputPassword"
-          placeholder="비밀번호"
-          type="password"
-          value={password}
-          onChange={is_PassWord}
-          onKeyUp={checkActive}
-        ></input>
+      <InputAndButton>
+        <InputPw placeholder="비밀번호" type="password" value={password} onChange={is_PassWord} onKeyUp={checkActive}/>
+        
         {password.length > 0 && (
           <>
-            <p
-              style={{
-                color: `${(props) =>
-                  props.className === "success" ? "green" : "red"}`,
-                marginLeft: "20px",
-                fontSize: "14px",
-              }}
-              className={`${isPassword ? "success" : "error"}`}
-            >
+            <CheckText className={`${isPassword ? "success" : "error"}`}>
               {passwordMessage}
-            </p>
+            </CheckText>
           </>
         )}
-        <input
-          className="inputPwcheck"
-          placeholder="비밀번호 확인"
-          type="password"
-          value={passwordCheck}
-          onChange={is_PasswordCheck}
-          onKeyUp={checkActive}
-        ></input>
+        <InputPwCheck placeholder="비밀번호 확인" type="password" value={passwordCheck} onChange={is_PasswordCheck} onKeyUp={checkActive}/>
+
         {passwordCheck.length > 0 && (
           <>
-            <p
-              className={`${isPasswordCheck ? "success" : "error"}`}
-              style={{
-                color: `${(props) =>
-                  props.className === "success" ? "green" : "red"}`,
-                marginLeft: "20px",
-                fontSize: "14px",
-              }}
-            >
+            <CheckText
+              className={`${isPasswordCheck ? "success" : "error"}`}>
               {passwordCheckMessage}
-            </p>
+            </CheckText>
           </>
         )}
-        <button
-          className="nextButton"
-          disabled={active}
-          onClick={() => {
-            savePassword();
-            navigate("/Nickname");
-          }}
-        >
+        <NextButton disabled={active} onClick={() => { savePassword(); navigate("/signup/nickname"); }}>
           다음
-        </button>
-      </div>
+        </NextButton>
+      </InputAndButton>
     </Container>
   );
 };
