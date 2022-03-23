@@ -83,14 +83,25 @@ const ReviewWrite = (props) => {
   };
 
   const editReview = () => {
-    dispatch(
-      reviewAction.editReviewDB(
-        review_id,
-        contents,
-        fileInput.current.files[0],
-        imgUrl
-      )
-    );
+    if (!contents) {
+      dispatch(
+        reviewAction.editReviewDB(
+          review_id,
+          one_review.content,
+          fileInput.current.files[0],
+          imgUrl
+        )
+      );
+    } else {
+      dispatch(
+        reviewAction.editReviewDB(
+          review_id,
+          contents,
+          fileInput.current.files[0],
+          imgUrl
+        )
+      );
+    }
   };
 
   return (

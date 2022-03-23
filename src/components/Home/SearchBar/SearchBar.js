@@ -17,7 +17,7 @@ const SearchBar = (props) => {
         <input placeholder="검색하기" />
         <SearchIcon />
       </Search>
-      <NotiIcon />
+      <NotiIcon onClick={() => navigate("/noti")} />
     </SearchWrap>
   );
 };
