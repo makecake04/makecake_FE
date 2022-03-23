@@ -61,7 +61,7 @@ const editReviewDB = (reviewId, content, img, imgurl) => {
       })
       .then((res) => {
         dispatch(editReview(res.data));
-        window.location.replace(`/react/store`);
+        window.location.replace("/react/store");
       })
       .catch((err) => {
         console.log(err);

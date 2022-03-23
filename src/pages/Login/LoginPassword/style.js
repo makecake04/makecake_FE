@@ -13,9 +13,11 @@ export const BlackBackButton = styled.img.attrs({
   src: `${black_back_button}`,
   alt: "img",
 })`
-   margin-top: 20px;
-   margin-left: 30px;
-   `;
+  margin-left: 20px;
+  margin-top: 30px;
+  cursor: pointer;
+`;
+
 
 export const H = styled.h2`
   width: 250px;
@@ -41,25 +43,25 @@ export const P = styled.p`
 `;
 
 export const Input = styled.input`
-    display: block;
-    width: 337px;
-    height: 49px;
-    margin: 30px auto 0 auto;
-    background: #f5f5f5;
-    border-radius: 45px;
-    border: none;
-    padding-left: 20px;
+  display: block;
+  width: 337px;
+  height: 49px;
+  margin: 30px auto 0 auto;
+  background: #f5f5f5;
+  border-radius: 45px;
+  border: none;
+  padding-left: 20px;
 `;
 
 export const NextButton = styled.button`
-    display: block;
-    width: 337px;
-    height: 49px;
-    margin: 400px auto 0 auto;
-    background: #ff8fa5;
-    border-radius: 45px;
-    border: none;
-    font-weight: bold;
-    font-size: 16px;
-    color: white;
+  display: block;
+  width: 337px;
+  height: 49px;
+  margin: 400px auto 0 auto;
+  background: #ff8fa5;
+  border-radius: 45px;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
 `;
