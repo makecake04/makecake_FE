@@ -12,9 +12,10 @@ export const Container = styled.div`
 export const BlackBackButton = styled.img.attrs({
   src: `${black_back_button}`,
   alt: "BlackBackButton",
-})`margin-left: 20px;
-   margin-top: 30px;
-   cursor: pointer;
+})`
+  margin-left: 20px;
+  margin-top: 30px;
+  cursor: pointer;
 `;
 
 export const CakeText = styled.h1`
@@ -40,8 +41,7 @@ export const SignupText = styled.p`
   color: #282828;
 `;
 
-export const InputAndButton = styled.div`
-`;
+export const InputAndButton = styled.div``;
 
 export const Input = styled.input`
   display: block;
@@ -55,7 +55,7 @@ export const Input = styled.input`
 `;
 
 export const CheckText = styled.p`
-  color: ${(props) => props.className === "success" ? "green" : "red"};
+  color: ${(props) => (props.className === "success" ? "green" : "red")};
   margin-left: 45px;
   margin-top: 5px;
   font-size: 14px;
@@ -74,4 +74,3 @@ export const NextButton = styled.button`
   color: white;
   cursor: pointer;
 `;
-

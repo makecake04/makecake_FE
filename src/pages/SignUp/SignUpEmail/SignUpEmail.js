@@ -6,7 +6,16 @@ import { useNavigate } from "react-router-dom";
 import { actionCreators as userAction } from "../../../redux/modules/user";
 
 //css
-import { Container, BlackBackButton, CakeText, SignupText, InputAndButton, Input, CheckText, NextButton } from "./style";
+import {
+  Container,
+  BlackBackButton,
+  CakeText,
+  SignupText,
+  InputAndButton,
+  Input,
+  CheckText,
+  NextButton,
+} from "./style";
 
 const SignUpEmail = () => {
   const dispatch = useDispatch();
@@ -48,18 +57,23 @@ const SignUpEmail = () => {
 
   const saveUsername = () => {
     dispatch(userAction.usernameCheckDB(username));
-
     navigate("/signup/password");
   };
 
   return (
     <Container>
-      <BlackBackButton onClick={() => navigate('/')}/>
+      <BlackBackButton onClick={() => navigate("/")} />
       <CakeText>케이크를 만들어요!</CakeText>
       <SignupText>회원가입을 위한 이메일을 입력해주세요.</SignupText>
-      
+
       <InputAndButton>
-        <Input placeholder="이메일" type="text" value={username} onChange={is_Username} onKeyUp={checkActive}/>
+        <Input
+          placeholder="이메일"
+          type="text"
+          value={username}
+          onChange={is_Username}
+          onKeyUp={checkActive}
+        />
 
         {username.length > 0 && (
           <>
@@ -67,8 +81,13 @@ const SignUpEmail = () => {
               {usernameMessage}
             </CheckText>
           </>
-          )}
-        <NextButton disabled={active} onClick={() => { saveUsername() }}>
+        )}
+        <NextButton
+          disabled={active}
+          onClick={() => {
+            saveUsername();
+          }}
+        >
           다음
         </NextButton>
       </InputAndButton>

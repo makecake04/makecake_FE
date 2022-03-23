@@ -111,7 +111,7 @@ const getMyCommentDB = (page_num) => {
     })
       .then((res) => {
         console.log(res.data);
-        dispatch(getMyComment(res.data));
+        dispatch(getMyComment(res.data.reverse()));
       })
       .catch((err) => {
         console.log("댓글 정보를 가져올 수 없어요!", err);
@@ -156,7 +156,7 @@ export default handleActions(
       produce(state, (draft) => {
         draft.my_comment_list.push(...action.payload.commentList);
         //중복 검사
-        draft.my_comment_list = draft.list.reduce((acc, cur) => {
+        draft.my_comment_list = draft.my_comment_list.reduce((acc, cur) => {
           if (acc.findIndex((a) => a.commentId === cur.commentId) === -1) {
             return [...acc, cur];
           } else {
