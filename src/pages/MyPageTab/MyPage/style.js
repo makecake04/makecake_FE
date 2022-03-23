@@ -4,8 +4,11 @@ import styled from "styled-components";
 import { profile_image } from "../../../assets/images/image";
 
 export const MyWrap = styled.div`
-  overflow: auto;
-  height: 784px;
+  text-align: center;
+  overflow: scroll;
+  height: calc(100% - 6rem);
+  box-sizing: border-box;
+  width: 100%;
   h3 {
     padding: 40px 0px 20px 0px;
     text-align: center;
