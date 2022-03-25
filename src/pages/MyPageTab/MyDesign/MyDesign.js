@@ -26,6 +26,7 @@ import {
 
 //image
 import { black_back_button } from "../../../assets/images/image";
+import { invert } from "lodash";
 
 const MyDraw = (props) => {
   const navigate = useNavigate();
@@ -60,7 +61,6 @@ const MyDraw = (props) => {
   useEffect(() => {
     dispatch(designAction.getMyDesignListDB(pageNumber, post));
   }, [pageNumber, toggleState]);
-  //page number should be added into dependency array as well
 
   useEffect(() => {
     if (inView) {

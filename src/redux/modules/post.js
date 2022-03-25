@@ -31,7 +31,7 @@ const initialState = {
 //middlewear
 
 //add post
-const addPostDB = (title, content, size, shape, purpose, made, designId) => {
+const addPostDB = (title, content, size, shape, purpose, designId) => {
   const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState) {
     let post = {
@@ -40,8 +40,6 @@ const addPostDB = (title, content, size, shape, purpose, made, designId) => {
       size: size,
       shape: shape,
       purpose: purpose,
-      made: made,
-      // storeId:
     };
     axios
       .post(
@@ -88,7 +86,7 @@ const getOnePostDB = (postId) => {
 };
 
 //edit post
-const editPostDB = (title, content, size, shape, purpose, made, postId) => {
+const editPostDB = (title, content, size, shape, purpose, postId) => {
   const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState) {
     let post = {
@@ -97,8 +95,6 @@ const editPostDB = (title, content, size, shape, purpose, made, postId) => {
       size: size,
       shape: shape,
       purpose: purpose,
-      made: made,
-      // storeId:
     };
     axios
       .put(

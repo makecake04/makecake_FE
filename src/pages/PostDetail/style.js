@@ -109,7 +109,7 @@ export const OptionWrapper = styled.div`
     border: none;
     font-size: 1.2rem;
     padding: 0.3rem 1.1rem;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
   }
 `;
 

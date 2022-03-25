@@ -145,6 +145,7 @@ const PostDetail = () => {
           <button>{post.size}</button>
           <button>{post.shape}</button>
           <button>{post.purpose}</button>
+          {post.orders ? <button>주문 완료</button> : null}
         </OptionWrapper>
       </ImageInfo>
 
