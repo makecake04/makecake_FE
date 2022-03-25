@@ -10,13 +10,13 @@ import {
   profile_image,
   more_button,
   white_back_button,
-  heart_button,
+  empty_heart_icon,
+  full_heart_icon,
+  store_plus_button,
 } from "../../assets/images/image";
 
 export const StoreDetailContainer = styled.div`
   /* overflow: auto; */
-  height: 844px;
-  position: relative;
 
   .insta {
     flex: 1;
@@ -68,6 +68,15 @@ export const TopWrap = styled.div`
   margin-bottom: 20px;
 `;
 
+export const LikeInfo = styled.div`
+  display: flex;
+`;
+
+export const LikeCnt = styled.p`
+  color: #777;
+  margin-left: 8px;
+`;
+
 export const Store = styled.div`
   font-weight: 700;
 `;
@@ -85,11 +94,14 @@ export const Nomal = styled.div`
   flex: 1;
   padding-left: 5px;
   font-size: 13px;
+  word-break: break-all;
 `;
 
 export const ContainerBox = styled.div`
-  position: relative;
-  top: -40px;
+  margin-top: -40px;
+  height: calc(100vh - 192px - 40px);
+  overflow-x: hidden;
+  overflow-y: auto;
 `;
 
 export const BlocTab = styled.div`
@@ -371,6 +383,31 @@ export const ContentWrap = styled.div`
   padding: 20px;
 `;
 
+export const PlusWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+`;
+
+export const PlusButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+  font-weight: 400;
+  font-size: 14px;
+  justify-content: center;
+  width: 109px;
+  height: 32px;
+  border: 1px solid #dadada;
+  box-sizing: border-box;
+  border-radius: 50px;
+`;
+
+export const StorePlusButton = styled.img.attrs({
+  src: `${store_plus_button}`,
+})``;
+
 export const IconWrap = styled.div`
   display: flex;
   margin-bottom: 20px;
@@ -625,13 +662,17 @@ export const ReviewSvg = styled.img.attrs({
 right: 1.3rem; */
   width: 4.8rem;
   height: 4.8rem;
-  margin-top: 48rem;
-  bottom: 1rem;
+  bottom: 2rem;
   right: 1.3rem;
-  z-index: 10;
+  z-index: 2;
 `;
 
-export const HeartSvg = styled.img.attrs({
-  src: `${heart_button}`,
+export const EmptyHeartIcon = styled.img.attrs({
+  src: `${empty_heart_icon}`,
+  alt: "img",
+})``;
+
+export const FullHeartIcon = styled.img.attrs({
+  src: `${full_heart_icon}`,
   alt: "img",
 })``;

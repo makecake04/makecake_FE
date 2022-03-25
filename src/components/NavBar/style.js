@@ -1,8 +1,16 @@
 import styled from "styled-components";
-import { ReactComponent as HomeSvg } from "../../assets/images/nav-bar/home.svg";
 
 //image
-import { cake, design, home, mypage } from "../../assets/images/image";
+import {
+  cake,
+  design,
+  home,
+  mypage,
+  color_cake,
+  color_design,
+  color_home,
+  color_mypage,
+} from "../../assets/images/image";
 
 export const NavWrap = styled.nav`
   width: 100%;
@@ -48,26 +56,9 @@ export const SubWrap = styled.div`
   line-height: 60px;
 `;
 
-export const HomeIcon = styled(HomeSvg)`
-  ${(props) =>
-    props.activNav &&
-    `
-path {
-  stroke: #ff679e;
-}
-path:last-of-type {
-  fill: #ff679e;
-  stroke: none;
-}
-`}
-  path {
-    stroke: #dadada;
-  }
-  path:last-of-type {
-    fill: #dadada;
-    stroke: none;
-  }
-`;
+export const HomeIcon = styled.img.attrs({
+  src: `${home}`,
+})``;
 export const CakeIcon = styled.img.attrs({
   src: `${cake}`,
 })``;
@@ -76,4 +67,16 @@ export const DrawIcon = styled.img.attrs({
 })``;
 export const MypageIcon = styled.img.attrs({
   src: `${mypage}`,
+})``;
+export const ColorCakeIcon = styled.img.attrs({
+  src: `${color_cake}`,
+})``;
+export const ColorHomeIcon = styled.img.attrs({
+  src: `${color_home}`,
+})``;
+export const ColorDesignIcon = styled.img.attrs({
+  src: `${color_design}`,
+})``;
+export const ColorMypageIcon = styled.img.attrs({
+  src: `${color_mypage}`,
 })``;

@@ -172,6 +172,22 @@ export const OneStore = styled.div`
   }
 `;
 
+export const ImgWrap = styled.div`
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+
+  img {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+`;
+
 export const StoreAddress = styled.div`
   display: flex;
   p {

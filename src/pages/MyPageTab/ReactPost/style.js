@@ -1,13 +1,15 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 
 //image
-import { profile_image ,black_back_button, like } from "../../../assets/images/image";
+import {
+  profile_image,
+  black_back_button,
+  like,
+} from "../../../assets/images/image";
 
-export const ReactWriteWrap = styled.div`
-`;
+export const ReactWriteWrap = styled.div``;
 
-export const Container = styled.div`
-`;
+export const Container = styled.div``;
 
 export const HeaderWrap = styled.div`
   padding: 2rem 0;
@@ -18,9 +20,10 @@ export const HeaderWrap = styled.div`
 export const BlackBackButton = styled.img.attrs({
   src: `${black_back_button}`,
   alt: "BlackBackButton",
-})`cursor: pointer;
-   margin-left: 3%;
-   `;
+})`
+  cursor: pointer;
+  margin-left: 3%;
+`;
 
 export const HeaderText = styled.h3`
   margin-left: 22%;
@@ -32,16 +35,14 @@ export const Line = styled.hr`
   width: 100%;
 `;
 
-export const Wrap = styled.div`
-
-`;
+export const Wrap = styled.div``;
 
 export const LikeAndCommentWrap = styled.div`
   display: flex;
   margin: 0px 20px;
 `;
 
-export const LikeButton =styled.button`
+export const LikeButton = styled.button`
   ${(props) =>
     props.toggleState === 1
       ? css`
@@ -90,7 +91,7 @@ export const LikeButton =styled.button`
 `;
 
 export const CommentButton = styled.button`
-${(props) =>
+  ${(props) =>
     props.toggleState === 2
       ? css`
           background: #fff;
@@ -134,12 +135,11 @@ ${(props) =>
           font-size: 15px;
           font-weight: 400;
           color: #777;
-          
         `}
 `;
 
 export const ContentTabs = styled.div`
- flex-grow: 1;
+  flex-grow: 1;
 `;
 
 export const PostWrapOne = styled.div`
@@ -161,8 +161,7 @@ export const PostWrapOne = styled.div`
         `}
 `;
 
-export const PostWrap = styled.div`
-`;
+export const PostWrap = styled.div``;
 
 export const ReviewWrap = styled.div`
   display: flex;
@@ -218,7 +217,6 @@ export const ContentText = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   margin-top: 20px;
-  margin-left: 20px;
 `;
 
 export const ImgWrap = styled.div`
@@ -230,15 +228,12 @@ export const ImgWrap = styled.div`
   object-fit: cover;
 `;
 
-export const Img = styled.img`
-
-`;
+export const Img = styled.img``;
 
 export const HrWrap = styled.hr`
   border: 0.7px solid #e5e5e5;
   width: 100%;
-  margin: 10px 0 0 20px;
-  
+  margin: 20px 0px;
 `;
 
 export const PostWrapTwo = styled.div`
@@ -262,12 +257,13 @@ export const PostWrapTwo = styled.div`
 export const CommentWrap = styled.div`
   display: flex;
   flex-direction: column;
-  width: 342px;
+  width: 350px;
+  margin: auto;
   /* border-bottom: 1px solid #E5E5E5; */
 `;
 
 export const InsertDt = styled.p`
-  margin: 10px 0px 5px 20px;
+  margin: 10px 0px 5px 0px;
   font-size: 12px;
   color: #777;
 `;

@@ -31,9 +31,10 @@ export const ProfileImage = styled.div`
   margin: 50px auto 20px auto;
   border-radius: 100px;
   background-color: #ddd;
-  background-image: url(${profile_image});
+  background: url(${(props) => (props.src ? props.src : profile_image)})
+    no-repeat;
   background-position: center;
-  background-size: 100px;
+  background-size: cover;
 `;
 
 export const NicknameP = styled.p`
@@ -83,9 +84,25 @@ export const ButtonWrap = styled.div`
 export const LogoutButton = styled.button`
   width: 80px;
   height: 20px;
-  margin: 20px 20px 20px 0px;
+  margin: 20px 0px;
   color: #777;
   font-size: 13px;
+  border: none;
+`;
+
+export const SignoutButton = styled.button`
+  width: 80px;
+  height: 20px;
+  margin: 20px 20px 0px 0px;
+  color: #777;
+  font-size: 13px;
+  border: none;
+`;
+
+export const DropOutButton = styled.button`
+  color: #c6c6c8;
+  font-weight: 700;
+  width: 140px;
   border: none;
 `;
 

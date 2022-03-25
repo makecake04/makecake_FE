@@ -107,7 +107,7 @@ const MobileView = styled.div`
   box-sizing: border-box;
   margin: 0 auto;
   max-width: 390px;
-  height: 100%;
+  height: calc(100% + 1px);
   background-color: #fcfcfc;
 `;
 

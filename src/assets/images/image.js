@@ -4,6 +4,8 @@ import white_back_button from "./back-button/white-back-button.svg";
 
 //cake
 import cake_store_icon from "./cake/cake-store-icon.svg";
+import empty_heart_icon from "./cake/empty-heart-icon.svg";
+import full_heart_icon from "./cake/full-heart-icon.svg";
 
 //design-toggle
 import paint from "./design-toggle/paint.svg";
@@ -53,8 +55,8 @@ import sprinkle from "./drawing/icon/sprinkle.png";
 import noti_icon from "./home/noti-icon.svg";
 import search_button from "./home/search-button.svg";
 import swiper_arrow from "./home/swiper-arrow.svg";
-import search_icon from './home/search-icon.svg'
-import star_icon from './home/star-icon.svg'
+import search_icon from "./home/search-icon.svg";
+import star_icon from "./home/star-icon.svg";
 
 //logo
 import main_logo from "./logo/main-logo.svg";
@@ -73,11 +75,18 @@ import cake from "./nav-bar/cake.svg";
 import design from "./nav-bar/design.svg";
 import home from "./nav-bar/home.svg";
 import mypage from "./nav-bar/mypage.svg";
+import color_cake from "./nav-bar/color-cake.svg";
+import color_design from "./nav-bar/color-design.svg";
+import color_home from "./nav-bar/color-home.svg";
+import color_mypage from "./nav-bar/color-mypage.svg";
 
 //post-detail
 import like from "./post-detail/like.svg";
 import view from "./post-detail/view.svg";
 import send from "./post-detail/send.svg";
+
+//profile-edit
+import profile_edit_button from "./profile-edit/profile-edit-button.svg";
 
 //social-login
 import google from "./social-login/google.svg";
@@ -93,6 +102,7 @@ import shop from "./store-detail/shop.svg";
 import more_button from "./store-detail/more-button.svg";
 import heart_button from "./store-detail/heart-button.svg";
 import call from "./store-detail/call.svg";
+import store_plus_button from "./store-detail/store-plus-button.svg";
 
 //store-review
 import image_upload from "./store-review/image-upload.svg";
@@ -102,6 +112,8 @@ export {
   black_back_button,
   white_back_button,
   cake_store_icon,
+  empty_heart_icon,
+  full_heart_icon,
   paint,
   write,
   plus_button,
@@ -152,9 +164,14 @@ export {
   design,
   home,
   mypage,
+  color_cake,
+  color_design,
+  color_home,
+  color_mypage,
   like,
   view,
   send,
+  profile_edit_button,
   google,
   kakao,
   naver,
@@ -163,6 +180,7 @@ export {
   phone,
   review_write,
   shop,
+  store_plus_button,
   heart_button,
   call,
   more_button,

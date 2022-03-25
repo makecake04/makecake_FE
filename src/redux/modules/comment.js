@@ -110,7 +110,6 @@ const getMyCommentDB = (page_num) => {
       headers: { Authorization: `${token}` },
     })
       .then((res) => {
-        console.log(res.data);
         dispatch(getMyComment(res.data.reverse()));
       })
       .catch((err) => {

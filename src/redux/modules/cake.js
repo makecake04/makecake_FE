@@ -6,6 +6,7 @@ import axios from "axios";
 const CAKE_LIST = "CAKE_LIST";
 const CAKE_IMAGE = "CAKE_IMAGE";
 const LIKE_CAKE = "LIKE_CAKE";
+const ADD_LIKE_CAKE = "ADD_LIKE_CAKE";
 
 const initialState = {
   list: [],
@@ -16,6 +17,11 @@ const initialState = {
 const cakeList = createAction(CAKE_LIST, (list) => ({ list }));
 const cakeImage = createAction(CAKE_IMAGE, (img) => ({ img }));
 const likeCake = createAction(LIKE_CAKE, (likeCake) => ({ likeCake }));
+const addLikeCake = createAction(ADD_LIKE_CAKE, (cakeId, isLike, likeCnt) => ({
+  cakeId,
+  isLike,
+  likeCnt,
+}));
 
 const getCakeListDB = (page_num) => {
   return function (dispatch, getState) {
@@ -69,6 +75,32 @@ const getLikeCakeDB = (page_num) => {
   };
 };
 
+const addLikeCakeDB = (cakeId, myLike) => {
+  console.log(myLike);
+  const token = localStorage.getItem("token");
+  return function (dispatch, getState) {
+    axios
+      .post(
+        `http://3.38.153.67/cakes/like/${cakeId}`,
+        {
+          myLike: myLike,
+        },
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        dispatch(addLikeCake(cakeId, res.data.myLike, res.data.likeCnt));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
 export default handleActions(
   {
     [CAKE_LIST]: (state, action) =>
@@ -101,6 +133,14 @@ export default handleActions(
           }
         }, []);
       }),
+    [ADD_LIKE_CAKE]: (state, action) =>
+      produce(state, (draft) => {
+        // const idx = draft.is_like.findIndex(
+        //   (c) => c.cakeId === action.payload.cakeId
+        // );
+        draft.lists.myLike = action.payload.isLike;
+        draft.lists.likeCnt = action.payload.likeCnt;
+      }),
   },
   initialState
 );
@@ -112,6 +152,8 @@ const actionCreators = {
   getCakeImageDB,
   likeCake,
   getLikeCakeDB,
+  addLikeCake,
+  addLikeCakeDB,
 };
 
 export { actionCreators };

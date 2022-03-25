@@ -13,6 +13,7 @@ const ADD_NICKNAME = "ADD_NICKNAME";
 const LOADING = "LOADING";
 const LOG_OUT = "LOG_OUT";
 const GET_USER_INFO = "GET_USER_INFO";
+const EDIT_PROFILE = "EDIT_PROFILE";
 
 const setUser = createAction(SET_USER, (user) => ({ user }));
 const setUsername = createAction(SET_USERNAME, (username, isTrue) => ({
@@ -27,6 +28,7 @@ const addNickname = createAction(ADD_NICKNAME, (nickname) => ({ nickname }));
 const loading = createAction(LOADING, (is_loading) => ({ is_loading }));
 const logOut = createAction(LOG_OUT, (user) => ({ user }));
 const getUserInfo = createAction(GET_USER_INFO, (userInfo) => ({ userInfo }));
+const editProfile = createAction(EDIT_PROFILE, (profile) => ({ profile }));
 
 const initialState = {
   user: null,
@@ -37,6 +39,7 @@ const initialState = {
   isTrue: true,
   is_login: false,
   userInfo: [],
+  profile: [],
 };
 
 // 이메일 중복검사
@@ -186,6 +189,33 @@ const getUserInfoDB = () => {
   };
 };
 
+const editProfileDB = (nickname, img) => {
+  const token = localStorage.getItem("token");
+  return function (dispatch, getState) {
+    const form = new FormData();
+    if (img) {
+      form.append("imgFile", img);
+      form.append("nickname", nickname);
+    } else if (!img) {
+      form.append("nickname", nickname);
+    }
+    axios
+      .put("http://3.38.153.67/user/editProfile", form, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        dispatch(editProfile(res.data));
+        window.location.replace("/mypage");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
 export default handleActions(
   {
     [SET_USERNAME]: (state, action) =>
@@ -226,6 +256,10 @@ export default handleActions(
       produce(state, (draft) => {
         draft.userInfo = action.payload.userInfo;
       }),
+    [EDIT_PROFILE]: (state, action) =>
+      produce(state, (draft) => {
+        draft.profile = action.payload.profile;
+      }),
   },
   initialState
 );
@@ -242,6 +276,8 @@ const actionCreators = {
   loginCheckDB,
   getUserInfoDB,
   logOutDB,
+  editProfile,
+  editProfileDB,
 };
 
 export { actionCreators };
