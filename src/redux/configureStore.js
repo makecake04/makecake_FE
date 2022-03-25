@@ -10,6 +10,7 @@ import search from "./modules/search";
 import Comment from "./modules/comment";
 import Post from "./modules/post";
 import Review from "./modules/review";
+import Noti from './modules/noti'
 
 export const history = createBrowserHistory();
 
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   post: Post,
   comment: Comment,
   review: Review,
+  noti: Noti,
 });
 
 const middlewares = [thunk.withExtraArgument({ history: history })];
