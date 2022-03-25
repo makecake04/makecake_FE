@@ -49,8 +49,59 @@ export const BlackBackIcon = styled.img.attrs({
 
 export const Enter = styled.p`
   margin-left: 50px;
-  font-weight: 700;
   color: #ff679e;
+`;
+
+export const ModalWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+`;
+
+export const TitleP = styled.p`
+  color: #292929;
+  font-weight: 700;
+  margin: 20px 0px 10px 0px;
+`;
+
+export const DescriptionP = styled.p`
+  color: #292929;
+  width: 65%;
+  font-size: 15px;
+  margin: 0px 0px 20px 0px;
+`;
+
+export const ModalHr = styled.hr`
+  border: 0.7px solid #e5e5e5;
+  width: 100%;
+  margin: 20px 0px 10px 0px;
+`;
+
+export const FooterWrap = styled.div`
+  display: flex;
+`;
+
+export const EnterButton = styled.button`
+  color: #ff679e;
+  font-weight: 700;
+  border: none;
+  width: 140px;
+`;
+
+export const Vl = styled.div`
+  border-left: 2px solid #e5e5e5;
+  height: 41px;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+`;
+
+export const BackButton = styled.button`
+  color: #c6c6c8;
+  font-weight: 700;
+  width: 140px;
+  border: none;
 `;
 
 export const HrWrap = styled.hr`

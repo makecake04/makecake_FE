@@ -3,25 +3,23 @@ import styled from "styled-components";
 //image
 import { black_back_button } from "../../../assets/images/image";
 
-export const ReactCakeWrap = styled.div`
-`;
+export const ReactCakeWrap = styled.div``;
 
-export const Container = styled.div`
-`;
+export const Container = styled.div``;
 
 export const HeaderWrap = styled.div`
-  display:flex;
+  display: flex;
   padding: 2rem 0;
   align-items: center;
-  
 `;
 
 export const BlackBackButton = styled.img.attrs({
   src: `${black_back_button}`,
   alt: "BlackBackButton",
-})`cursor: pointer;
-   margin-left: 3%;
-   `;
+})`
+  cursor: pointer;
+  margin-left: 3%;
+`;
 
 export const HeaderText = styled.h3`
   font-weight: 700;
@@ -39,14 +37,6 @@ export const ImageWrap = styled.div`
   gap: 20px;
   margin-top: 10px;
 
-  .heart {
-    font-size: 30px;
-    color: #ff679e;
-    margin-top: 10px;
-    position: absolute;
-    right: 10px;
-  }
-
   .name {
     margin-bottom: 10px;
     color: #777;
@@ -54,9 +44,7 @@ export const ImageWrap = styled.div`
   }
 `;
 
-export const PostWrap = styled.div`
-
-`;
+export const PostWrap = styled.div``;
 
 export const Line = styled.hr`
   border: 0.7px solid #e5e5e5;

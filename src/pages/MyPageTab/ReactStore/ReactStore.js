@@ -18,6 +18,7 @@ import {
   LikeStore,
   MyReview,
   Body,
+  ImgWrap,
   StoreList,
   ReviewList,
   OneStore,
@@ -87,11 +88,14 @@ const ReactStore = (props) => {
             likeStore.map((v, idx) => {
               return (
                 <OneStore key={idx}>
-                  <img src={v.mainImg} alt="store-img" />
+                  <ImgWrap>
+                    <img src={v.mainImg} alt="store-img" />
+                  </ImgWrap>
                   <p>{v.name}</p>
                   <StoreAddress>
                     <img src={location} alt="" />
-                    <p>{v.addressSimple}</p>
+                    <p>{v.addressSimple.split(" ")[1]}</p>
+                    <p>{v.addressSimple.split(" ")[2]}</p>
                   </StoreAddress>
                 </OneStore>
               );

@@ -5,7 +5,10 @@ import { api } from "../../shared/api";
 
 //action type
 const ADD_DESIGN = "ADD_DESIGN";
-const DESIGN_LIST = "DESIGN_LIST";
+const NEW_DESIGN_LIST = "NEW_DESIGN_LIST";
+const LIKE_DESIGN_LIST = "LIKE_DESIGN_LIST";
+const COMMENT_DESIGN_LIST = "COMMENT_DESIGN_LIST";
+const VIEW_DESIGN_LIST = "VIEW_DESIGN_LIST";
 const MY_DESIGN_LIST = "MY_DESIGN_LIST";
 const MY_POST_LIST = "MY_POST_LIST";
 const DESIGN_DETAIL = "DESIGN_DETAIL";
@@ -17,7 +20,12 @@ const LIKE_DESIGN = "LIKE_DESIGN";
 const addDesign = createAction(ADD_DESIGN, (design) => ({
   design,
 }));
-const designList = createAction(DESIGN_LIST, (list) => ({ list }));
+const newDesignList = createAction(NEW_DESIGN_LIST, (list) => ({ list }));
+const likeDesignList = createAction(LIKE_DESIGN_LIST, (list) => ({ list }));
+const commentDesignList = createAction(COMMENT_DESIGN_LIST, (list) => ({
+  list,
+}));
+const viewDesignList = createAction(VIEW_DESIGN_LIST, (list) => ({ list }));
 const myDesigntList = createAction(MY_DESIGN_LIST, (list) => ({ list }));
 const myPostList = createAction(MY_POST_LIST, (list) => ({ list }));
 const designDetail = createAction(DESIGN_DETAIL, (list) => ({ list }));
@@ -31,7 +39,10 @@ const initialState = {
   post_list: [],
   design_detail: [],
   likeDesign: [],
-  // post_detail: [],
+  new_list: [],
+  like_list: [],
+  comment_list: [],
+  view_list: [],
 };
 
 //middleware
@@ -63,27 +74,25 @@ const addDesignDB = (design) => {
   };
 };
 
-const getDesignListDB = (page_num) => {
-  console.log(page_num);
+const getDesignListDB = (page_num, sortType) => {
+  console.log(sortType);
   return function (dispatch, getState) {
     axios
       .get("http://3.38.153.67/api/designs", {
         params: {
           page: parseInt(page_num),
+          sortType: sortType,
         },
       })
       .then((res) => {
-        if (page_num === 0) {
-          dispatch(designList(res.data));
-        } else {
-          let design_list = [];
-          for (let i = 0; i < res.data.length; i++) {
-            design_list.push(res.data[i]);
-          }
-          if (design_list.length === 0) {
-            return;
-          }
-          dispatch(designList(design_list));
+        if (sortType === "createdDate") {
+          dispatch(newDesignList(res.data));
+        } else if (sortType === "likeCnt") {
+          dispatch(likeDesignList(res.data));
+        } else if (sortType === "commentCnt") {
+          dispatch(commentDesignList(res.data));
+        } else if (sortType === "viewCnt") {
+          dispatch(viewDesignList(res.data));
         }
       })
       .catch((err) => {
@@ -197,11 +206,50 @@ export default handleActions(
       produce(state, (draft) => {
         draft.list.push(action.payload.list);
       }),
-    [DESIGN_LIST]: (state, action) =>
+    [NEW_DESIGN_LIST]: (state, action) =>
       produce(state, (draft) => {
-        draft.list.push(...action.payload.list);
+        draft.new_list.push(...action.payload.list);
         //중복 검사
-        draft.list = draft.list.reduce((acc, cur) => {
+        draft.new_list = draft.new_list.reduce((acc, cur) => {
+          if (acc.findIndex((a) => a.postId === cur.postId) === -1) {
+            return [...acc, cur];
+          } else {
+            acc[acc.findIndex((a) => a.postId === cur.postId)] = cur;
+            return acc;
+          }
+        }, []);
+      }),
+    [LIKE_DESIGN_LIST]: (state, action) =>
+      produce(state, (draft) => {
+        draft.like_list.push(...action.payload.list);
+        //중복 검사
+        draft.like_list = draft.like_list.reduce((acc, cur) => {
+          if (acc.findIndex((a) => a.postId === cur.postId) === -1) {
+            return [...acc, cur];
+          } else {
+            acc[acc.findIndex((a) => a.postId === cur.postId)] = cur;
+            return acc;
+          }
+        }, []);
+      }),
+    [COMMENT_DESIGN_LIST]: (state, action) =>
+      produce(state, (draft) => {
+        draft.comment_list.push(...action.payload.list);
+        //중복 검사
+        draft.comment_list = draft.comment_list.reduce((acc, cur) => {
+          if (acc.findIndex((a) => a.postId === cur.postId) === -1) {
+            return [...acc, cur];
+          } else {
+            acc[acc.findIndex((a) => a.postId === cur.postId)] = cur;
+            return acc;
+          }
+        }, []);
+      }),
+    [VIEW_DESIGN_LIST]: (state, action) =>
+      produce(state, (draft) => {
+        draft.view_list.push(...action.payload.list);
+        //중복 검사
+        draft.view_list = draft.view_list.reduce((acc, cur) => {
           if (acc.findIndex((a) => a.postId === cur.postId) === -1) {
             return [...acc, cur];
           } else {
@@ -245,7 +293,7 @@ export default handleActions(
 
     [LIKE_DESIGN]: (state, action) =>
       produce(state, (draft) => {
-        draft.likeDesign.push(...action.payload.likedesign);
+        draft.likeDesign.unshift(...action.payload.likedesign);
         //중복 검사
         draft.likeDesign = draft.likeDesign.reduce((acc, cur) => {
           if (acc.findIndex((a) => a.postId === cur.postId) === -1) {
@@ -266,7 +314,7 @@ export default handleActions(
 
 const actionCreators = {
   addDesignDB,
-  designList,
+  newDesignList,
   getDesignListDB,
   getMyDesignListDB,
   getDesignImageDB,

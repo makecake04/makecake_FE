@@ -51,7 +51,6 @@ const ReactWrite = (props) => {
   const dispatch = useDispatch();
 
   const commentList = useSelector((state) => state.comment.my_comment_list);
-  console.log(commentList);
   const deleteComment = (commentId) => {
     dispatch(commentAction.deleteMyCommentDB(commentId));
   };
@@ -104,7 +103,7 @@ const ReactWrite = (props) => {
               {likedesign &&
                 likedesign.map((v, idx) => {
                   return (
-                    <PostWrap key={idx}>
+                    <PostWrap key={idx} ref={ref}>
                       <ReviewWrap>
                         <TitleWrap>
                           <Profile></Profile>

@@ -1,13 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { actionCreators as storeAction } from "../../redux/modules/store";
 import { actionCreators as reviewAction } from "../../redux/modules/review";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
+import Swal from "sweetalert2";
 
 //import css
 import {
@@ -20,7 +18,6 @@ import {
   InfoBox,
   TopWrap,
   Store,
-  HeartSvg,
   InfoWrap,
   ShopWrap,
   Nomal,
@@ -37,6 +34,9 @@ import {
   ContentFour,
   ContentBox,
   ContentWrap,
+  PlusWrap,
+  PlusButton,
+  StorePlusButton,
   IconWrap,
   Description,
   CallWrap,
@@ -74,6 +74,10 @@ import {
   ShopSvg,
   ImgWrap,
   ImgBox,
+  EmptyHeartIcon,
+  FullHeartIcon,
+  LikeInfo,
+  LikeCnt,
 } from "./style";
 
 //component
@@ -89,8 +93,9 @@ const StoreDetail = (props) => {
   const user_nickname = useSelector((state) => state.user.user);
   const [pageNumber, setPageNumber] = React.useState(0);
   const [ref, inView] = useInView();
+  const login = useSelector((state) => state.user.is_login);
 
-  const imgUrl = useSelector((state) => state.store.myReview);
+  const is_session = localStorage.getItem("token");
 
   React.useEffect(() => {
     dispatch(storeAction.getStoreDetailDB(store_id));
@@ -112,6 +117,21 @@ const StoreDetail = (props) => {
     }
   }, [inView]);
 
+  const likeToggle = () => {
+    if (!login) {
+      Swal.fire({
+        title: "로그인이 필요한 서비스입니다!",
+        showCancelButton: true,
+        confirmButtonText: '<a href="/">로그인 할래요!</a>',
+        confirmButtonColor: "#ff679e",
+        cancelButtonColor: "#777",
+        cancelButtonText: "그냥 둘러볼래요.",
+      });
+    } else {
+      dispatch(storeAction.addLikeStoreDB(store_id, !store_info.myLike));
+    }
+  };
+
   return (
     <StoreDetailContainer>
       <DetailWrap>
@@ -129,13 +149,20 @@ const StoreDetail = (props) => {
           <InfoBox>
             <TopWrap>
               <Store>{store_info.name}</Store>
-              <HeartSvg />
+              <LikeInfo>
+                {store_info.myLike ? (
+                  <FullHeartIcon onClick={likeToggle} />
+                ) : (
+                  <EmptyHeartIcon onClick={likeToggle} />
+                )}
+                <LikeCnt>{store_info.likeCnt}</LikeCnt>
+              </LikeInfo>
             </TopWrap>
-            {store_info.urls && (
+            {store_info.urlList && (
               <InfoWrap>
                 <ShopWrap>
                   <ShopSvg />
-                  <Nomal>{store_info.urls[0]?.url}</Nomal>
+                  <Nomal>{store_info.urlList[0]?.url}</Nomal>
                 </ShopWrap>
                 {/* <p className="insta">{store_info.urls[0].url}</p> */}
               </InfoWrap>
@@ -143,6 +170,28 @@ const StoreDetail = (props) => {
           </InfoBox>
         </TitleWrap>
         <ContainerBox>
+          {toggleState === 4 &&
+            (is_session ? (
+              <ReviewSvg
+                onClick={() => {
+                  navigate("/review/write");
+                  dispatch(storeAction.getStoreDetailDB(store_id));
+                }}
+              />
+            ) : (
+              <ReviewSvg
+                onClick={() => {
+                  Swal.fire({
+                    title: "로그인이 필요한 서비스입니다!",
+                    showCancelButton: true,
+                    confirmButtonText: '<a href="/">로그인 할래요!</a>',
+                    confirmButtonColor: "#ff679e",
+                    cancelButtonColor: "#777",
+                    cancelButtonText: "그냥 둘러볼래요.",
+                  });
+                }}
+              />
+            ))}
           <BlocTab>
             <OneButton onClick={() => toggleTab(1)} toggleState={toggleState}>
               소개
@@ -185,7 +234,7 @@ const StoreDetail = (props) => {
                       <span>{store_info.openTimeToday?.type}: </span>
                       <span>{store_info.openTimeToday?.startTime} ~</span>
                       <span>{store_info.openTimeToday?.endTime}</span>
-                      <span>{store_info.openTimeToday?.descritipnTime}</span>
+                      <span>({store_info.openTimeToday?.descriptionTime})</span>
                     </Description>
                   </IconWrap>
                   <CallWrap>
@@ -203,8 +252,8 @@ const StoreDetail = (props) => {
                     </RightWrap>
                   </PictureWrap>
                   <ImageBox>
-                    {store_info.cakeImages &&
-                      store_info.cakeImages.map((v, idx) => {
+                    {store_info.cakeImgList &&
+                      store_info.cakeImgList.map((v, idx) => {
                         return (
                           <Images key={idx}>
                             <ImgBox src={v.img} />
@@ -218,44 +267,49 @@ const StoreDetail = (props) => {
             <ContentTwo toggleState={toggleState}>
               <ContentBox>
                 <ContentWrap>
-                  {store_info.menus && store_info.menus[0] && (
+                  {store_info.menuList && store_info.menuList[0] && (
                     <Kind>
                       <Type>
-                        <SizeP>{store_info.menus[0].type}</SizeP>
-                        <SizeP>{store_info.menus[0].size}</SizeP>
+                        <SizeP>{store_info.menuList[0].type}</SizeP>
+                        <SizeP>{store_info.menuList[0].size}</SizeP>
                       </Type>
-                      <PriceP>{store_info.menus[0].price}</PriceP>
+                      <PriceP>{store_info.menuList[0].price}</PriceP>
                     </Kind>
                   )}
 
-                  {store_info.menus && store_info.menus[1] && (
+                  {store_info.menuList && store_info.menuList[1] && (
                     <Kind>
                       <Type>
-                        <SizeP>{store_info.menus[1].type}</SizeP>
-                        <SizeP>{store_info.menus[1].size}</SizeP>
+                        <SizeP>{store_info.menuList[1].type}</SizeP>
+                        <SizeP>{store_info.menuList[1].size}</SizeP>
                       </Type>
-                      <PriceP>{store_info.menus[1].price}</PriceP>
+                      <PriceP>{store_info.menuList[1].price}</PriceP>
                     </Kind>
                   )}
-                  {store_info.menus && store_info.menus[2] && (
+                  {store_info.menuList && store_info.menuList[2] && (
                     <Kind>
                       <Type>
-                        <SizeP>{store_info.menus[2].type}</SizeP>
-                        <SizeP>{store_info.menus[2].size}</SizeP>
+                        <SizeP>{store_info.menuList[2].type}</SizeP>
+                        <SizeP>{store_info.menuList[2].size}</SizeP>
                       </Type>
-                      <PriceP>{store_info.menus[2].price}</PriceP>
+                      <PriceP>{store_info.menuList[2].price}</PriceP>
                     </Kind>
                   )}
-                  {store_info.menus && store_info.menus[3] && (
+                  {store_info.menuList && store_info.menuList[3] && (
                     <Kind2>
                       <Type>
-                        <SizeP>{store_info.menus[3].type}</SizeP>
-                        <SizeP>{store_info.menus[3].size}</SizeP>
+                        <SizeP>{store_info.menuList[3].type}</SizeP>
+                        <SizeP>{store_info.menuList[3].size}</SizeP>
                       </Type>
-                      <PriceP>{store_info.menus[3].price}</PriceP>
+                      <PriceP>{store_info.menuList[3].price}</PriceP>
                     </Kind2>
                   )}
                 </ContentWrap>
+                <PlusWrap>
+                  <PlusButton>
+                    자세히보기 <StorePlusButton />
+                  </PlusButton>
+                </PlusWrap>
                 <BottomHr />
                 <div>
                   <PictureWrap>
@@ -266,8 +320,8 @@ const StoreDetail = (props) => {
                     </RightWrap>
                   </PictureWrap>
                   <ImageBox>
-                    {store_info.cakeImages &&
-                      store_info.cakeImages.map((v, idx) => {
+                    {store_info.cakeImgList &&
+                      store_info.cakeImgList.map((v, idx) => {
                         return (
                           <Images key={idx}>
                             <ImgBox src={v.img} />
@@ -293,12 +347,6 @@ const StoreDetail = (props) => {
               </ContentBox>
             </ContentThree>
             <ContentFour toggleState={toggleState}>
-              <ReviewSvg
-                onClick={() => {
-                  navigate("/review/write");
-                  dispatch(storeAction.getStoreDetailDB(store_id));
-                }}
-              />
               {store_review &&
                 store_review.map((v, idx) => {
                   return (
@@ -321,7 +369,6 @@ const StoreDetail = (props) => {
                             </ImgWrapTwo>
                           );
                         })}
-
                       {v.writerNickname === user_nickname.nickname && (
                         <ButtonWrap>
                           <EditButton

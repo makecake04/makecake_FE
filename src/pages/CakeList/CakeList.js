@@ -5,6 +5,7 @@ import { actionCreators as cakeAction } from "../../redux/modules/cake";
 import { useInView } from "react-intersection-observer";
 import { actionCreators as storeAction } from "../../redux/modules/store";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 //import css
 import {
@@ -16,6 +17,9 @@ import {
   ModalWrap,
   ModalImg,
   StoreIcon,
+  EmptyHeartIcon,
+  FullHeartIcon,
+  LikeCnt,
 } from "./style";
 
 Modal.setAppElement("#root");
@@ -34,6 +38,9 @@ const CakeList = (props) => {
   const cake_lists = useSelector((state) => state.cake.list);
   const cake_img = useSelector((state) => state.cake.lists);
   const store_id = useSelector((state) => state.cake.lists);
+  const cake_id = useSelector((state) => state.cake.lists);
+  const login = useSelector((state) => state.user.is_login);
+  const my_like = useSelector((state) => state.cake.lists);
 
   const getMoreCake = async () => {
     setPageNumber(pageNumber + 1);
@@ -44,6 +51,21 @@ const CakeList = (props) => {
       getMoreCake();
     }
   }, [inView]);
+
+  const likeToggle = () => {
+    if (!login) {
+      Swal.fire({
+        title: "로그인이 필요한 서비스입니다!",
+        showCancelButton: true,
+        confirmButtonText: '<a href="/">로그인 할래요!</a>',
+        confirmButtonColor: "#ff679e",
+        cancelButtonColor: "#777",
+        cancelButtonText: "그냥 둘러볼래요.",
+      });
+    } else {
+      dispatch(cakeAction.addLikeCakeDB(cake_id.cakeId, !my_like.myLike));
+    }
+  };
 
   return (
     <CakeContainer>
@@ -108,6 +130,12 @@ const CakeList = (props) => {
               navigate(`/storedetail/${store_id.storeId}`);
             }}
           />
+          {my_like.myLike ? (
+            <FullHeartIcon onClick={likeToggle} />
+          ) : (
+            <EmptyHeartIcon onClick={likeToggle} />
+          )}
+          <LikeCnt>{cake_img.likeCnt}</LikeCnt>
         </ModalWrap>
       </Modal>
     </CakeContainer>
