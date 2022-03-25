@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 // image
-import { noti_icon, search_button } from "../../../assets/images/image";
+import { noti_icon, search_button, noti_check_dot } from "../../../assets/images/image";
 
 export const SearchWrap = styled.div`
   padding: 20px;
@@ -45,4 +45,14 @@ export const SearchIcon = styled.img.attrs({
   src: `${search_button}`,
 })`
   margin-left: 1.7rem;
+`;
+
+export const NotiCheckDot = styled.img.attrs({
+  src: `${noti_check_dot}`,
+})`
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  right: 23px;
+  top: 52px;
 `;
