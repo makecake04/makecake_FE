@@ -10,6 +10,7 @@ const MY_REVIEW = "MY_REVIEW";
 const STORE_DETAIL = "STORE_DETAIL";
 const STORE_CAKE_LIST = "STORE_CAKE_LIST";
 const STORE_REVIEW_LIST = "STORE_REVIEW_LIST";
+const ADD_LIKE_STORE = "ADD_LIKE_STORE";
 
 const initialState = {
   list: [],
@@ -30,6 +31,14 @@ const storeCakeList = createAction(STORE_CAKE_LIST, (cake) => ({ cake }));
 const storeReviewList = createAction(STORE_REVIEW_LIST, (review) => ({
   review,
 }));
+const addLikeStore = createAction(
+  ADD_LIKE_STORE,
+  (storeId, isLike, likeCnt) => ({
+    storeId,
+    isLike,
+    likeCnt,
+  })
+);
 
 const getHotListDB = () => {
   return function (dispatch, getState) {
@@ -104,7 +113,7 @@ const getMyReviewDB = (page_num) => {
         },
       })
       .then((res) => {
-        dispatch(myReview(res.data.reverse()));
+        dispatch(myReview(res.data));
       })
       .catch((err) => {
         console.log(err);
@@ -143,6 +152,31 @@ const getStoreReviewListDB = (storeId, page_num) => {
       })
       .then((res) => {
         dispatch(storeReviewList(res.data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+const addLikeStoreDB = (storeId, myLike) => {
+  const token = localStorage.getItem("token");
+  return function (dispatch, getState) {
+    axios
+      .post(
+        `http://3.38.153.67/stores/like/${storeId}`,
+        {
+          myLike: myLike,
+        },
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        dispatch(addLikeStore(storeId, res.data.myLike, res.data.likeCnt));
       })
       .catch((err) => {
         console.log(err);
@@ -220,6 +254,11 @@ export default handleActions(
           }
         }, []);
       }),
+    [ADD_LIKE_STORE]: (state, action) =>
+      produce(state, (draft) => {
+        draft.store.myLike = action.payload.isLike;
+        draft.store.likeCnt = action.payload.likeCnt;
+      }),
   },
   initialState
 );
@@ -239,6 +278,8 @@ const actionCreators = {
   getStoreCakeListDB,
   storeReviewList,
   getStoreReviewListDB,
+  addLikeStore,
+  addLikeStoreDB,
 };
 
 export { actionCreators };

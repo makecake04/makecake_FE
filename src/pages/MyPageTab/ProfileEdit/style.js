@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 //image
-import { profile_image, black_back_button } from "../../../assets/images/image";
+import {
+  profile_image,
+  black_back_button,
+  profile_edit_button,
+} from "../../../assets/images/image";
 
 export const ProfileWrap = styled.div`
   text-align: center;
@@ -9,6 +13,21 @@ export const ProfileWrap = styled.div`
   height: calc(100% - 6rem);
   box-sizing: border-box;
   width: 100%;
+
+  input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  input {
+    border: none;
+  }
 `;
 
 export const SubWrap = styled.div``;
@@ -26,6 +45,11 @@ export const Header = styled.header`
   }
 `;
 
+export const EnterP = styled.p`
+  margin-left: 60px;
+  color: #ff679e;
+`;
+
 export const BlackBackButton = styled.img.attrs({
   src: `${black_back_button}`,
   alt: "back-button",
@@ -41,14 +65,32 @@ export const HrWrap = styled.hr`
 export const ContentWrap = styled.div``;
 
 export const ProfileImage = styled.div`
+  position: relative;
   width: 100px;
   height: 100px;
   margin: 50px auto 20px auto;
   border-radius: 100px;
   background-color: #ddd;
-  background-image: url(${profile_image});
+  background: url(${(props) => (props.src ? props.src : profile_image)})
+    no-repeat;
   background-position: center;
-  background-size: 100px;
+  background-size: cover;
+`;
+
+export const PlusButton = styled.div`
+  position: relative;
+`;
+
+export const LabelWrap = styled.label``;
+
+export const ProfileEditButton = styled.img.attrs({
+  src: `${profile_edit_button}`,
+  alt: "edit-button",
+})`
+  position: relative;
+  z-index: 2;
+  left: 9%;
+  top: -48px;
 `;
 
 export const NicknameP = styled.p`
@@ -104,15 +146,6 @@ export const ButtonWrap = styled.div`
   justify-content: end;
 `;
 
-export const SignoutButton = styled.button`
-  width: 80px;
-  height: 20px;
-  margin: 20px 20px 0px 0px;
-  color: #777;
-  font-size: 13px;
-  border: none;
-`;
-
 export const ModalWrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -138,6 +171,7 @@ export const ModalInput = styled.input`
   border-radius: 20px;
   background-color: #f5f5f5;
   border: 1px solid #fff;
+  padding: 10px;
 `;
 
 export const ModalHr = styled.hr`
@@ -170,11 +204,4 @@ export const Vl = styled.div`
   position: absolute;
   left: 50%;
   bottom: 0;
-`;
-
-export const DropOutButton = styled.button`
-  color: #c6c6c8;
-  font-weight: 700;
-  width: 140px;
-  border: none;
 `;

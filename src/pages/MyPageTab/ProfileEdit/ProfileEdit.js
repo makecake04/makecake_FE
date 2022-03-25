@@ -1,38 +1,32 @@
 import React from "react";
-import styled from "styled-components";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as userAction } from "../../../redux/modules/user";
+import { actionCreators as reviewAction } from "../../../redux/modules/review";
+
+//image
+import { profile_image } from "../../../assets/images/image";
 
 //import css
 import {
   ProfileWrap,
   SubWrap,
   Header,
+  EnterP,
   BlackBackButton,
   HrWrap,
   ContentWrap,
   ProfileImage,
+  PlusButton,
+  LabelWrap,
+  ProfileEditButton,
   NicknameP,
   EmailP,
   BoldHr,
   Content,
   ContentP,
   ProfileHr,
-  EditButton,
-  ButtonWrap,
-  SignoutButton,
-  TitleP,
-  DescriptionP,
-  ModalInput,
-  ModalHr,
-  EditBtn,
-  FooterWrap,
-  BackButton,
-  Vl,
-  DropOutButton,
-  ModalWrap,
 } from "./style";
 
 Modal.setAppElement("#root");
@@ -41,17 +35,32 @@ const Profile = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user_info = useSelector((state) => state.user.userInfo);
+  const preview = useSelector((state) => state.review.preview);
+  const [fileName, setFileName] = React.useState(null);
+  const fileInput = React.useRef();
 
   React.useEffect(() => {
     dispatch(userAction.getUserInfoDB());
   }, []);
 
-  const [modalIsOpen1, setModalIsOpen1] = React.useState(false);
-  const [modalIsOpen2, setModalIsOpen2] = React.useState(false);
-  const [nickname, setNickname] = React.useState("");
+  const selectFiles = (e) => {
+    const reader = new FileReader();
+    const currentFile = fileInput.current.files[0];
+    setFileName(currentFile.name);
+    reader.readAsDataURL(currentFile);
+    reader.onloadend = () => {
+      dispatch(reviewAction.setPreview(reader.result));
+    };
+  };
+
+  const [nickname, setNickname] = React.useState(user_info.nickname);
 
   const changeNickname = (e) => {
     setNickname(e.target.value);
+  };
+
+  const editProfile = () => {
+    dispatch(userAction.editProfileDB(nickname, fileInput.current.files[0]));
   };
 
   return (
@@ -60,10 +69,23 @@ const Profile = (props) => {
         <Header>
           <BlackBackButton onClick={() => navigate(-1)} />
           <h3>프로필 수정하기</h3>
+          <EnterP onClick={editProfile}>완료</EnterP>
         </Header>
         <HrWrap />
         <ContentWrap>
-          <ProfileImage />
+          <ProfileImage src={user_info.profileImg} />
+          <PlusButton>
+            <LabelWrap>
+              <input
+                type="file"
+                multiple
+                ref={fileInput}
+                onChange={selectFiles}
+                accept=".jpg,.jpeg,.png"
+              />
+              <ProfileEditButton />
+            </LabelWrap>
+          </PlusButton>
           <NicknameP>{user_info.nickname}</NicknameP>
           <EmailP>{user_info.email}</EmailP>
           <BoldHr />
@@ -75,109 +97,9 @@ const Profile = (props) => {
         <ProfileHr />
         <Content>
           <ContentP>닉네임</ContentP>
-          <p>{user_info.nickname}</p>
-          <EditButton onClick={() => setModalIsOpen1(true)}>변경</EditButton>
-          <Modal
-            isOpen={modalIsOpen1}
-            onRequestClose={() => setModalIsOpen1(false)}
-            style={{
-              overlay: {
-                position: "fixed",
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                backgroundColor: "rgba(76, 76, 76, 0.7)",
-                zIndex: "20",
-              },
-              content: {
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                bottom: "auto",
-                width: "300px",
-                height: "220px",
-                padding: "0",
-                border: "solid 1px #eee",
-                overflow: "auto",
-                borderRadius: "5px",
-                transform: "translate(-50%,-50%)",
-                WebkitOverflowScrolling: "touch",
-              },
-            }}
-          >
-            <ModalWrap>
-              <TitleP>닉네임 변경</TitleP>
-              <DescriptionP>변경할 닉네임을 입력해주세요.</DescriptionP>
-              <ModalInput />
-              <ModalHr />
-              <EditBtn onClick={changeNickname}>변경하기</EditBtn>
-            </ModalWrap>
-          </Modal>
+          <input onChange={changeNickname} defaultValue={nickname} />
         </Content>
         <ProfileHr />
-        <ButtonWrap>
-          <SignoutButton
-            className="signout"
-            onClick={() => {
-              setModalIsOpen2(true);
-            }}
-          >
-            회원탈퇴
-          </SignoutButton>
-          <Modal
-            isOpen={modalIsOpen2}
-            onRequestClose={() => setModalIsOpen2(false)}
-            style={{
-              overlay: {
-                position: "fixed",
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                backgroundColor: "rgba(76, 76, 76, 0.7)",
-                zIndex: "20",
-              },
-              content: {
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                bottom: "auto",
-                width: "300px",
-                height: "160px",
-                padding: "0",
-                border: "solid 1px #eee",
-                overflow: "auto",
-                borderRadius: "5px",
-                transform: "translate(-50%,-50%)",
-                WebkitOverflowScrolling: "touch",
-              },
-            }}
-          >
-            <ModalWrap>
-              <TitleP>회원탈퇴</TitleP>
-              <DescriptionP>다시 돌아오실거죠..?</DescriptionP>
-              <ModalHr />
-              <FooterWrap>
-                <BackButton
-                  className="footer_one"
-                  onClick={() => setModalIsOpen2(false)}
-                >
-                  돌아가기
-                </BackButton>
-                <Vl />
-                <DropOutButton
-                  className="footer_two"
-                  onClick={() => {
-                    dispatch(userAction.resignDB());
-                  }}
-                >
-                  탈퇴하기
-                </DropOutButton>
-              </FooterWrap>
-            </ModalWrap>
-          </Modal>
-        </ButtonWrap>
       </SubWrap>
     </ProfileWrap>
   );

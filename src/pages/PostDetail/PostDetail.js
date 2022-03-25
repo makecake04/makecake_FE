@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useInView } from "react-intersection-observer";
+import Swal from "sweetalert2";
 
 import { actionCreators as postAction } from "../../redux/modules/post";
 import { actionCreators as commentAction } from "../../redux/modules/comment";
@@ -27,6 +28,8 @@ import {
   CommentWrapper,
   CommentInput,
   SendButton,
+  EmptyHeartIcon,
+  FullHeartIcon,
 } from "./style";
 
 const PostDetail = () => {
@@ -38,6 +41,7 @@ const PostDetail = () => {
   const [ref, inView] = useInView();
   const post = useSelector((state) => state.post.list);
   const nickname = useSelector((state) => state.user.user?.nickname);
+  const login = useSelector((state) => state.user.is_login);
 
   const getMoreComment = async () => {
     setPageNumber(pageNumber + 1);
@@ -70,6 +74,21 @@ const PostDetail = () => {
   useEffect(() => {
     dispatch(commentAction.getCommentDB(post_id, pageNumber));
   }, [pageNumber]);
+
+  const likeToggle = () => {
+    if (!login) {
+      Swal.fire({
+        title: "로그인이 필요한 서비스입니다!",
+        showCancelButton: true,
+        confirmButtonText: '<a href="/">로그인 할래요!</a>',
+        confirmButtonColor: "#ff679e",
+        cancelButtonColor: "#777",
+        cancelButtonText: "그냥 둘러볼래요.",
+      });
+    } else {
+      dispatch(postAction.addLikePostDB(post_id, !post.myLike));
+    }
+  };
 
   return (
     <Wrapper>
@@ -113,7 +132,11 @@ const PostDetail = () => {
       </ImageWrapper>
       <ImageInfo>
         <IconWrapper>
-          <img src={like} alt="like-heart" />
+          {post.myLike ? (
+            <FullHeartIcon onClick={likeToggle} />
+          ) : (
+            <EmptyHeartIcon onClick={likeToggle} />
+          )}
           <p className="likeCnt">{post.likeCnt}</p>
           <img src={view} alt="view-icon" />
           <p className="seeCnt">{post.viewCnt}</p>
@@ -122,6 +145,7 @@ const PostDetail = () => {
           <button>{post.size}</button>
           <button>{post.shape}</button>
           <button>{post.purpose}</button>
+          {post.orders ? <button>주문 완료</button> : null}
         </OptionWrapper>
       </ImageInfo>
 

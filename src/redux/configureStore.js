@@ -11,6 +11,7 @@ import Comment from "./modules/comment";
 import Post from "./modules/post";
 import Review from "./modules/review";
 import Noti from './modules/noti'
+import Order from "./modules/order";
 
 export const history = createBrowserHistory();
 
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   comment: Comment,
   review: Review,
   noti: Noti,
+  order: Order,
 });
 
 const middlewares = [thunk.withExtraArgument({ history: history })];

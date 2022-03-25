@@ -57,9 +57,9 @@ const PostWrite = () => {
   const [size, setSize] = useState(post_id ? post.size : "");
   const [shape, setShape] = useState(post_id ? post.shape : "");
   const [purpose, setPurpose] = useState(post_id ? post.purpose : "");
-  const [made, setMade] = useState(post_id ? post.made : "");
+  // const [made, setMade] = useState(post_id ? post.made : "");
   console.log(post_id);
-  console.log(title, content, size, shape, purpose, made, design_id, post_id);
+  console.log(title, content, size, shape, purpose, design_id, post_id);
   const addTitle = (e) => {
     setTitle(e.target.value);
   };
@@ -76,7 +76,7 @@ const PostWrite = () => {
         size,
         shape,
         purpose,
-        made,
+        // made,
         design_id
       )
     );
@@ -84,7 +84,7 @@ const PostWrite = () => {
 
   const editPost = () => {
     dispatch(
-      postAction.editPostDB(title, content, size, shape, purpose, made, post_id)
+      postAction.editPostDB(title, content, size, shape, purpose, post_id)
     );
   };
 
@@ -165,7 +165,7 @@ const PostWrite = () => {
             postSize={post.size}
             onClick={() => setSize("기타")}
           >
-            도시락
+            기타
           </OtherSize>
         </Size>
 
@@ -233,7 +233,7 @@ const PostWrite = () => {
             축하
           </Celebration>
         </Purpose>
-        <Made>
+        {/* <Made>
           <h3>주문 여부</h3>
           {!post_id && (
             <>
@@ -255,7 +255,7 @@ const PostWrite = () => {
               </EditPostMadeFalse>
             </>
           )}
-        </Made>
+        </Made> */}
       </Options>
     </Wrapper>
   );

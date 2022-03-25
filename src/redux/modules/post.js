@@ -10,12 +10,18 @@ const ADD_POST = "ADD_POST";
 const GET_POST = "GET_POST";
 const EDIT_POST = "EDIT_POST";
 const DELETE_POST = "DELETE_POST";
+const ADD_LIKE_POST = "ADD_LIKE_POST";
 
 //actioncreators
 const addPost = createAction(ADD_POST, (list) => ({ list }));
 const getOnePost = createAction(GET_POST, (list) => ({ list }));
 const editPost = createAction(EDIT_POST, (list) => ({ list }));
 const deletePost = createAction(DELETE_POST, (postId) => ({ postId }));
+const addLikePost = createAction(ADD_LIKE_POST, (postId, isLike, likeCnt) => ({
+  postId,
+  isLike,
+  likeCnt,
+}));
 
 const initialState = {
   lists: [],
@@ -25,7 +31,7 @@ const initialState = {
 //middlewear
 
 //add post
-const addPostDB = (title, content, size, shape, purpose, made, designId) => {
+const addPostDB = (title, content, size, shape, purpose, designId) => {
   const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState) {
     let post = {
@@ -34,8 +40,6 @@ const addPostDB = (title, content, size, shape, purpose, made, designId) => {
       size: size,
       shape: shape,
       purpose: purpose,
-      made: made,
-      // storeId:
     };
     axios
       .post(
@@ -82,7 +86,7 @@ const getOnePostDB = (postId) => {
 };
 
 //edit post
-const editPostDB = (title, content, size, shape, purpose, made, postId) => {
+const editPostDB = (title, content, size, shape, purpose, postId) => {
   const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState) {
     let post = {
@@ -91,8 +95,6 @@ const editPostDB = (title, content, size, shape, purpose, made, postId) => {
       size: size,
       shape: shape,
       purpose: purpose,
-      made: made,
-      // storeId:
     };
     axios
       .put(
@@ -136,6 +138,32 @@ const deletePostDB = (postId) => {
   };
 };
 
+const addLikePostDB = (postId, myLike) => {
+  console.log(myLike);
+  const token = localStorage.getItem("token");
+  return function (dispatch, getState) {
+    axios
+      .post(
+        `http://3.38.153.67/posts/like/${postId}`,
+        {
+          myLike: myLike,
+        },
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        dispatch(addLikePost(postId, res.data.myLike, res.data.likeCnt));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
 export default handleActions(
   {
     [ADD_POST]: (state, action) =>
@@ -157,6 +185,11 @@ export default handleActions(
     //       ...action.payload.list,
     //     };
     //   }),
+    [ADD_LIKE_POST]: (state, action) =>
+      produce(state, (draft) => {
+        draft.list.myLike = action.payload.isLike;
+        draft.list.likeCnt = action.payload.likeCnt;
+      }),
   },
   initialState
 );
@@ -166,6 +199,8 @@ const actionCreators = {
   getOnePostDB,
   editPostDB,
   deletePostDB,
+  addLikePost,
+  addLikePostDB,
 };
 
 export { actionCreators };

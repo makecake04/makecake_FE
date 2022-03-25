@@ -19,6 +19,10 @@ import {
   ReactPost,
   ReactStore,
   ReactCake,
+  Order,
+  OrderStore,
+  OrderWrite,
+  OrderDetail,
   StoreDetail,
   Noti,
   SignUpEmail,
@@ -37,6 +41,9 @@ import {
 
 //css
 import "../css/App.css";
+
+//image
+import { background } from "../assets/images/image";
 
 function App() {
   const dispatch = useDispatch();
@@ -76,6 +83,13 @@ function App() {
           <Route path="/react/cake" element={<ReactCake />} />
           <Route path="/storedetail/:storeid" element={<StoreDetail />} />
           <Route path="/noti" element={<Noti />} />
+          <Route path="/order" element={<Order />} />
+          <Route path="/order/:id" element={<OrderStore />} />
+          <Route
+            path="/order/write/:designId/:orderId"
+            element={<OrderWrite />}
+          />
+          <Route path="/order/detail/:id" element={<OrderDetail />} />
           <Route path="/signup/email" element={<SignUpEmail />} />
           <Route path="/signup/nickname" element={<SignUpNickname />} />
           <Route path="/signup/password" element={<SignUpPassword />} />
@@ -97,18 +111,30 @@ function App() {
 const WebView = styled.div`
   width: 100vw;
   height: 100vh;
-  background: url(https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2073&q=80)
-    center center / cover no-repeat;
-  box-sizing: border-box;
+  background: url(${background});
+  /* center center / cover no-repeat; */
+  background-size: cover;
+  @media (max-width: 500px) {
+    background: none;
+    background-color: #f9c9c9;
+  }
 `;
 
 const MobileView = styled.div`
-  position: relative;
-  box-sizing: border-box;
-  margin: 0 auto;
+  width: 100%;
   max-width: 390px;
   height: 100%;
+  position: relative;
+  left: 20%;
+  box-sizing: border-box;
+  margin: 0 auto;
   background-color: #fcfcfc;
+  overflow: hidden;
+
+  @media (max-width: 500px) {
+    position: relative;
+    left: 0;
+  }
 `;
 
 export default App;

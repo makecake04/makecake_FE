@@ -2,6 +2,7 @@ import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import { api } from "../../shared/api";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const ADD_REVIEW = "ADD_REVIEW";
 const SET_PREVIEW = "SET_PREVIEW";
@@ -92,7 +93,11 @@ const deleteReviewDB = (reviewId) => {
     })
       .then((res) => {
         dispatch(deleteReview(reviewId));
-        window.alert("후기가 삭제되었습니다!");
+        Swal.fire({
+          title: "리뷰가 삭제되었습니다!",
+          confirmButtonText: "확인",
+          confirmButtonColor: "#ff679e",
+        });
         window.location.reload();
       })
       .catch((err) => {

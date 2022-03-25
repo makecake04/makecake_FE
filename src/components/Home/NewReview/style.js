@@ -19,13 +19,16 @@ export const CommentWrap = styled.div`
   height: 200px;
 
   p {
-    width: 200px;
+    width: 220px;
     margin-left: 10px;
     margin-bottom: 10px;
+    word-break: break-all;
+    display: -webkit-box;
+    word-wrap: break-word;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
   }
 `;
 

@@ -18,6 +18,11 @@ import MyDesign from "./MyPageTab/MyDesign/MyDesign";
 import ReactPost from "./MyPageTab/ReactPost/ReactPost";
 import ReactStore from "./MyPageTab/ReactStore/ReactStore";
 import ReactCake from "./MyPageTab/ReactCake/ReactCake";
+import Order from "./MyPageTab/Order/Order";
+import OrderStore from "./MyPageTab/OrderStore/OrderStore";
+import OrderWrite from "./MyPageTab/OrderWrite/OrderWrite";
+import OrderDetail from "./MyPageTab/OrderDetail/OrderDetail";
+
 import StoreDetail from "./StoreDetail/StoreDetail";
 
 import Search from "./Search/Search";
@@ -41,6 +46,10 @@ export {
   ReactStore,
   ReactCake,
   StoreDetail,
+  Order,
+  OrderStore,
+  OrderWrite,
+  OrderDetail,
   Noti,
   SignUpEmail,
   SignUpNickname,

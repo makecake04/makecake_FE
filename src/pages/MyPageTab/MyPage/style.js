@@ -9,16 +9,23 @@ export const MyWrap = styled.div`
   height: calc(100% - 6rem);
   box-sizing: border-box;
   width: 100%;
-  h3 {
-    padding: 40px 0px 20px 0px;
-    text-align: center;
-    font-weight: 700;
-    font-size: 19px;
-    color: #282828;
+  svg {
+    color: red;
+    path {
+      fill: #ff769e;
+    }
   }
 `;
 
-export const SubWrap = styled.div``;
+export const SubWrap = styled.div`
+  h3 {
+    padding: 2.25rem 0;
+    text-align: center;
+    font-weight: 500;
+    font-size: 24px;
+    color: #282828;
+  }
+`;
 
 export const HrWrap = styled.hr`
   border: 0.7px solid #e5e5e5;
@@ -31,9 +38,10 @@ export const ProfileImage = styled.div`
   margin: 50px auto 20px auto;
   border-radius: 100px;
   background-color: #ddd;
-  background-image: url(${profile_image});
+  background: url(${(props) => (props.src ? props.src : profile_image)})
+    no-repeat;
   background-position: center;
-  background-size: 100px;
+  background-size: cover;
 `;
 
 export const NicknameP = styled.p`
@@ -63,6 +71,16 @@ export const Content = styled.div`
   margin: 30px 30px;
 `;
 
+export const Order = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 30px;
+  img:nth-of-type(1) {
+    margin-left: 30%;
+    padding-bottom: 0.2rem;
+  }
+`;
+
 export const ContenteP = styled.p`
   font-weight: 400;
   font-size: 16px;
@@ -83,9 +101,25 @@ export const ButtonWrap = styled.div`
 export const LogoutButton = styled.button`
   width: 80px;
   height: 20px;
-  margin: 20px 20px 20px 0px;
+  margin: 20px 0px;
   color: #777;
   font-size: 13px;
+  border: none;
+`;
+
+export const SignoutButton = styled.button`
+  width: 80px;
+  height: 20px;
+  margin: 20px 20px 0px 0px;
+  color: #777;
+  font-size: 13px;
+  border: none;
+`;
+
+export const DropOutButton = styled.button`
+  color: #c6c6c8;
+  font-weight: 700;
+  width: 140px;
   border: none;
 `;
 

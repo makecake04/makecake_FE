@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+//image
+import { empty_heart_icon, full_heart_icon } from "../../assets/images/image";
+
 export const Wrapper = styled.section`
   overflow: scroll;
   height: calc(100% - 6rem);
@@ -106,7 +109,7 @@ export const OptionWrapper = styled.div`
     border: none;
     font-size: 1.2rem;
     padding: 0.3rem 1.1rem;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
   }
 `;
 
@@ -158,3 +161,13 @@ export const SendButton = styled.button`
   right: 4rem;
   padding-top: 1rem;
 `;
+
+export const EmptyHeartIcon = styled.img.attrs({
+  src: `${empty_heart_icon}`,
+  alt: "img",
+})``;
+
+export const FullHeartIcon = styled.img.attrs({
+  src: `${full_heart_icon}`,
+  alt: "img",
+})``;
