@@ -29,10 +29,13 @@ const OrderDetail = () => {
   const [copied, setCopied] = useState(false);
   const user_order_id = useParams().id;
   const order_detail = useSelector((state) => state.order.order_detail);
+  const image_file = useSelector((state) => state.order.image_file);
   console.log(order_detail.copyText);
+  console.log(image_file);
 
   useEffect(() => {
     dispatch(orderAction.getOneOrderDB(user_order_id));
+    dispatch(orderAction.getImageFileDB(user_order_id));
   }, []);
 
   return (
@@ -58,7 +61,7 @@ const OrderDetail = () => {
           </button>
         </ButtonWrapper>
         <img src={order_detail.img} alt="design-img" />
-        <button onClick={() => saveAs(`${order_detail.img}`, "my order img")}>
+        <button onClick={() => saveAs(`${image_file}`, "my order img")}>
           저장
         </button>
         <Info>
