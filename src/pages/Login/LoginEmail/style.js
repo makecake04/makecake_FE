@@ -18,6 +18,7 @@ export const BlackBackButton = styled.img.attrs({
   cursor: pointer;
 `;
 
+
 export const H = styled.h2`
   width: 187px;
   height: 35px;

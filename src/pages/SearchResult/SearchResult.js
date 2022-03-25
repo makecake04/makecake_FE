@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { actionCreators as searchAction } from "../../redux/modules/search";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 //css
 import { Container,HeaderWrap, WhiteBackButton, Searchgwrap, Select, Option, Input, SearchIcon, SortType, 
@@ -12,7 +14,7 @@ import { Container,HeaderWrap, WhiteBackButton, Searchgwrap, Select, Option, Inp
 //import svg
 import { ReactComponent as StarIcon} from '../../assets/images/home/star-icon.svg'
 
-const SearchResult = () => {
+const SearchResult = (props) => {
   let _ = require("lodash");
   const dispatch = useDispatch();
   const [selected, setSelected] = React.useState("");
@@ -20,6 +22,10 @@ const SearchResult = () => {
   const searchs = useSelector((state) => state.search.list);
   const [sortType, setSortType] = useState("likeCount");
   const [review, setReview] = useState(false);
+
+  const _searchSelect = useParams().searchSelect;
+  const _searchInput = useParams().searchInput;
+  const _storeId = useParams().storeId;
 
   const navigate = useNavigate();
 
@@ -36,10 +42,17 @@ const SearchResult = () => {
   };
 
   const mapSearching = () => {
-    console.log(selected, searchInput);
+    // console.log(selected, searchInput);
     dispatch(searchAction.searchPlaceDB(selected, searchInput, "null"));
-    navigate("/search/result");
+    // navigate("/search/result");
+    navigate(`/search/result/${selected}/${searchInput}`);
   };
+
+    React.useEffect(() => {
+      if(searchs.length === 0) {
+      dispatch(searchAction.searchPlaceDB(_searchSelect, _searchInput, "null"));
+      }
+  }, [searchs]);
 
   return (
     <Container>

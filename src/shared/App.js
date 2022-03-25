@@ -68,7 +68,7 @@ function App() {
             <Route path="/design/list" element={<DesignList />} />
             <Route path="/profile/edit" element={<ProfileEdit />} />
             <Route path="/mydesign" element={<MyDesign />} />
-            <Route path="/search" element={<Search />} />
+            <Route path="/search/" element={<Search />} />
             <Route path="/post/:id" element={<PostDetail />} />
             <Route path="/post/write/:designid" element={<PostWrite />} />
             <Route
@@ -98,8 +98,8 @@ function App() {
           <Route path="/review/write" element={<ReviewWrite />} />
           <Route path="/review/:reviewId" element={<ReviewWrite />} />
 
-          <Route path="/searchmap/:storeId" element={<SearchMap />} />
-          <Route path="/search/result" element={<SearchResult />} />
+          <Route path="/searchmap/:storeId/" element={<SearchMap />} />
+          <Route path="/search/result/:searchSelect/:searchInput" element={<SearchResult />} />
           <Route path="/drawing" element={<Drawing />} />
           <Route path="/user/kakao/callback" element={<KakaoLoginHandler />} />
         </Routes>

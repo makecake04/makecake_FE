@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as searchAction } from "../../redux/modules/search";
 
@@ -14,6 +14,8 @@ const Search = (props) => {
   const [searchInput, setSearchInput] = React.useState("");
   const searchResult = useSelector((state) => state.search.list);
 
+  // const select = useParams().select
+
   const changeSelectOption = (e) => {
     setSelected(e.target.value);
   };
@@ -25,8 +27,10 @@ const Search = (props) => {
   const mapSearching = () => {
     console.log(selected, searchInput);
     dispatch(searchAction.searchPlaceDB(selected, searchInput, "null"));
-    navigate("/search/result");
+    navigate(`/search/result/${selected}/${searchInput}`);
   };
+
+
 
   return (
     <SDetailWrap>

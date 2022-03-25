@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { actionCreators as searchAction } from "../../redux/modules/search";
+import { useEffect } from "react";
+
 
 //component
 import { KakaoMap } from "../../components/component";
@@ -18,9 +20,17 @@ const SearchMap = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [selected, setSelected] = React.useState("store");
   const [searchInput, setSearchInput] = React.useState("");
+  // const [focusId, setFocusId] = useState(null);
 
   const storeId = useParams().storeId;
   console.log(storeId);
+
+  const _searchSelect = useParams().searchSelect;
+  const _searchInput = useParams().searchInput;
+
+  // const onChnageFocusId = focusId => {
+  //   setFocusId(focusId);
+  // };
 
   const onSearchKeywordChange = (e) => {
     setPlaceInput(e.target.value);
@@ -45,15 +55,27 @@ const SearchMap = () => {
   console.log(storeData);
 
   const mapSearching = () => {
-    console.log(selected, searchInput);
+    // console.log(selected, searchInput);
+    // dispatch(searchAction.searchPlaceDB(selected, searchInput, "null"));
+    // navigate("/search/result");
+
+    // console.log(selected, searchInput);
     dispatch(searchAction.searchPlaceDB(selected, searchInput, "null"));
-    navigate("/search/result");
+    // navigate("/search/result");
+    navigate(`/search/result/${selected}/${searchInput}`);
   };
+
+  // useEffect(() => {
+  //   if(searchs.length === 0) {
+  //     dispatch(searchAction.searchPlaceDB(_searchSelect, _searchInput, "null"));
+  //     }
+    
+  // }, [searchs]);
 
   return (
     <Container>
       <HeaderWrap>
-        <WhiteBackButton onClick={() => {navigate(-1)}}/>
+        <WhiteBackButton onClick={() => {navigate('search')}}/>
         <SearchWrap>
           <Select defaultValue="default" onChange={changeSelectOption}>
             <Option value="default" disabled hidden>검색옵션</Option>
@@ -62,11 +84,11 @@ const SearchMap = () => {
             <Option value="place">핫플</Option>
           </Select>
           <Input placeholder="검색 옵션을 선택해주세요!" onChange={changeInput}/>
-          <SearchIcon/>
+          <SearchIcon onClick={() => {if (!selected || !searchInput) return;mapSearching();}}/>
         </SearchWrap>
       </HeaderWrap>
 
-      <KakaoMap />
+      <KakaoMap/>
 
       {storeData.map((v, i) => {
         return (

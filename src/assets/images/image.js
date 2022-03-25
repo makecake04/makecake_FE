@@ -58,8 +58,13 @@ import sprinkle from "./drawing/icon/sprinkle.png";
 import noti_icon from "./home/noti-icon.svg";
 import search_button from "./home/search-button.svg";
 import swiper_arrow from "./home/swiper-arrow.svg";
-import search_icon from "./home/search-icon.svg";
-import star_icon from "./home/star-icon.svg";
+import search_icon from './home/search-icon.svg';
+import star_icon from './home/star-icon.svg';
+import noti_cake from './home/noti-cake.svg';
+import noti_comment from './home/noti-comment.svg';
+import noti_heart from './home/noti-heart.svg';
+import noti_bigcake from './home/noti-bigcake.svg'
+import noti_check_dot from './home/noti-check-dot.svg'
 
 //logo
 import main_logo from "./logo/main-logo.svg";
@@ -169,6 +174,11 @@ export {
   swiper_arrow,
   search_icon,
   star_icon,
+  noti_cake,
+  noti_comment,
+  noti_heart,
+  noti_bigcake,
+  noti_check_dot,
   main_logo,
   profile_image,
   grey,
