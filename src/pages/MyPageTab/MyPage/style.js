@@ -9,16 +9,23 @@ export const MyWrap = styled.div`
   height: calc(100% - 6rem);
   box-sizing: border-box;
   width: 100%;
-  h3 {
-    padding: 40px 0px 20px 0px;
-    text-align: center;
-    font-weight: 700;
-    font-size: 19px;
-    color: #282828;
+  svg {
+    color: red;
+    path {
+      fill: #ff769e;
+    }
   }
 `;
 
-export const SubWrap = styled.div``;
+export const SubWrap = styled.div`
+  h3 {
+    padding: 2.25rem 0;
+    text-align: center;
+    font-weight: 500;
+    font-size: 24px;
+    color: #282828;
+  }
+`;
 
 export const HrWrap = styled.hr`
   border: 0.7px solid #e5e5e5;
@@ -62,6 +69,16 @@ export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 30px 30px;
+`;
+
+export const Order = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 30px;
+  img:nth-of-type(1) {
+    margin-left: 30%;
+    padding-bottom: 0.2rem;
+  }
 `;
 
 export const ContenteP = styled.p`

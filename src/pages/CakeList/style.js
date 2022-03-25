@@ -15,10 +15,10 @@ export const CakeContainer = styled.div`
   width: 100%;
 
   h3 {
-    padding: 40px 0px 20px 20px;
-    box-sizing: border-box;
-    font-weight: 700;
-    font-size: 19px;
+    padding: 2.25rem 0;
+    text-align: center;
+    font-weight: 500;
+    font-size: 24px;
     color: #282828;
   }
 `;

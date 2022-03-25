@@ -2,6 +2,9 @@
 import black_back_button from "./back-button/black-back-button.svg";
 import white_back_button from "./back-button/white-back-button.svg";
 
+//background
+import background from "./background/background.svg";
+
 //cake
 import cake_store_icon from "./cake/cake-store-icon.svg";
 import empty_heart_icon from "./cake/empty-heart-icon.svg";
@@ -70,6 +73,10 @@ import pink from "./map-marker/pink.png";
 import remove_design from "./my-design-modal/remove-design.svg";
 import write_design from "./my-design-modal/write.svg";
 
+//mypage
+import nav_icon from "./mypage/nav-icon.svg";
+import pink_nav_icon from "./mypage/pink-nav-icon.svg";
+
 //nav-bar
 import cake from "./nav-bar/cake.svg";
 import design from "./nav-bar/design.svg";
@@ -79,6 +86,13 @@ import color_cake from "./nav-bar/color-cake.svg";
 import color_design from "./nav-bar/color-design.svg";
 import color_home from "./nav-bar/color-home.svg";
 import color_mypage from "./nav-bar/color-mypage.svg";
+
+//order
+import beta from "./order/beta.svg";
+import order_circle from "./order/order-circle.svg";
+import order_marker from "./order/order-marker.svg";
+import help_icon from "./order/help-icon.svg";
+import close from "./order/close.svg";
 
 //post-detail
 import like from "./post-detail/like.svg";
@@ -111,6 +125,7 @@ import preview_delete from "./store-review/preview-delete.svg";
 export {
   black_back_button,
   white_back_button,
+  background,
   cake_store_icon,
   empty_heart_icon,
   full_heart_icon,
@@ -160,6 +175,8 @@ export {
   pink,
   remove_design,
   write_design,
+  nav_icon,
+  pink_nav_icon,
   cake,
   design,
   home,
@@ -168,6 +185,11 @@ export {
   color_design,
   color_home,
   color_mypage,
+  beta,
+  order_circle,
+  order_marker,
+  help_icon,
+  close,
   like,
   view,
   send,

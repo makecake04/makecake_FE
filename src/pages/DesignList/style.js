@@ -10,10 +10,10 @@ export const DrawWrap = styled.div`
   box-sizing: border-box;
   width: 100%;
   h3 {
-    margin: 40px 0px 20px 0px;
+    padding: 2.25rem 0;
     text-align: center;
-    font-weight: 700;
-    font-size: 19px;
+    font-weight: 500;
+    font-size: 24px;
     color: #282828;
   }
 

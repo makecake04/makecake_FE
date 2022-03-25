@@ -54,7 +54,7 @@ const addDesignDB = (design) => {
       .then((res) => res.blob())
       .then((blob) => {
         const form = new FormData();
-        form.append("img", blob);
+        form.append("imgFile", blob);
         axios
           .post("http://3.38.153.67/designs", form, {
             headers: {
@@ -112,9 +112,32 @@ const getMyDesignListDB = (page_num, option) => {
         },
       })
       .then((res) => {
-        // const data = res.data.map((a) => a.img);
-        if (option === "nonpost") dispatch(myDesigntList(res.data));
-        else dispatch(myPostList(res.data));
+        if (page_num === 0 && option === "nonpost") {
+          dispatch(myDesigntList(res.data));
+        } else if (page_num === 0 && option === "post") {
+          dispatch(myPostList(res.data));
+        } else if (option === "nonpost") {
+          let design_list = [];
+          for (let i = 0; i < res.data.length; i++) {
+            design_list.push(res.data[i]);
+          }
+          if (design_list.length === 0) {
+            return;
+          }
+          dispatch(myDesigntList(design_list));
+        } else if (option === "post") {
+          let post_list = [];
+          for (let i = 0; i < res.data.length; i++) {
+            post_list.push(res.data[i]);
+          }
+          if (post_list.length === 0) {
+            return;
+          }
+          dispatch(myPostList(post_list));
+        }
+
+        // if (option === "nonpost") dispatch(myDesigntList(res.data));
+        // else dispatch(myPostList(res.data));
       })
       .catch((err) => {
         console.log(err);
@@ -260,8 +283,7 @@ export default handleActions(
       }),
     [MY_DESIGN_LIST]: (state, action) =>
       produce(state, (draft) => {
-        //.reverse() to sort by created at in descending order
-        draft.design_list.push(...action.payload.list.reverse());
+        draft.design_list.push(...action.payload.list);
         //중복 검사
         draft.design_list = draft.design_list.reduce((acc, cur) => {
           if (acc.findIndex((a) => a.designId === cur.designId) === -1) {
@@ -274,8 +296,7 @@ export default handleActions(
       }),
     [MY_POST_LIST]: (state, action) =>
       produce(state, (draft) => {
-        //.reverse() to sort by created at in descending order
-        draft.post_list.push(...action.payload.list.reverse());
+        draft.post_list.push(...action.payload.list);
         //중복 검사
         draft.post_list = draft.post_list.reduce((acc, cur) => {
           if (acc.findIndex((a) => a.postId === cur.postId) === -1) {

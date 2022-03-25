@@ -110,7 +110,8 @@ const getMyCommentDB = (page_num) => {
       headers: { Authorization: `${token}` },
     })
       .then((res) => {
-        dispatch(getMyComment(res.data.reverse()));
+        console.log(res.data);
+        dispatch(getMyComment(res.data));
       })
       .catch((err) => {
         console.log("댓글 정보를 가져올 수 없어요!", err);
