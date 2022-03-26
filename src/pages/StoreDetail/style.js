@@ -16,6 +16,7 @@ import {
 } from "../../assets/images/image";
 
 export const StoreDetailContainer = styled.div`
+
   overflow-y: auto;
   height: 100%;
 `;

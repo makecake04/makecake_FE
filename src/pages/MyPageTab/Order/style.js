@@ -5,10 +5,10 @@ import { order_circle } from "../../../assets/images/image";
 
 export const Wrapper = styled.div`
   text-align: center;
-  overflow-y: auto;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
+  overflow-y: auto;
 
   hr {
     border: 0.7px solid #e5e5e5;
