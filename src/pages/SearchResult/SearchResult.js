@@ -8,11 +8,31 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 //css
-import { Container,HeaderWrap, WhiteBackButton, Searchgwrap, Select, Option, Input, SearchIcon, SortType, 
-         LikeWrap, SortPopular, ReviewWrap, SortReview,  StoreInfoWrap, ImageWrap, Img, StoreInfo, StoreName, Address, LikeAndReview} from "./style";
+import {
+  Container,
+  HeaderWrap,
+  WhiteBackButton,
+  Searchgwrap,
+  Select,
+  Option,
+  Input,
+  SearchIcon,
+  SortType,
+  LikeWrap,
+  SortPopular,
+  ReviewWrap,
+  SortReview,
+  StoreInfoWrap,
+  ImageWrap,
+  Img,
+  StoreInfo,
+  StoreName,
+  Address,
+  LikeAndReview,
+} from "./style";
 
 //import svg
-import { ReactComponent as StarIcon} from '../../assets/images/home/star-icon.svg'
+import { ReactComponent as StarIcon } from "../../assets/images/home/star-icon.svg";
 
 const SearchResult = (props) => {
   let _ = require("lodash");
@@ -38,7 +58,7 @@ const SearchResult = (props) => {
   };
 
   const saveInformation = (storeId) => {
-    navigate(`/SearchMap/${storeId}`);
+    navigate(`/searchmap/${storeId}`);
   };
 
   const mapSearching = () => {
@@ -48,19 +68,25 @@ const SearchResult = (props) => {
     navigate(`/search/result/${selected}/${searchInput}`);
   };
 
-    React.useEffect(() => {
-      if(searchs.length === 0) {
+  React.useEffect(() => {
+    if (searchs.length === 0) {
       dispatch(searchAction.searchPlaceDB(_searchSelect, _searchInput, "null"));
-      }
-  }, [searchs]);
+    }
+  }, []);
 
   return (
     <Container>
       <HeaderWrap>
-        <WhiteBackButton onClick={() => {navigate(-1)}}/>
+        <WhiteBackButton
+          onClick={() => {
+            navigate(-1);
+          }}
+        />
         <Searchgwrap>
           <Select defaultValue="default" onChange={changeSelectOption}>
-            <Option value="default" disabled hidden>검색옵션</Option>
+            <Option value="default" disabled hidden>
+              검색옵션
+            </Option>
             <Option value="store">매장</Option>
             <Option value="address">주소</Option>
             <Option value="place">핫플</Option>
@@ -69,19 +95,40 @@ const SearchResult = (props) => {
             placeholder="검색 옵션을 선택해주세요!"
             onChange={changeInput}
           />
-          <SearchIcon onClick={() => {if (!selected || !searchInput) return;mapSearching();}}/>
+          <SearchIcon
+            onClick={() => {
+              if (!selected || !searchInput) return;
+              mapSearching();
+            }}
+          />
         </Searchgwrap>
       </HeaderWrap>
 
       <SortType>
         <LikeWrap on={!review && true}>
-          <StarIcon/>
-          <SortPopular onClick={() => {setSortType("likeCount"); setReview(false)}} on={!review && true}>&nbsp; 인기순</SortPopular>
+          <StarIcon />
+          <SortPopular
+            onClick={() => {
+              setSortType("likeCount");
+              setReview(false);
+            }}
+            on={!review && true}
+          >
+            &nbsp; 인기순
+          </SortPopular>
         </LikeWrap>
 
         <ReviewWrap on={review && true}>
-          <StarIcon/>
-          <SortReview onClick={() => {setSortType("reviewCount"); setReview(true)}} on={review && true}>&nbsp; 리뷰순</SortReview> 
+          <StarIcon />
+          <SortReview
+            onClick={() => {
+              setSortType("reviewCount");
+              setReview(true);
+            }}
+            on={review && true}
+          >
+            &nbsp; 리뷰순
+          </SortReview>
         </ReviewWrap>
       </SortType>
 
@@ -90,16 +137,23 @@ const SearchResult = (props) => {
           return (
             <StoreInfoWrap key={i}>
               <ImageWrap>
-                <Img src={v.mainImg} ></Img>
+                <Img src={v.mainImg}></Img>
               </ImageWrap>
 
               <StoreInfo>
-                <StoreName onClick={() => { saveInformation(v.storeId); }}>{v.name}</StoreName>
+                <StoreName
+                  onClick={() => {
+                    saveInformation(v.storeId);
+                  }}
+                >
+                  {v.name}
+                </StoreName>
                 <Address>{v.roadAddress}</Address>
               </StoreInfo>
 
-              <LikeAndReview>좋아요 {v.likeCnt} &nbsp;&nbsp;&nbsp; 리뷰 {v.reviewCnt}</LikeAndReview>
-
+              <LikeAndReview>
+                좋아요 {v.likeCnt} &nbsp;&nbsp;&nbsp; 리뷰 {v.reviewCnt}
+              </LikeAndReview>
             </StoreInfoWrap>
           );
         })}
@@ -114,11 +168,19 @@ const SearchResult = (props) => {
                 </ImageWrap>
 
                 <StoreInfo>
-                  <StoreName onClick={() => { saveInformation(v.storeId); }}>{v.name}</StoreName>
+                  <StoreName
+                    onClick={() => {
+                      saveInformation(v.storeId);
+                    }}
+                  >
+                    {v.name}
+                  </StoreName>
                   <Address>{v.roadAddress}</Address>
                 </StoreInfo>
 
-                <LikeAndReview>좋아요 {v.likeCnt} &nbsp;&nbsp;&nbsp; 리뷰 {v.reviewCnt}</LikeAndReview>
+                <LikeAndReview>
+                  좋아요 {v.likeCnt} &nbsp;&nbsp;&nbsp; 리뷰 {v.reviewCnt}
+                </LikeAndReview>
               </StoreInfoWrap>
             );
           })}

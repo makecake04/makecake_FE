@@ -1,6 +1,7 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 import { api } from "../../shared/api";
 import { initial } from "lodash";
@@ -81,6 +82,12 @@ const getOnePostDB = (postId) => {
       })
       .catch((err) => {
         console.log("게시글 불러오기 오류: ", err);
+        Swal.fire({
+          title: "게시글 정보가 없습니다!",
+          showCancelButton: false,
+          confirmButtonText: '<a href="/design/list">돌아가기</a>',
+          confirmButtonColor: "#ff679e",
+        });
       });
   };
 };
@@ -129,7 +136,6 @@ const deletePostDB = (postId) => {
       })
       .then((res) => {
         console.log(res);
-        alert("게시글이 삭제되었습니다!");
         window.location.replace("/mydesign");
       })
       .catch((error) => {

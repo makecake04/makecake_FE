@@ -37,7 +37,7 @@ const PostDetail = () => {
   const dispatch = useDispatch();
   const post_id = useParams().id;
   const [content, setContent] = useState("");
-  const [pageNumber, setPageNumber] = React.useState(0);
+  const [pageNumber, setPageNumber] = useState(0);
   const [ref, inView] = useInView();
   const post = useSelector((state) => state.post.list);
   const nickname = useSelector((state) => state.user.user?.nickname);
@@ -47,7 +47,7 @@ const PostDetail = () => {
     setPageNumber(pageNumber + 1);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) {
       getMoreComment();
     }

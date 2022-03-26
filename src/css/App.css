@@ -18,7 +18,7 @@ html {
 body {
   margin: 0;
   height: 100vh;
-  background: #ffffff;
+  background: #fcfcfc;
   font-size: 1.6rem;
   font-family: "Noto Sans KR";
 }
@@ -198,6 +198,9 @@ textarea {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+textarea {
+  background-color: #fcfcfc;
+}
 input[type="radio"] {
   margin: 0;
   -webkit-appearance: none;
@@ -208,6 +211,7 @@ input[type="radio"] {
 input {
   border: 1px solid #dddddd;
 }
+
 textarea {
   border: 1px solid #dddddd;
   resize: none;
@@ -234,7 +238,9 @@ button {
 
 input {
   /* padding: 0.2rem 1rem; */
-  /*edit*/
   font-family: "Noto Sans KR";
   border: 1px solid #dddddd;
+}
+input[type="text"] {
+  background-color: #fcfcfc;
 }

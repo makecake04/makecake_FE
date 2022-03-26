@@ -203,7 +203,7 @@ const deleteOrderDB = (userOrdersId) => {
       })
       .then((res) => {
         console.log(res.data);
-        window.location("/order");
+        window.location.replace("/order");
       })
       .catch((err) => {
         console.log("order 삭제하기 error:", err);

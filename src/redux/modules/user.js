@@ -1,8 +1,7 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import { api } from "../../shared/api";
-import { useNavigate } from "react-router-dom";
-import KakaoLogin from "react-kakao-login";
+import Swal from "sweetalert2";
 import axios from "axios";
 
 const SET_USER = "SET_USER";
@@ -216,6 +215,34 @@ const editProfileDB = (nickname, img) => {
   };
 };
 
+const resignDB = () => {
+  const token = localStorage.getItem("token");
+  return function (dispatch, getState) {
+    axios
+      .put(
+        "http://3.38.153.67/user/resign",
+        {},
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        localStorage.removeItem("token");
+        Swal.fire({
+          title: "꼭 다시 돌아와주세요! 😢",
+          showCancelButton: false,
+          confirmButtonText: '<a href="/home">생각해볼게요.</a>',
+          confirmButtonColor: "#ff679e",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
 export default handleActions(
   {
     [SET_USERNAME]: (state, action) =>
@@ -278,6 +305,7 @@ const actionCreators = {
   logOutDB,
   editProfile,
   editProfileDB,
+  resignDB,
 };
 
 export { actionCreators };

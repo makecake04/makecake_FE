@@ -113,6 +113,9 @@ export const OrderButton = styled.button`
   color: #fcfcfc;
   font-weight: 700;
   margin-top: 2rem;
+  &:disabled {
+    background-color: lightgray;
+  }
 `;
 
 export const ModalWrap = styled.div`

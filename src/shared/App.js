@@ -57,6 +57,7 @@ function App() {
 
   return (
     <WebView>
+      {/* <WebMockView> */}
       <MobileView>
         <Routes>
           <Route element={<NavBar />}>
@@ -99,11 +100,15 @@ function App() {
           <Route path="/review/:reviewId" element={<ReviewWrite />} />
 
           <Route path="/searchmap/:storeId/" element={<SearchMap />} />
-          <Route path="/search/result/:searchSelect/:searchInput" element={<SearchResult />} />
+          <Route
+            path="/search/result/:searchSelect/:searchInput"
+            element={<SearchResult />}
+          />
           <Route path="/drawing" element={<Drawing />} />
           <Route path="/user/kakao/callback" element={<KakaoLoginHandler />} />
         </Routes>
       </MobileView>
+      {/* </WebMockView> */}
     </WebView>
   );
 }
@@ -116,24 +121,35 @@ const WebView = styled.div`
   background-size: cover;
   @media (max-width: 500px) {
     background: none;
-    background-color: #f9c9c9;
+    background-color: #fee9ee;
   }
 `;
 
 const MobileView = styled.div`
   width: 100%;
   max-width: 390px;
-  height: 100%;
+  height: 75%;
   position: relative;
+  margin: 0 auto;
   left: 20%;
   box-sizing: border-box;
-  margin: 0 auto;
   background-color: #fcfcfc;
-  overflow: hidden;
+  overflow-y: auto;
+  transform: translate(0%, 15%);
+  border-radius: 2rem;
+  outline: 5px solid #f9c9c9;
+
+  @media (max-height: 1000px) {
+    height: 85%;
+    transform: translate(0%, 9%);
+  }
 
   @media (max-width: 500px) {
-    position: relative;
+    height: 100%;
     left: 0;
+    transform: translate(0%, 0%);
+    border-radius: 0;
+    outline: none;
   }
 `;
 

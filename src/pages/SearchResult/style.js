@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
 //image
-import { white_back_button, search_icon, star_icon } from "../../assets/images/image";
-
+import {
+  white_back_button,
+  search_icon,
+  star_icon,
+} from "../../assets/images/image";
 
 export const Container = styled.div`
   overflow-y: auto;
@@ -22,8 +25,9 @@ export const HeaderWrap = styled.div`
 export const WhiteBackButton = styled.img.attrs({
   src: `${white_back_button}`,
   alt: "logo",
-})`margin-right: 10px;
-   cursor: pointer;
+})`
+  margin-right: 10px;
+  cursor: pointer;
 `;
 
 export const Searchgwrap = styled.div`
@@ -45,24 +49,24 @@ export const Select = styled.select`
   cursor: pointer;
 `;
 
-export const Option = styled.option`
-`;
+export const Option = styled.option``;
 
 export const Input = styled.input`
+  width: 100%;
   height: 35px;
-  font-size: 13px;
+  font-size: 15px;
   box-sizing: border-box;
   border: none;
   color: #777777;
   outline: none;
-  padding-left: 10px;
+  padding: 0 8px 3px 10px;
 `;
 
 export const SearchIcon = styled.img.attrs({
   src: `${search_icon}`,
   alt: "logo",
-})`margin-left: 30px;
-   cursor: pointer;
+})`
+  padding-right: 1rem;
 `;
 
 export const SortType = styled.div`
@@ -73,20 +77,19 @@ export const LikeWrap = styled.div`
   display: flex;
   margin-top: 20px;
   margin-left: 15px;
-  >svg path {
-    ${props => props.on? "fill : #FF679E;" : "fill : #B3B3B3;"}
+  > svg path {
+    ${(props) => (props.on ? "fill : #FF679E;" : "fill : #B3B3B3;")}
   }
 `;
 
-export const SortPopularWrap = styled.div`
-`;
+export const SortPopularWrap = styled.div``;
 
 export const SortPopular = styled.h3`
   color: #b3b3b3;
   margin-top: -5px;
   font-size: 14px;
   font-weight: bold;
-  ${props => props.on? "color : #FF679E;" : "color : #B3B3B3;"}
+  ${(props) => (props.on ? "color : #FF679E;" : "color : #B3B3B3;")}
   cursor: pointer;
 `;
 
@@ -94,8 +97,8 @@ export const ReviewWrap = styled.div`
   display: flex;
   margin-top: 20px;
   margin-left: 15px;
-  >svg path {
-    ${props => props.on? "fill : #FF679E;" : "fill : #B3B3B3;"}
+  > svg path {
+    ${(props) => (props.on ? "fill : #FF679E;" : "fill : #B3B3B3;")}
   }
 `;
 
@@ -104,7 +107,7 @@ export const SortReview = styled.h3`
   margin-top: -5px;
   font-size: 14px;
   font-weight: bold;
-  ${props => props.on? "color : #FF679E;" : "color : #B3B3B3;"}
+  ${(props) => (props.on ? "color : #FF679E;" : "color : #B3B3B3;")}
   cursor: pointer;
 `;
 
@@ -126,7 +129,7 @@ export const StoreInfoWrap = styled.div`
   display: flex;
   height: 100px;
   margin-top: 10px;
-  margin-bottom: 40px; 
+  margin-bottom: 40px;
 `;
 
 export const ImageWrap = styled.div`
@@ -135,14 +138,13 @@ export const ImageWrap = styled.div`
 `;
 
 export const Img = styled.img`
-  width: 145px; 
-  height: 89px; 
+  width: 145px;
+  height: 89px;
   background: #c4c4c4;
   border-radius: 10px;
 `;
 
-export const StoreInfo = styled.div`
-`;
+export const StoreInfo = styled.div``;
 
 export const StoreName = styled.h3`
   word-break: break-all;
@@ -162,7 +164,3 @@ export const Address = styled.p`
   margin-left: 25px;
   word-break: keep-all;
 `;
-
-
-
-

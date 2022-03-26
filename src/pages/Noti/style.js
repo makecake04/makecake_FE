@@ -1,10 +1,17 @@
 import styled from "styled-components";
 
 //image
-import { black_back_button, noti_cake, noti_bigcake, noti_check_dot, noti_heart, noti_comment } from "../../assets/images/image";
+import {
+  black_back_button,
+  noti_cake,
+  noti_bigcake,
+  noti_check_dot,
+  noti_heart,
+  noti_comment,
+} from "../../assets/images/image";
 
 export const NotiWrap = styled.div`
-  
+  overflow-y: auto;
 `;
 
 export const Container = styled.div`
@@ -21,7 +28,7 @@ export const BlackBackButton = styled.img.attrs({
   cursor: pointer;
 `;
 
-export const HeaderText =styled.h3`
+export const HeaderText = styled.h3`
   margin-left: 33%;
   vertical-align: center;
 `;
@@ -34,7 +41,7 @@ export const Line = styled.hr`
 export const FixListBox = styled.div`
   width: 390px;
   height: 112px;
-  background-color: #FFF4F7;
+  background-color: #fff4f7;
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #e5e5e5;
@@ -43,7 +50,7 @@ export const FixListBox = styled.div`
 export const PersonalListBox = styled.div`
   width: 390px;
   height: 112px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #e5e5e5;
@@ -124,7 +131,7 @@ export const BigCakeIcon = styled.img.attrs({
 `;
 
 export const NotNotiText = styled.p`
-  color: #E1E1E1;
+  color: #e1e1e1;
   font-size: 18px;
   font-weight: bold;
   text-align: center;
@@ -170,4 +177,3 @@ export const NotiComment = styled.img.attrs({
 })`
   margin-left: 10px;
 `;
-

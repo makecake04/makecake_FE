@@ -28,7 +28,7 @@ const addReviewDB = (storeId, content, img) => {
   return function (dispatch, getState) {
     const form = new FormData();
     form.append("content", content);
-    form.append("imgFiles", img);
+    form.append("imgFileList", img);
     axios
       .post(`http://3.38.153.67/reviews/${storeId}`, form, {
         headers: {
@@ -48,16 +48,20 @@ const addReviewDB = (storeId, content, img) => {
 
 const editReviewDB = (reviewId, content, img, imgurl) => {
   const token = localStorage.getItem("token");
-  // console.log(reviewId, content, img, imgurl);
+  console.log(reviewId, content, img, imgurl);
   return function (dispatch, getState) {
     const form = new FormData();
-    form.append("content", content);
+
     if (img) {
-      form.append("imgFiles", img);
-      form.append("imgUrls", "");
-    } else if (!img) {
-      // form.append("imgFiles", "");
-      form.append("imgUrls", imgurl);
+      form.append("content", content);
+      form.append("imgFileList", img);
+      form.append("imgUrlList", "");
+    } else if (!img && imgurl) {
+      form.append("content", content);
+      form.append("imgUrlList", imgurl);
+    } else if (!img && !imgurl) {
+      form.append("content", content);
+      form.append("imgUrlList", "");
     }
     axios
       .put(`http://3.38.153.67/reviews/${reviewId}`, form, {
@@ -93,11 +97,6 @@ const deleteReviewDB = (reviewId) => {
     })
       .then((res) => {
         dispatch(deleteReview(reviewId));
-        Swal.fire({
-          title: "리뷰가 삭제되었습니다!",
-          confirmButtonText: "확인",
-          confirmButtonColor: "#ff679e",
-        });
         window.location.reload();
       })
       .catch((err) => {

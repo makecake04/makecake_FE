@@ -143,7 +143,7 @@ export const CommentWrapper = styled.section`
 export const CommentInput = styled.input`
   width: 100%;
   height: 39px;
-  background: rgba(249, 201, 201, 0.2);
+  background: rgba(249, 201, 201, 0.2) !important;
   outline: none;
   font-size: 12px;
   padding: 1rem;

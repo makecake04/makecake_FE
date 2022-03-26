@@ -8,19 +8,9 @@ import { Container } from "./style";
 
 const CommentList = (props) => {
   const ref = props;
-  // console.log(props)
-
   const dispatch = useDispatch();
-
   const commentList = useSelector((state) => state.comment.list);
-
-  const { user } = props;
-
   const userInfo = useSelector((state) => state.user.user);
-
-  // const commentId = commentList
-
-  // searchs.filter(a => a.storeId === +storeId )
 
   const deleteComment = (commentId) => {
     dispatch(commentAction.deleteCommentDB(commentId));
@@ -36,21 +26,15 @@ const CommentList = (props) => {
                 <div className="nickname1">{v.nickname}</div>
                 <div className="commentDate">{v.createdDate}</div>
               </div>
-
               <div className="content1">{v.content}</div>
-
               <div className="buttons">
                 {v.nickname === userInfo?.nickname ? (
-                  <>
-                    <div className="editBox">수정하기</div>
-
-                    <div
-                      className="deleteBox"
-                      onClick={() => deleteComment(v.commentId)}
-                    >
-                      삭제하기
-                    </div>
-                  </>
+                  <div
+                    className="deleteBox"
+                    onClick={() => deleteComment(v.commentId)}
+                  >
+                    삭제하기
+                  </div>
                 ) : null}
               </div>
             </div>

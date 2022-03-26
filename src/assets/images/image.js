@@ -56,15 +56,14 @@ import sprinkle from "./drawing/icon/sprinkle.png";
 
 //home
 import noti_icon from "./home/noti-icon.svg";
-import search_button from "./home/search-button.svg";
 import swiper_arrow from "./home/swiper-arrow.svg";
-import search_icon from './home/search-icon.svg';
-import star_icon from './home/star-icon.svg';
-import noti_cake from './home/noti-cake.svg';
-import noti_comment from './home/noti-comment.svg';
-import noti_heart from './home/noti-heart.svg';
-import noti_bigcake from './home/noti-bigcake.svg'
-import noti_check_dot from './home/noti-check-dot.svg'
+import search_icon from "./home/search-icon.svg";
+import star_icon from "./home/star-icon.svg";
+import noti_cake from "./home/noti-cake.svg";
+import noti_comment from "./home/noti-comment.svg";
+import noti_heart from "./home/noti-heart.svg";
+import noti_bigcake from "./home/noti-bigcake.svg";
+import noti_check_dot from "./home/noti-check-dot.svg";
 
 //logo
 import main_logo from "./logo/main-logo.svg";
@@ -170,7 +169,6 @@ export {
   pearl,
   sprinkle,
   noti_icon,
-  search_button,
   swiper_arrow,
   search_icon,
   star_icon,

@@ -50,7 +50,7 @@ const MyPage = (props) => {
   return (
     <MyWrap>
       <SubWrap>
-        <h3>MY PAGE</h3>
+        <h3>마이 페이지</h3>
         <HrWrap />
         <ProfileImage src={user_info.profileImg} />
       </SubWrap>

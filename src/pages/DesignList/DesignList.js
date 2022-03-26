@@ -30,9 +30,7 @@ const DesignList = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [toggle, setToggle] = React.useState(false);
-
   const [pageNumber, setPageNumber] = React.useState(0);
-
   const [sortType, setSortType] = React.useState("createdDate");
 
   const [ref, inView] = useInView();
@@ -60,7 +58,7 @@ const DesignList = (props) => {
 
   return (
     <DrawWrap>
-      <h3>도안</h3>
+      <h3>도안 모아보기</h3>
       <HrWrap />
       <ButtonWrap>
         <NewButton

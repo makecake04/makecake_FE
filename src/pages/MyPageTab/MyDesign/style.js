@@ -192,6 +192,51 @@ export const ModalWrap = styled.div`
     object-fit: cover;
   }
 `;
+export const ModalWrap2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  p {
+    color: #292929;
+    &:first-child {
+      font-weight: 700;
+      margin: 20px 0px 10px 0px;
+    }
+    &:nth-of-type(2) {
+      font-size: 15px;
+      margin: 0px 0px 25px 0px;
+    }
+  }
+
+  hr {
+    border: 1px solid #e5e5e5;
+    width: 100%;
+  }
+`;
+export const ModalChoice = styled.div`
+  display: flex;
+  padding-top: 0.3rem;
+  button {
+    &:first-child {
+      color: #ff679e;
+    }
+    &:nth-of-type(2) {
+      color: #c6c6c8;
+    }
+    font-weight: 700;
+    border: none;
+    width: 15rem;
+    padding-top: 0.6rem;
+  }
+`;
+export const VerticalLine = styled.div`
+  border-left: 2px solid #e5e5e5;
+  height: 4.7rem;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+`;
 
 //image
 export const DeleteIcon = styled.img.attrs({

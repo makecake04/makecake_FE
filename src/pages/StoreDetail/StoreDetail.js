@@ -369,7 +369,7 @@ const StoreDetail = (props) => {
                             </ImgWrapTwo>
                           );
                         })}
-                      {v.writerNickname === user_nickname.nickname && (
+                      {v.writerNickname === user_nickname?.nickname && (
                         <ButtonWrap>
                           <EditButton
                             onClick={() => navigate(`/review/${v.reviewId}`)}

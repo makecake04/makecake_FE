@@ -31,7 +31,7 @@ const OrderDetail = () => {
   const order_detail = useSelector((state) => state.order.order_detail);
   const image_file = useSelector((state) => state.order.image_file);
   console.log(order_detail.copyText);
-  console.log(image_file);
+  // console.log(image_file);
 
   useEffect(() => {
     dispatch(orderAction.getOneOrderDB(user_order_id));
@@ -44,7 +44,7 @@ const OrderDetail = () => {
         <img
           src={black_back_button}
           alt="back-button"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/order")}
         />
         <h3>주문서 확인</h3>
         <img src={beta} alt="beta" />
@@ -61,9 +61,7 @@ const OrderDetail = () => {
           </button>
         </ButtonWrapper>
         <img src={order_detail.img} alt="design-img" />
-        <button onClick={() => saveAs(`${image_file}`, "my order img")}>
-          저장
-        </button>
+        <p>이미지를 꾸욱 눌러서 저장할 수 있어요!</p>
         <Info>
           <h3>{order_detail.name}</h3>
         </Info>

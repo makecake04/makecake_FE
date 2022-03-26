@@ -1,11 +1,28 @@
 import React from "react";
-
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as searchAction } from "../../redux/modules/search";
+import Swal from "sweetalert2";
 
 //css
-import { SDetailWrap, HeaderWrap, SearchWrap , Select, Option, Input, SearchIcon, Bell, EmptySpace, Container, CommendText, PlaceList1, PlaceList2, Place, Place2, Place3  } from "./style";
+import {
+  SDetailWrap,
+  HeaderWrap,
+  SearchWrap,
+  Select,
+  Option,
+  Input,
+  SearchIcon,
+  Bell,
+  EmptySpace,
+  Container,
+  CommendText,
+  PlaceList1,
+  PlaceList2,
+  Place,
+  Place2,
+  Place3,
+} from "./style";
 
 const Search = (props) => {
   const navigate = useNavigate();
@@ -26,29 +43,40 @@ const Search = (props) => {
 
   const mapSearching = () => {
     console.log(selected, searchInput);
+    if (!selected && searchInput) {
+      Swal.fire({
+        title: "검색 옵션을 먼저 골라주세요!",
+        showCancelButton: false,
+        confirmButtonText: "아~깜빡했네요😅",
+        confirmButtonColor: "#ff679e",
+      });
+      return;
+    }
     dispatch(searchAction.searchPlaceDB(selected, searchInput, "null"));
     navigate(`/search/result/${selected}/${searchInput}`);
   };
-
-
-
   return (
     <SDetailWrap>
       <HeaderWrap>
         <SearchWrap className="search_wrap">
           <Select defaultValue="default" onChange={changeSelectOption}>
-            <Option value="default" disabled hidden>검색옵션</Option>
+            <Option value="default" disabled hidden>
+              검색옵션
+            </Option>
             <Option value="store">매장</Option>
             <Option value="address">주소</Option>
             <Option value="place">핫플</Option>
           </Select>
-          <Input placeholder="검색 옵션을 선택해주세요!" onChange={changeInput}/>
-          <SearchIcon onClick={mapSearching}/>
+          <Input
+            placeholder="검색 옵션을 선택해주세요!"
+            onChange={changeInput}
+          />
+          <SearchIcon onClick={mapSearching} />
         </SearchWrap>
-        <Bell/>
+        <Bell />
       </HeaderWrap>
 
-      <EmptySpace/>
+      <EmptySpace />
 
       <Container>
         <CommendText>플레이스 추천</CommendText>
@@ -57,7 +85,7 @@ const Search = (props) => {
           <Place>래빗힙</Place>
           <Place>베니케이크</Place>
         </PlaceList1>
-        <PlaceList2 >
+        <PlaceList2>
           <Place>더케이크스토리</Place>
           <Place>두두케이크</Place>
         </PlaceList2>
