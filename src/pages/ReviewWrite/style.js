@@ -12,6 +12,8 @@ export const ReviewWrap = styled.div`
     font-weight: 700;
     font-size: 19px;
     color: #282828;
+    overflow-y: auto;
+    height: 100%;
   }
 
   textarea {

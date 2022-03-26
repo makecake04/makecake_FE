@@ -3,7 +3,10 @@ import styled from "styled-components";
 //image
 import { black_back_button } from "../../../assets/images/image";
 
-export const ReactCakeWrap = styled.div``;
+export const ReactCakeWrap = styled.div`
+  overflow-y: auto;
+  height: 100%;
+`;
 
 export const Container = styled.div``;
 

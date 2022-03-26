@@ -10,6 +10,13 @@ import {
   noti_comment,
 } from "../../assets/images/image";
 
+
+export const Wrapper = styled.div`
+  overflow-y: auto;
+  height: 100%;
+`;
+
+
 export const NotiWrap = styled.div``;
 
 export const Container = styled.div`
@@ -84,41 +91,34 @@ export const PersoNalTextWrap = styled.div`
 export const MainText = styled.p`
   color: #282828;
   font-size: 14px;
-  /* line-height: 23px; */
   display: -webkit-box;
-  /* word-wrap: break-word;
-  word-break: keep-all; */
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 280px;
   max-height: 63px;
+  margin-bottom: 5px;
 `;
 
 export const SubText = styled.p`
   color: #282828;
   font-size: 12px;
-  /* line-height: 20px; */
   display: -webkit-box;
-  word-wrap: break-word;
-  /* -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical; */
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   width: 280px;
   line-height: 20px;
 `;
 
 export const TimeText = styled.p`
-  /* text-align: right; */
   color: #777777;
 
   font-size: 11.5px;
   margin-top: 105px;
   width: 70px;
   left: 315px;
-  /* margin-right: 5px; */
-  /* width: 60px; */
-  /* padding-right: 15px; */
 `;
 
 export const NotNoti = styled.div`

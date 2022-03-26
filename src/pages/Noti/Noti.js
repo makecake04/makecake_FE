@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 
 //import css
 import {
+  Wrapper,
   NotiWrap,
   Container,
   BlackBackButton,
@@ -48,7 +49,7 @@ const Noti = (props) => {
   }, []);
 
   return (
-    <>
+    <Wrapper>
       <Container>
         <BlackBackButton
           onClick={() => {
@@ -102,11 +103,13 @@ const Noti = (props) => {
                       {v.type === "LIKE" ? <NotiHeart /> : <NotiComment />}
                       {/* <CakeIcon/> */}
                     </ImgWrap>
+
                     <PersoNalTextWrap>
                       <MainText>{v.mainContent}</MainText>
                       <SubText>{v.subContent}</SubText>
                     </PersoNalTextWrap>
                     {!v.checked && <NotiCheckDot />}
+
                     <TimeText>{v.timeDiff}</TimeText>
                   </PersonalListBox>
                 );
@@ -129,7 +132,7 @@ const Noti = (props) => {
           </LoginBox>
         </NotiWrap>
       )}
-    </>
+    </Wrapper>
   );
 };
 

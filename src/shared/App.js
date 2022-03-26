@@ -135,9 +135,13 @@ const MobileView = styled.div`
   box-sizing: border-box;
   background-color: #fcfcfc;
   overflow-y: auto;
+  /* overflow: hidden; */
   transform: translate(0%, 15%);
   border-radius: 2rem;
   outline: 5px solid #f9c9c9;
+  & ::-webkit-scrollbar {
+    display: none;
+  }
 
   @media (max-height: 1000px) {
     height: 85%;

@@ -8,6 +8,9 @@ import {
 } from "../../assets/images/image";
 
 export const Container = styled.div`
+
+  overflow-y: auto;
+
   height: 100%;
 `;
 
