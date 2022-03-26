@@ -7,6 +7,8 @@ export const Wrapper = styled.div`
     overflow-y: auto;
     height: 100%;
   }
+  overflow-y: auto;
+  height: 100%;
 `;
 
 export const Header = styled.header`

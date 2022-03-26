@@ -161,7 +161,6 @@ export const NotiCheckDot = styled.img.attrs({
   width: 10px;
   height: 10px;
   margin-top: 15px;
-
   left: 350px;
 `;
 
