@@ -7,7 +7,10 @@ import {
   like,
 } from "../../../assets/images/image";
 
-export const ReactWriteWrap = styled.div``;
+export const ReactWriteWrap = styled.div`
+  overflow-y: auto;
+  height: 100%;
+`;
 
 export const Container = styled.div``;
 

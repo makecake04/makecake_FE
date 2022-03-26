@@ -17,6 +17,8 @@ import {
 
 export const StoreDetailContainer = styled.div`
   /* overflow: auto; */
+  overflow-y: auto;
+  height: 100%;
 `;
 
 export const DetailWrap = styled.div``;

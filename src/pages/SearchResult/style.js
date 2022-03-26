@@ -8,8 +8,9 @@ import {
 } from "../../assets/images/image";
 
 export const Container = styled.div`
+  /* overflow-y: auto; */
   overflow-y: auto;
-  height: 844px;
+  height: 100%;
 `;
 
 export const HeaderWrap = styled.div`

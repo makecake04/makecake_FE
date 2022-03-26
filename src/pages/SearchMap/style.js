@@ -4,7 +4,8 @@ import styled from "styled-components";
 import { white_back_button, search_icon } from "../../assets/images/image";
 
 export const Container = styled.div`
-  height: 844px;
+  overflow-y: auto;
+  height: 100%;
 `;
 
 export const HeaderWrap = styled.div`
