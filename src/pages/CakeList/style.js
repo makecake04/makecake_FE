@@ -1,11 +1,7 @@
 import styled from "styled-components";
 
 //image
-import {
-  cake_store_icon,
-  empty_heart_icon,
-  full_heart_icon,
-} from "../../assets/images/image";
+import { empty_heart_icon, full_heart_icon } from "../../assets/images/image";
 
 export const CakeContainer = styled.div`
   text-align: center;
@@ -69,35 +65,40 @@ export const ModalImg = styled.img`
 `;
 
 export const LikeCnt = styled.div`
-  position: absolute;
-  top: 8px;
-  right: 15px;
-  color: #777;
+  color: #fcfcfc;
 `;
 
-export const StoreIcon = styled.img.attrs({
-  src: `${cake_store_icon}`,
-  alt: "img",
-})`
-  position: absolute;
-  top: 10px;
-  left: 10px;
+export const StoreWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  width: 100%;
+
+  > div {
+    display: flex;
+  }
+`;
+
+export const StoreName = styled.p`
+  color: #fcfcfc;
+  font-weight: 300;
+  text-decoration: underline;
+`;
+
+export const StoreBody = styled.div`
+  display: flex;
 `;
 
 export const EmptyHeartIcon = styled.img.attrs({
   src: `${empty_heart_icon}`,
   alt: "img",
 })`
-  position: absolute;
-  top: 10px;
-  right: 30px;
+  margin-right: 5px;
 `;
 
 export const FullHeartIcon = styled.img.attrs({
   src: `${full_heart_icon}`,
   alt: "img",
 })`
-  position: absolute;
-  top: 10px;
-  right: 30px;
+  margin-right: 5px;
 `;
