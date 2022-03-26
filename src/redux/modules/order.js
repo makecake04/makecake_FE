@@ -9,6 +9,7 @@ const GET_NO_ORDERS = "GET_NO_ORDERS";
 const GET_STORES = "GET_STORES";
 const GET_ORDER_FORM = "GET_ORDER_FORM";
 const GET_ONE_ORDER = "GET_ONE_ORDER";
+const GET_IMAGE_FILE = "GET_IMAGE_FILE";
 // const DELETE_ORDER = "DELETE_ORDER";
 // const ADD_ORDER = "ADD_ORDER";
 
@@ -28,6 +29,9 @@ const getOrderForm = createAction(GET_ORDER_FORM, (list) => ({
 const getOneOrder = createAction(GET_ONE_ORDER, (list) => ({
   list,
 }));
+const getImageFile = createAction(GET_IMAGE_FILE, (list) => ({
+  list,
+}));
 // const addOrder = createAction(ADD_ORDER, (list) => ({ list }));
 
 const initialState = {
@@ -36,6 +40,7 @@ const initialState = {
   store_list: [],
   order_form: [],
   order_detail: [],
+  image_file: "",
 };
 
 //middlewear
@@ -141,7 +146,7 @@ const addOrderDB = (list, orderFormId, designId) => {
       .then((res) => {
         console.log(res.data);
         // dispatch(addOrder(res.data));
-        window.location.replace(`/order/detail/${res.data}`);
+        window.location.replace(`/order/detail/${res.data.userOrdersId}`);
       })
       .catch((err) => {
         console.log("order form 불러오기 error:", err);
@@ -168,6 +173,24 @@ const getOneOrderDB = (userOrdersId) => {
       });
   };
 };
+const getImageFileDB = (userOrdersId) => {
+  console.log(userOrdersId);
+  const token_key = `${localStorage.getItem("token")}`;
+  return function (dispatch, getState, { history }) {
+    axios
+      .get(`http://3.38.153.67/orders/${userOrdersId}/design`, {
+        headers: {
+          Authorization: `${token_key}`,
+        },
+      })
+      .then((res) => {
+        dispatch(getImageFile(res.data));
+      })
+      .catch((err) => {
+        console.log("one order 불러오기 error:", err);
+      });
+  };
+};
 
 const deleteOrderDB = (userOrdersId) => {
   const token_key = `${localStorage.getItem("token")}`;
@@ -180,7 +203,7 @@ const deleteOrderDB = (userOrdersId) => {
       })
       .then((res) => {
         console.log(res.data);
-        window.location("/order");
+        window.location.replace("/order");
       })
       .catch((err) => {
         console.log("order 삭제하기 error:", err);
@@ -230,6 +253,10 @@ export default handleActions(
       produce(state, (draft) => {
         draft.order_detail = action.payload.list;
       }),
+    [GET_IMAGE_FILE]: (state, action) =>
+      produce(state, (draft) => {
+        draft.image_file = action.payload.list;
+      }),
   },
   initialState
 );
@@ -241,6 +268,7 @@ const actionCreators = {
   addOrderDB,
   getOneOrderDB,
   deleteOrderDB,
+  getImageFileDB,
 };
 
 export { actionCreators };

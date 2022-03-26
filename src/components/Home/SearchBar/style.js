@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 // image
-import { noti_icon, search_button, noti_check_dot } from "../../../assets/images/image";
+import {
+  noti_icon,
+  search_icon,
+  noti_check_dot,
+} from "../../../assets/images/image";
 
 export const SearchWrap = styled.div`
   padding: 20px;
@@ -18,7 +22,9 @@ export const SearchWrap = styled.div`
   }
 
   input {
+    font-size: 15px;
     width: 85%;
+    height: 3.5rem;
     padding: 8px 10px;
     box-sizing: border-box;
     border: none;
@@ -27,7 +33,7 @@ export const SearchWrap = styled.div`
 `;
 
 export const Search = styled.div`
-  height: 4rem;
+  height: 3.5rem;
   display: flex;
   align-items: center;
   flex: auto;
@@ -42,7 +48,7 @@ export const NotiIcon = styled.img.attrs({
 `;
 
 export const SearchIcon = styled.img.attrs({
-  src: `${search_button}`,
+  src: `${search_icon}`,
 })`
   margin-left: 1.7rem;
 `;
@@ -50,8 +56,8 @@ export const SearchIcon = styled.img.attrs({
 export const NotiCheckDot = styled.img.attrs({
   src: `${noti_check_dot}`,
 })`
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   position: absolute;
   right: 23px;
   top: 52px;

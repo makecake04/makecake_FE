@@ -47,21 +47,21 @@ export const Select = styled.select`
 export const Option = styled.option``;
 
 export const Input = styled.input`
+  width: 100%;
   height: 35px;
-  font-size: 13px;
+  font-size: 15px;
   box-sizing: border-box;
   border: none;
   color: #777777;
   outline: none;
-  padding-left: 10px;
+  padding: 0 8px 3px 10px;
 `;
 
 export const SearchIcon = styled.img.attrs({
   src: `${search_icon}`,
   alt: "SearchIcon",
 })`
-  margin-left: 30px;
-  cursor: pointer;
+  padding-right: 1rem;
 `;
 
 export const StoreInfoWrap = styled.div`

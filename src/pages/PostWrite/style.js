@@ -92,7 +92,6 @@ export const Size = styled.div`
 
 export const Shape = styled(Size)``;
 export const Purpose = styled(Size)``;
-export const Made = styled(Size)``;
 
 export const MiniSize = styled.button`
   ${(props) =>
@@ -239,67 +238,29 @@ export const Lovers = styled.button`
           color: #777777;
         `}
 `;
-export const Celebration = styled.button`
+// export const Celebration = styled.button`
+//   ${(props) =>
+//     (props.purpose || props.postPurpose) === "축하"
+//       ? css`
+//           background-color: rgba(255, 103, 158, 0.1);
+//           color: #ff679e;
+//         `
+//       : css`
+//           background-color: rgba(196, 196, 196, 0.16);
+//           color: #777777;
+//         `}
+// `;
+export const Others = styled.button`
   ${(props) =>
-    (props.purpose || props.postPurpose) === "축하"
+    (props.purpose || props.postPurpose) === "기타"
       ? css`
           background-color: rgba(255, 103, 158, 0.1);
           color: #ff679e;
+          /* margin-top: 1rem; */
         `
       : css`
           background-color: rgba(196, 196, 196, 0.16);
           color: #777777;
-        `}
-`;
-
-export const NewPostMadeTrue = styled.button`
-  ${(props) =>
-    props.made
-      ? css`
-          background-color: rgba(255, 103, 158, 0.1);
-          color: #ff679e;
-        `
-      : css`
-          background-color: rgba(196, 196, 196, 0.16);
-          color: #777777;
-        `}
-`;
-
-export const NewPostMadeFalse = styled.button`
-  ${(props) =>
-    props.made
-      ? css`
-          background-color: rgba(196, 196, 196, 0.16);
-          color: #777777;
-        `
-      : css`
-          background-color: rgba(255, 103, 158, 0.1);
-          color: #ff679e;
-        `}
-`;
-
-export const EditPostMadeTrue = styled.button`
-  ${(props) =>
-    props.made
-      ? css`
-          background-color: rgba(255, 103, 158, 0.1);
-          color: #ff679e;
-        `
-      : css`
-          background-color: rgba(196, 196, 196, 0.16);
-          color: #777777;
-        `}
-`;
-
-export const EditPostMadeFalse = styled.button`
-  ${(props) =>
-    props.made
-      ? css`
-          background-color: rgba(196, 196, 196, 0.16);
-          color: #777777;
-        `
-      : css`
-          background-color: rgba(255, 103, 158, 0.1);
-          color: #ff679e;
+          /* margin-top: 1rem; */
         `}
 `;

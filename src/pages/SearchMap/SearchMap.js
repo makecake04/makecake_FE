@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { actionCreators as searchAction } from "../../redux/modules/search";
-import { useEffect } from "react";
 
 //component
 import { KakaoMap } from "../../components/component";
@@ -29,29 +28,10 @@ import {
 const SearchMap = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [placeInput, setPlaceInput] = useState("");
-  const [searchKeyword, setSearchKeyword] = useState("");
-  const [selected, setSelected] = React.useState("store");
-  const [searchInput, setSearchInput] = React.useState("");
-  // const [focusId, setFocusId] = useState(null);
+  const [selected, setSelected] = useState("store");
+  const [searchInput, setSearchInput] = useState("");
 
-  const storeId = useParams().storeId;
-  console.log(storeId);
-
-  // const _mapLat = useParams().mapLat;
-  // const _mapLon = useParams().mapLon;
-
-  // const onChnageFocusId = focusId => {
-  //   setFocusId(focusId);
-  // };
-
-  const onSearchKeywordChange = (e) => {
-    setPlaceInput(e.target.value);
-  };
-
-  const searchPlace = () => {
-    setSearchKeyword(placeInput);
-  };
+  const storeId = useParams().storeId
 
   const changeSelectOption = (e) => {
     setSelected(e.target.value);
@@ -72,11 +52,13 @@ const SearchMap = () => {
     navigate(`/search/result/${selected}/${searchInput}`);
   };
 
+
   useEffect(() => {
     if (searchs.length === 0) {
       dispatch(searchAction.mapInfoDB(storeId));
     }
   }, [searchs]);
+
 
   return (
     <Container>

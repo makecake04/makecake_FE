@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { actionCreators as designAction } from "../../../redux/modules/design";
 import { useInView } from "react-intersection-observer";
 import Modal from "react-modal";
+
+import { actionCreators as designAction } from "../../../redux/modules/design";
 
 //css
 import {
@@ -22,32 +20,28 @@ import {
   ModalWrap,
   DeleteIcon,
   WriteIcon,
+  ModalWrap2,
+  ModalChoice,
+  VerticalLine,
 } from "./style";
 
 //image
 import { black_back_button } from "../../../assets/images/image";
-import { invert } from "lodash";
 
 const MyDraw = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [ref, inView] = useInView();
 
-  const [modalIsOpen, setModalIsOpen] = React.useState(false);
-  const [toggleState, setToggleState] = React.useState(1);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modal2IsOpen, setModal2IsOpen] = useState(false);
+  const [toggleState, setToggleState] = useState(1);
   const [post, setPost] = useState("nonpost");
   const [pageNumber, setPageNumber] = useState(0);
 
   const design_list = useSelector((state) => state.design.design_list);
   const post_list = useSelector((state) => state.design.post_list);
-
   const design_detail = useSelector((state) => state.design.design_detail);
-  const post_detail = useSelector((state) => state.design.post_detail);
-  console.log(pageNumber, post);
-  const [ref, inView] = useInView();
-
-  // const getMoreDesign = async () => {
-  //   setPageNumber(pageNumber + 1);
-  // };
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -64,7 +58,6 @@ const MyDraw = (props) => {
 
   useEffect(() => {
     if (inView) {
-      // getMoreDesign();
       setPageNumber(pageNumber + 1);
     }
   }, []);
@@ -79,6 +72,7 @@ const MyDraw = (props) => {
         />
         <h3>내가 그린 도안</h3>
       </Header>
+
       <hr />
 
       <Tab>
@@ -165,12 +159,63 @@ const MyDraw = (props) => {
               onClick={() => navigate(`/post/write/${design_detail.designId}`)}
             />
             <DeleteIcon
-              onClick={() =>
-                dispatch(designAction.deleteDesignDB(design_detail.designId))
-              }
+              onClick={() => {
+                if (design_detail.orders) {
+                  setModal2IsOpen(true);
+                } else {
+                  dispatch(designAction.deleteDesignDB(design_detail.designId));
+                }
+              }}
             />
           </ModalWrap>
         )}
+      </Modal>
+
+      <Modal
+        isOpen={modal2IsOpen}
+        onRequestClose={() => setModal2IsOpen(false)}
+        style={{
+          overlay: {
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(76, 76, 76, 0.7)",
+            zIndex: "20",
+          },
+          content: {
+            position: "absolute",
+            top: "35%",
+            left: "50%",
+            bottom: "auto",
+            width: "302px",
+            height: "150px",
+            padding: "0",
+            border: "solid 1px #eee",
+            overflow: "auto",
+            borderRadius: "5px",
+            transform: "translate(-50%,-50%)",
+            WebkitOverflowScrolling: "touch",
+          },
+        }}
+      >
+        <ModalWrap2>
+          <p>삭제하시겠어요?</p>
+          <p>작성하신 주문서도 함께 삭제돼요.</p>
+          <hr />
+          <ModalChoice>
+            <button
+              onClick={() =>
+                dispatch(designAction.deleteDesignDB(design_detail.designId))
+              }
+            >
+              삭제하기
+            </button>
+            <VerticalLine />
+            <button onClick={() => setModal2IsOpen(false)}>취소하기</button>
+          </ModalChoice>
+        </ModalWrap2>
       </Modal>
     </Wrapper>
   );

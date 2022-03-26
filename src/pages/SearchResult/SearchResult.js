@@ -59,7 +59,10 @@ const SearchResult = (props) => {
   };
 
   const saveInformation = (storeId) => {
-    navigate(`/searchMap/${storeId}`);
+
+    navigate(`/searchmap/${storeId}`);
+
+
   };
 
   const mapSearching = () => {
@@ -68,8 +71,10 @@ const SearchResult = (props) => {
   };
 
   React.useEffect(() => {
+
     dispatch(searchAction.searchPlaceDB(_searchSelect, _searchInput, "null"));
   }, [_searchSelect, _searchInput]);
+
 
   return (
     <Container>

@@ -56,7 +56,6 @@ import sprinkle from "./drawing/icon/sprinkle.png";
 
 //home
 import noti_icon from "./home/noti-icon.svg";
-import search_button from "./home/search-button.svg";
 import swiper_arrow from "./home/swiper-arrow.svg";
 import search_icon from "./home/search-icon.svg";
 import star_icon from "./home/star-icon.svg";
@@ -170,7 +169,6 @@ export {
   pearl,
   sprinkle,
   noti_icon,
-  search_button,
   swiper_arrow,
   search_icon,
   star_icon,

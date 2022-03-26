@@ -10,7 +10,10 @@ import {
   noti_comment,
 } from "../../assets/images/image";
 
-export const NotiWrap = styled.div``;
+
+export const NotiWrap = styled.div`
+  overflow-y: auto;
+`;
 
 export const Container = styled.div`
   padding: 2rem 0;
@@ -38,7 +41,9 @@ export const Line = styled.hr`
 
 export const FixListBox = styled.div`
   width: 390px;
+
   height: 130px;
+
   background-color: #fff4f7;
   display: flex;
   flex-direction: row;
@@ -47,7 +52,9 @@ export const FixListBox = styled.div`
 
 export const PersonalListBox = styled.div`
   width: 390px;
+
   height: 130px;
+
   background-color: #ffffff;
   display: flex;
   flex-direction: row;

@@ -4,9 +4,8 @@ import styled from "styled-components";
 import { logo } from "../../assets/images/image";
 
 export const Wrapper = styled.section`
-  max-height: 844px;
+  /* max-height: 844px; */
   text-align: center;
-
   button {
     border: none;
   }
@@ -131,9 +130,11 @@ export const CakeShape = styled.div`
   button + button {
     padding-left: 2rem;
   }
+
   img {
     width: 10rem;
   }
+
   button:nth-of-type(3) {
     img {
       height: 10rem;
@@ -211,7 +212,9 @@ export const DrawingOptions = styled.div`
 export const BodyWrapper = styled.div`
   position: relative;
   border-radius: 0.8rem 0.8rem 0 0;
-  flex: 2;
+  /* flex: 2; */
+  height: 100vh;
+  overflow: hidden;
   background-color: #fee9ee;
 `;
 

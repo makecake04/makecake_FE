@@ -55,19 +55,23 @@ const Order = () => {
       setOrder("ordered");
     }
   };
+  useEffect(() => {
+    setPageNumber(0);
+  }, [toggleState]);
 
   useEffect(() => {
     console.log("dispatch");
     dispatch(orderAction.getOrdersDB(pageNumber, order));
-  }, [toggleState, pageNumber]);
+  }, [pageNumber]);
 
   useEffect(() => {
     if (inView) {
       // getMoreStore();
       console.log("inview");
+
       setPageNumber(pageNumber + 1);
     }
-  }, []);
+  }, [inView]);
 
   return (
     <Wrapper>
@@ -75,7 +79,7 @@ const Order = () => {
         <img
           src={black_back_button}
           alt="back-button"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/mypage")}
         />
         <h3>케이크 주문하기</h3>
         <img src={beta} alt="beta" />

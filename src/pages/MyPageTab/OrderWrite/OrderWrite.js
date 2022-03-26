@@ -37,22 +37,18 @@ const OrderWrite = () => {
   const dispatch = useDispatch();
   const design_id = useParams().designId;
   const order_id = useParams().orderId;
+  const [active, setActive] = React.useState(true);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [inputs, setInputs] = useState({});
-  // const [list, setList] = useState([]);
   const design_detail = useSelector((state) => state.design.design_detail);
   const order_form = useSelector((state) => state.order.order_form);
   const question_length = order_form.formList?.length;
-  console.log(question_length);
-  console.log(inputs);
-
   const list = Object.values(inputs);
-  console.log(list);
-
   const setUserInput = (e, i) => {
     let key = `${i}`;
     let value = e.target.value;
     setInputs({ ...inputs, [key]: value });
+    if (list.length === question_length - 1) setActive(false);
   };
 
   useEffect(() => {
@@ -107,7 +103,9 @@ const OrderWrite = () => {
             );
           })}
       </MustRead>
+
       <OrderButton
+        disabled={active}
         onClick={() => {
           if (inputs.length < question_length) {
           }
@@ -116,6 +114,7 @@ const OrderWrite = () => {
       >
         주문서 작성 완료
       </OrderButton>
+
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
@@ -156,7 +155,6 @@ const OrderWrite = () => {
                     <span>
                       {m.type} {m.size}
                     </span>
-                    {/* <hr /> */}
                     <span>{m.price}</span>
                   </CategoryItem>
                   <CategoryDetail>
@@ -165,42 +163,6 @@ const OrderWrite = () => {
                 </CategoryWrap>
               );
             })}
-          {/* <CategoryWrap>
-            <CategoryItem>
-              <span>원형 도시락</span>
-              <hr />
-              <span>18,000</span>
-            </CategoryItem>
-            <CategoryDetail>
-              <p>한글 15자, 영문 22자 이내</p>
-              <p>흰색, 검정색 포함 5색</p>
-              <p>작은 스프링클</p>
-            </CategoryDetail>
-          </CategoryWrap>
-          <CategoryWrap>
-            <CategoryItem>
-              <span>원형 도시락</span>
-              <hr />
-              <span>18,000</span>
-            </CategoryItem>
-            <CategoryDetail>
-              <p>한글 15자, 영문 22자 이내</p>
-              <p>흰색, 검정색 포함 5색</p>
-              <p>작은 스프링클</p>
-            </CategoryDetail>
-          </CategoryWrap>
-          <CategoryWrap>
-            <CategoryItem>
-              <span>원형 도시락</span>
-              <hr />
-              <span>18,000</span>
-            </CategoryItem>
-            <CategoryDetail>
-              <p>한글 15자, 영문 22자 이내</p>
-              <p>흰색, 검정색 포함 5색</p>
-              <p>작은 스프링클</p>
-            </CategoryDetail>
-          </CategoryWrap> */}
 
           <Category>케이크 시트 맛</Category>
           {order_form &&
@@ -209,7 +171,6 @@ const OrderWrite = () => {
                 <CategoryWrap key={i}>
                   <CategoryItem>
                     <span>{t.flavor}</span>
-                    {/* <hr /> */}
                     <span>{t.addedPrice}</span>
                   </CategoryItem>
                   <CategoryDetail>
@@ -218,18 +179,6 @@ const OrderWrite = () => {
                 </CategoryWrap>
               );
             })}
-          {/* <CategoryWrap>
-            <CategoryItem>
-              <span>원형 도시락</span>
-              <hr />
-              <span>18,000</span>
-            </CategoryItem>
-            <CategoryDetail>
-              <p>한글 15자, 영문 22자 이내</p>
-              <p>흰색, 검정색 포함 5색</p>
-              <p>작은 스프링클</p>
-            </CategoryDetail>
-          </CategoryWrap> */}
 
           <Category>추가 옵션</Category>
           {order_form &&
@@ -238,7 +187,6 @@ const OrderWrite = () => {
                 <CategoryWrap key={i}>
                   <CategoryItem>
                     <span>{o.name}</span>
-                    {/* <hr /> */}
                     <span>{o.price}</span>
                   </CategoryItem>
                   <CategoryDetail>
@@ -247,18 +195,6 @@ const OrderWrite = () => {
                 </CategoryWrap>
               );
             })}
-          {/* <CategoryWrap>
-            <CategoryItem>
-              <span>원형 도시락</span>
-              <hr />
-              <span>18,000</span>
-            </CategoryItem>
-            <CategoryDetail>
-              <p>한글 15자, 영문 22자 이내</p>
-              <p>흰색, 검정색 포함 5색</p>
-              <p>작은 스프링클</p>
-            </CategoryDetail>
-          </CategoryWrap> */}
         </ModalWrap>
       </Modal>
     </Wrapper>

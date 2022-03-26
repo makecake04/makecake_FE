@@ -17,14 +17,8 @@ import {
 } from "./style";
 
 const CommentList = (props) => {
-  const ref = props;
-
   const dispatch = useDispatch();
-
   const commentList = useSelector((state) => state.comment.list);
-
-  const { user } = props;
-
   const userInfo = useSelector((state) => state.user.user);
 
   const deleteComment = (commentId) => {
@@ -36,6 +30,8 @@ const CommentList = (props) => {
       {commentList &&
         commentList.map((v, i) => {
           return (
+
+
             <CommentBox key={i}>
               <InfoBox>
                 <NickName>{v.nickname}</NickName>
@@ -53,6 +49,7 @@ const CommentList = (props) => {
                       삭제하기
                     </DeleteBox>
                   </>
+
                 ) : null}
               </Button>
             </CommentBox>

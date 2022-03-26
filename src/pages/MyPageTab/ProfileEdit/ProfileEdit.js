@@ -5,10 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as userAction } from "../../../redux/modules/user";
 import { actionCreators as reviewAction } from "../../../redux/modules/review";
 
-//image
-import { profile_image } from "../../../assets/images/image";
-
-//import css
+//css
 import {
   ProfileWrap,
   SubWrap,
@@ -38,7 +35,7 @@ const Profile = (props) => {
   const preview = useSelector((state) => state.review.preview);
   const [fileName, setFileName] = React.useState(null);
   const fileInput = React.useRef();
-
+  console.log(preview);
   React.useEffect(() => {
     dispatch(userAction.getUserInfoDB());
   }, []);
@@ -73,7 +70,7 @@ const Profile = (props) => {
         </Header>
         <HrWrap />
         <ContentWrap>
-          <ProfileImage src={user_info.profileImg} />
+          <ProfileImage src={preview ? preview : user_info.profileImg} />
           <PlusButton>
             <LabelWrap>
               <input

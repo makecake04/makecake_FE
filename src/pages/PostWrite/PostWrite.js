@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { actionCreators as designAction } from "../../redux/modules/design";
 import { actionCreators as postAction } from "../../redux/modules/post";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
 
 //css
 import {
@@ -20,7 +21,6 @@ import {
   Size,
   Shape,
   Purpose,
-  Made,
   MiniSize,
   OneSize,
   TwoSize,
@@ -33,11 +33,8 @@ import {
   Parents,
   Friends,
   Lovers,
-  Celebration,
-  NewPostMadeTrue,
-  NewPostMadeFalse,
-  EditPostMadeTrue,
-  EditPostMadeFalse,
+  // Celebration,
+  Others,
 } from "./style";
 
 //image
@@ -57,7 +54,6 @@ const PostWrite = () => {
   const [size, setSize] = useState(post_id ? post.size : "");
   const [shape, setShape] = useState(post_id ? post.shape : "");
   const [purpose, setPurpose] = useState(post_id ? post.purpose : "");
-  // const [made, setMade] = useState(post_id ? post.made : "");
   console.log(post_id);
   console.log(title, content, size, shape, purpose, design_id, post_id);
   const addTitle = (e) => {
@@ -69,16 +65,17 @@ const PostWrite = () => {
   };
 
   const addPost = () => {
+    if (!title || !content || !size || !shape || !purpose) {
+      Swal.fire({
+        title: "모든 입력값을 입력해주세요!",
+        showCancelButton: false,
+        confirmButtonText: "확인",
+        confirmButtonColor: "#ff679e",
+      });
+      return;
+    }
     dispatch(
-      postAction.addPostDB(
-        title,
-        content,
-        size,
-        shape,
-        purpose,
-        // made,
-        design_id
-      )
+      postAction.addPostDB(title, content, size, shape, purpose, design_id)
     );
   };
 
@@ -225,37 +222,21 @@ const PostWrite = () => {
           >
             연인
           </Lovers>
-          <Celebration
+          {/* <Celebration
             purpose={purpose}
             postPurpose={post.purpose}
             onClick={() => setPurpose("축하")}
           >
             축하
-          </Celebration>
+          </Celebration> */}
+          <Others
+            purpose={purpose}
+            postPurpose={post.purpose}
+            onClick={() => setPurpose("기타")}
+          >
+            기타
+          </Others>
         </Purpose>
-        {/* <Made>
-          <h3>주문 여부</h3>
-          {!post_id && (
-            <>
-              <NewPostMadeTrue made={made} onClick={() => setMade(true)}>
-                예
-              </NewPostMadeTrue>
-              <NewPostMadeFalse made={made} onClick={() => setMade(false)}>
-                아니요
-              </NewPostMadeFalse>
-            </>
-          )}
-          {post_id && (
-            <>
-              <EditPostMadeTrue made={made} onClick={() => setMade(true)}>
-                예
-              </EditPostMadeTrue>
-              <EditPostMadeFalse made={made} onClick={() => setMade(false)}>
-                아니요
-              </EditPostMadeFalse>
-            </>
-          )}
-        </Made> */}
       </Options>
     </Wrapper>
   );

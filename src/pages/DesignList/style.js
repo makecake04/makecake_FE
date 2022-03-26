@@ -41,15 +41,19 @@ export const HrWrap = styled.hr`
 
 export const ButtonWrap = styled.div`
   display: flex;
-  justify-content: space-around;
-  margin: 30px 10px 0px 10px;
+  margin: 15px 0px 0px 20px;
+  button + button,
+  button + button + button,
+  button + button + button + button {
+    margin-left: 1rem;
+  }
 `;
 
 export const NewButton = styled.button`
   ${(props) =>
     props.sortType === "createdDate"
       ? css`
-          width: 67px;
+          width: 100%
           height: 36px;
           border-radius: 50px;
           border: 1px solid #fff;
@@ -58,9 +62,10 @@ export const NewButton = styled.button`
           font-weight: 400;
           color: #fff;
           background: #ff8fa5;
+          padding: 0.7rem;
         `
       : css`
-          width: 67px;
+          width: 100%
           height: 36px;
           border-radius: 50px;
           border: 1px solid #dadada;
@@ -69,6 +74,7 @@ export const NewButton = styled.button`
           font-weight: 400;
           color: #777;
           background: #fff;
+          padding: 0.7rem;
         `}
 `;
 
@@ -76,7 +82,7 @@ export const LikeButton = styled.button`
   ${(props) =>
     props.sortType === "likeCnt"
       ? css`
-          width: 67px;
+          width: 100%
           height: 36px;
           border-radius: 50px;
           border: 1px solid #fff;
@@ -85,9 +91,10 @@ export const LikeButton = styled.button`
           font-weight: 400;
           color: #fff;
           background: #ff8fa5;
+          padding: 0.7rem;
         `
       : css`
-          width: 67px;
+          width: 100%
           height: 36px;
           border-radius: 50px;
           border: 1px solid #dadada;
@@ -96,6 +103,7 @@ export const LikeButton = styled.button`
           font-weight: 400;
           color: #777;
           background: #fff;
+          padding: 0.7rem;
         `}
 `;
 
@@ -103,7 +111,7 @@ export const CommentButton = styled.button`
   ${(props) =>
     props.sortType === "commentCnt"
       ? css`
-          width: 67px;
+          width: 100%
           height: 36px;
           border-radius: 50px;
           border: 1px solid #fff;
@@ -112,9 +120,10 @@ export const CommentButton = styled.button`
           font-weight: 400;
           color: #fff;
           background: #ff8fa5;
+          padding: 0.7rem;
         `
       : css`
-          width: 67px;
+          width: 100%
           height: 36px;
           border-radius: 50px;
           border: 1px solid #dadada;
@@ -123,6 +132,7 @@ export const CommentButton = styled.button`
           font-weight: 400;
           color: #777;
           background: #fff;
+          padding: 0.7rem;
         `}
 `;
 
@@ -130,7 +140,7 @@ export const CheckButton = styled.button`
   ${(props) =>
     props.sortType === "viewCnt"
       ? css`
-          width: 67px;
+          width: 100%
           height: 36px;
           border-radius: 50px;
           border: 1px solid #fff;
@@ -139,9 +149,10 @@ export const CheckButton = styled.button`
           font-weight: 400;
           color: #fff;
           background: #ff8fa5;
+          padding: 0.7rem;
         `
       : css`
-          width: 67px;
+          width: 100%
           height: 36px;
           border-radius: 50px;
           border: 1px solid #dadada;
@@ -150,6 +161,7 @@ export const CheckButton = styled.button`
           font-weight: 400;
           color: #777;
           background: #fff;
+          padding: 0.7rem;
         `}
 `;
 
@@ -159,7 +171,6 @@ export const ImageWrap = styled.div`
   grid-template-columns: repeat(3, 1fr);
   padding: 20px;
   gap: 20px;
-  margin-top: 10px;
 `;
 
 export const ImgWrap = styled.div`
@@ -219,7 +230,7 @@ export const PaintIcon = styled.img.attrs({
   position: absolute;
   bottom: 100px;
   width: 52.2px;
-  height: 52.2;
+  height: 52.2px;
   border-radius: 65px;
   justify-content: center;
   align-items: center;

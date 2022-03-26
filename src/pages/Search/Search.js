@@ -1,8 +1,8 @@
 import React from "react";
-
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as searchAction } from "../../redux/modules/search";
+import Swal from "sweetalert2";
 
 //css
 import {
@@ -43,10 +43,18 @@ const Search = (props) => {
 
   const mapSearching = () => {
     console.log(selected, searchInput);
+    if (!selected && searchInput) {
+      Swal.fire({
+        title: "검색 옵션을 먼저 골라주세요!",
+        showCancelButton: false,
+        confirmButtonText: "아~깜빡했네요😅",
+        confirmButtonColor: "#ff679e",
+      });
+      return;
+    }
     dispatch(searchAction.searchPlaceDB(selected, searchInput, "null"));
     navigate(`/search/result/${selected}/${searchInput}`);
   };
-
   return (
     <SDetailWrap>
       <HeaderWrap>
