@@ -4,6 +4,8 @@ export const Wrapper = styled.div`
   hr {
     border: 0.7px solid #e5e5e5;
     width: 100%;
+    overflow-y: auto;
+    height: 100%;
   }
 `;
 

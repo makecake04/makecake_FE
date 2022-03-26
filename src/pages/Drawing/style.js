@@ -5,6 +5,8 @@ import { logo } from "../../assets/images/image";
 
 export const Wrapper = styled.section`
   /* max-height: 844px; */
+  overflow-y: auto;
+  height: 100%;
   text-align: center;
   button {
     border: none;
