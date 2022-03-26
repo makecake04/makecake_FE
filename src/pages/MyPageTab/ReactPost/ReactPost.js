@@ -26,6 +26,7 @@ import {
   TitleWrap,
   Profile,
   Info,
+  CreatedDate,
   NickName,
   HeartIcon,
   ContentWrap,
@@ -103,11 +104,18 @@ const ReactWrite = (props) => {
               {likedesign &&
                 likedesign.map((v, idx) => {
                   return (
-                    <PostWrap key={idx} ref={ref}>
+                    <PostWrap
+                      key={idx}
+                      ref={ref}
+                      onClick={() => {
+                        navigate(`/post/${v.postId}`);
+                      }}
+                    >
                       <ReviewWrap>
                         <TitleWrap>
                           <Profile></Profile>
                           <Info>
+                            <CreatedDate>{v.createdDate}</CreatedDate>
                             <NickName>{v.nickname}</NickName>
                           </Info>
                         </TitleWrap>
@@ -129,7 +137,13 @@ const ReactWrite = (props) => {
               {commentList &&
                 commentList.map((v, i) => {
                   return (
-                    <CommentWrap key={i} ref={ref}>
+                    <CommentWrap
+                      key={i}
+                      ref={ref}
+                      onClick={() => {
+                        navigate(`/post/${v.postId}`);
+                      }}
+                    >
                       <ContentText value={content}>{v.content}</ContentText>
 
                       <InsertDt>{v.createdDate}</InsertDt>

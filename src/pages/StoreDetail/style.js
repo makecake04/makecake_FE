@@ -17,11 +17,6 @@ import {
 
 export const StoreDetailContainer = styled.div`
   /* overflow: auto; */
-
-  .insta {
-    flex: 1;
-    padding-left: 30px;
-  }
 `;
 
 export const DetailWrap = styled.div``;
@@ -51,7 +46,7 @@ export const TitleWrap = styled.div`
   left: 10%;
   top: -50px;
   width: 80%;
-  height: 100px;
+  height: 120px;
   border-radius: 10px;
   background-color: #fff;
   box-shadow: 0px 3px 8px rgba(152, 153, 150, 0.3);
@@ -92,9 +87,17 @@ export const ShopWrap = styled.div`
 
 export const Nomal = styled.div`
   flex: 1;
-  padding-left: 5px;
   font-size: 13px;
   word-break: break-all;
+  color: #282828;
+  margin-left: 5px;
+`;
+
+export const Insta = styled.p`
+  flex: 1;
+  color: #9c9cdc;
+  font-size: 13px;
+  margin-left: 5px;
 `;
 
 export const ContainerBox = styled.div`
@@ -389,6 +392,59 @@ export const PlusWrap = styled.div`
   margin-bottom: 20px;
 `;
 
+export const ModalWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  height: 75vh;
+  overflow-y: auto;
+  img {
+    position: absolute;
+    right: 4%;
+    top: 1%;
+  }
+`;
+
+export const Category = styled.span`
+  border-radius: 5rem;
+  color: #ff679e;
+  border: 1px solid #ff679e;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0.5rem 0.7rem;
+  margin: 3rem 0 0.5rem 0;
+`;
+
+export const NoContent = styled.p`
+  margin: 2rem 0px;
+`;
+
+export const CategoryWrap = styled.div`
+  width: 100%;
+  text-align: left;
+  padding: 1rem 1.2rem;
+`;
+
+export const CategoryItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  align-items: center;
+  span {
+    font-size: 14px;
+  }
+  p {
+    font-size: 12px;
+  }
+`;
+
+export const CategoryDetail = styled.div`
+  font-size: 12px;
+  color: #777777;
+`;
+
 export const PlusButton = styled.button`
   display: flex;
   align-items: center;
@@ -503,7 +559,8 @@ export const SizeP = styled.p`
 
 export const PriceP = styled.p`
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 500;
+  color: #282828;
 `;
 
 export const ImgWrap = styled.div`
@@ -525,9 +582,10 @@ export const ProfileImage = styled.div`
   height: 45px;
   border-radius: 45px;
   background-color: #ddd;
-  background-image: url(${profile_image});
+  background: url(${(props) => (props.src ? props.src : profile_image)})
+    no-repeat;
   background-position: center;
-  background-size: 50px;
+  background-size: cover;
 `;
 
 export const CommentWrap = styled.div``;

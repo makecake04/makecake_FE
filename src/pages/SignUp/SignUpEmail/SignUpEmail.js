@@ -56,8 +56,14 @@ const SignUpEmail = () => {
   };
 
   const saveUsername = () => {
-    dispatch(userAction.usernameCheckDB(username));
-    navigate("/signup/password");
+    dispatch(userAction.usernameCheckDB(username)).then((res) => {
+      if (res) {
+        navigate("/signup/password");
+      } else {
+        return;
+      }
+    });
+    // navigate("/signup/password");
   };
 
   return (

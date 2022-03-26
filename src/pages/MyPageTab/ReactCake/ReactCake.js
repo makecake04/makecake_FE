@@ -5,7 +5,19 @@ import { useInView } from "react-intersection-observer";
 import { actionCreators as cakeAction } from "../../../redux/modules/cake";
 
 //import css
-import { ReactCakeWrap, Container, BlackBackButton, HeaderText, HeaderWrap, Line, ImageWrap, PostWrap, ImgWrap, Img, StoreName } from "./style";
+import {
+  ReactCakeWrap,
+  Container,
+  BlackBackButton,
+  HeaderText,
+  HeaderWrap,
+  Line,
+  ImageWrap,
+  PostWrap,
+  ImgWrap,
+  Img,
+  StoreName,
+} from "./style";
 
 const ReactCake = (props) => {
   const navigate = useNavigate();
@@ -35,15 +47,24 @@ const ReactCake = (props) => {
     <ReactCakeWrap>
       <Container>
         <HeaderWrap>
-          <BlackBackButton onClick={() => { navigate(`/mypage`); }}/>
+          <BlackBackButton
+            onClick={() => {
+              navigate(`/mypage`);
+            }}
+          />
           <HeaderText>내가 반응한 케이크</HeaderText>
         </HeaderWrap>
-        <Line/>
+        <Line />
         <ImageWrap>
           {likeCake &&
             likeCake.map((v, idx) => {
               return (
-                <PostWrap key={idx}>
+                <PostWrap
+                  key={idx}
+                  onClick={() => {
+                    navigate(`/storedetail/${v.storeId}`);
+                  }}
+                >
                   <ImgWrap>
                     <Img src={v.img} alt="img" />
                   </ImgWrap>

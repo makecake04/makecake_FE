@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { actionCreators as reviewAction } from "../../redux/modules/review";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import Modal from "react-modal";
 
 //css
 import {
@@ -25,14 +24,6 @@ import {
   ImgBox,
   ImageUpload,
   PreviewDelete,
-  ModalWrap,
-  TitleP,
-  DescriptionP,
-  ModalHr,
-  FooterWrap,
-  BackButton,
-  Vl,
-  EnterButton,
 } from "./style";
 
 const ReviewWrite = (props) => {
@@ -43,10 +34,7 @@ const ReviewWrite = (props) => {
   const params = useParams();
   const review_id = params.reviewId;
   const imgUrl = one_review.reviewImage;
-
   const is_edit = review_id ? true : false;
-
-  const [modalIsOpen, setModalIsOpen] = React.useState(false);
 
   React.useEffect(() => {
     if (is_edit) {
@@ -124,114 +112,11 @@ const ReviewWrite = (props) => {
           />
           <h3>{is_edit ? "매장 리뷰 수정하기" : "매장 리뷰 작성하기"}</h3>
           {is_edit ? (
-            <Enter
-              onClick={() => {
-                setModalIsOpen(true);
-              }}
-            >
-              완료
-            </Enter>
+            <Enter onClick={editReview}>완료</Enter>
           ) : (
-            <Enter
-              onClick={() => {
-                setModalIsOpen(true);
-              }}
-            >
-              등록
-            </Enter>
+            <Enter onClick={addReview}>등록</Enter>
           )}
         </Title>
-        {!is_edit ? (
-          <Modal
-            isOpen={modalIsOpen}
-            onRequestClose={() => setModalIsOpen(false)}
-            style={{
-              overlay: {
-                position: "fixed",
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                backgroundColor: "rgba(76, 76, 76, 0.7)",
-                zIndex: "20",
-              },
-              content: {
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                bottom: "auto",
-                width: "300px",
-                height: "180px",
-                padding: "0",
-                border: "solid 1px #eee",
-                overflow: "auto",
-                borderRadius: "5px",
-                transform: "translate(-50%,-50%)",
-                WebkitOverflowScrolling: "touch",
-              },
-            }}
-          >
-            <ModalWrap>
-              <TitleP>리뷰를 등록하시겠어요?</TitleP>
-              <DescriptionP>
-                작성한 리뷰는 마이페이지에서 확인하실 수 있어요.
-              </DescriptionP>
-              <ModalHr />
-              <FooterWrap>
-                <EnterButton onClick={addReview}>등록</EnterButton>
-                <Vl />
-                <BackButton onClick={() => setModalIsOpen(false)}>
-                  취소
-                </BackButton>
-              </FooterWrap>
-            </ModalWrap>
-          </Modal>
-        ) : (
-          <Modal
-            isOpen={modalIsOpen}
-            onRequestClose={() => setModalIsOpen(false)}
-            style={{
-              overlay: {
-                position: "fixed",
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                backgroundColor: "rgba(76, 76, 76, 0.7)",
-                zIndex: "20",
-              },
-              content: {
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                bottom: "auto",
-                width: "300px",
-                height: "180px",
-                padding: "0",
-                border: "solid 1px #eee",
-                overflow: "auto",
-                borderRadius: "5px",
-                transform: "translate(-50%,-50%)",
-                WebkitOverflowScrolling: "touch",
-              },
-            }}
-          >
-            <ModalWrap>
-              <TitleP>리뷰 수정을 완료하시겠어요?</TitleP>
-              <DescriptionP>
-                수정된 리뷰는 마이페이지에서 확인하실 수 있어요.
-              </DescriptionP>
-              <ModalHr />
-              <FooterWrap>
-                <EnterButton onClick={editReview}>완료</EnterButton>
-                <Vl />
-                <BackButton onClick={() => setModalIsOpen(false)}>
-                  취소
-                </BackButton>
-              </FooterWrap>
-            </ModalWrap>
-          </Modal>
-        )}
         <HrWrap />
         <TopWrap>
           <p>이용하신 매장은 만족스러우셨나요?</p>

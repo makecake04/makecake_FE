@@ -43,25 +43,37 @@ const initialState = {
 
 // 이메일 중복검사
 const usernameCheckDB = (username) => {
-  return function (dispatch, getState, { history }) {
+  return async function (dispatch, getState, { history }) {
     // const navigate = useNavigate();
-
-    console.log(username);
-    api
-      .postUsernameCheck(username)
-      .then((res) => {
-        console.log(res.data);
-        if (!res.data.isTrue) {
-          dispatch(setUsername(username, res.data.isTrue));
-        } else {
-          window.alert("이미 사용 중인 아이디입니다!");
-          window.location.replace("/signup/email");
-        }
-      })
-      .catch((err) => {
-        console.log("아이디 중복", err);
-        window.alert("아이디 중복확인에 문제가 생겼습니다!");
-      });
+    try {
+      const email = await api.postUsernameCheck(username);
+      if (!email.data.isTrue) {
+        dispatch(setUsername(username, email.data.isTrue));
+        return true;
+      } else {
+        window.alert("이미 사용 중인 아이디입니다!");
+        return false;
+      }
+    } catch (err) {
+      console.log("아이디 중복", err);
+      window.alert("아이디 중복확인에 문제가 생겼습니다!");
+    }
+    // console.log(username);
+    // api
+    //   .postUsernameCheck(username)
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     if (!res.data.isTrue) {
+    //       dispatch(setUsername(username, res.data.isTrue));
+    //     } else {
+    //       window.alert("이미 사용 중인 아이디입니다!");
+    //       window.location.replace("/signup/email");
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log("아이디 중복", err);
+    //     window.alert("아이디 중복확인에 문제가 생겼습니다!");
+    //   });
   };
 };
 

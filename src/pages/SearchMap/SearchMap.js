@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { actionCreators as searchAction } from "../../redux/modules/search";
@@ -28,10 +28,10 @@ import {
 const SearchMap = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [selected, setSelected] = React.useState("store");
-  const [searchInput, setSearchInput] = React.useState("");
+  const [selected, setSelected] = useState("store");
+  const [searchInput, setSearchInput] = useState("");
 
-  const storeId = useParams().storeId;
+  const storeId = useParams().storeId
 
   const changeSelectOption = (e) => {
     setSelected(e.target.value);
@@ -51,6 +51,14 @@ const SearchMap = () => {
     dispatch(searchAction.searchPlaceDB(selected, searchInput, "null"));
     navigate(`/search/result/${selected}/${searchInput}`);
   };
+
+
+  useEffect(() => {
+    if (searchs.length === 0) {
+      dispatch(searchAction.mapInfoDB(storeId));
+    }
+  }, [searchs]);
+
 
   return (
     <Container>

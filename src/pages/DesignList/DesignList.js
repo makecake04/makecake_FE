@@ -69,6 +69,7 @@ const DesignList = (props) => {
         >
           최신순
         </NewButton>
+
         <LikeButton
           onClick={() => {
             setSortType("likeCnt");

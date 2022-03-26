@@ -42,6 +42,7 @@ const SearchResult = (props) => {
   const searchs = useSelector((state) => state.search.list);
   const [sortType, setSortType] = useState("likeCount");
   const [review, setReview] = useState(false);
+  const [storeId, setStoreId] = React.useState("");
 
   const _searchSelect = useParams().searchSelect;
   const _searchInput = useParams().searchInput;
@@ -58,21 +59,22 @@ const SearchResult = (props) => {
   };
 
   const saveInformation = (storeId) => {
+
     navigate(`/searchmap/${storeId}`);
+
+
   };
 
   const mapSearching = () => {
-    // console.log(selected, searchInput);
     dispatch(searchAction.searchPlaceDB(selected, searchInput, "null"));
-    // navigate("/search/result");
     navigate(`/search/result/${selected}/${searchInput}`);
   };
 
   React.useEffect(() => {
-    if (searchs.length === 0) {
-      dispatch(searchAction.searchPlaceDB(_searchSelect, _searchInput, "null"));
-    }
-  }, []);
+
+    dispatch(searchAction.searchPlaceDB(_searchSelect, _searchInput, "null"));
+  }, [_searchSelect, _searchInput]);
+
 
   return (
     <Container>

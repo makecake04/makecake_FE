@@ -44,12 +44,18 @@ export const UserInfo = styled.div`
 `;
 
 export const ProfileImage = styled.div`
+  position: relative;
   width: 40px;
   height: 40px;
   margin-top: 15px;
   margin-left: 24px;
+  border-radius: 100%;
+  overflow: hidden;
   img {
-    border-radius: 50%;
+    object-fit: cover;
+    /* display: block; */
+    width: 100%;
+    height: 100%;
   }
 `;
 

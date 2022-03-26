@@ -94,7 +94,7 @@ const Profile = (props) => {
         <ProfileHr />
         <Content>
           <ContentP>닉네임</ContentP>
-          <input onChange={changeNickname} defaultValue={nickname} />
+          <input onChange={changeNickname} defaultValue={user_info.nickname} />
         </Content>
         <ProfileHr />
       </SubWrap>

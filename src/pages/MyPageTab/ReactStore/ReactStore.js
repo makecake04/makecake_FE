@@ -87,7 +87,12 @@ const ReactStore = (props) => {
           {likeStore &&
             likeStore.map((v, idx) => {
               return (
-                <OneStore key={idx}>
+                <OneStore
+                  key={idx}
+                  onClick={() => {
+                    navigate(`/storedetail/${v.storeId}`);
+                  }}
+                >
                   <ImgWrap>
                     <img src={v.mainImg} alt="store-img" />
                   </ImgWrap>
@@ -110,8 +115,16 @@ const ReactStore = (props) => {
                     <span>{v.name}</span>
                     <p>{v.createdDate?.split(" ")[0]}</p>
                   </ReviewHeader>
-                  <ReviewContent>{v.content}</ReviewContent>
-                  <img src={v.reviewImages} />
+                  <ReviewContent
+                    onClick={() => {
+                      navigate(`/storedetail/${v.storeId}`);
+                    }}
+                  >
+                    {v.content}
+                  </ReviewContent>
+                  {myReview.reviewImges && (
+                    <img src={v.reviewImages} alt="review_img" />
+                  )}
                   <ButtonWrapper>
                     <button
                       onClick={() => {

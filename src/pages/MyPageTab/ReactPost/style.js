@@ -186,11 +186,15 @@ export const Info = styled.div`
   margin: 5px 0px 0px 10px;
 `;
 
+export const CreatedDate = styled.p`
+  color: #777;
+  font-size: 12px;
+`;
+
 export const NickName = styled.p`
-  margin-top: 6px;
-  font-size: 18px;
-  color: #777777;
-  font-weight: 500px;
+  font-size: 14px;
+  color: #282828;
+  font-weight: 500;
 `;
 
 export const HeartIcon = styled.img.attrs({
@@ -199,7 +203,6 @@ export const HeartIcon = styled.img.attrs({
 })`
   width: 32px;
   height: 32px;
-  margin: 0px 80px 0px 0px;
 `;
 
 export const ContentWrap = styled.div`
@@ -207,7 +210,7 @@ export const ContentWrap = styled.div`
 `;
 
 export const ContentText = styled.p`
-  color: #282828;
+  color: #777;
   font-size: 14px;
   word-break: break-all;
   display: -webkit-box;

@@ -10,6 +10,7 @@ import {
   noti_comment,
 } from "../../assets/images/image";
 
+
 export const NotiWrap = styled.div`
   overflow-y: auto;
 `;
@@ -40,7 +41,9 @@ export const Line = styled.hr`
 
 export const FixListBox = styled.div`
   width: 390px;
-  height: 112px;
+
+  height: 130px;
+
   background-color: #fff4f7;
   display: flex;
   flex-direction: row;
@@ -49,7 +52,9 @@ export const FixListBox = styled.div`
 
 export const PersonalListBox = styled.div`
   width: 390px;
-  height: 112px;
+
+  height: 130px;
+
   background-color: #ffffff;
   display: flex;
   flex-direction: row;
@@ -81,35 +86,37 @@ export const PersoNalTextWrap = styled.div`
 
 export const MainText = styled.p`
   color: #282828;
-  font-size: 15.5px;
-  line-height: 23px;
+  font-size: 14px;
+  /* line-height: 23px; */
   display: -webkit-box;
-  word-wrap: break-word;
-  word-break: keep-all;
-  -webkit-line-clamp: 2;
+  /* word-wrap: break-word;
+  word-break: keep-all; */
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 250px;
+  width: 280px;
+  max-height: 63px;
 `;
 
 export const SubText = styled.p`
   color: #282828;
-  font-size: 13.5px;
-  line-height: 20px;
+  font-size: 12px;
+  /* line-height: 20px; */
   display: -webkit-box;
   word-wrap: break-word;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  width: 250px;
+  /* -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; */
+  width: 280px;
+  line-height: 20px;
 `;
 
 export const TimeText = styled.p`
   /* text-align: right; */
   color: #777777;
   position: absolute;
-  font-size: 12px;
-  margin-top: 80px;
+  font-size: 11.5px;
+  margin-top: 105px;
   width: 70px;
   left: 315px;
   /* margin-right: 5px; */
