@@ -68,6 +68,13 @@ const addCommentDB = (postId, content) => {
       //     })
       .then((res) => {
         console.log(res.data);
+        // const doc = {
+        //   commentId: res.data,
+        //   content: content,
+        //   createdDate: res.data,
+        //   nickname: getState().user.user.nickname
+
+        // }
         dispatch(addComment(postId, content));
         window.location.reload();
       })

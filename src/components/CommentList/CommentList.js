@@ -4,11 +4,20 @@ import { useDispatch } from "react-redux";
 import { actionCreators as commentAction } from "../../redux/modules/comment";
 
 //import css
-import { Container } from "./style";
+import {
+  Container,
+  CommentBox,
+  InfoBox,
+  NickName,
+  CommentDate,
+  Content,
+  Button,
+  EditBox,
+  DeleteBox,
+} from "./style";
 
 const CommentList = (props) => {
   const ref = props;
-  // console.log(props)
 
   const dispatch = useDispatch();
 
@@ -17,10 +26,6 @@ const CommentList = (props) => {
   const { user } = props;
 
   const userInfo = useSelector((state) => state.user.user);
-
-  // const commentId = commentList
-
-  // searchs.filter(a => a.storeId === +storeId )
 
   const deleteComment = (commentId) => {
     dispatch(commentAction.deleteCommentDB(commentId));
@@ -31,29 +36,26 @@ const CommentList = (props) => {
       {commentList &&
         commentList.map((v, i) => {
           return (
-            <div className="commentBox1" key={i}>
-              <div className="infoBox">
-                <div className="nickname1">{v.nickname}</div>
-                <div className="commentDate">{v.createdDate}</div>
-              </div>
+            <CommentBox key={i}>
+              <InfoBox>
+                <NickName>{v.nickname}</NickName>
+                <CommentDate>{v.createdDate}</CommentDate>
+              </InfoBox>
 
-              <div className="content1">{v.content}</div>
+              <Content>{v.content}</Content>
 
-              <div className="buttons">
+              <Button>
                 {v.nickname === userInfo?.nickname ? (
                   <>
-                    <div className="editBox">수정하기</div>
+                    <EditBox>수정하기</EditBox>
 
-                    <div
-                      className="deleteBox"
-                      onClick={() => deleteComment(v.commentId)}
-                    >
+                    <DeleteBox onClick={() => deleteComment(v.commentId)}>
                       삭제하기
-                    </div>
+                    </DeleteBox>
                   </>
                 ) : null}
-              </div>
-            </div>
+              </Button>
+            </CommentBox>
           );
         })}
     </Container>

@@ -1,11 +1,16 @@
 import styled from "styled-components";
 
 //image
-import { black_back_button, noti_cake, noti_bigcake, noti_check_dot, noti_heart, noti_comment } from "../../assets/images/image";
+import {
+  black_back_button,
+  noti_cake,
+  noti_bigcake,
+  noti_check_dot,
+  noti_heart,
+  noti_comment,
+} from "../../assets/images/image";
 
-export const NotiWrap = styled.div`
-  
-`;
+export const NotiWrap = styled.div``;
 
 export const Container = styled.div`
   padding: 2rem 0;
@@ -21,7 +26,7 @@ export const BlackBackButton = styled.img.attrs({
   cursor: pointer;
 `;
 
-export const HeaderText =styled.h3`
+export const HeaderText = styled.h3`
   margin-left: 33%;
   vertical-align: center;
 `;
@@ -33,8 +38,8 @@ export const Line = styled.hr`
 
 export const FixListBox = styled.div`
   width: 390px;
-  height: 112px;
-  background-color: #FFF4F7;
+  height: 130px;
+  background-color: #fff4f7;
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #e5e5e5;
@@ -42,8 +47,8 @@ export const FixListBox = styled.div`
 
 export const PersonalListBox = styled.div`
   width: 390px;
-  height: 112px;
-  background-color: #FFFFFF;
+  height: 130px;
+  background-color: #ffffff;
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #e5e5e5;
@@ -74,35 +79,37 @@ export const PersoNalTextWrap = styled.div`
 
 export const MainText = styled.p`
   color: #282828;
-  font-size: 15.5px;
-  line-height: 23px;
+  font-size: 14px;
+  /* line-height: 23px; */
   display: -webkit-box;
-  word-wrap: break-word;
-  word-break: keep-all;
-  -webkit-line-clamp: 2;
+  /* word-wrap: break-word;
+  word-break: keep-all; */
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 250px;
+  width: 280px;
+  max-height: 63px;
 `;
 
 export const SubText = styled.p`
   color: #282828;
-  font-size: 13.5px;
-  line-height: 20px;
+  font-size: 12px;
+  /* line-height: 20px; */
   display: -webkit-box;
   word-wrap: break-word;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  width: 250px;
+  /* -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; */
+  width: 280px;
+  line-height: 20px;
 `;
 
 export const TimeText = styled.p`
   /* text-align: right; */
   color: #777777;
   position: absolute;
-  font-size: 12px;
-  margin-top: 80px;
+  font-size: 11.5px;
+  margin-top: 105px;
   width: 70px;
   left: 315px;
   /* margin-right: 5px; */
@@ -124,7 +131,7 @@ export const BigCakeIcon = styled.img.attrs({
 `;
 
 export const NotNotiText = styled.p`
-  color: #E1E1E1;
+  color: #e1e1e1;
   font-size: 18px;
   font-weight: bold;
   text-align: center;
@@ -170,4 +177,3 @@ export const NotiComment = styled.img.attrs({
 })`
   margin-left: 10px;
 `;
-

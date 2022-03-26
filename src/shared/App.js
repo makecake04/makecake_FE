@@ -99,7 +99,14 @@ function App() {
           <Route path="/review/:reviewId" element={<ReviewWrite />} />
 
           <Route path="/searchmap/:storeId/" element={<SearchMap />} />
-          <Route path="/search/result/:searchSelect/:searchInput" element={<SearchResult />} />
+          {/* <Route
+            path="/searchmap/:storeId/:mapLat/:mapLon"
+            element={<SearchMap />}
+          /> */}
+          <Route
+            path="/search/result/:searchSelect/:searchInput"
+            element={<SearchResult />}
+          />
           <Route path="/drawing" element={<Drawing />} />
           <Route path="/user/kakao/callback" element={<KakaoLoginHandler />} />
         </Routes>
