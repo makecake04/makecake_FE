@@ -5,6 +5,8 @@ export const Wrapper = styled.div`
     border: 0.7px solid #e5e5e5;
     width: 100%;
   }
+  overflow-y: auto;
+  height: 100%;
 `;
 
 export const Header = styled.header`

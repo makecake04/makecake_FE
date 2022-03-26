@@ -10,10 +10,12 @@ import {
   noti_comment,
 } from "../../assets/images/image";
 
-
-export const NotiWrap = styled.div`
+export const Wraper = styled.div`
   overflow-y: auto;
+  height: 100%;
 `;
+
+export const NotiWrap = styled.div``;
 
 export const Container = styled.div`
   padding: 2rem 0;
@@ -114,7 +116,7 @@ export const SubText = styled.p`
 export const TimeText = styled.p`
   /* text-align: right; */
   color: #777777;
-  position: absolute;
+  /* position: absolute; */
   font-size: 11.5px;
   margin-top: 105px;
   width: 70px;
@@ -167,7 +169,7 @@ export const NotiCheckDot = styled.img.attrs({
   width: 10px;
   height: 10px;
   margin-top: 15px;
-  position: absolute;
+  /* position: absolute; */
   left: 350px;
 `;
 

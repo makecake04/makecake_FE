@@ -5,7 +5,7 @@ import { order_circle } from "../../../assets/images/image";
 
 export const Wrapper = styled.div`
   text-align: center;
-  overflow: scroll;
+  overflow-y: auto;
   width: 100%;
   height: 100%;
   box-sizing: border-box;

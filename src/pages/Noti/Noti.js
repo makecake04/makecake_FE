@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 
 //import css
 import {
+  Wraper,
   NotiWrap,
   Container,
   BlackBackButton,
@@ -48,7 +49,7 @@ const Noti = (props) => {
   }, []);
 
   return (
-    <>
+    <Wraper>
       <Container>
         <BlackBackButton
           onClick={() => {
@@ -129,7 +130,7 @@ const Noti = (props) => {
           </LoginBox>
         </NotiWrap>
       )}
-    </>
+    </Wraper>
   );
 };
 
