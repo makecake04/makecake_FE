@@ -54,7 +54,7 @@ export const SearchIcon = styled.img.attrs({
   src: `${search_icon}`,
   alt: "search_icon",
 })`
-  margin-left: 50px;
+  margin-left: 35px;
 `;
 
 export const Bell = styled.img.attrs({
@@ -66,7 +66,7 @@ export const Bell = styled.img.attrs({
 
 export const EmptySpace = styled.div`
   width: 390px;
-  height: 8vh;
+  height: 7vh;
   background-color: white;
   margin: auto;
 `;
@@ -77,7 +77,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   background: #f5f5f5;
-  margin: 10px auto 10px auto;
+  margin: 10px auto 20px auto;
   border-radius: 10px;
 `;
 

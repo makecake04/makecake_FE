@@ -58,9 +58,14 @@ const PostDetail = () => {
     console.log(e.target.value);
   };
 
-  const clickComment = () => {
+  const clickComment = (storeId) => {
     if (!content) {
-      window.alert("댓글을 작성해주세요!");
+      Swal.fire({
+        title: "댓글을 입력해 주세요!",
+        showCancelButton: false,
+        confirmButtonText: "댓글 입력할래요!",
+        confirmButtonColor: "#ff679e",
+      });
       return;
     }
     dispatch(commentAction.addCommentDB(post_id, content));

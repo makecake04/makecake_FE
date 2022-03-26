@@ -5,7 +5,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as searchAction } from "../../redux/modules/search";
 
 //css
-import { SDetailWrap, HeaderWrap, SearchWrap , Select, Option, Input, SearchIcon, Bell, EmptySpace, Container, CommendText, PlaceList1, PlaceList2, Place, Place2, Place3  } from "./style";
+import {
+  SDetailWrap,
+  HeaderWrap,
+  SearchWrap,
+  Select,
+  Option,
+  Input,
+  SearchIcon,
+  Bell,
+  EmptySpace,
+  Container,
+  CommendText,
+  PlaceList1,
+  PlaceList2,
+  Place,
+  Place2,
+  Place3,
+} from "./style";
 
 const Search = (props) => {
   const navigate = useNavigate();
@@ -30,62 +47,65 @@ const Search = (props) => {
     navigate(`/search/result/${selected}/${searchInput}`);
   };
 
-
-
   return (
     <SDetailWrap>
       <HeaderWrap>
         <SearchWrap className="search_wrap">
           <Select defaultValue="default" onChange={changeSelectOption}>
-            <Option value="default" disabled hidden>검색옵션</Option>
+            <Option value="default" disabled hidden>
+              검색옵션
+            </Option>
             <Option value="store">매장</Option>
             <Option value="address">주소</Option>
             <Option value="place">핫플</Option>
           </Select>
-          <Input placeholder="검색 옵션을 선택해주세요!" onChange={changeInput}/>
-          <SearchIcon onClick={mapSearching}/>
+          <Input
+            placeholder="검색 옵션을 선택해주세요!"
+            onChange={changeInput}
+          />
+          <SearchIcon onClick={mapSearching} />
         </SearchWrap>
-        <Bell/>
+        <Bell />
       </HeaderWrap>
 
-      <EmptySpace/>
+      <EmptySpace />
 
       <Container>
-        <CommendText>플레이스 추천</CommendText>
+        <CommendText>매장 추천</CommendText>
         <PlaceList1>
           <Place>터틀힙</Place>
           <Place>래빗힙</Place>
           <Place>베니케이크</Place>
         </PlaceList1>
-        <PlaceList2 >
+        <PlaceList2>
           <Place>더케이크스토리</Place>
           <Place>두두케이크</Place>
         </PlaceList2>
       </Container>
 
       <Container>
-        <CommendText>매장 추천</CommendText>
+        <CommendText>주소 추천</CommendText>
         <PlaceList1>
-          <Place2>터틀힙</Place2>
-          <Place2>래빗힙</Place2>
-          <Place2>베니케이크</Place2>
+          <Place2>논현동</Place2>
+          <Place2>강남구 신사동</Place2>
+          <Place2>서초구</Place2>
         </PlaceList1>
         <PlaceList2>
-          <Place2>더케이크스토리</Place2>
-          <Place2>두두케이크</Place2>
+          <Place2>강서구 화곡동</Place2>
+          <Place2>용산구</Place2>
         </PlaceList2>
       </Container>
 
       <Container>
-        <CommendText>주소 추천</CommendText>
+        <CommendText>플레이스 추천</CommendText>
         <PlaceList1>
-          <Place3>터틀힙</Place3>
-          <Place3>래빗힙</Place3>
-          <Place3>베니케이크</Place3>
+          <Place3>가로수길</Place3>
+          <Place3>서울숲</Place3>
+          <Place3>동대문역사문화공원역</Place3>
         </PlaceList1>
         <PlaceList2>
-          <Place3>더케이크스토리</Place3>
-          <Place3>두두케이크</Place3>
+          <Place3>건대입구</Place3>
+          <Place3>강남역</Place3>
         </PlaceList2>
       </Container>
     </SDetailWrap>

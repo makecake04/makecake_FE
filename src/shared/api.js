@@ -62,6 +62,7 @@ export const api = {
       searchText: searchText,
       sortType: sortType,
     }),
+  mapSearch: (storeId) => instance.get(`/api/search/${storeId}`),
 
   KakaoLogin: (code) => instance.get(`/user/kakao/callback?code=${code}`),
   NaverLogin: (code, state) =>
