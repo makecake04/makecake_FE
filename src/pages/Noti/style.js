@@ -10,10 +10,12 @@ import {
   noti_comment,
 } from "../../assets/images/image";
 
+
 export const Wrapper = styled.div`
   overflow-y: auto;
   height: 100%;
 `;
+
 
 export const NotiWrap = styled.div``;
 
@@ -112,6 +114,7 @@ export const SubText = styled.p`
 
 export const TimeText = styled.p`
   color: #777777;
+
   font-size: 11.5px;
   margin-top: 105px;
   width: 70px;
@@ -161,6 +164,7 @@ export const NotiCheckDot = styled.img.attrs({
   width: 10px;
   height: 10px;
   margin-top: 15px;
+
   left: 350px;
 `;
 
