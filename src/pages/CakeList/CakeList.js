@@ -16,7 +16,9 @@ import {
   ImgBox,
   ModalWrap,
   ModalImg,
-  StoreIcon,
+  StoreWrap,
+  StoreName,
+  StoreBody,
   EmptyHeartIcon,
   FullHeartIcon,
   LikeCnt,
@@ -110,6 +112,7 @@ const CakeList = (props) => {
             width: "300px",
             height: "auto",
             padding: "0",
+            background: "none",
             border: "none",
             overflow: "auto",
             borderRadius: "5px",
@@ -124,18 +127,26 @@ const CakeList = (props) => {
             onClick={() => setModalIsOpen(false)}
             alt="cakeDetailImage"
           />
-          <StoreIcon
-            onClick={() => {
-              dispatch(storeAction.getStoreDetailDB(store_id.storeId));
-              navigate(`/storedetail/${store_id.storeId}`);
-            }}
-          />
-          {my_like.myLike ? (
-            <FullHeartIcon onClick={likeToggle} />
-          ) : (
-            <EmptyHeartIcon onClick={likeToggle} />
-          )}
-          <LikeCnt>{cake_img.likeCnt}</LikeCnt>
+          <StoreWrap>
+            <StoreBody>
+              <StoreName
+                onClick={() => {
+                  dispatch(storeAction.getStoreDetailDB(store_id.storeId));
+                  navigate(`/storedetail/${store_id.storeId}`);
+                }}
+              >
+                {cake_img.storeName}
+              </StoreName>
+            </StoreBody>
+            <div>
+              {my_like.myLike ? (
+                <FullHeartIcon onClick={likeToggle} />
+              ) : (
+                <EmptyHeartIcon onClick={likeToggle} />
+              )}
+              <LikeCnt>{cake_img.likeCnt}</LikeCnt>
+            </div>
+          </StoreWrap>
         </ModalWrap>
       </Modal>
     </CakeContainer>
