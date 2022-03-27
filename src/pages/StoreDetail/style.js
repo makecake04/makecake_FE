@@ -16,7 +16,6 @@ import {
 } from "../../assets/images/image";
 
 export const StoreDetailContainer = styled.div`
-
   overflow-y: auto;
   height: 100%;
 `;
@@ -80,11 +79,15 @@ export const Store = styled.div`
 
 export const InfoWrap = styled.div`
   display: flex;
-  flex-direction: column;
 `;
 
 export const ShopWrap = styled.div`
   display: flex;
+`;
+
+export const UrlWrap = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Nomal = styled.div`
@@ -93,6 +96,7 @@ export const Nomal = styled.div`
   word-break: break-all;
   color: #282828;
   margin-left: 5px;
+  margin-bottom: 5px;
 `;
 
 export const Insta = styled.p`
@@ -328,6 +332,45 @@ export const ContentOne = styled.div`
         `}
 `;
 
+export const ModalWrap2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+`;
+
+export const ModalImg = styled.img`
+  width: 300px;
+  height: 300px;
+  background: url(${(props) => props.src}) no-repeat center / cover;
+  object-fit: cover;
+`;
+
+export const StoreWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  width: 100%;
+
+  > div {
+    display: flex;
+  }
+`;
+
+export const StoreName = styled.p`
+  color: #fcfcfc;
+  font-weight: 300;
+  text-decoration: underline;
+`;
+
+export const StoreBody = styled.div`
+  display: flex;
+`;
+
+export const LikeCnt2 = styled.div`
+  color: #ff679e;
+  margin-left: 5px;
+`;
 export const ContentTwo = styled.div`
   ${(props) =>
     props.toggleState === 2

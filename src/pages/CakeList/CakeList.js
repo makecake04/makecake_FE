@@ -131,7 +131,6 @@ const CakeList = (props) => {
             <StoreBody>
               <StoreName
                 onClick={() => {
-                  dispatch(storeAction.getStoreDetailDB(store_id.storeId));
                   navigate(`/storedetail/${store_id.storeId}`);
                 }}
               >
