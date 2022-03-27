@@ -2,7 +2,11 @@ import styled from "styled-components";
 import Slider from "react-slick";
 
 //image
-import { swiper_arrow } from "../../../assets/images/image";
+import {
+  swiper_arrow,
+  full_heart_icon,
+  empty_heart_icon,
+} from "../../../assets/images/image";
 
 export const CakeWrap = styled.div``;
 
@@ -73,6 +77,59 @@ export const ImgBox = styled.div`
   height: 100%;
   background: url(${(props) => props.src}) no-repeat center / cover;
   object-fit: cover;
+`;
+
+export const ModalWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+`;
+
+export const ModalImg = styled.img`
+  width: 300px;
+  height: 300px;
+  background: url(${(props) => props.src}) no-repeat center / cover;
+  object-fit: cover;
+`;
+
+export const LikeCnt = styled.div`
+  color: #fcfcfc;
+`;
+
+export const StoreWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  width: 100%;
+
+  > div {
+    display: flex;
+  }
+`;
+
+export const StoreName = styled.p`
+  color: #fcfcfc;
+  font-weight: 300;
+  text-decoration: underline;
+`;
+
+export const StoreBody = styled.div`
+  display: flex;
+`;
+
+export const EmptyHeartIcon = styled.img.attrs({
+  src: `${empty_heart_icon}`,
+  alt: "img",
+})`
+  margin-right: 5px;
+`;
+
+export const FullHeartIcon = styled.img.attrs({
+  src: `${full_heart_icon}`,
+  alt: "img",
+})`
+  margin-right: 5px;
 `;
 
 export const StyleSlider = styled(Slider)`
