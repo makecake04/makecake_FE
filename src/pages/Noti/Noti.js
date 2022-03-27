@@ -106,11 +106,12 @@ const Noti = (props) => {
 
                     <PersoNalTextWrap>
                       <MainText>{v.mainContent}</MainText>
+                      {/* {!v.checked && <NotiCheckDot />} */}
                       <SubText>{v.subContent}</SubText>
+                      <TimeText>{v.timeDiff}</TimeText>
                     </PersoNalTextWrap>
-                    {!v.checked && <NotiCheckDot />}
 
-                    <TimeText>{v.timeDiff}</TimeText>
+                    {!v.checked && <NotiCheckDot />}
                   </PersonalListBox>
                 );
               })}

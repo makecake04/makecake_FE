@@ -18,7 +18,6 @@ export const BlackBackButton = styled.img.attrs({
   cursor: pointer;
 `;
 
-
 export const H = styled.h2`
   width: 187px;
   height: 35px;
@@ -42,12 +41,24 @@ export const P = styled.p`
   color: #282828;
 `;
 
+export const IdRuleText = styled.text`
+  width: 340px;
+  height: 21px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 130%;
+  color: #282828;
+  margin: 5px auto 0 30px;
+`;
+
 export const Input = styled.input`
   display: block;
   width: 337px;
   height: 49px;
   margin: 30px auto 0 auto;
-  background: #f5f5f5;
+  /* background: #f5f5f5; */
+  background: pink;
   border-radius: 45px;
   border: none;
   padding-left: 20px;

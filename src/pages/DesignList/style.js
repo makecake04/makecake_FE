@@ -194,8 +194,8 @@ export const PlusOff = styled.div`
   position: absolute;
   right: 20px;
   bottom: 70px;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 40px;
   background-color: #ff679e;
   justify-content: center;
@@ -207,8 +207,8 @@ export const PlusOn = styled.div`
   position: absolute;
   right: 20px;
   bottom: 70px;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 40px;
   background-color: #fff;
   justify-content: center;
@@ -228,7 +228,7 @@ export const PaintIcon = styled.img.attrs({
 })`
   display: flex;
   position: absolute;
-  bottom: 100px;
+  bottom: 110px;
   width: 52.2px;
   height: 52.2px;
   border-radius: 65px;
@@ -241,7 +241,7 @@ export const WriteIcon = styled.img.attrs({
 })`
   display: flex;
   position: absolute;
-  bottom: 40px;
+  bottom: 50px;
   width: 65px;
   height: 60px;
   border-radius: 65px;

@@ -4,7 +4,15 @@ import { useDispatch } from "react-redux";
 import { actionCreators as userAction } from "../../../redux/modules/user";
 
 //import css
-import { Container, Input, NextButton, BlackBackButton, H, P } from "./style";
+import {
+  Container,
+  Input,
+  NextButton,
+  BlackBackButton,
+  H,
+  P,
+  IdRuleText,
+} from "./style";
 
 const LoginEmail = () => {
   const navigate = useNavigate();
@@ -28,11 +36,16 @@ const LoginEmail = () => {
 
   return (
     <Container>
-      <BlackBackButton onClick={() => {navigate('/');}}/>
+      <BlackBackButton
+        onClick={() => {
+          navigate("/");
+        }}
+      />
 
       <H>반갑습니다!</H>
       <P>MAKE CAKE 아이디를 입력해주세요.</P>
- 
+      <IdRuleText>* 아이디는 이메일 형식입니다.</IdRuleText>
+
       <Input
         placeholder="아이디"
         type="text"
