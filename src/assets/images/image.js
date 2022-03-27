@@ -93,7 +93,7 @@ import color_mypage from "./nav-bar/color-mypage.svg";
 
 //order
 import beta from "./order/beta.svg";
-import order_circle from "./order/Group 1000006732 복사본 2.svg";
+import order_circle from "./order/order-circle.svg";
 import order_marker from "./order/order-marker.svg";
 import help_icon from "./order/help-icon.svg";
 import close from "./order/close.svg";
