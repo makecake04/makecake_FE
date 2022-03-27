@@ -10,12 +10,10 @@ import {
   noti_comment,
 } from "../../assets/images/image";
 
-
 export const Wrapper = styled.div`
   overflow-y: auto;
   height: 100%;
 `;
-
 
 export const NotiWrap = styled.div``;
 
@@ -46,7 +44,7 @@ export const Line = styled.hr`
 export const FixListBox = styled.div`
   width: 390px;
 
-  height: 130px;
+  height: 112px;
 
   background-color: #fff4f7;
   display: flex;
@@ -56,13 +54,12 @@ export const FixListBox = styled.div`
 
 export const PersonalListBox = styled.div`
   width: 390px;
-
-  height: 130px;
-
+  height: 112px;
   background-color: #ffffff;
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #e5e5e5;
+  position: relative;
 `;
 
 export const ImgWrap = styled.div`
@@ -109,16 +106,14 @@ export const SubText = styled.p`
   -webkit-box-orient: vertical;
   overflow: hidden;
   width: 280px;
-  line-height: 20px;
 `;
 
 export const TimeText = styled.p`
   color: #777777;
-
   font-size: 11.5px;
-  margin-top: 105px;
   width: 70px;
-  left: 315px;
+  width: 275px;
+  text-align: right;
 `;
 
 export const NotNoti = styled.div`
@@ -164,8 +159,8 @@ export const NotiCheckDot = styled.img.attrs({
   width: 10px;
   height: 10px;
   margin-top: 15px;
-
-  left: 350px;
+  position: absolute;
+  left: 366px;
 `;
 
 export const NotiHeart = styled.img.attrs({
