@@ -86,7 +86,8 @@ const ReviewWrite = (props) => {
           review_id,
           one_review.content,
           fileInput.current.files[0],
-          imgUrl
+          imgUrl,
+          store_id.storeId
         )
       );
     } else {
@@ -95,7 +96,8 @@ const ReviewWrite = (props) => {
           review_id,
           contents,
           fileInput.current.files[0],
-          imgUrl
+          imgUrl,
+          store_id.storeId
         )
       );
     }
