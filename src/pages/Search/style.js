@@ -116,6 +116,7 @@ export const Place = styled.div`
   color: #ff679e;
   font-size: 15px;
   padding: 10px;
+  cursor: pointer;
 `;
 
 export const Place2 = styled.div`
@@ -129,6 +130,7 @@ export const Place2 = styled.div`
   color: #9c9cdc;
   font-size: 15px;
   padding: 10px;
+  cursor: pointer;
 `;
 
 export const Place3 = styled.div`
@@ -142,4 +144,19 @@ export const Place3 = styled.div`
   color: #777777;
   font-size: 15px;
   padding: 10px;
+  cursor: pointer;
+`;
+
+export const SeoulAreaText = styled.p`
+  font-size: 16px;
+  color: #777777;
+  text-align: center;
+  /* margin-top: 15px; */
+`;
+
+export const EmptySpace2 = styled.div`
+  width: 390px;
+  height: 5vh;
+  background-color: white;
+  margin: auto;
 `;

@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { actionCreators as searchAction } from "../../redux/modules/search";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 //css
 import {
@@ -63,6 +64,31 @@ const SearchResult = (props) => {
   };
 
   const mapSearching = () => {
+    if (!selected && searchInput) {
+      Swal.fire({
+        title: "검색 옵션을 먼저 골라주세요!",
+        showCancelButton: false,
+        confirmButtonText: "네!",
+        confirmButtonColor: "#ff679e",
+      });
+      return;
+    } else if (selected && !searchInput) {
+      Swal.fire({
+        title: "검색값을 입력해주세요!",
+        showCancelButton: false,
+        confirmButtonText: "네!",
+        confirmButtonColor: "#ff679e",
+      });
+      return;
+    } else if (!selected && !searchInput) {
+      Swal.fire({
+        title: "검색 옵션을 고르시고, 검색값을 입력해주세요!",
+        showCancelButton: false,
+        confirmButtonText: "네!",
+        confirmButtonColor: "#ff679e",
+      });
+      return;
+    }
     dispatch(searchAction.searchPlaceDB(selected, searchInput, "null"));
     navigate(`/search/result/${selected}/${searchInput}`);
   };
@@ -82,7 +108,7 @@ const SearchResult = (props) => {
       <HeaderWrap>
         <WhiteBackButton
           onClick={() => {
-            navigate(-1);
+            navigate("/search");
           }}
         />
         <Searchgwrap>
@@ -101,7 +127,7 @@ const SearchResult = (props) => {
           />
           <SearchIcon
             onClick={() => {
-              if (!selected || !searchInput) return;
+              // if (!selected || !searchInput) return;
               mapSearching();
             }}
           />
