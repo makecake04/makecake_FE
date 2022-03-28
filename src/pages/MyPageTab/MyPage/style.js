@@ -96,7 +96,9 @@ export const ProfileHr = styled.hr`
 
 export const ButtonWrap = styled.div`
   display: flex;
-  justify-content: end;
+  /* justify-content: end; */
+  -webkit-justify-content: end;
+  -moz-justify-content: end;
 `;
 
 export const LogoutButton = styled.button`

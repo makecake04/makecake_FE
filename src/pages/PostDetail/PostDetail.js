@@ -55,7 +55,6 @@ const PostDetail = () => {
 
   const changeComment = (e) => {
     setContent(e.target.value);
-    console.log(e.target.value);
   };
 
   const clickComment = (storeId) => {
@@ -92,6 +91,12 @@ const PostDetail = () => {
       });
     } else {
       dispatch(postAction.addLikePostDB(post_id, !post.myLike));
+    }
+  };
+
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") {
+      clickComment();
     }
   };
 
@@ -169,6 +174,7 @@ const PostDetail = () => {
           placeholder="댓글을 입력해주세요"
           value={content}
           onChange={changeComment}
+          onKeyPress={onKeyPress}
         />
 
         <SendButton onClick={() => clickComment()}>

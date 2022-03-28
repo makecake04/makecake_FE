@@ -30,8 +30,6 @@ const CommentList = (props) => {
       {commentList &&
         commentList.map((v, i) => {
           return (
-
-
             <CommentBox key={i}>
               <InfoBox>
                 <NickName>{v.nickname}</NickName>
@@ -43,13 +41,10 @@ const CommentList = (props) => {
               <Button>
                 {v.nickname === userInfo?.nickname ? (
                   <>
-                    <EditBox>수정하기</EditBox>
-
                     <DeleteBox onClick={() => deleteComment(v.commentId)}>
                       삭제하기
                     </DeleteBox>
                   </>
-
                 ) : null}
               </Button>
             </CommentBox>

@@ -110,8 +110,6 @@ export const Insta = styled.p`
 export const ContainerBox = styled.div`
   margin-top: -40px;
   height: calc(100vh - 192px - 40px);
-  overflow-x: hidden;
-  overflow-y: auto;
 `;
 
 export const BlocTab = styled.div`
@@ -685,7 +683,9 @@ export const ImgWrapTwo = styled.div`
 export const ButtonWrap = styled.div`
   margin: 20px 20px 0px 0px;
   display: flex;
-  justify-content: end;
+  -webkit-justify-content: end;
+  -moz-justify-content: end;
+  /* justify-content: end; */
 `;
 
 export const EditButton = styled.button`
