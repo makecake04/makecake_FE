@@ -51,7 +51,12 @@ const usernameCheckDB = (username) => {
         dispatch(setUsername(username, email.data.isTrue));
         return true;
       } else {
-        window.alert("이미 사용 중인 아이디입니다!");
+        Swal.fire({
+          title: "이미 사용 중인 아이디입니다!",
+          showCancelButton: false,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#ff679e",
+        });
         return false;
       }
     } catch (err) {
@@ -103,7 +108,12 @@ const nicknameCheckDB = (username, password, passwordCheck, nickname) => {
               console.log(err);
             });
         } else {
-          window.alert("이미 사용 중인 닉네임입니다!");
+          Swal.fire({
+            title: "이미 사용 중인 닉네임입니다!",
+            showCancelButton: false,
+            confirmButtonText: "확인",
+            confirmButtonColor: "#ff679e",
+          });
           return;
         }
       })
@@ -148,7 +158,13 @@ const logInDB = (username, password) => {
         window.location.replace("/");
       })
       .catch((err) => {
-        alert("아이디 혹은 비밀번호를 다시 확인해주세요.");
+        // alert("아이디 혹은 비밀번호를 다시 확인해주세요.");
+        Swal.fire({
+          title: "아이디 혹은 비밀번호를 다시 확인해주세요.",
+          showCancelButton: false,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#ff679e",
+        });
         console.log(err);
       });
   };

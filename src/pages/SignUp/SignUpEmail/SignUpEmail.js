@@ -75,7 +75,7 @@ const SignUpEmail = () => {
       <InputAndButton>
         <Input
           placeholder="이메일"
-          type="text"
+          // type="text"
           value={username}
           onChange={is_Username}
           onKeyUp={checkActive}

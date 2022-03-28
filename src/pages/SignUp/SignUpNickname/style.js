@@ -5,16 +5,17 @@ import { black_back_button } from "../../../assets/images/image";
 
 export const Container = styled.div`
   button:disabled {
-    background-color: #777777;
+    background-color: lightgray;
   }
 `;
 
 export const BlackBackButton = styled.img.attrs({
   src: `${black_back_button}`,
   alt: "BlackBackButton",
-})`margin-left: 20px;
-   margin-top: 30px;
-   cursor: pointer;
+})`
+  margin-left: 20px;
+  margin-top: 30px;
+  cursor: pointer;
 `;
 
 export const CakeText = styled.h1`
@@ -26,7 +27,7 @@ export const CakeText = styled.h1`
   line-height: 35px;
   letter-spacing: -0.02em;
   color: #282828;
-  margin: 40px auto 0 30px;
+  margin: 30px auto 0 30px;
 `;
 
 export const SignupText = styled.p`
@@ -34,14 +35,13 @@ export const SignupText = styled.p`
   height: 21px;
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 130%;
   color: #282828;
   margin: 5px auto 0 30px;
 `;
 
-export const InputAndButton = styled.div`
-`;
+export const InputAndButton = styled.div``;
 
 export const Input = styled.input`
   display: block;
@@ -50,7 +50,7 @@ export const Input = styled.input`
   background: #f5f5f5;
   border-radius: 45px;
   border: none;
-  margin: 30px auto 0 auto;
+  margin: 54px auto 0 auto;
   padding-left: 20px;
 `;
 
@@ -64,5 +64,5 @@ export const NextButton = styled.button`
   font-weight: bold;
   font-size: 16px;
   color: white;
-  margin: 317px auto 0 auto;
+  margin: 376px auto 0 auto;
 `;
