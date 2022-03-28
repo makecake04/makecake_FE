@@ -4,9 +4,10 @@ import styled, { css } from "styled-components";
 import { paint, write, plus_button, x_button } from "../../assets/images/image";
 
 export const DrawWrap = styled.div`
-  text-align: center;
+  /* text-align: center;
   overflow: scroll;
-  height: calc(100% - 6rem);
+  height: calc(100% - 6rem); */
+  padding-bottom: 6rem;
   box-sizing: border-box;
   width: 100%;
   h3 {

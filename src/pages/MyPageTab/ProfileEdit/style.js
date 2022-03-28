@@ -8,9 +8,9 @@ import {
 } from "../../../assets/images/image";
 
 export const ProfileWrap = styled.div`
-  text-align: center;
+  /* text-align: center;
   overflow: scroll;
-  height: calc(100% - 6rem);
+  height: calc(100% - 6rem); */
   box-sizing: border-box;
   width: 100%;
 

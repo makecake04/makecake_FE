@@ -3,10 +3,10 @@ import styled, { css } from "styled-components";
 export const Wrapper = styled.div`
   width: 100%;
   margin: 0 auto;
-  overflow: scroll;
-  height: calc(100% - 6rem);
+  /* overflow: scroll;
+  height: calc(100% - 6rem); */
   box-sizing: border-box;
-  padding-bottom: 2rem;
+  padding-bottom: 8rem;
 `;
 
 export const Header = styled.header`

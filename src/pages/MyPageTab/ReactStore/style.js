@@ -4,8 +4,6 @@ export const Wrapper = styled.div`
   hr {
     border: 0.7px solid #e5e5e5;
     width: 100%;
-    overflow-y: auto;
-    height: 100%;
   }
   overflow-y: auto;
   height: 100%;
@@ -156,8 +154,6 @@ export const ReviewList = styled.div`
           position: relative;
           display: grid;
           padding: 20px;
-          gap: 20px;
-          margin-top: 10px;
         `
       : css`
           background: #fff;

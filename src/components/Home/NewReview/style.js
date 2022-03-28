@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-export const ReviewWrap = styled.div``;
+export const ReviewWrap = styled.div`
+  padding-bottom: 8rem;
+`;
 
 export const SubWrap = styled.div`
   width: 90%;
@@ -16,8 +18,6 @@ export const Title = styled.h3`
 `;
 
 export const CommentWrap = styled.div`
-  height: 200px;
-
   p {
     width: 220px;
     margin-left: 10px;
