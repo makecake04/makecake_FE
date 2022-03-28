@@ -31,7 +31,7 @@ const SearchMap = () => {
   const [selected, setSelected] = useState("store");
   const [searchInput, setSearchInput] = useState("");
 
-  const storeId = useParams().storeId
+  const storeId = useParams().storeId;
 
   const changeSelectOption = (e) => {
     setSelected(e.target.value);
@@ -52,13 +52,11 @@ const SearchMap = () => {
     navigate(`/search/result/${selected}/${searchInput}`);
   };
 
-
   useEffect(() => {
     if (searchs.length === 0) {
       dispatch(searchAction.mapInfoDB(storeId));
     }
   }, [searchs]);
-
 
   return (
     <Container>
@@ -75,7 +73,7 @@ const SearchMap = () => {
             </Option>
             <Option value="store">매장</Option>
             <Option value="address">주소</Option>
-            <Option value="place">핫플</Option>
+            <Option value="place">플레이스</Option>
           </Select>
           <Input
             placeholder="검색 옵션을 선택해주세요!"

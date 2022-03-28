@@ -21,7 +21,7 @@ export const BlackBackButton = styled.img.attrs({
 export const CakeText = styled.h1`
   width: 187px;
   height: 35px;
-  margin: 40px 0 0 30px;
+  margin: 30px 0 0 30px;
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
@@ -47,7 +47,7 @@ export const Input = styled.input`
   display: block;
   width: 337px;
   height: 49px;
-  margin: 30px auto 0 auto;
+  margin: 54px auto 0 auto;
   background: #f5f5f5;
   border-radius: 45px;
   border: none;
@@ -65,7 +65,7 @@ export const NextButton = styled.button`
   display: block;
   width: 337px;
   height: 49px;
-  margin: 400px auto 0 auto;
+  margin: 376px auto 0 auto;
   background: #ff8fa5;
   border-radius: 45px;
   border: none;

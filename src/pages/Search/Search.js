@@ -65,7 +65,7 @@ const Search = (props) => {
             </Option>
             <Option value="store">매장</Option>
             <Option value="address">주소</Option>
-            <Option value="place">핫플</Option>
+            <Option value="place">플레이스</Option>
           </Select>
           <Input
             placeholder="검색 옵션을 선택해주세요!"
@@ -82,11 +82,12 @@ const Search = (props) => {
         <CommendText>매장 추천</CommendText>
         <PlaceList1>
           <Place>터틀힙</Place>
-          <Place>래빗힙</Place>
-          <Place>베니케이크</Place>
+          <Place>메모레</Place>
+          {/* <Place>베니케이크</Place> */}
+          <Place>케익공방</Place>
         </PlaceList1>
         <PlaceList2>
-          <Place>더케이크스토리</Place>
+          <Place>더케익스토리</Place>
           <Place>두두케이크</Place>
         </PlaceList2>
       </Container>
@@ -113,7 +114,7 @@ const Search = (props) => {
         </PlaceList1>
         <PlaceList2>
           <Place3>건대입구</Place3>
-          <Place3>강남역</Place3>
+          <Place3>샤로수길</Place3>
         </PlaceList2>
       </Container>
     </SDetailWrap>

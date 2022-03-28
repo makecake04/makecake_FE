@@ -4,8 +4,19 @@ import { useNavigate } from "react-router-dom";
 import { pwdCheck } from "../../../shared/SignUpRule";
 import { useSelector } from "react-redux";
 import { actionCreators as userAction } from "../../../redux/modules/user";
+import Swal from "sweetalert2";
 
-import { Container, BlackBackButton, PwText, PwRuleText, InputAndButton, InputPw, CheckText, InputPwCheck, NextButton} from "./style";
+import {
+  Container,
+  BlackBackButton,
+  PwText,
+  PwRuleText,
+  InputAndButton,
+  InputPw,
+  CheckText,
+  InputPwCheck,
+  NextButton,
+} from "./style";
 
 const SignUpPassword = () => {
   const username = useSelector((state) => state.user.username);
@@ -75,19 +86,35 @@ const SignUpPassword = () => {
   };
 
   const savePassword = () => {
+    if (password !== passwordCheck) {
+      Swal.fire({
+        title: "비밀번호가 같지 않습니다. 다시 확인해주세요!",
+        showCancelButton: false,
+        confirmButtonText: "확인",
+        confirmButtonColor: "#ff679e",
+      });
+      return;
+    }
     dispatch(userAction.addPassword(password));
     dispatch(userAction.addPasswordCheck(passwordCheck));
+    navigate("/signup/nickname");
   };
 
   return (
     <Container>
-      <BlackBackButton onClick={() => navigate('/signup/email')}/>
+      <BlackBackButton onClick={() => navigate("/signup/email")} />
       <PwText>비밀번호를 알려주세요!</PwText>
       <PwRuleText>* 영문자, 숫자 각각 하나 이상 포함, 10자리 이상</PwRuleText>
 
       <InputAndButton>
-        <InputPw placeholder="비밀번호" type="password" value={password} onChange={is_PassWord} onKeyUp={checkActive}/>
-        
+        <InputPw
+          placeholder="비밀번호"
+          type="password"
+          value={password}
+          onChange={is_PassWord}
+          onKeyUp={checkActive}
+        />
+
         {password.length > 0 && (
           <>
             <CheckText className={`${isPassword ? "success" : "error"}`}>
@@ -95,17 +122,27 @@ const SignUpPassword = () => {
             </CheckText>
           </>
         )}
-        <InputPwCheck placeholder="비밀번호 확인" type="password" value={passwordCheck} onChange={is_PasswordCheck} onKeyUp={checkActive}/>
+        <InputPwCheck
+          placeholder="비밀번호 확인"
+          type="password"
+          value={passwordCheck}
+          onChange={is_PasswordCheck}
+          onKeyUp={checkActive}
+        />
 
         {passwordCheck.length > 0 && (
           <>
-            <CheckText
-              className={`${isPasswordCheck ? "success" : "error"}`}>
+            <CheckText className={`${isPasswordCheck ? "success" : "error"}`}>
               {passwordCheckMessage}
             </CheckText>
           </>
         )}
-        <NextButton disabled={active} onClick={() => { savePassword(); navigate("/signup/nickname"); }}>
+        <NextButton
+          disabled={active}
+          onClick={() => {
+            savePassword();
+          }}
+        >
           다음
         </NextButton>
       </InputAndButton>

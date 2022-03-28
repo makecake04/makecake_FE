@@ -5,16 +5,17 @@ import { black_back_button } from "../../../assets/images/image";
 
 export const Container = styled.div`
   button:disabled {
-    background-color: #777777;
+    background-color: lightgray;
   }
 `;
 
 export const BlackBackButton = styled.img.attrs({
   src: `${black_back_button}`,
   alt: "BlackBackButton",
-})`margin-left: 20px;
-   margin-top: 30px;
-   cursor: pointer;
+})`
+  margin-left: 20px;
+  margin-top: 30px;
+  cursor: pointer;
 `;
 
 export const PwText = styled.h1`
@@ -26,7 +27,7 @@ export const PwText = styled.h1`
   line-height: 35px;
   letter-spacing: -0.02em;
   color: #282828;
-  margin: 40px auto 0 30px;
+  margin: 30px auto 0 30px;
 `;
 
 export const PwRuleText = styled.p`
@@ -40,9 +41,7 @@ export const PwRuleText = styled.p`
   margin: 5px auto 0 30px;
 `;
 
-export const InputAndButton = styled.div`
-
-`;
+export const InputAndButton = styled.div``;
 
 export const InputPw = styled.input`
   display: block;
@@ -51,12 +50,12 @@ export const InputPw = styled.input`
   background: #f5f5f5;
   border-radius: 45px;
   border: none;
-  margin: 30px auto 0 auto;
+  margin: 54px auto 0 auto;
   padding-left: 20px;
 `;
 
 export const CheckText = styled.p`
-  color: ${(props) => props.className === "success" ? "green" : "red"};
+  color: ${(props) => (props.className === "success" ? "green" : "red")};
   margin-left: 45px;
   margin-top: 5px;
   font-size: 14px;
@@ -83,5 +82,5 @@ export const NextButton = styled.button`
   font-weight: bold;
   font-size: 16px;
   color: white;
-  margin: 317px auto 0 auto;
+  margin: 297px auto 0 auto;
 `;
