@@ -45,7 +45,7 @@ const DesignList = (props) => {
 
   React.useEffect(() => {
     dispatch(designAction.getDesignListDB(pageNumber, sortType));
-  }, [pageNumber]);
+  }, [sortType, pageNumber]);
 
   React.useEffect(() => {
     if (inView) {

@@ -28,12 +28,13 @@ import {
 const ReviewWrite = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const store_id = useSelector((state) => state.store.store);
+  const store_id = useSelector((state) => state.store);
   const one_review = useSelector((state) => state.review.list);
   const params = useParams();
   const review_id = params.reviewId;
   const imgUrl = one_review.reviewImage;
   const is_edit = review_id ? true : false;
+  console.log(store_id);
 
   React.useEffect(() => {
     if (is_edit) {
@@ -82,7 +83,7 @@ const ReviewWrite = (props) => {
           one_review.content,
           fileInput.current.files[0],
           imgUrl,
-          store_id.storeId
+          one_review.storeId
         )
       );
     } else {
@@ -92,7 +93,7 @@ const ReviewWrite = (props) => {
           contents,
           fileInput.current.files[0],
           imgUrl,
-          store_id.storeId
+          one_review.storeId
         )
       );
     }
