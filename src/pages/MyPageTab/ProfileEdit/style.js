@@ -68,7 +68,7 @@ export const ProfileImage = styled.div`
   position: relative;
   width: 100px;
   height: 100px;
-  margin: 50px auto 20px auto;
+  margin: 50px auto -1.3rem auto;
   border-radius: 100px;
   background-color: #ddd;
   background: url(${(props) => (props.src ? props.src : profile_image)})
@@ -90,7 +90,7 @@ export const ProfileEditButton = styled.img.attrs({
   position: relative;
   z-index: 2;
   left: 55%;
-  top: -48px;
+  top: -1.8rem;
 `;
 
 export const NicknameP = styled.p`
@@ -118,6 +118,13 @@ export const Content = styled.div`
   display: flex;
   margin: 30px 30px;
   align-items: center;
+
+  input {
+    background: #f5f5f5;
+    border-radius: 10px;
+    padding: 5px 5px 5px 10px;
+    max-width: 230px;
+  }
 `;
 
 export const ContentP = styled.p`

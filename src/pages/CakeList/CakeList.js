@@ -37,7 +37,6 @@ const CakeList = (props) => {
   const [ref, inView] = useInView();
   const like_cake_list = useSelector((state) => state.cake.like_cake_list);
   // const random_cake_list = useSelector((state) => state.cake.random_cake_list);
-  console.log(like_cake_list);
   const cake_img = useSelector((state) => state.cake.lists);
   const store_id = useSelector((state) => state.cake.lists);
   const cake_id = useSelector((state) => state.cake.lists);
