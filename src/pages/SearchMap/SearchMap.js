@@ -58,6 +58,12 @@ const SearchMap = () => {
     }
   }, [searchs]);
 
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") {
+      mapSearching();
+    }
+  };
+
   return (
     <Container>
       <HeaderWrap>
@@ -78,6 +84,7 @@ const SearchMap = () => {
           <Input
             placeholder="검색 옵션을 선택해주세요!"
             onChange={changeInput}
+            onKeyPress={onKeyPress}
           />
           <SearchIcon
             onClick={() => {

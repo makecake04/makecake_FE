@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { actionCreators as storeAction } from "../../../redux/modules/store";
 
@@ -21,6 +22,7 @@ import {
 
 const NewReview = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     dispatch(storeAction.getNewReviewDB());
@@ -36,7 +38,10 @@ const NewReview = (props) => {
           {review_list &&
             review_list.map((v, idx) => {
               return (
-                <ReviewsWrap key={idx}>
+                <ReviewsWrap
+                  key={idx}
+                  onClick={() => navigate(`/storedetail/${v.storeId}`)}
+                >
                   <ImageWrap>
                     <Image>
                       <ImgBox src={v.img} alt="reiview-img" />

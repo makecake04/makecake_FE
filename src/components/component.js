@@ -14,7 +14,7 @@ import GoogleLogin from "./SocialLogin/GoogleLogin/GoogleLogin";
 import NaverLogin from "./SocialLogin/NaverLogin/NaverLogin";
 import KakaoLoginHandler from "./SocialLogin/KakaoLoginHandler/KakaoLoginHandler";
 import KakaoMap from "./KakaoMap/KakaoMap";
-
+import ScrollToTop from "./ScrollToTop/ScrollToTop";
 import CommentList from "./CommentList/CommentList";
 
 export {
@@ -35,4 +35,5 @@ export {
   NaverLogin,
   KakaoLoginHandler,
   KakaoMap,
+  ScrollToTop,
 };

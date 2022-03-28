@@ -4,8 +4,6 @@ export const Wrapper = styled.div`
   hr {
     border: 0.7px solid #e5e5e5;
     width: 100%;
-    overflow-y: auto;
-    height: 100%;
   }
   overflow-y: auto;
   height: 100%;
@@ -156,8 +154,6 @@ export const ReviewList = styled.div`
           position: relative;
           display: grid;
           padding: 20px;
-          gap: 20px;
-          margin-top: 10px;
         `
       : css`
           background: #fff;
@@ -247,7 +243,9 @@ export const ReviewContent = styled.p`
 export const ButtonWrapper = styled.div`
   margin-top: 20px;
   display: flex;
-  justify-content: end;
+  /* justify-content: end; */
+  -webkit-justify-content: end;
+  -moz-justify-content: end;
   button:first-child {
     width: 80px;
     height: 35px;

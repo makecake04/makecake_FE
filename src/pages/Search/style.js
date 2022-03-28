@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { noti_icon, search_icon } from "../../assets/images/image";
 
 export const SDetailWrap = styled.div`
-  overflow: scroll;
-  height: calc(100% - 6rem);
+  /* overflow: scroll;
+  height: calc(100% - 6rem); */
   box-sizing: border-box;
   width: 100%;
 `;
@@ -55,9 +55,7 @@ export const SearchIcon = styled.img.attrs({
   src: `${search_icon}`,
   alt: "search_icon",
 })`
-
   padding-right: 1rem;
-
 `;
 
 export const Bell = styled.img.attrs({

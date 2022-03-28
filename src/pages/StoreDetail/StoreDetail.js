@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { actionCreators as storeAction } from "../../redux/modules/store";
+import { actionCreators as cakeAction } from "../../redux/modules/cake";
 import { actionCreators as reviewAction } from "../../redux/modules/review";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -21,6 +22,7 @@ import {
   Store,
   InfoWrap,
   ShopWrap,
+  UrlWrap,
   Nomal,
   Insta,
   ContainerBox,
@@ -31,6 +33,9 @@ import {
   FourButton,
   ContentTab,
   ContentOne,
+  ModalWrap2,
+  ModalImg,
+  StoreWrap,
   ContentTwo,
   ContentThree,
   ContentFour,
@@ -38,6 +43,8 @@ import {
   ContentWrap,
   PlusWrap,
   ModalWrap,
+  StoreBody,
+  StoreName,
   Category,
   NoContent,
   CategoryWrap,
@@ -86,6 +93,7 @@ import {
   FullHeartIcon,
   LikeInfo,
   LikeCnt,
+  LikeCnt2,
 } from "./style";
 
 //image
@@ -106,26 +114,23 @@ const StoreDetail = (props) => {
   const [ref, inView] = useInView();
   const login = useSelector((state) => state.user.is_login);
   const [modalIsOpen, setModalIsOpen] = React.useState(false);
-
+  const [modalIsOpen2, setModalIsOpen2] = React.useState(false);
+  const cake_img = useSelector((state) => state.cake.lists);
+  const cake_id = useSelector((state) => state.cake.lists);
+  const my_like = useSelector((state) => state.cake.lists);
   const is_session = localStorage.getItem("token");
-
-  React.useEffect(() => {
-    dispatch(storeAction.getStoreDetailDB(store_id));
-  }, [pageNumber]);
-
   const [toggleState, setToggleState] = React.useState(1);
-
   const toggleTab = (index) => {
     setToggleState(index);
   };
 
-  const getMoreCake = async () => {
-    setPageNumber(pageNumber + 1);
-  };
+  useEffect(() => {
+    dispatch(storeAction.getStoreDetailDB(store_id));
+  }, [pageNumber]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) {
-      getMoreCake();
+      setPageNumber(pageNumber + 1);
     }
   }, [inView]);
 
@@ -141,6 +146,21 @@ const StoreDetail = (props) => {
       });
     } else {
       dispatch(storeAction.addLikeStoreDB(store_id, !store_info.myLike));
+    }
+  };
+
+  const likeToggle2 = () => {
+    if (!login) {
+      Swal.fire({
+        title: "로그인이 필요한 서비스입니다!",
+        showCancelButton: true,
+        confirmButtonText: '<a href="/">로그인 할래요!</a>',
+        confirmButtonColor: "#ff679e",
+        cancelButtonColor: "#777",
+        cancelButtonText: "그냥 둘러볼래요.",
+      });
+    } else {
+      dispatch(cakeAction.addLikeCakeDB(cake_id.cakeId, !my_like.myLike));
     }
   };
 
@@ -170,44 +190,59 @@ const StoreDetail = (props) => {
                 <LikeCnt>{store_info.likeCnt}</LikeCnt>
               </LikeInfo>
             </TopWrap>
-            {store_info.urlList && (
+            {store_info.urlList && store_info.urlList.length !== 0 && (
               <InfoWrap>
-                <ShopWrap>
-                  <ShopSvg />
-                  {store_info.urlList[0]?.type === "normal" && (
-                    <Nomal as="a" href={store_info.urlList[0]?.url}>
-                      {store_info.urlList[0]?.url}
+                {store_info.urlList.length === 1 && (
+                  <ShopWrap>
+                    <ShopSvg />
+                    <Nomal as="a" href={store_info.urlList[0].url}>
+                      매장 주문 페이지
                     </Nomal>
+                  </ShopWrap>
+                )}
+                {store_info.urlList.length === 2 &&
+                  (store_info.urlList[0].type === "nromal" ||
+                    store_info.urlList[1].type === "normal") && (
+                    <ShopWrap>
+                      <ShopSvg />
+                      <UrlWrap>
+                        {store_info.urlList[0].type === "normal" && (
+                          <Nomal as="a" href={store_info.urlList[0].url}>
+                            매장 주문 페이지
+                          </Nomal>
+                        )}
+                        {store_info.urlList[1].type === "normal" && (
+                          <Nomal as="a" href={store_info.urlList[1].url}>
+                            매장 주문 페이지
+                          </Nomal>
+                        )}
+                        {store_info.urlList[0].type === "normal" && (
+                          <Insta as="a" href={store_info.urlList[1].url}>
+                            {store_info.urlList[1].type}
+                          </Insta>
+                        )}
+                        {store_info.urlList[1].type === "normal" && (
+                          <Insta as="a" href={store_info.urlList[0].url}>
+                            {store_info.urlList[0].type}
+                          </Insta>
+                        )}
+                      </UrlWrap>
+                    </ShopWrap>
                   )}
-                  {store_info.urlList[1]?.type === "normal" && (
-                    <Nomal as="a" href={store_info.urlList[1]?.url}>
-                      {store_info.urlList[1]?.url}
-                    </Nomal>
-                  )}
-                  {store_info.urlList[0]?.type === "instagram" &&
-                    store_info.urlList.length === 1 && (
-                      <Nomal as="a" href={store_info.urlList[0]?.url}>
-                        {store_info.urlList[0]?.url}
-                      </Nomal>
-                    )}
-                  {store_info.urlList[1]?.type === "instagram" &&
-                    store_info.urlList.length === 1 && (
-                      <Nomal as="a" href={store_info.urlList[1]?.url}>
-                        {store_info.urlList[1]?.url}
-                      </Nomal>
-                    )}
-                </ShopWrap>
-                {store_info.urlList[0]?.type === "instagram" &&
-                  store_info.urlList.length === 2 && (
-                    <Insta as="a" href={store_info.urlList[0].url}>
-                      instagram
-                    </Insta>
-                  )}
-                {store_info.urlList[1]?.type === "instagram" &&
-                  store_info.urlList.length === 2 && (
-                    <Insta as="a" href={store_info.urlList[1].url}>
-                      instagram
-                    </Insta>
+                {store_info.urlList.length === 2 &&
+                  store_info.urlList[0].type !== "nromal" &&
+                  store_info.urlList[1].type !== "normal" && (
+                    <ShopWrap>
+                      <ShopSvg />
+                      <UrlWrap>
+                        <Nomal as="a" href={store_info.urlList[0].url}>
+                          매장 주문 페이지
+                        </Nomal>
+                        <Insta as="a" href={store_info.urlList[1]?.url}>
+                          {store_info.urlList[1].type}
+                        </Insta>
+                      </UrlWrap>
+                    </ShopWrap>
                   )}
               </InfoWrap>
             )}
@@ -241,7 +276,7 @@ const StoreDetail = (props) => {
               소개
             </OneButton>
             <TwoButton onClick={() => toggleTab(2)} toggleState={toggleState}>
-              종류
+              메뉴
             </TwoButton>
             <ThreeButton
               onClick={() => {
@@ -309,7 +344,13 @@ const StoreDetail = (props) => {
                       store_info.cakeImgList.map((v, idx) => {
                         return (
                           <Images key={idx}>
-                            <ImgBox src={v.img} />
+                            <ImgBox
+                              src={v.img}
+                              onClick={() => {
+                                setModalIsOpen2(true);
+                                dispatch(cakeAction.getCakeImageDB(v.cakeId));
+                              }}
+                            />
                           </Images>
                         );
                       })}
@@ -317,6 +358,57 @@ const StoreDetail = (props) => {
                 </PictureBox>
               </ContentBox>
             </ContentOne>
+            <Modal
+              isOpen={modalIsOpen2}
+              onRequestClose={() => setModalIsOpen2(false)}
+              style={{
+                overlay: {
+                  position: "fixed",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  backgroundColor: "rgba(76, 76, 76, 0.7)",
+                  zIndex: "20",
+                },
+                content: {
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  bottom: "auto",
+                  width: "300px",
+                  height: "auto",
+                  padding: "0",
+                  background: "none",
+                  border: "none",
+                  overflow: "auto",
+                  borderRadius: "5px",
+                  transform: "translate(-50%,-50%)",
+                  WebkitOverflowScrolling: "touch",
+                },
+              }}
+            >
+              <ModalWrap2>
+                <ModalImg
+                  src={cake_img.img}
+                  onClick={() => setModalIsOpen2(false)}
+                  alt="cakeDetailImage"
+                />
+                <StoreWrap>
+                  <StoreBody>
+                    <StoreName>{cake_img.storeName}</StoreName>
+                  </StoreBody>
+                  <div>
+                    {my_like.myLike ? (
+                      <FullHeartIcon onClick={likeToggle2} />
+                    ) : (
+                      <EmptyHeartIcon onClick={likeToggle2} />
+                    )}
+                    <LikeCnt2>{cake_img.likeCnt}</LikeCnt2>
+                  </div>
+                </StoreWrap>
+              </ModalWrap2>
+            </Modal>
             <ContentTwo toggleState={toggleState}>
               <ContentBox>
                 <ContentWrap>
@@ -512,7 +604,13 @@ const StoreDetail = (props) => {
                       store_info.cakeImgList.map((v, idx) => {
                         return (
                           <Images key={idx}>
-                            <ImgBox src={v.img} />
+                            <ImgBox
+                              src={v.img}
+                              onClick={() => {
+                                setModalIsOpen2(true);
+                                dispatch(cakeAction.getCakeImageDB(v.cakeId));
+                              }}
+                            />
                           </Images>
                         );
                       })}
@@ -527,7 +625,13 @@ const StoreDetail = (props) => {
                     store_cake.map((v, idx) => {
                       return (
                         <Images key={idx}>
-                          <ImgBox src={v.img} />
+                          <ImgBox
+                            src={v.img}
+                            onClick={() => {
+                              setModalIsOpen2(true);
+                              dispatch(cakeAction.getCakeImageDB(v.cakeId));
+                            }}
+                          />
                         </Images>
                       );
                     })}
@@ -549,14 +653,13 @@ const StoreDetail = (props) => {
                         <CreatedDateP>{v.createdDate}</CreatedDateP>
                       </TitleTwo>
                       <Pwrap>{v.content}</Pwrap>
-                      {v.reviewImages &&
-                        v.reviewImages.map((c, i) => {
-                          return (
-                            <ImgWrapTwo key={i}>
-                              <img src={c} alt="img" />
-                            </ImgWrapTwo>
-                          );
-                        })}
+
+                      <ImgWrapTwo>
+                        <img src={v.reviewImgList[0]} alt="img" />
+                      </ImgWrapTwo>
+                      {/* );
+                        })} */}
+
                       {v.writerNickname === user_nickname?.nickname && (
                         <ButtonWrap>
                           <EditButton

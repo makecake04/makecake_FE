@@ -131,11 +131,10 @@ const CakeList = (props) => {
             <StoreBody>
               <StoreName
                 onClick={() => {
-                  dispatch(storeAction.getStoreDetailDB(store_id.storeId));
                   navigate(`/storedetail/${store_id.storeId}`);
                 }}
               >
-                {cake_img.storeName}
+                매장 보러 가기
               </StoreName>
             </StoreBody>
             <div>

@@ -23,7 +23,6 @@ import {
   ImageBox,
   ImgBox,
   ImageUpload,
-  PreviewDelete,
 } from "./style";
 
 const ReviewWrite = (props) => {
@@ -61,10 +60,6 @@ const ReviewWrite = (props) => {
 
   const preview = useSelector((state) => state.review.preview);
 
-  const deleteImg = () => {
-    setFileName(null);
-  };
-
   const changeContent = (e) => {
     setContents(e.target.value);
   };
@@ -86,7 +81,8 @@ const ReviewWrite = (props) => {
           review_id,
           one_review.content,
           fileInput.current.files[0],
-          imgUrl
+          imgUrl,
+          store_id.storeId
         )
       );
     } else {
@@ -95,7 +91,8 @@ const ReviewWrite = (props) => {
           review_id,
           contents,
           fileInput.current.files[0],
-          imgUrl
+          imgUrl,
+          store_id.storeId
         )
       );
     }
@@ -161,7 +158,6 @@ const ReviewWrite = (props) => {
               }
               alt="reviewImage"
             />
-            <PreviewDelete onClick={deleteImg} />
           </ImageBox>
         </ImageWrap>
       </SubWrap>

@@ -27,9 +27,19 @@ const LoginPassword = () => {
     dispatch(userAction.logInDB(username, password));
   };
 
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") {
+      savePassword();
+    }
+  };
+
   return (
     <Container>
-      <BlackBackButton onClick={() => {navigate(-1);}}/>
+      <BlackBackButton
+        onClick={() => {
+          navigate(-1);
+        }}
+      />
 
       <H>비밀번호를 알려주세요!</H>
       <P>MAKE CAKE 비밀번호를 입력해주세요.</P>
@@ -40,8 +50,9 @@ const LoginPassword = () => {
         value={password}
         onChange={is_Password}
         onKeyUp={checkActive}
+        onKeyPress={onKeyPress}
       />
-      
+
       <NextButton
         disabled={active}
         onClick={() => {
@@ -50,7 +61,6 @@ const LoginPassword = () => {
       >
         로그인 하기
       </NextButton>
-     
     </Container>
   );
 };

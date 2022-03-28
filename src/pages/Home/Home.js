@@ -5,6 +5,7 @@ import {
   HotStoreList,
   BestCake,
   NewReview,
+  NavBar,
 } from "../../components/component";
 import { useDispatch } from "react-redux";
 import { actionCreators as storeAction } from "../../redux/modules/store";
@@ -20,12 +21,15 @@ const Home = (props) => {
   }, []);
 
   return (
-    <Container>
+    <React.Fragment>
+      {/* <Container> */}
       <SearchBar />
       <HotStoreList />
       <BestCake />
       <NewReview />
-    </Container>
+      {/* <NavBar /> */}
+      {/* </Container> */}
+    </React.Fragment>
   );
 };
 
