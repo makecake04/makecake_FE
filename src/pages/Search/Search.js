@@ -22,6 +22,8 @@ import {
   Place,
   Place2,
   Place3,
+  SeoulAreaText,
+  EmptySpace2,
 } from "./style";
 
 const Search = (props) => {
@@ -50,9 +52,17 @@ const Search = (props) => {
         confirmButtonColor: "#ff679e",
       });
       return;
-    } else if (!selected && !searchInput) {
+    } else if (selected && !searchInput) {
       Swal.fire({
         title: "검색값을 입력해주세요!",
+        showCancelButton: false,
+        confirmButtonText: "네!",
+        confirmButtonColor: "#ff679e",
+      });
+      return;
+    } else if (!selected && !searchInput) {
+      Swal.fire({
+        title: "검색 옵션을 고르시고, 검색값을 입력해주세요!",
         showCancelButton: false,
         confirmButtonText: "네!",
         confirmButtonColor: "#ff679e",
@@ -251,6 +261,8 @@ const Search = (props) => {
           </Place3>
         </PlaceList2>
       </Container>
+      <EmptySpace2 />
+      <SeoulAreaText>현재는 서울시 내에서만 검색이 가능합니다.</SeoulAreaText>
     </SDetailWrap>
   );
 };
