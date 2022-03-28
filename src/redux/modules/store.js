@@ -83,7 +83,7 @@ const getLikeStoreDB = (page_num) => {
   const token = localStorage.getItem("token");
   return function (dispatch, getState) {
     axios
-      .get("http://3.38.153.67/stores/myReact", {
+      .get("https://devssk.shop/stores/myReact", {
         params: {
           page: parseInt(page_num),
         },
@@ -104,7 +104,7 @@ const getMyReviewDB = (page_num) => {
   const token = localStorage.getItem("token");
   return function (dispatch, getState) {
     axios
-      .get("http://3.38.153.67/stores/myReview", {
+      .get("https://devssk.shop/stores/myReview", {
         params: {
           page: parseInt(page_num),
         },
@@ -124,7 +124,7 @@ const getMyReviewDB = (page_num) => {
 const getStoreCakeListDB = (storeId, page_num) => {
   return function (dispatch, getState) {
     axios
-      .get(`http://3.38.153.67/api/stores/cakes`, {
+      .get(`https://devssk.shop/api/stores/cakes`, {
         storeId,
         params: {
           page: parseInt(page_num),
@@ -143,7 +143,7 @@ const getStoreCakeListDB = (storeId, page_num) => {
 const getStoreReviewListDB = (storeId, page_num) => {
   return function (dispatch, getState) {
     axios
-      .get(`http://3.38.153.67/api/stores/reviews`, {
+      .get(`https://devssk.shop/api/stores/reviews`, {
         storeId,
         params: {
           page: parseInt(page_num),
@@ -151,6 +151,7 @@ const getStoreReviewListDB = (storeId, page_num) => {
         },
       })
       .then((res) => {
+        console.log(res.data);
         dispatch(storeReviewList(res.data));
       })
       .catch((err) => {
@@ -164,7 +165,7 @@ const addLikeStoreDB = (storeId, myLike) => {
   return function (dispatch, getState) {
     axios
       .post(
-        `http://3.38.153.67/stores/like/${storeId}`,
+        `https://devssk.shop/stores/like/${storeId}`,
         {
           myLike: myLike,
         },
@@ -230,6 +231,23 @@ export default handleActions(
       }),
     [STORE_CAKE_LIST]: (state, action) =>
       produce(state, (draft) => {
+        // if (
+        //   action.payload.cake
+        //     .map((a) => a.cakedId)
+        //     .includes(draft.cake[0]?.cakeId)
+        // ) {
+        //   draft.cake = [];
+        //   draft.cake.push(...action.payload.cake);
+        //   //중복 검사
+        //   draft.cake = draft.cake.reduce((acc, cur) => {
+        //     if (acc.findIndex((a) => a.cakeId === cur.cakeId) === -1) {
+        //       return [...acc, cur];
+        //     } else {
+        //       acc[acc.findIndex((a) => a.cakeId === cur.cakeId)] = cur;
+        //       return acc;
+        //     }
+        //   }, []);
+        // } else {
         draft.cake.push(...action.payload.cake);
         //중복 검사
         draft.cake = draft.cake.reduce((acc, cur) => {
@@ -240,10 +258,11 @@ export default handleActions(
             return acc;
           }
         }, []);
+        // }
       }),
     [STORE_REVIEW_LIST]: (state, action) =>
       produce(state, (draft) => {
-        draft.review = action.payload.review;
+        draft.review.push(...action.payload.review);
         //중복 검사
         draft.review = draft.review.reduce((acc, cur) => {
           if (acc.findIndex((a) => a.reviewId === cur.reviewId) === -1) {

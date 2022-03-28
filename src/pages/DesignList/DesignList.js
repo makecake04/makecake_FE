@@ -32,27 +32,24 @@ const DesignList = (props) => {
   const [toggle, setToggle] = React.useState(false);
   const [pageNumber, setPageNumber] = React.useState(0);
   const [sortType, setSortType] = React.useState("createdDate");
-
   const [ref, inView] = useInView();
-
   const new_list = useSelector((state) => state.design.new_list);
   const like_list = useSelector((state) => state.design.like_list);
   const comment_list = useSelector((state) => state.design.comment_list);
   const view_list = useSelector((state) => state.design.view_list);
-
   const is_session = localStorage.getItem("token");
 
-  const getMoreDesign = async () => {
-    setPageNumber(pageNumber + 1);
-  };
+  React.useEffect(() => {
+    setPageNumber(0);
+  }, [sortType]);
 
   React.useEffect(() => {
     dispatch(designAction.getDesignListDB(pageNumber, sortType));
-  }, [pageNumber, sortType]);
+  }, [pageNumber]);
 
   React.useEffect(() => {
     if (inView) {
-      getMoreDesign();
+      setPageNumber(pageNumber + 1);
     }
   }, [inView]);
 

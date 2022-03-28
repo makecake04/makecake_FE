@@ -30,7 +30,7 @@ const addReviewDB = (storeId, content, img) => {
     form.append("content", content);
     form.append("imgFileList", img);
     axios
-      .post(`http://3.38.153.67/reviews/${storeId}`, form, {
+      .post(`https://devssk.shop/reviews/${storeId}`, form, {
         headers: {
           Authorization: `${token}`,
         },
@@ -63,7 +63,7 @@ const editReviewDB = (reviewId, content, img, imgurl, storeId) => {
       form.append("imgUrlList", "");
     }
     axios
-      .put(`http://3.38.153.67/reviews/${reviewId}`, form, {
+      .put(`https://devssk.shop/reviews/${reviewId}`, form, {
         headers: {
           Authorization: `${token}`,
         },
@@ -86,7 +86,7 @@ const deleteReviewDB = (reviewId) => {
     }
     axios({
       method: "delete",
-      url: `http://3.38.153.67/reviews/${reviewId}`,
+      url: `https://devssk.shop/reviews/${reviewId}`,
       data: {
         reviewId: reviewId,
       },
@@ -109,7 +109,7 @@ const getOneReviewDB = (reviewId) => {
   return function (dispatch, getState) {
     axios({
       method: "get",
-      url: `http://3.38.153.67/reviews/${reviewId}`,
+      url: `https://devssk.shop/reviews/${reviewId}`,
       headers: {
         Authorization: `${token}`,
       },

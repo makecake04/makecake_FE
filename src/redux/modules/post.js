@@ -44,7 +44,7 @@ const addPostDB = (title, content, size, shape, purpose, designId) => {
     };
     axios
       .post(
-        `http://3.38.153.67/posts/${designId}`,
+        `https://devssk.shop/posts/${designId}`,
         { ...post },
         {
           headers: {
@@ -69,7 +69,7 @@ const getOnePostDB = (postId) => {
   return function (dispatch, getState) {
     axios
       .get(
-        `http://3.38.153.67/api/designs/${postId}`,
+        `https://devssk.shop/api/designs/${postId}`,
 
         {
           headers: {
@@ -105,7 +105,7 @@ const editPostDB = (title, content, size, shape, purpose, postId) => {
     };
     axios
       .put(
-        `http://3.38.153.67/posts/${postId}`,
+        `https://devssk.shop/posts/${postId}`,
         { ...post },
         {
           headers: {
@@ -129,7 +129,7 @@ const deletePostDB = (postId) => {
     const token_key = `${localStorage.getItem("token")}`;
 
     axios
-      .delete(`http://3.38.153.67/posts/${postId}`, {
+      .delete(`https://devssk.shop/posts/${postId}`, {
         headers: {
           Authorization: `${token_key}`,
         },
@@ -150,7 +150,7 @@ const addLikePostDB = (postId, myLike) => {
   return function (dispatch, getState) {
     axios
       .post(
-        `http://3.38.153.67/posts/like/${postId}`,
+        `https://devssk.shop/posts/like/${postId}`,
         {
           myLike: myLike,
         },

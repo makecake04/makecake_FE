@@ -3,7 +3,8 @@ import axios from "axios";
 // 사용자 정의 인스턴스 기본 설정 참고 (https://yamoo9.github.io/axios/guide/config-defaults.html#%EA%B8%80%EB%A1%9C%EB%B2%8C-axios-%EA%B8%B0%EB%B3%B8-defaults-%EC%84%A4%EC%A0%95)
 
 const instance = axios.create({
-  baseURL: "http://3.38.153.67/",
+  baseURL: "https://devssk.shop",
+  // baseURL: "https://devssk.shop/",
   // baseURL: "http://3.38.115.32:8080//",
 
   headers: {

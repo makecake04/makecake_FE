@@ -34,7 +34,7 @@ const initialState = {
 const getCommentDB = (postId, page_num) => {
   return function (dispatch, getState, { history }) {
     axios
-      .get(`http://3.38.153.67/api/designs/${postId}/comments`, {
+      .get(`https://devssk.shop/api/designs/${postId}/comments`, {
         params: {
           page: parseInt(page_num),
         },
@@ -57,11 +57,11 @@ const addCommentDB = (postId, content) => {
 
     axios({
       method: "post",
-      url: `http://3.38.153.67/comments/${postId}`,
+      url: `https://devssk.shop/comments/${postId}`,
       data: { content: content },
       headers: { Authorization: `${token}` },
     })
-      // .post("http://3.38.153.67/comments/10307" , {
+      // .post("https://devssk.shop/comments/10307" , {
       //     // .addComment1(content)
       //     content: content,
       //     headers: {Authorization : `${token}`}
@@ -88,11 +88,11 @@ const deleteCommentDB = (commentId) => {
   const token = localStorage.getItem("token");
   return function (dispatch, getState, { history }) {
     //   axios
-    //   .delete(`http://3.38.153.67/comments/${commentId}` , {
+    //   .delete(`https://devssk.shop/comments/${commentId}` , {
     // })
     axios({
       method: "delete",
-      url: `http://3.38.153.67/comments/${commentId}`,
+      url: `https://devssk.shop/comments/${commentId}`,
       headers: { Authorization: `${token}` },
     })
       .then((res) => {
@@ -110,7 +110,7 @@ const getMyCommentDB = (page_num) => {
   return function (dispatch, getState, { history }) {
     axios({
       method: "get",
-      url: "http://3.38.153.67/designs/myComment",
+      url: "https://devssk.shop/designs/myComment",
       params: {
         page: parseInt(page_num),
       },
@@ -130,11 +130,11 @@ const deleteMyCommentDB = (commentId) => {
   const token = localStorage.getItem("token");
   return function (dispatch, getState, { history }) {
     //   axios
-    //   .delete(`http://3.38.153.67/comments/${commentId}` , {
+    //   .delete(`https://devssk.shop/comments/${commentId}` , {
     // })
     axios({
       method: "delete",
-      url: `http://3.38.153.67/comments/${commentId}`,
+      url: `https://devssk.shop/comments/${commentId}`,
       headers: { Authorization: `${token}` },
     })
       .then((res) => {

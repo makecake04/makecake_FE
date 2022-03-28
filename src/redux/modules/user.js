@@ -176,7 +176,7 @@ const loginCheckDB = () => {
   return function (dispatch, getState, { history }) {
     axios({
       method: "get",
-      url: "http://3.38.153.67/user/loginCheck",
+      url: "https://devssk.shop/user/loginCheck",
       headers: {
         Authorization: `${token}`,
       },
@@ -227,7 +227,7 @@ const editProfileDB = (nickname, img) => {
       form.append("nickname", nickname);
     }
     axios
-      .put("http://3.38.153.67/user/editProfile", form, {
+      .put("https://devssk.shop/user/editProfile", form, {
         headers: {
           Authorization: `${token}`,
         },
@@ -248,7 +248,7 @@ const resignDB = () => {
   return function (dispatch, getState) {
     axios
       .put(
-        "http://3.38.153.67/user/resign",
+        "https://devssk.shop/user/resign",
         {},
         {
           headers: {

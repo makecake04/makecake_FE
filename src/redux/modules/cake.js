@@ -26,7 +26,7 @@ const addLikeCake = createAction(ADD_LIKE_CAKE, (cakeId, isLike, likeCnt) => ({
 const getCakeListDB = (page_num) => {
   return function (dispatch, getState) {
     axios
-      .get("http://3.38.153.67/api/cakes", {
+      .get("https://devssk.shop/api/cakes", {
         params: {
           page: parseInt(page_num),
         },
@@ -57,7 +57,7 @@ const getLikeCakeDB = (page_num) => {
   const token = localStorage.getItem("token");
   return function (dispatch, getState) {
     axios
-      .get("http://3.38.153.67/cakes/myReact", {
+      .get("https://devssk.shop/cakes/myReact", {
         params: {
           page: parseInt(page_num),
         },
@@ -81,7 +81,7 @@ const addLikeCakeDB = (cakeId, myLike) => {
   return function (dispatch, getState) {
     axios
       .post(
-        `http://3.38.153.67/cakes/like/${cakeId}`,
+        `https://devssk.shop/cakes/like/${cakeId}`,
         {
           myLike: myLike,
         },

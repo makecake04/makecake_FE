@@ -56,7 +56,7 @@ const addDesignDB = (design) => {
         const form = new FormData();
         form.append("imgFile", blob);
         axios
-          .post("http://3.38.153.67/designs", form, {
+          .post("https://devssk.shop/designs", form, {
             headers: {
               Authorization: `${token_key}`,
             },
@@ -78,7 +78,7 @@ const getDesignListDB = (page_num, sortType) => {
   console.log(sortType);
   return function (dispatch, getState) {
     axios
-      .get("http://3.38.153.67/api/designs", {
+      .get("https://devssk.shop/api/designs", {
         params: {
           page: parseInt(page_num),
           sortType: sortType,
@@ -105,7 +105,7 @@ const getMyDesignListDB = (page_num, option) => {
   const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState) {
     axios
-      .get("http://3.38.153.67/designs/mine", {
+      .get("https://devssk.shop/designs/mine", {
         params: { page: page_num, option: option },
         headers: {
           Authorization: `${token_key}`,
@@ -149,7 +149,7 @@ const getDesignImageDB = (designId) => {
   const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState) {
     axios
-      .get(`http://3.38.153.67/designs/mine/${designId}`, {
+      .get(`https://devssk.shop/designs/mine/${designId}`, {
         headers: {
           Authorization: `${token_key}`,
         },
@@ -168,7 +168,7 @@ const deleteDesignDB = (designId) => {
     const token_key = `${localStorage.getItem("token")}`;
 
     axios
-      .delete(`http://3.38.153.67/designs/${designId}`, {
+      .delete(`https://devssk.shop/designs/${designId}`, {
         headers: {
           Authorization: `${token_key}`,
         },
@@ -188,7 +188,7 @@ const getLikeDesignDB = (page_num) => {
   const token = localStorage.getItem("token");
   return function (dispatch, getState) {
     axios
-      .get("http://3.38.153.67/designs/myReact", {
+      .get("https://devssk.shop/designs/myReact", {
         params: {
           page: parseInt(page_num),
         },
@@ -209,7 +209,7 @@ const getLikeDesignDB = (page_num) => {
 //   const token_key = `${localStorage.getItem("token")}`;
 //   return function (dispatch, getState) {
 //     axios
-//       .get(`http://3.38.153.67/posts/mine/${postId}`, {
+//       .get(`https://devssk.shop/posts/mine/${postId}`, {
 //         headers: {
 //           Authorization: `${token_key}`,
 //         },
@@ -314,7 +314,7 @@ export default handleActions(
 
     [LIKE_DESIGN]: (state, action) =>
       produce(state, (draft) => {
-        draft.likeDesign.unshift(...action.payload.likedesign);
+        draft.likeDesign.push(...action.payload.likedesign);
         //중복 검사
         draft.likeDesign = draft.likeDesign.reduce((acc, cur) => {
           if (acc.findIndex((a) => a.postId === cur.postId) === -1) {
