@@ -59,7 +59,7 @@ import {
 } from "./style";
 
 const Design = () => {
-  disableScroll.on();
+  // disableScroll.on();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [canvas, setCanvas] = useState("");

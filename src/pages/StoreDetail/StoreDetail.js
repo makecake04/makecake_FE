@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { actionCreators as storeAction } from "../../redux/modules/store";
 import { actionCreators as cakeAction } from "../../redux/modules/cake";
@@ -104,22 +104,27 @@ import { close } from "../../assets/images/image";
 const StoreDetail = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const store_info = useSelector((state) => state.store.store);
+
   const params = useParams();
   const store_id = params.storeid;
-  const store_cake = useSelector((state) => state.store.cake);
-  const store_review = useSelector((state) => state.store.review);
-  const user_nickname = useSelector((state) => state.user.user);
-  const [pageNumber, setPageNumber] = React.useState(0);
+
+  const [pageNumber, setPageNumber] = useState(0);
   const [ref, inView] = useInView();
-  const login = useSelector((state) => state.user.is_login);
-  const [modalIsOpen, setModalIsOpen] = React.useState(false);
-  const [modalIsOpen2, setModalIsOpen2] = React.useState(false);
+  const [toggleState, setToggleState] = useState(1);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen2, setModalIsOpen2] = useState(false);
+
   const cake_img = useSelector((state) => state.cake.lists);
   const cake_id = useSelector((state) => state.cake.lists);
   const my_like = useSelector((state) => state.cake.lists);
+  const store_cake = useSelector((state) => state.store.cake);
+  const store_review = useSelector((state) => state.store.review);
+  const user_nickname = useSelector((state) => state.user.user);
+  const login = useSelector((state) => state.user.is_login);
+  const store_info = useSelector((state) => state.store.store);
+
   const is_session = localStorage.getItem("token");
-  const [toggleState, setToggleState] = React.useState(1);
+
   const toggleTab = (index) => {
     setToggleState(index);
   };
