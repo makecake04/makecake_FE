@@ -29,7 +29,6 @@ const NewReview = (props) => {
   }, []);
 
   const review_list = useSelector((state) => state.store.lists);
-  console.log(review_list);
 
   return (
     <ReviewWrap>

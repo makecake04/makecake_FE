@@ -92,11 +92,12 @@ export const UrlWrap = styled.div`
 
 export const Nomal = styled.div`
   flex: 1;
-  font-size: 13px;
+  font-size: 15px;
   word-break: break-all;
   color: #282828;
   margin-left: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
+  text-decoration: underline;
 `;
 
 export const Insta = styled.p`
@@ -360,7 +361,6 @@ export const StoreWrap = styled.div`
 export const StoreName = styled.p`
   color: #fcfcfc;
   font-weight: 300;
-  text-decoration: underline;
 `;
 
 export const StoreBody = styled.div`

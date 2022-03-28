@@ -196,32 +196,32 @@ const StoreDetail = (props) => {
                   <ShopWrap>
                     <ShopSvg />
                     <Nomal as="a" href={store_info.urlList[0].url}>
-                      {store_info.urlList[0].url}
+                      매장 주문 페이지
                     </Nomal>
                   </ShopWrap>
                 )}
                 {store_info.urlList.length === 2 &&
-                  (store_info.urlList[0].type === "nomal" ||
-                    store_info.urlList[1].type === "nomal") && (
+                  (store_info.urlList[0].type === "nromal" ||
+                    store_info.urlList[1].type === "normal") && (
                     <ShopWrap>
                       <ShopSvg />
                       <UrlWrap>
-                        {store_info.urlList[0].type === "nomal" && (
+                        {store_info.urlList[0].type === "normal" && (
                           <Nomal as="a" href={store_info.urlList[0].url}>
-                            {store_info.urlList[0].url}
+                            매장 주문 페이지
                           </Nomal>
                         )}
-                        {store_info.urlList[1].type === "nomal" && (
+                        {store_info.urlList[1].type === "normal" && (
                           <Nomal as="a" href={store_info.urlList[1].url}>
-                            {store_info.urlList[1].url}
+                            매장 주문 페이지
                           </Nomal>
                         )}
-                        {store_info.urlList[0].type === "nomal" && (
+                        {store_info.urlList[0].type === "normal" && (
                           <Insta as="a" href={store_info.urlList[1].url}>
                             {store_info.urlList[1].type}
                           </Insta>
                         )}
-                        {store_info.urlList[1].type === "nomal" && (
+                        {store_info.urlList[1].type === "normal" && (
                           <Insta as="a" href={store_info.urlList[0].url}>
                             {store_info.urlList[0].type}
                           </Insta>
@@ -229,19 +229,21 @@ const StoreDetail = (props) => {
                       </UrlWrap>
                     </ShopWrap>
                   )}
-                {store_info.urlList.length === 2 && (
-                  <ShopWrap>
-                    <ShopSvg />
-                    <UrlWrap>
-                      <Nomal as="a" href={store_info.urlList[0].url}>
-                        {store_info.urlList[0].url}
-                      </Nomal>
-                      <Insta as="a" href={store_info.urlList[1]?.url}>
-                        {store_info.urlList[1].url}
-                      </Insta>
-                    </UrlWrap>
-                  </ShopWrap>
-                )}
+                {store_info.urlList.length === 2 &&
+                  store_info.urlList[0].type !== "nromal" &&
+                  store_info.urlList[1].type !== "normal" && (
+                    <ShopWrap>
+                      <ShopSvg />
+                      <UrlWrap>
+                        <Nomal as="a" href={store_info.urlList[0].url}>
+                          매장 주문 페이지
+                        </Nomal>
+                        <Insta as="a" href={store_info.urlList[1]?.url}>
+                          {store_info.urlList[1].type}
+                        </Insta>
+                      </UrlWrap>
+                    </ShopWrap>
+                  )}
               </InfoWrap>
             )}
           </InfoBox>
@@ -651,14 +653,13 @@ const StoreDetail = (props) => {
                         <CreatedDateP>{v.createdDate}</CreatedDateP>
                       </TitleTwo>
                       <Pwrap>{v.content}</Pwrap>
-                      {/* {v.reviewImgList &&
-                        v.reviewImgList.map((c, i) => {
-                          return ( */}
+
                       <ImgWrapTwo>
                         <img src={v.reviewImgList[0]} alt="img" />
                       </ImgWrapTwo>
                       {/* );
                         })} */}
+
                       {v.writerNickname === user_nickname?.nickname && (
                         <ButtonWrap>
                           <EditButton
