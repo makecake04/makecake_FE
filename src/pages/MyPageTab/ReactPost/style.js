@@ -7,10 +7,7 @@ import {
   like,
 } from "../../../assets/images/image";
 
-export const ReactWriteWrap = styled.div`
-  overflow-y: auto;
-  height: 100%;
-`;
+export const ReactWriteWrap = styled.div``;
 
 export const Container = styled.div``;
 
@@ -197,7 +194,8 @@ export const CreatedDate = styled.p`
 export const NickName = styled.p`
   font-size: 14px;
   color: #282828;
-  font-weight: 500;
+  text-decoration: underline;
+  /* font-weight: 500; */
 `;
 
 export const HeartIcon = styled.img.attrs({
@@ -223,6 +221,7 @@ export const ContentText = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   margin-top: 20px;
+  font-weight: 600;
 `;
 
 export const ImgWrap = styled.div`

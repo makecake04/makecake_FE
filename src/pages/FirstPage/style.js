@@ -4,8 +4,7 @@ import styled from "styled-components";
 //image
 import { logo } from "../../assets/images/image";
 
-export const Container = styled.div`
-`;
+export const Container = styled.div``;
 
 export const HeaderText = styled.p`
   color: #ff679e;
@@ -54,14 +53,12 @@ export const QuestionText = styled.p`
   text-align: center;
   color: #6b6b6b;
   font-size: 12px;
-
 `;
 
 export const SignupText = styled.p`
   text-align: center;
   color: #6b6b6b;
   font-size: 12px;
-
 `;
 
 export const Span = styled.span`

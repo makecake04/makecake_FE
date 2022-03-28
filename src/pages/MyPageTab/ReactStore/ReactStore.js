@@ -43,12 +43,6 @@ const ReactStore = (props) => {
   const myReview = useSelector((state) => state.store.myReview);
 
   const [ref, inView] = useInView();
-
-  React.useEffect(() => {
-    dispatch(storeAction.getLikeStoreDB(pageNumber));
-    dispatch(storeAction.getMyReviewDB(pageNumber));
-  }, [pageNumber]);
-
   const getMoreStore = async () => {
     setPageNumber(pageNumber + 1);
   };
@@ -56,6 +50,11 @@ const ReactStore = (props) => {
   const toggleTab = (index) => {
     setToggleState(index);
   };
+
+  React.useEffect(() => {
+    dispatch(storeAction.getLikeStoreDB(pageNumber));
+    dispatch(storeAction.getMyReviewDB(pageNumber));
+  }, [pageNumber]);
 
   React.useEffect(() => {
     if (inView) {

@@ -48,7 +48,7 @@ const getOrdersDB = (page_num, option) => {
   const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
     axios
-      .get("http://3.38.153.67/designs/mine/orders", {
+      .get("https://devssk.shop/designs/mine/orders", {
         params: {
           page: page_num,
           option: option,
@@ -93,7 +93,7 @@ const getStoresDB = () => {
   const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
     axios
-      .get("http://3.38.153.67/orders/stores", {
+      .get("https://devssk.shop/orders/stores", {
         headers: {
           Authorization: `${token_key}`,
         },
@@ -112,7 +112,7 @@ const getOrderFormDB = (orderFormId) => {
   const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
     axios
-      .get(`http://3.38.153.67/order-forms/${orderFormId}`, {
+      .get(`https://devssk.shop/order-forms/${orderFormId}`, {
         headers: {
           Authorization: `${token_key}`,
         },
@@ -132,7 +132,7 @@ const addOrderDB = (list, orderFormId, designId) => {
   return function (dispatch, getState, { history }) {
     axios
       .post(
-        `http://3.38.153.67/orders/${orderFormId}`,
+        `https://devssk.shop/orders/${orderFormId}`,
         {
           designId: designId,
           userInput: list,
@@ -159,7 +159,7 @@ const getOneOrderDB = (userOrdersId) => {
   const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
     axios
-      .get(`http://3.38.153.67/orders/${userOrdersId}`, {
+      .get(`https://devssk.shop/orders/${userOrdersId}`, {
         headers: {
           Authorization: `${token_key}`,
         },
@@ -178,7 +178,7 @@ const getImageFileDB = (userOrdersId) => {
   const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
     axios
-      .get(`http://3.38.153.67/orders/${userOrdersId}/design`, {
+      .get(`https://devssk.shop/orders/${userOrdersId}/design`, {
         headers: {
           Authorization: `${token_key}`,
         },
@@ -196,7 +196,7 @@ const deleteOrderDB = (userOrdersId) => {
   const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
     axios
-      .delete(`http://3.38.153.67/orders/${userOrdersId}`, {
+      .delete(`https://devssk.shop/orders/${userOrdersId}`, {
         headers: {
           Authorization: `${token_key}`,
         },

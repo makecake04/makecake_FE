@@ -48,31 +48,34 @@ const ReactWrite = (props) => {
   const [content, setContent] = useState("");
   const [pageNumber, setPageNumber] = React.useState(0);
   const [ref, inView] = useInView();
-
   const dispatch = useDispatch();
-
   const commentList = useSelector((state) => state.comment.my_comment_list);
   const deleteComment = (commentId) => {
     dispatch(commentAction.deleteMyCommentDB(commentId));
   };
-
   const toggleTab = (index) => {
     setToggleState(index);
   };
 
   useEffect(() => {
-    dispatch(commentAction.getMyCommentDB(pageNumber));
-    dispatch(designAction.getLikeDesignDB(pageNumber));
+    setPageNumber(0);
+  }, [toggleState]);
+
+  useEffect(() => {
+    // dispatch(designAction.getLikeDesignDB(pageNumber));
+    // dispatch(commentAction.getMyCommentDB(pageNumber));
+    if (toggleState === 1) {
+      dispatch(designAction.getLikeDesignDB(pageNumber));
+    } else if (toggleState === 2) {
+      dispatch(commentAction.getMyCommentDB(pageNumber));
+      console.log("2");
+    }
   }, [pageNumber]);
 
-  const getMoreComment = async () => {
+  useEffect(() => {
+    // if (inView) {
     setPageNumber(pageNumber + 1);
-  };
-
-  React.useEffect(() => {
-    if (inView) {
-      getMoreComment();
-    }
+    // }
   }, [inView]);
 
   return (
@@ -137,19 +140,31 @@ const ReactWrite = (props) => {
               {commentList &&
                 commentList.map((v, i) => {
                   return (
-                    <CommentWrap
-                      key={i}
-                      ref={ref}
-                      onClick={() => {
-                        navigate(`/post/${v.postId}`);
-                      }}
-                    >
-                      <ContentText value={content}>{v.content}</ContentText>
-
-                      <InsertDt>{v.createdDate}</InsertDt>
+                    <CommentWrap key={i} ref={ref}>
+                      <ContentText
+                        onClick={() => {
+                          navigate(`/post/${v.postId}`);
+                        }}
+                        value={content}
+                      >
+                        {v.content}
+                      </ContentText>
+                      <InsertDt
+                        onClick={() => {
+                          navigate(`/post/${v.postId}`);
+                        }}
+                      >
+                        {v.createdDate}
+                      </InsertDt>
 
                       <NicknameAndDelete>
-                        <NickName>{v.postTitle}</NickName>
+                        <NickName
+                          onClick={() => {
+                            navigate(`/post/${v.postId}`);
+                          }}
+                        >
+                          {v.postTitle}
+                        </NickName>
                         <Delete onClick={() => deleteComment(v.commentId)}>
                           삭제하기
                         </Delete>

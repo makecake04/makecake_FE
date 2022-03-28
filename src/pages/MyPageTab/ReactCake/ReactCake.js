@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
@@ -29,17 +29,13 @@ const ReactCake = (props) => {
 
   const likeCake = useSelector((state) => state.cake.likeCake);
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(cakeAction.getLikeCakeDB(pageNumber));
   }, [pageNumber]);
 
-  const getMoreCake = async () => {
-    setPageNumber(pageNumber + 1);
-  };
-
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) {
-      getMoreCake();
+      setPageNumber(pageNumber + 1);
     }
   }, [inView]);
 
@@ -61,6 +57,7 @@ const ReactCake = (props) => {
               return (
                 <PostWrap
                   key={idx}
+                  ref={ref}
                   onClick={() => {
                     navigate(`/storedetail/${v.storeId}`);
                   }}

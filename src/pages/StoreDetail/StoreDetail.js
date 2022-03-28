@@ -124,16 +124,6 @@ const StoreDetail = (props) => {
     setToggleState(index);
   };
 
-  useEffect(() => {
-    dispatch(storeAction.getStoreDetailDB(store_id));
-  }, [pageNumber]);
-
-  useEffect(() => {
-    if (inView) {
-      setPageNumber(pageNumber + 1);
-    }
-  }, [inView]);
-
   const likeToggle = () => {
     if (!login) {
       Swal.fire({
@@ -163,6 +153,29 @@ const StoreDetail = (props) => {
       dispatch(cakeAction.addLikeCakeDB(cake_id.cakeId, !my_like.myLike));
     }
   };
+
+  useEffect(() => {
+    dispatch(storeAction.getStoreDetailDB(store_id));
+  }, []);
+
+  useEffect(() => {
+    setPageNumber(0);
+  }, [toggleState]);
+
+  useEffect(() => {
+    if (toggleState === 3) {
+      dispatch(storeAction.getStoreCakeListDB(store_id, pageNumber));
+    }
+    if (toggleState === 4) {
+      dispatch(storeAction.getStoreReviewListDB(store_id, pageNumber));
+    }
+  }, [pageNumber]);
+
+  useEffect(() => {
+    if (inView) {
+      setPageNumber(pageNumber + 1);
+    }
+  }, [inView]);
 
   return (
     <StoreDetailContainer>
@@ -624,7 +637,7 @@ const StoreDetail = (props) => {
                   {store_cake &&
                     store_cake.map((v, idx) => {
                       return (
-                        <Images key={idx}>
+                        <Images key={idx} ref={ref}>
                           <ImgBox
                             src={v.img}
                             onClick={() => {
@@ -642,7 +655,7 @@ const StoreDetail = (props) => {
               {store_review &&
                 store_review.map((v, idx) => {
                   return (
-                    <CommentWrap key={idx}>
+                    <CommentWrap key={idx} ref={ref}>
                       <TitleTwo>
                         <InfoTwo>
                           <ProfileImage src={v.writerImg} />
@@ -654,11 +667,11 @@ const StoreDetail = (props) => {
                       </TitleTwo>
                       <Pwrap>{v.content}</Pwrap>
 
-                      <ImgWrapTwo>
-                        <img src={v.reviewImgList[0]} alt="img" />
-                      </ImgWrapTwo>
-                      {/* );
-                        })} */}
+                      {v.reviewImgList[0] && (
+                        <ImgWrapTwo>
+                          <img src={v.reviewImgList[0]} alt="img" />
+                        </ImgWrapTwo>
+                      )}
 
                       {v.writerNickname === user_nickname?.nickname && (
                         <ButtonWrap>

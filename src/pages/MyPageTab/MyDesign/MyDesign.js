@@ -53,14 +53,21 @@ const MyDraw = (props) => {
   };
 
   useEffect(() => {
+    setPageNumber(0);
+    if (design_list.length === 0 || post_list.length === 0) {
+      dispatch(designAction.getMyDesignListDB(pageNumber, post));
+    }
+  }, [toggleState]);
+
+  useEffect(() => {
     dispatch(designAction.getMyDesignListDB(pageNumber, post));
-  }, [pageNumber, toggleState]);
+  }, [pageNumber]);
 
   useEffect(() => {
     if (inView) {
       setPageNumber(pageNumber + 1);
     }
-  }, []);
+  }, [inView]);
 
   return (
     <Wrapper>

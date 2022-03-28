@@ -35,18 +35,11 @@ const Order = () => {
   const no_order_list = useSelector((state) => state.order.no_order_list);
   const order_list = useSelector((state) => state.order.order_list);
   const design_image = useSelector((state) => state.design.design_detail);
-
   const [toggleState, setToggleState] = React.useState(1);
   const [order, setOrder] = useState("notOrdered");
   const [pageNumber, setPageNumber] = React.useState(0);
   const [modalIsOpen, setModalIsOpen] = React.useState(false);
-
   const [ref, inView] = useInView();
-
-  // const getMoreStore = async () => {
-  //   setPageNumber(pageNumber + 1);
-  // };
-
   const toggleTab = (index) => {
     setToggleState(index);
     if (index === 1) {
@@ -55,6 +48,7 @@ const Order = () => {
       setOrder("ordered");
     }
   };
+
   useEffect(() => {
     setPageNumber(0);
   }, [toggleState]);

@@ -164,7 +164,7 @@ const OrderWrite = () => {
               );
             })}
 
-          <Category>케이크 시트 맛</Category>
+          <Category>케이크 맛</Category>
           {order_form &&
             order_form.moreDetails?.cakeTasteList.map((t, i) => {
               return (
