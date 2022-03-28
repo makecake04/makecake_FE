@@ -46,9 +46,8 @@ const addReviewDB = (storeId, content, img) => {
   };
 };
 
-const editReviewDB = (reviewId, content, img, imgurl) => {
+const editReviewDB = (reviewId, content, img, imgurl, storeId) => {
   const token = localStorage.getItem("token");
-  console.log(reviewId, content, img, imgurl);
   return function (dispatch, getState) {
     const form = new FormData();
 
@@ -71,7 +70,7 @@ const editReviewDB = (reviewId, content, img, imgurl) => {
       })
       .then((res) => {
         dispatch(editReview(res.data));
-        window.location.replace("/react/store");
+        window.location.replace(`/storedetail/${storeId}`);
       })
       .catch((err) => {
         console.log(err);
