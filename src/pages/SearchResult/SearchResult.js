@@ -71,6 +71,12 @@ const SearchResult = (props) => {
     dispatch(searchAction.searchPlaceDB(_searchSelect, _searchInput, "null"));
   }, [_searchSelect, _searchInput]);
 
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") {
+      mapSearching();
+    }
+  };
+
   return (
     <Container>
       <HeaderWrap>
@@ -91,6 +97,7 @@ const SearchResult = (props) => {
           <Input
             placeholder="검색 옵션을 선택해주세요!"
             onChange={changeInput}
+            onKeyPress={onKeyPress}
           />
           <SearchIcon
             onClick={() => {

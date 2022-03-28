@@ -1,11 +1,7 @@
 import styled from "styled-components";
 
 //image
-import {
-  image_upload,
-  preview_delete,
-  black_back_button,
-} from "../../assets/images/image";
+import { image_upload, black_back_button } from "../../assets/images/image";
 
 export const ReviewWrap = styled.div`
   h3 {
@@ -119,11 +115,3 @@ export const ImgBox = styled.img`
 export const ImageUpload = styled.img.attrs({
   src: `${image_upload}`,
 })``;
-
-export const PreviewDelete = styled.img.attrs({
-  src: `${preview_delete}`,
-})`
-  position: absolute;
-  bottom: 75px;
-  left: 75px;
-`;

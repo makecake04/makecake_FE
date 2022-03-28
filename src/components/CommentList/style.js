@@ -64,7 +64,7 @@ export const EditBox = styled.div`
   margin: 0 0 0 10px;
 `;
 
-export const DeleteBox = styled.div`
+export const DeleteBox = styled.button`
   width: 64px;
   height: 33px;
   border: 1px solid #e10000;
@@ -74,5 +74,4 @@ export const DeleteBox = styled.div`
   display: flex;
   font-size: 12px;
   color: #e10000;
-  margin: 0 0 0 10px;
 `;

@@ -89,7 +89,7 @@ export const ProfileEditButton = styled.img.attrs({
 })`
   position: relative;
   z-index: 2;
-  left: 9%;
+  left: 55%;
   top: -48px;
 `;
 

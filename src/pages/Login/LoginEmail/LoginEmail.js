@@ -34,6 +34,13 @@ const LoginEmail = () => {
     dispatch(userAction.setUsername(username));
   };
 
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") {
+      saveUsername();
+      navigate("/login/password");
+    }
+  };
+
   return (
     <Container>
       <BlackBackButton
@@ -54,6 +61,7 @@ const LoginEmail = () => {
           changeUsername(e.target.value);
         }}
         onKeyUp={checkActive}
+        onKeyPress={onKeyPress}
       />
 
       <NextButton
