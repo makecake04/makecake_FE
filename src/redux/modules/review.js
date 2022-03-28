@@ -48,9 +48,9 @@ const addReviewDB = (storeId, content, img) => {
 
 const editReviewDB = (reviewId, content, img, imgurl, storeId) => {
   const token = localStorage.getItem("token");
+  console.log(storeId);
   return function (dispatch, getState) {
     const form = new FormData();
-
     if (img) {
       form.append("content", content);
       form.append("imgFileList", img);
