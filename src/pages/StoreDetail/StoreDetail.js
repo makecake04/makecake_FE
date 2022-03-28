@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { actionCreators as storeAction } from "../../redux/modules/store";
 import { actionCreators as cakeAction } from "../../redux/modules/cake";
@@ -115,30 +115,22 @@ const StoreDetail = (props) => {
   const login = useSelector((state) => state.user.is_login);
   const [modalIsOpen, setModalIsOpen] = React.useState(false);
   const [modalIsOpen2, setModalIsOpen2] = React.useState(false);
-
   const cake_img = useSelector((state) => state.cake.lists);
   const cake_id = useSelector((state) => state.cake.lists);
   const my_like = useSelector((state) => state.cake.lists);
-
   const is_session = localStorage.getItem("token");
-
-  React.useEffect(() => {
-    dispatch(storeAction.getStoreDetailDB(store_id));
-  }, [pageNumber]);
-
   const [toggleState, setToggleState] = React.useState(1);
-
   const toggleTab = (index) => {
     setToggleState(index);
   };
 
-  const getMoreCake = async () => {
-    setPageNumber(pageNumber + 1);
-  };
+  useEffect(() => {
+    dispatch(storeAction.getStoreDetailDB(store_id));
+  }, [pageNumber]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) {
-      getMoreCake();
+      setPageNumber(pageNumber + 1);
     }
   }, [inView]);
 
@@ -661,14 +653,13 @@ const StoreDetail = (props) => {
                         <CreatedDateP>{v.createdDate}</CreatedDateP>
                       </TitleTwo>
                       <Pwrap>{v.content}</Pwrap>
-                      {v.reviewImgList &&
-                        v.reviewImgList.map((c, i) => {
-                          return (
-                            <ImgWrapTwo key={i}>
-                              <img src={c} alt="img" />
-                            </ImgWrapTwo>
-                          );
-                        })}
+
+                      <ImgWrapTwo>
+                        <img src={v.reviewImgList[0]} alt="img" />
+                      </ImgWrapTwo>
+                      {/* );
+                        })} */}
+
                       {v.writerNickname === user_nickname?.nickname && (
                         <ButtonWrap>
                           <EditButton

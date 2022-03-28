@@ -4,11 +4,12 @@ import styled from "styled-components";
 import { empty_heart_icon, full_heart_icon } from "../../assets/images/image";
 
 export const Wrapper = styled.section`
-  overflow: scroll;
-  height: calc(100% - 6rem);
+  /* overflow: scroll;
+  height: calc(100% - 6rem); */
   box-sizing: border-box;
   width: 100%;
   position: relative;
+  padding-bottom: 6rem;
 `;
 
 export const Header = styled.header`

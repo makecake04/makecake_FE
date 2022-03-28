@@ -13,13 +13,15 @@ import {
 } from "../../assets/images/image";
 
 export const NavWrap = styled.nav`
+  max-width: 390px;
   width: 100%;
   height: 60px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   background-color: #f3f3f3;
+  z-index: 1;
 
   svg {
     padding: 3px 3px;

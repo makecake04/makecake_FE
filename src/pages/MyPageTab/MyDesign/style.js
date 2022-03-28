@@ -4,11 +4,12 @@ import styled, { css } from "styled-components";
 import { remove_design, write_design } from "../../../assets/images/image";
 
 export const Wrapper = styled.div`
-  text-align: center;
+  /* text-align: center;
   overflow: scroll;
-  height: calc(100% - 6rem);
+  height: calc(100% - 6rem); */
   box-sizing: border-box;
   width: 100%;
+  padding-bottom: 6rem;
 
   hr {
     border: 0.7px solid #e5e5e5;

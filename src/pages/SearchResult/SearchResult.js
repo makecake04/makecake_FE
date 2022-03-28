@@ -59,10 +59,7 @@ const SearchResult = (props) => {
   };
 
   const saveInformation = (storeId) => {
-
     navigate(`/searchmap/${storeId}`);
-
-
   };
 
   const mapSearching = () => {
@@ -71,10 +68,8 @@ const SearchResult = (props) => {
   };
 
   React.useEffect(() => {
-
     dispatch(searchAction.searchPlaceDB(_searchSelect, _searchInput, "null"));
   }, [_searchSelect, _searchInput]);
-
 
   return (
     <Container>
@@ -91,7 +86,7 @@ const SearchResult = (props) => {
             </Option>
             <Option value="store">매장</Option>
             <Option value="address">주소</Option>
-            <Option value="place">핫플</Option>
+            <Option value="place">플레이스</Option>
           </Select>
           <Input
             placeholder="검색 옵션을 선택해주세요!"
