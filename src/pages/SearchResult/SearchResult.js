@@ -67,15 +67,15 @@ const SearchResult = (props) => {
     navigate(`/search/result/${selected}/${searchInput}`);
   };
 
-  React.useEffect(() => {
-    dispatch(searchAction.searchPlaceDB(_searchSelect, _searchInput, "null"));
-  }, [_searchSelect, _searchInput]);
-
   const onKeyPress = (e) => {
     if (e.key === "Enter") {
       mapSearching();
     }
   };
+
+  React.useEffect(() => {
+    dispatch(searchAction.searchPlaceDB(_searchSelect, _searchInput, "null"));
+  }, [_searchSelect, _searchInput]);
 
   return (
     <Container>

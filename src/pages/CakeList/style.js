@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 //image
 import { empty_heart_icon, full_heart_icon } from "../../assets/images/image";
@@ -21,14 +21,78 @@ export const HrWrap = styled.hr`
   width: 100%;
 `;
 
+export const ButtonWrap = styled.div`
+  display: flex;
+  margin: 15px 0px 0px 20px;
+  button + button {
+    margin-left: 1rem;
+  }
+`;
+
+export const AllButton = styled.button`
+  ${(props) =>
+    props.sortType === "random"
+      ? css`
+          width: 100%
+          height: 36px;
+          border-radius: 50px;
+          border: 1px solid #fff;
+          font-size: 13px;
+          font-style: normal;
+          font-weight: 400;
+          color: #fff;
+          background: #ff8fa5;
+          padding: 0.7rem;
+        `
+      : css`
+          width: 100%
+          height: 36px;
+          border-radius: 50px;
+          border: 1px solid #dadada;
+          font-size: 13px;
+          font-style: normal;
+          font-weight: 400;
+          color: #777;
+          background: #fff;
+          padding: 0.7rem;
+        `}
+`;
+
+export const LikeButton = styled.button`
+  ${(props) =>
+    props.sortType === "likeCnt"
+      ? css`
+          width: 100%
+          height: 36px;
+          border-radius: 50px;
+          border: 1px solid #fff;
+          font-size: 13px;
+          font-style: normal;
+          font-weight: 400;
+          color: #fff;
+          background: #ff8fa5;
+          padding: 0.7rem;
+        `
+      : css`
+          width: 100%
+          height: 36px;
+          border-radius: 50px;
+          border: 1px solid #dadada;
+          font-size: 13px;
+          font-style: normal;
+          font-weight: 400;
+          color: #777;
+          background: #fff;
+          padding: 0.7rem;
+        `}
+`;
+
 export const ImageWrap = styled.div`
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding: 20px;
   gap: 20px;
-  margin-top: 10px;
-  overflow: hidden;
 `;
 
 export const ImgWrap = styled.div`

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as cakeAction } from "../../redux/modules/cake";
@@ -11,6 +11,9 @@ import Swal from "sweetalert2";
 import {
   CakeContainer,
   HrWrap,
+  ButtonWrap,
+  AllButton,
+  LikeButton,
   ImageWrap,
   ImgWrap,
   ImgBox,
@@ -28,29 +31,30 @@ Modal.setAppElement("#root");
 const CakeList = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [modalIsOpen, setModalIsOpen] = React.useState(false);
-  const [pageNumber, setPageNumber] = React.useState(0);
-
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [pageNumber, setPageNumber] = useState(0);
+  const [sortType, setSortType] = useState("likeCnt");
   const [ref, inView] = useInView();
-
-  React.useEffect(() => {
-    dispatch(cakeAction.getCakeListDB(pageNumber));
-  }, [pageNumber]);
-
-  const cake_lists = useSelector((state) => state.cake.list);
+  const like_cake_list = useSelector((state) => state.cake.like_cake_list);
+  // const random_cake_list = useSelector((state) => state.cake.random_cake_list);
+  console.log(like_cake_list);
   const cake_img = useSelector((state) => state.cake.lists);
   const store_id = useSelector((state) => state.cake.lists);
   const cake_id = useSelector((state) => state.cake.lists);
   const login = useSelector((state) => state.user.is_login);
   const my_like = useSelector((state) => state.cake.lists);
 
-  const getMoreCake = async () => {
-    setPageNumber(pageNumber + 1);
-  };
+  useEffect(() => {
+    setPageNumber(0);
+  }, [sortType]);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    dispatch(cakeAction.getCakeListDB(pageNumber, sortType));
+  }, [pageNumber]);
+
+  useEffect(() => {
     if (inView) {
-      getMoreCake();
+      setPageNumber(pageNumber + 1);
     }
   }, [inView]);
 
@@ -73,9 +77,28 @@ const CakeList = (props) => {
     <CakeContainer>
       <h3>케이크 모아보기</h3>
       <HrWrap />
+      {/* <ButtonWrap>
+        <LikeButton
+          onClick={() => {
+            setSortType("likeCnt");
+          }}
+          sortType={sortType}
+        >
+          좋아요순
+        </LikeButton>
+        <AllButton
+          onClick={() => {
+            setSortType("random");
+          }}
+          sortType={sortType}
+        >
+          랜덤순
+        </AllButton>
+      </ButtonWrap> */}
       <ImageWrap>
-        {cake_lists &&
-          cake_lists.map((v, idx) => {
+        {sortType === "likeCnt" &&
+          like_cake_list &&
+          like_cake_list.map((v, idx) => {
             return (
               <ImgWrap key={idx} ref={ref}>
                 <ImgBox
@@ -89,8 +112,23 @@ const CakeList = (props) => {
               </ImgWrap>
             );
           })}
+        {/* {sortType === "random" &&
+          random_cake_list &&
+          random_cake_list.map((v, idx) => {
+            return (
+              <ImgWrap key={idx} ref={ref}>
+                <ImgBox
+                  src={v.img}
+                  onClick={() => {
+                    setModalIsOpen(true);
+                    dispatch(cakeAction.getCakeImageDB(v.cakeId));
+                  }}
+                  alt="cakeImage"
+                />
+              </ImgWrap>
+            );
+          })} */}
       </ImageWrap>
-
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
