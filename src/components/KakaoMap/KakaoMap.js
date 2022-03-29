@@ -34,7 +34,8 @@ const KakaoMap = (props) => {
   useEffect(() => {
     var container = document.getElementById("map");
     container.style.width = "100%";
-    container.style.height = "59rem";
+    // container.style.height = "59rem";
+    container.style.height = "78rem";
 
     var options = {
       center: new kakao.maps.LatLng(firstY, firstX),
