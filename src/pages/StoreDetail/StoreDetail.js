@@ -500,120 +500,7 @@ const StoreDetail = (props) => {
                       </PlusButton>
                     )}
                 </PlusWrap>
-                <Modal
-                  isOpen={modalIsOpen}
-                  onRequestClose={() => setModalIsOpen(false)}
-                  style={{
-                    overlay: {
-                      position: "fixed",
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      backgroundColor: "rgba(76, 76, 76, 0.7)",
-                      zIndex: "20",
-                    },
-                    content: {
-                      position: "absolute",
-                      top: "50%",
-                      left: "50%",
-                      bottom: "auto",
-                      width: "300px",
-                      height: "auto",
-                      padding: "0",
-                      border: "none",
-                      overflow: "auto",
-                      borderRadius: "5px",
-                      transform: "translate(-50%,-50%)",
-                      WebkitOverflowScrolling: "touch",
-                    },
-                  }}
-                >
-                  <ModalWrap>
-                    <img
-                      src={close}
-                      alt="close"
-                      onClick={() => setModalIsOpen(false)}
-                    />
-                    {store_info.moreDetails?.cakeMenuList.length === 0 ? (
-                      <div>
-                        <Category>케이크 종류</Category>
-                        <NoContent>정보 없음</NoContent>
-                      </div>
-                    ) : (
-                      <div>
-                        <Category>케이크 종류</Category>
-                        {store_info &&
-                          store_info.moreDetails?.cakeMenuList.map((m, i) => {
-                            return (
-                              <CategoryWrap key={i}>
-                                <CategoryItem>
-                                  <span>
-                                    {m.type} {m.size}
-                                  </span>
-                                  {/* <hr /> */}
-                                  <span>{m.price}</span>
-                                </CategoryItem>
-                                <CategoryDetail>
-                                  <p>{m.moreInfo}</p>
-                                </CategoryDetail>
-                              </CategoryWrap>
-                            );
-                          })}
-                      </div>
-                    )}
-                    {store_info.moreDetails?.cakeTasteList.length === 0 ? (
-                      <div>
-                        <Category>케이크 시트 맛</Category>
-                        <NoContent>정보 없음</NoContent>
-                      </div>
-                    ) : (
-                      <div>
-                        <Category>케이크 시트 맛</Category>
-                        {store_info &&
-                          store_info.moreDetails?.cakeTasteList.map((t, i) => {
-                            return (
-                              <CategoryWrap key={i}>
-                                <CategoryItem>
-                                  <span>{t.flavor}</span>
-                                  {/* <hr /> */}
-                                  <span>{t.addedPrice}</span>
-                                </CategoryItem>
-                                <CategoryDetail>
-                                  <p>{t.moreInfo}</p>
-                                </CategoryDetail>
-                              </CategoryWrap>
-                            );
-                          })}
-                      </div>
-                    )}
-                    {store_info.moreDetails?.cakeOptionList.length === 0 ? (
-                      <div>
-                        <Category>추가 옵션</Category>
-                        <NoContent>정보 없음</NoContent>
-                      </div>
-                    ) : (
-                      <div>
-                        <Category>추가 옵션</Category>
-                        {store_info &&
-                          store_info.moreDetails?.cakeOptionList.map((o, i) => {
-                            return (
-                              <CategoryWrap key={i}>
-                                <CategoryItem>
-                                  <span>{o.name}</span>
-                                  {/* <hr /> */}
-                                  <span>{o.price}</span>
-                                </CategoryItem>
-                                <CategoryDetail>
-                                  <p>{o.moreInfo}</p>
-                                </CategoryDetail>
-                              </CategoryWrap>
-                            );
-                          })}
-                      </div>
-                    )}
-                  </ModalWrap>
-                </Modal>
+
                 <BottomHr />
                 <PictureBox>
                   <PictureWrap>
@@ -718,6 +605,116 @@ const StoreDetail = (props) => {
           </ContentTab>
         </ContainerBox>
       </DetailWrap>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+        style={{
+          overlay: {
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(76, 76, 76, 0.7)",
+            zIndex: "20",
+          },
+          content: {
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            bottom: "auto",
+            width: "300px",
+            height: "auto",
+            padding: "0",
+            border: "none",
+            overflow: "auto",
+            borderRadius: "5px",
+            transform: "translate(-50%,-50%)",
+            WebkitOverflowScrolling: "touch",
+          },
+        }}
+      >
+        <ModalWrap>
+          <img src={close} alt="close" onClick={() => setModalIsOpen(false)} />
+          {store_info.moreDetails?.cakeMenuList.length === 0 ? (
+            <div>
+              <Category>케이크 종류</Category>
+              <NoContent>정보 없음</NoContent>
+            </div>
+          ) : (
+            <>
+              <Category>케이크 종류</Category>
+              {store_info &&
+                store_info.moreDetails?.cakeMenuList.map((m, i) => {
+                  return (
+                    <CategoryWrap key={i}>
+                      <CategoryItem>
+                        <span>
+                          {m.type} {m.size}
+                        </span>
+                        {/* <hr /> */}
+                        <span>{m.price}</span>
+                      </CategoryItem>
+                      <CategoryDetail>
+                        <p>{m.moreInfo}</p>
+                      </CategoryDetail>
+                    </CategoryWrap>
+                  );
+                })}
+            </>
+          )}
+          {store_info.moreDetails?.cakeTasteList.length === 0 ? (
+            <div>
+              <Category>케이크 시트 맛</Category>
+              <NoContent>정보 없음</NoContent>
+            </div>
+          ) : (
+            <>
+              <Category>케이크 시트 맛</Category>
+              {store_info &&
+                store_info.moreDetails?.cakeTasteList.map((t, i) => {
+                  return (
+                    <CategoryWrap key={i}>
+                      <CategoryItem>
+                        <span>{t.flavor}</span>
+                        {/* <hr /> */}
+                        <span>{t.addedPrice}</span>
+                      </CategoryItem>
+                      <CategoryDetail>
+                        <p>{t.moreInfo}</p>
+                      </CategoryDetail>
+                    </CategoryWrap>
+                  );
+                })}
+            </>
+          )}
+          {store_info.moreDetails?.cakeOptionList.length === 0 ? (
+            <div>
+              <Category>추가 옵션</Category>
+              <NoContent>정보 없음</NoContent>
+            </div>
+          ) : (
+            <>
+              <Category>추가 옵션</Category>
+              {store_info &&
+                store_info.moreDetails?.cakeOptionList.map((o, i) => {
+                  return (
+                    <CategoryWrap key={i}>
+                      <CategoryItem>
+                        <span>{o.name}</span>
+                        {/* <hr /> */}
+                        <span>{o.price}</span>
+                      </CategoryItem>
+                      <CategoryDetail>
+                        <p>{o.moreInfo}</p>
+                      </CategoryDetail>
+                    </CategoryWrap>
+                  );
+                })}
+            </>
+          )}
+        </ModalWrap>
+      </Modal>
     </StoreDetailContainer>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -43,22 +43,30 @@ const ReactStore = (props) => {
   const myReview = useSelector((state) => state.store.myReview);
 
   const [ref, inView] = useInView();
-  const getMoreStore = async () => {
-    setPageNumber(pageNumber + 1);
-  };
 
   const toggleTab = (index) => {
     setToggleState(index);
   };
 
-  React.useEffect(() => {
-    dispatch(storeAction.getLikeStoreDB(pageNumber));
-    dispatch(storeAction.getMyReviewDB(pageNumber));
+  useEffect(() => {
+    if (pageNumber === 0) {
+      dispatch(storeAction.getLikeStoreDB(pageNumber));
+      dispatch(storeAction.getMyReviewDB(pageNumber));
+    }
+    setPageNumber(0);
+  }, [toggleState]);
+
+  useEffect(() => {
+    if (toggleState === 1) {
+      dispatch(storeAction.getLikeStoreDB(pageNumber));
+    } else if (toggleState === 2) {
+      dispatch(storeAction.getMyReviewDB(pageNumber));
+    }
   }, [pageNumber]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) {
-      getMoreStore();
+      setPageNumber(pageNumber + 1);
     }
   }, [inView]);
 
@@ -88,6 +96,7 @@ const ReactStore = (props) => {
               return (
                 <OneStore
                   key={idx}
+                  ref={ref}
                   onClick={() => {
                     navigate(`/storedetail/${v.storeId}`);
                   }}
@@ -109,7 +118,7 @@ const ReactStore = (props) => {
           {myReview &&
             myReview.map((v, idx) => {
               return (
-                <OneReview key={idx}>
+                <OneReview key={idx} ref={ref}>
                   <ReviewHeader>
                     <span>{v.name}</span>
                     <p>{v.createdDate?.split(" ")[0]}</p>
