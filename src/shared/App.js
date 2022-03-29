@@ -163,8 +163,8 @@ const Container = styled.div`
     }
   }
   @media (min-width: 500px) {
-    background: url(${background}) no-repeat;
-    background-size: cover;
+    background: url(${background}) 0% 0% / cover no-repeat;
+    /* background-size: cover; */
   }
   & ::-webkit-scrollbar {
     display: none;

@@ -1,5 +1,5 @@
 import React from "react";
-
+import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { actionCreators as reviewAction } from "../../redux/modules/review";
 import { useDispatch, useSelector } from "react-redux";
@@ -65,6 +65,15 @@ const ReviewWrite = (props) => {
   };
 
   const addReview = () => {
+    if (contents === "") {
+      Swal.fire({
+        title: "내용을 입력해주세요!",
+        showCancelButton: false,
+        confirmButtonText: "네!",
+        confirmButtonColor: "#ff679e",
+      });
+      return;
+    }
     dispatch(
       reviewAction.addReviewDB(store_id, contents, fileInput.current.files[0])
     );
