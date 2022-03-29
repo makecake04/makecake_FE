@@ -97,7 +97,11 @@ const Search = (props) => {
           />
           <SearchIcon onClick={mapSearching} />
         </SearchWrap>
-        <Bell />
+        <Bell
+          onClick={() => {
+            navigate("/noti");
+          }}
+        />
       </HeaderWrap>
 
       {/* <EmptySpace /> */}
