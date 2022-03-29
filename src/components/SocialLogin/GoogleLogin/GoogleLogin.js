@@ -4,7 +4,8 @@ import React from "react";
 import { Container, GoogleButton } from "./style";
 
 const GoogleLogin = (props) => {
-  let _clientId = "291461089259-e5riml4i90u5ej2ubfuc2t08aammtjld";
+  let _clientId =
+    "785414541280-9tuq85ts44dalvkpd5dah0cobplcmc3n.apps.googleusercontent.com";
   let _callBack = "https://make-cake.com/user/google/callback";
 
   return (

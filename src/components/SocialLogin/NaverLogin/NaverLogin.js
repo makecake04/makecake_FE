@@ -4,7 +4,7 @@ import React from "react";
 import { Container, NaverButton } from "./style";
 
 const NaverLogin = (props) => {
-  let _clientId = "T7GzPr_3JQK4eoFTQsEq";
+  let _clientId = "Sz8iSQ5HmjJyT9BosjJf";
   let _callBack = "https://make-cake.com/user/naver/callback";
 
   function randomString() {
