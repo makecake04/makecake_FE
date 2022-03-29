@@ -100,7 +100,8 @@ const Search = (props) => {
         <Bell />
       </HeaderWrap>
 
-      <EmptySpace />
+      {/* <EmptySpace /> */}
+      <SeoulAreaText>* 현재는 서울시 내에서만 검색이 가능합니다.</SeoulAreaText>
 
       <Container>
         <CommendText>매장 추천</CommendText>
@@ -261,8 +262,8 @@ const Search = (props) => {
           </Place3>
         </PlaceList2>
       </Container>
-      <EmptySpace2 />
-      <SeoulAreaText>현재는 서울시 내에서만 검색이 가능합니다.</SeoulAreaText>
+      {/* <EmptySpace2 /> */}
+      {/* <SeoulAreaText>현재는 서울시 내에서만 검색이 가능합니다.</SeoulAreaText> */}
     </SDetailWrap>
   );
 };

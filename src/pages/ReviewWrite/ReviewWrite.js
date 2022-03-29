@@ -1,5 +1,5 @@
 import React from "react";
-
+import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { actionCreators as reviewAction } from "../../redux/modules/review";
 import { useDispatch, useSelector } from "react-redux";

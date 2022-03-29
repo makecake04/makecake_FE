@@ -195,6 +195,7 @@ const StoreDetail = (props) => {
                 }}
               />
             )}
+
             {!is_session && (
               <WhiteBackIcon
                 onClick={() => {
