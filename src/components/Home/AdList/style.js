@@ -10,47 +10,11 @@ export const SubWrap = styled.div`
   margin: 0 auto;
 `;
 
-export const Title = styled.h3`
-  margin: 20px 0px 10px 0px;
-  text-align: start;
-  font-weight: 700;
-  font-size: 19px;
-  color: #282828;
-`;
-
 export const ImageWrap = styled.div`
   position: relative;
   display: flex;
   margin-bottom: 15px;
   text-align: start;
-`;
-
-export const ImagesWrap = styled.div`
-  flex: 1;
-`;
-
-export const Images = styled.div`
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 100%;
-  border-radius: 10px;
-  overflow: hidden;
-`;
-
-export const ImgBox = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url(${(props) => props.src}) no-repeat center / cover;
-`;
-
-export const Text = styled.div`
-  margin-top: 10px;
-  color: #777777;
-  font-size: 18px;
 `;
 
 export const StyleSlider = styled(Slider)`
@@ -113,11 +77,11 @@ export const HrWrap = styled.hr`
 export const AdItem = styled.div`
   margin-top: 15px;
   background-color: #fee9ee;
-  height: 66px;
+  height: 72px;
   width: 100%;
   box-shadow: inset -2px -2px 1px 0px #8b8b8bab;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 6px;
 `;
 
 export const AdTitle = styled.div`

@@ -21,7 +21,7 @@ export const NavWrap = styled.nav`
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   background-color: #f3f3f3;
-  z-index: 1;
+  z-index: 10;
 
   svg {
     padding: 3px 3px;
