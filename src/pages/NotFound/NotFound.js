@@ -25,7 +25,7 @@ const NotFound = (props) => {
       <IconWrap>
         <NotFoundIcon />
       </IconWrap>
-      <ErrorMessage>없는 페이지예요!</ErrorMessage>
+      <ErrorMessage>없는 페이지에요!</ErrorMessage>
       <HomePage
         onClick={() => {
           navigate("/");

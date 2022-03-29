@@ -79,6 +79,7 @@ function App() {
                 path="/post/write/:designid/:postid"
                 element={<PostWrite />}
               />
+              {/* <Route path="/*" element={<NotFound />} /> */}
             </Route>
             {!is_session && <Route path="/" element={<FirstPage />} />}
             <Route path="/mydesign" element={<MyDesign />} />
@@ -140,7 +141,6 @@ const Container = styled.div`
       left: 0%;
       top: 0%;
       overflow: auto;
-      min-height: 70vh;
     }
     @media (min-width: 1000px) {
       left: 25%;
