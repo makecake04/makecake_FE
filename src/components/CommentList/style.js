@@ -5,7 +5,7 @@ export const Container = styled.div`
 `;
 
 export const CommentBox = styled.div`
-  padding-bottom: 7px;
+  padding-bottom: 10px;
   display: flex;
   flex-direction: column;
   width: 342px;
@@ -40,7 +40,7 @@ export const CommentDate = styled.div`
 
 export const Content = styled.div`
   display: flex;
-  min-height: 80px;
+  min-height: 50px;
   font-size: 14px;
   color: #282828;
   word-break: break-all;

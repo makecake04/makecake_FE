@@ -187,13 +187,13 @@ export const Info = styled.div`
 `;
 
 export const CreatedDate = styled.p`
-  color: #777;
+  color: #282828;
   font-size: 12px;
 `;
 
 export const NickName = styled.p`
   font-size: 14px;
-  color: #282828;
+  color: #777;
   text-decoration: underline;
   /* font-weight: 500; */
 `;
@@ -211,7 +211,7 @@ export const ContentWrap = styled.div`
 `;
 
 export const ContentText = styled.p`
-  color: #777;
+  color: #282828;
   font-size: 14px;
   word-break: break-all;
   display: -webkit-box;
