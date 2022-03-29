@@ -145,6 +145,27 @@ const kakaoLoginDB = (code) => {
   };
 };
 
+// 구글 로그인
+const googleLoginDB = (code) => {
+  return function (dispatch, getState, { history }) {
+    api
+      .GoogleLogin(code)
+      .then((res) => {
+        const ACCESS_TOKEN = res.data.accessToken;
+        const ACCESS_TOKEN_EXP = res.data.accessTokenExpiresIn;
+        const REFRESH_TOKEN = res.data.refreshToken;
+        dispatch(setUser(res.headers));
+        localStorage.setItem("token", res.headers.authorization);
+        window.location.replace("/");
+      })
+      .catch((err) => {
+        console.log("구글로그인 에러", err);
+        window.location.replace("/");
+        dispatch(loading(false));
+      });
+  };
+};
+
 // 로그인
 const logInDB = (username, password) => {
   console.log(username, password);
@@ -334,6 +355,7 @@ const actionCreators = {
   editProfile,
   editProfileDB,
   resignDB,
+  googleLoginDB,
 };
 
 export { actionCreators };
