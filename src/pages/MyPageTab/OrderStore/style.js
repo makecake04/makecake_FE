@@ -62,8 +62,8 @@ export const SearchBar = styled.div`
     &::after {
       content: "";
       padding-left: 3.2rem;
-      border-right: 1px solid #777777;
-      vertical-align: middle;
+      /* border-right: 1px solid #777777; */
+      /* vertical-align: middle; */
     }
   }
   input {
