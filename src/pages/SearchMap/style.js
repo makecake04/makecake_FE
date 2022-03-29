@@ -76,7 +76,7 @@ export const StoreInfoWrap = styled.div`
   height: 110px;
   position: fixed;
   /* top: 0; */
-  bottom: 40px;
+  bottom: 15px;
   /* bottom: 0; */
   /* border-top-left-radius: 10px;
   border-top-right-radius: 10px; */
