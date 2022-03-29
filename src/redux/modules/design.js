@@ -174,8 +174,6 @@ const deleteDesignDB = (designId) => {
         },
       })
       .then((res) => {
-        console.log(res);
-        alert("도안이 삭제되었습니다!");
         window.location.replace("/mydesign");
       })
       .catch((error) => {

@@ -78,7 +78,7 @@ const Profile = (props) => {
                 multiple
                 ref={fileInput}
                 onChange={selectFiles}
-                accept=".jpg,.jpeg,.png"
+                // accept=".jpg,.jpeg,.png,.heic"
               />
               <ProfileEditButton />
             </LabelWrap>

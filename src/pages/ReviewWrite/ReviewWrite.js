@@ -28,7 +28,7 @@ import {
 const ReviewWrite = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const store_id = useSelector((state) => state.store);
+  const store_id = useSelector((state) => state.store.store);
   const one_review = useSelector((state) => state.review.list);
   const params = useParams();
   const review_id = params.reviewId;
@@ -141,7 +141,7 @@ const ReviewWrite = (props) => {
               multiple
               ref={fileInput}
               onChange={selectFiles}
-              accept=".jpg,.jpeg,.png"
+              // accept=".jpg,.jpeg,.png,.heic"
             />
             <PlusImg>
               <ImageUpload />

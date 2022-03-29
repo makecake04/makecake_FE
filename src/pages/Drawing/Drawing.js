@@ -268,9 +268,8 @@ const Design = () => {
             <Logo cakeShape={cakeShape} onClick={() => navigate("/")} />
 
             {cakeShape && (
-              <RightButton onClick={() => setModalIsOpen(true)}>
-                완료
-              </RightButton>
+              // <RightButton onClick={() => setModalIsOpen(true)}>
+              <RightButton onClick={() => complete()}>완료</RightButton>
             )}
           </ButtonWrapper>
         </Header>
