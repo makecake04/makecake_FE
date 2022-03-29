@@ -5,7 +5,7 @@ import { Container, NaverButton } from "./style";
 
 const NaverLogin = (props) => {
   let _clientId = "T7GzPr_3JQK4eoFTQsEq";
-  let _callBack = "http://localhost:3000/user/naver/callback";
+  let _callBack = "https://make-cake.com//user/naver/callback";
 
   function randomString() {
     const chars =
