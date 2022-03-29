@@ -3,10 +3,7 @@ import styled from "styled-components";
 //image
 import { white_back_button, search_icon } from "../../assets/images/image";
 
-export const Container = styled.div`
-  overflow-y: auto;
-  height: 100%;
-`;
+export const Container = styled.div``;
 
 export const HeaderWrap = styled.div`
   padding: 20px;

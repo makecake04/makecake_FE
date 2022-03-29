@@ -64,6 +64,7 @@ import noti_comment from "./home/noti-comment.svg";
 import noti_heart from "./home/noti-heart.svg";
 import noti_bigcake from "./home/noti-bigcake.svg";
 import noti_check_dot from "./home/noti-check-dot.svg";
+import event from "./home/event.svg";
 
 //logo
 import main_logo from "./logo/main-logo.svg";
@@ -181,6 +182,7 @@ export {
   noti_bigcake,
   noti_check_dot,
   main_logo,
+  event,
   profile_image,
   grey,
   pink,
