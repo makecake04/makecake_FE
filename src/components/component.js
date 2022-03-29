@@ -5,6 +5,7 @@ import Image from "./Drawing/Image/Image";
 import BgColor from "./Drawing/BgColor/BgColor";
 import BestCake from "./Home/BestCake/BestCake";
 import HotStoreList from "./Home/HotStoreList/HotStoreList";
+import AdList from "./Home/AdList/AdList";
 import SearchBar from "./Home/SearchBar/SearchBar";
 import NewReview from "./Home/NewReview/NewReview";
 import NavBar from "./NavBar/NavBar";
@@ -24,6 +25,7 @@ export {
   Text,
   Image,
   BgColor,
+  AdList,
   BestCake,
   HotStoreList,
   SearchBar,

@@ -51,18 +51,16 @@ const Order = () => {
 
   useEffect(() => {
     setPageNumber(0);
+    dispatch(orderAction.getOrdersDB(0, order));
   }, [toggleState]);
 
   useEffect(() => {
     console.log("dispatch");
-    dispatch(orderAction.getOrdersDB(pageNumber, order));
+    if (pageNumber > 0) dispatch(orderAction.getOrdersDB(pageNumber, order));
   }, [pageNumber]);
 
   useEffect(() => {
     if (inView) {
-      // getMoreStore();
-      console.log("inview");
-
       setPageNumber(pageNumber + 1);
     }
   }, [inView]);

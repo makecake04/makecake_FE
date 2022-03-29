@@ -2,10 +2,6 @@ import styled, { css } from "styled-components";
 
 export const Wrapper = styled.section`
   text-align: center;
-  overflow-y: auto;
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
   padding-bottom: 3rem;
   hr {
     &:nth-of-type(1) {

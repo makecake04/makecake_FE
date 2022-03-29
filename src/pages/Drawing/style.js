@@ -4,9 +4,9 @@ import styled from "styled-components";
 import { logo } from "../../assets/images/image";
 
 export const Wrapper = styled.section`
-  /* max-height: 844px; */
-  overflow-y: auto;
-  height: 100%;
+  @media (min-width: 500px) {
+    margin-top: calc((100vh - 844px) / 2.5);
+  }
   text-align: center;
   button {
     border: none;
@@ -214,8 +214,8 @@ export const DrawingOptions = styled.div`
 export const BodyWrapper = styled.div`
   position: relative;
   border-radius: 0.8rem 0.8rem 0 0;
-  /* flex: 2; */
-  height: 100vh;
+  flex: 2;
+  /* height: 100vh; */
   overflow: hidden;
   background-color: #fee9ee;
 `;
