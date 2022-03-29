@@ -271,7 +271,7 @@ const StoreDetail = (props) => {
             (is_session ? (
               <ReviewSvg
                 onClick={() => {
-                  navigate("/review/write");
+                  navigate(`/review/write/${store_id}`);
                   dispatch(storeAction.getStoreDetailDB(store_id));
                 }}
               />

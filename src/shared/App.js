@@ -106,7 +106,7 @@ function App() {
             <Route path="/login/email" element={<LoginEmail />} />
             <Route path="/login/password" element={<LoginPassword />} />
 
-            <Route path="/review/write" element={<ReviewWrite />} />
+            <Route path="/review/write/:storeId" element={<ReviewWrite />} />
             <Route path="/review/:reviewId" element={<ReviewWrite />} />
 
             <Route path="/searchmap/:storeId/" element={<SearchMap />} />
