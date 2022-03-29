@@ -16,8 +16,8 @@ import {
 } from "../../assets/images/image";
 
 export const StoreDetailContainer = styled.div`
-  overflow-y: auto;
-  height: 100%;
+  /* overflow-y: auto;
+  height: 100%; */
 `;
 
 export const DetailWrap = styled.div``;
@@ -388,6 +388,7 @@ export const ContentTwo = styled.div`
 `;
 
 export const ContentThree = styled.div`
+  padding-bottom: 6rem;
   ${(props) =>
     props.toggleState === 3
       ? css`
@@ -406,6 +407,7 @@ export const ContentThree = styled.div`
 `;
 
 export const ContentFour = styled.div`
+  padding-bottom: 6rem;
   ${(props) =>
     props.toggleState === 4
       ? css`
@@ -537,7 +539,9 @@ export const BottomHr = styled.hr`
   width: 100%;
 `;
 
-export const PictureBox = styled.div``;
+export const PictureBox = styled.div`
+  padding-bottom: 6rem;
+`;
 
 export const PictureWrap = styled.div`
   margin: 10px 20px 0px 20px;
@@ -763,17 +767,17 @@ export const ReviewSvg = styled.img.attrs({
   position: absolute;
   /* bottom: 1.3rem;
 right: 1.3rem; */
-  width: 4.8rem;
-  height: 4.8rem;
-  bottom: 2rem;
-  right: 1.3rem;
+  width: 5rem;
+  height: 5rem;
+  bottom: 2.5rem;
+  right: 1.8rem;
   /* z-index: 2; */
 `;
 
 export const Toggle = styled.div`
   position: fixed;
   width: 391px;
-  bottom: -10px;
+  bottom: 50px;
   z-index: 2;
 `;
 

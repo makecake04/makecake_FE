@@ -72,7 +72,7 @@ function App() {
               <Route path="/mypage" element={<MyPage />} />
               <Route path="/design/list" element={<DesignList />} />
               <Route path="/profile/edit" element={<ProfileEdit />} />
-
+              <Route path="/storedetail/:storeid" element={<StoreDetail />} />
               <Route path="/search/" element={<Search />} />
               <Route path="/post/:id" element={<PostDetail />} />
               <Route path="/post/write/:designid" element={<PostWrite />} />
@@ -91,7 +91,7 @@ function App() {
             <Route path="/react/post" element={<ReactPost />} />
             <Route path="/react/store" element={<ReactStore />} />
             <Route path="/react/cake" element={<ReactCake />} />
-            <Route path="/storedetail/:storeid" element={<StoreDetail />} />
+
             <Route path="/noti" element={<Noti />} />
             <Route path="/order" element={<Order />} />
             <Route path="/order/:id" element={<OrderStore />} />
