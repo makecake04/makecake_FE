@@ -53,7 +53,7 @@ const AdList = () => {
                 <p>&nbsp;설문 참여하고 기프티콘 받아가세요!☕️ </p>
               </AdTitle>
               <Link
-                href="https://www.instagram.com/__makecake/"
+                href="https://docs.google.com/forms/d/e/1FAIpQLScNkit7VzuKf3iKSFr0axrRvs86UWO7VCZLpKcEraViCPKsJQ/viewform?usp=sf_link"
                 target="_blank"
               >
                 👉🏻설문 참여하러 가기
@@ -66,7 +66,7 @@ const AdList = () => {
               </AdTitle>
               <Link
                 onClick={() => {
-                  navigate("/cake");
+                  navigate("/order");
                 }}
               >
                 👉🏻주문하기 기능 안내 보기
