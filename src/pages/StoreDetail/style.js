@@ -767,6 +767,13 @@ right: 1.3rem; */
   height: 4.8rem;
   bottom: 2rem;
   right: 1.3rem;
+  /* z-index: 2; */
+`;
+
+export const Toggle = styled.div`
+  position: fixed;
+  width: 391px;
+  bottom: -10px;
   z-index: 2;
 `;
 

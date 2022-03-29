@@ -250,3 +250,9 @@ export const WriteIcon = styled.img.attrs({
   align-items: center;
   padding-right: 1px;
 `;
+
+export const IconWrap = styled.div`
+  position: fixed;
+  width: 393px;
+  bottom: 6px;
+`;

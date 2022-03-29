@@ -82,6 +82,7 @@ import {
   DeleteButton,
   HrWrapTwo,
   ReviewSvg,
+  Toggle,
   RightSvg,
   CallSvg,
   ClockSvg,
@@ -269,25 +270,31 @@ const StoreDetail = (props) => {
         <ContainerBox>
           {toggleState === 4 &&
             (is_session ? (
-              <ReviewSvg
-                onClick={() => {
-                  navigate(`/review/write/${store_id}`);
-                  dispatch(storeAction.getStoreDetailDB(store_id));
-                }}
-              />
+
+              <Toggle>
+                <ReviewSvg
+                  onClick={() => {
+                    navigate(`/review/write/${store_id}`);
+                    dispatch(storeAction.getStoreDetailDB(store_id));
+                  }}
+                />
+              </Toggle>
+
             ) : (
-              <ReviewSvg
-                onClick={() => {
-                  Swal.fire({
-                    title: "로그인이 필요한 서비스입니다!",
-                    showCancelButton: true,
-                    confirmButtonText: '<a href="/">로그인 할래요!</a>',
-                    confirmButtonColor: "#ff679e",
-                    cancelButtonColor: "#777",
-                    cancelButtonText: "그냥 둘러볼래요.",
-                  });
-                }}
-              />
+              <Toggle>
+                <ReviewSvg
+                  onClick={() => {
+                    Swal.fire({
+                      title: "로그인이 필요한 서비스입니다!",
+                      showCancelButton: true,
+                      confirmButtonText: '<a href="/">로그인 할래요!</a>',
+                      confirmButtonColor: "#ff679e",
+                      cancelButtonColor: "#777",
+                      cancelButtonText: "그냥 둘러볼래요.",
+                    });
+                  }}
+                />
+              </Toggle>
             ))}
           <BlocTab>
             <OneButton onClick={() => toggleTab(1)} toggleState={toggleState}>

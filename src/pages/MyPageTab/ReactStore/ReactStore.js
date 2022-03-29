@@ -121,7 +121,7 @@ const ReactStore = (props) => {
                   >
                     {v.content}
                   </ReviewContent>
-                  {myReview.reviewImges && (
+                  {v.reviewImages && (
                     <img src={v.reviewImages} alt="review_img" />
                   )}
                   <ButtonWrapper>

@@ -136,7 +136,7 @@ const ReviewWrite = (props) => {
               multiple
               ref={fileInput}
               onChange={selectFiles}
-              accept=".jpg,.jpeg,.png"
+              // accept=".jpg,.jpeg,.png,.heic"
             />
             <PlusImg>
               <ImageUpload />

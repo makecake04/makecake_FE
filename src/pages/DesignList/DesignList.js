@@ -24,6 +24,7 @@ import {
   XIcon,
   PaintIcon,
   WriteIcon,
+  IconWrap,
 } from "./style";
 
 const DesignList = (props) => {
@@ -150,56 +151,57 @@ const DesignList = (props) => {
             );
           })}
       </ImageWrap>
-
-      {toggle === false ? (
-        <PlusOff
-          onClick={() => {
-            setToggle(true);
-          }}
-        >
-          <PlusIcon />
-        </PlusOff>
-      ) : (
-        <PlusOn
-          onClick={() => {
-            setToggle(false);
-          }}
-        >
-          <XIcon />
-          {is_session ? (
-            <PaintIcon onClick={() => navigate("/drawing")} />
-          ) : (
-            <PaintIcon
-              onClick={() =>
-                Swal.fire({
-                  title: "로그인이 필요한 서비스입니다!",
-                  showCancelButton: true,
-                  confirmButtonText: '<a href="/">로그인 할래요!</a>',
-                  confirmButtonColor: "#ff679e",
-                  cancelButtonColor: "#777",
-                  cancelButtonText: "그냥 둘러볼래요.",
-                })
-              }
-            />
-          )}
-          {is_session ? (
-            <WriteIcon onClick={() => navigate("/mydesign")} />
-          ) : (
-            <WriteIcon
-              onClick={() =>
-                Swal.fire({
-                  title: "로그인이 필요한 서비스입니다!",
-                  showCancelButton: true,
-                  confirmButtonText: '<a href="/">로그인 할래요!</a>',
-                  confirmButtonColor: "#ff679e",
-                  cancelButtonColor: "#777",
-                  cancelButtonText: "그냥 둘러볼래요.",
-                })
-              }
-            />
-          )}
-        </PlusOn>
-      )}
+      <IconWrap>
+        {toggle === false ? (
+          <PlusOff
+            onClick={() => {
+              setToggle(true);
+            }}
+          >
+            <PlusIcon />
+          </PlusOff>
+        ) : (
+          <PlusOn
+            onClick={() => {
+              setToggle(false);
+            }}
+          >
+            <XIcon />
+            {is_session ? (
+              <PaintIcon onClick={() => navigate("/drawing")} />
+            ) : (
+              <PaintIcon
+                onClick={() =>
+                  Swal.fire({
+                    title: "로그인이 필요한 서비스입니다!",
+                    showCancelButton: true,
+                    confirmButtonText: '<a href="/">로그인 할래요!</a>',
+                    confirmButtonColor: "#ff679e",
+                    cancelButtonColor: "#777",
+                    cancelButtonText: "그냥 둘러볼래요.",
+                  })
+                }
+              />
+            )}
+            {is_session ? (
+              <WriteIcon onClick={() => navigate("/mydesign")} />
+            ) : (
+              <WriteIcon
+                onClick={() =>
+                  Swal.fire({
+                    title: "로그인이 필요한 서비스입니다!",
+                    showCancelButton: true,
+                    confirmButtonText: '<a href="/">로그인 할래요!</a>',
+                    confirmButtonColor: "#ff679e",
+                    cancelButtonColor: "#777",
+                    cancelButtonText: "그냥 둘러볼래요.",
+                  })
+                }
+              />
+            )}
+          </PlusOn>
+        )}
+      </IconWrap>
     </DrawWrap>
   );
 };
