@@ -30,7 +30,6 @@ export const Header = styled.header`
   h3 {
     margin-left: 19%;
     vertical-align: middle;
-    font-weight: 500;
   }
 `;
 

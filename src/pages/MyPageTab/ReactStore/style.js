@@ -17,7 +17,7 @@ export const Header = styled.header`
     margin-left: 3%;
   }
   h3 {
-    margin-left: 22%;
+    margin-left: 20%;
     vertical-align: middle;
   }
 `;
