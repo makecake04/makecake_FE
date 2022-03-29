@@ -10,6 +10,7 @@ const GET_STORES = "GET_STORES";
 const GET_ORDER_FORM = "GET_ORDER_FORM";
 const GET_ONE_ORDER = "GET_ONE_ORDER";
 const GET_IMAGE_FILE = "GET_IMAGE_FILE";
+const GET_ORDER_GUIDE = "GET_ORDER_GUIDE";
 // const DELETE_ORDER = "DELETE_ORDER";
 // const ADD_ORDER = "ADD_ORDER";
 
@@ -32,6 +33,7 @@ const getOneOrder = createAction(GET_ONE_ORDER, (list) => ({
 const getImageFile = createAction(GET_IMAGE_FILE, (list) => ({
   list,
 }));
+const getOrderGuide = createAction(GET_ORDER_GUIDE, (list) => ({ list }));
 // const addOrder = createAction(ADD_ORDER, (list) => ({ list }));
 
 const initialState = {
@@ -40,6 +42,7 @@ const initialState = {
   store_list: [],
   order_form: [],
   order_detail: [],
+  order_guide: [],
   image_file: "",
 };
 
@@ -211,6 +214,25 @@ const deleteOrderDB = (userOrdersId) => {
   };
 };
 
+const getOrderGuideDB = () => {
+  const token_key = `${localStorage.getItem("token")}`;
+  return function (dispatch, getState) {
+    axios
+      .get("https://devssk.shop/api/pages/order-guide", {
+        headers: {
+          Authorization: `${token_key}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        dispatch(getOrderGuide(res.data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
 //reducer
 export default handleActions(
   {
@@ -257,6 +279,10 @@ export default handleActions(
       produce(state, (draft) => {
         draft.image_file = action.payload.list;
       }),
+    [GET_ORDER_GUIDE]: (state, action) =>
+      produce(state, (draft) => {
+        draft.order_guide = action.payload.list;
+      }),
   },
   initialState
 );
@@ -269,6 +295,8 @@ const actionCreators = {
   getOneOrderDB,
   deleteOrderDB,
   getImageFileDB,
+  getOrderGuide,
+  getOrderGuideDB,
 };
 
 export { actionCreators };

@@ -12,6 +12,7 @@ import CakeList from "./CakeList/CakeList";
 import DesignList from "./DesignList/DesignList";
 import NotFound from "./NotFound/NotFound";
 import Noti from "./Noti/Noti";
+import OrderGuide from "./OrderGuide/OrderGuide";
 
 import MyPage from "./MyPageTab/MyPage/MyPage";
 import ProfileEdit from "./MyPageTab/ProfileEdit/ProfileEdit";
@@ -53,6 +54,7 @@ export {
   OrderDetail,
   NotFound,
   Noti,
+  OrderGuide,
   SignUpEmail,
   SignUpNickname,
   SignUpPassword,

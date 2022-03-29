@@ -32,6 +32,7 @@ import {
   OrderDetail,
   StoreDetail,
   Noti,
+  OrderGuide,
   SignUpEmail,
   SignUpNickname,
   SignUpPassword,
@@ -121,6 +122,7 @@ function App() {
               path="/user/google/callback"
               element={<GoogleLoginHandler />}
             />
+            <Route path="/order/guide" element={<OrderGuide />} />
             <Route
               path="/user/naver/callback"
               element={<NaverLoginHandler />}

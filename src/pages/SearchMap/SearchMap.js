@@ -82,7 +82,7 @@ const SearchMap = () => {
     if (searchs.length === 0) {
       dispatch(searchAction.mapInfoDB(storeId));
     }
-  }, [searchs]);
+  }, []);
 
   const onKeyPress = (e) => {
     if (e.key === "Enter") {
