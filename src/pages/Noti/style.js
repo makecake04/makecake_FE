@@ -10,10 +10,7 @@ import {
   noti_comment,
 } from "../../assets/images/image";
 
-export const Wrapper = styled.div`
-  overflow-y: auto;
-  height: 100%;
-`;
+export const Wrapper = styled.div``;
 
 export const NotiWrap = styled.div``;
 

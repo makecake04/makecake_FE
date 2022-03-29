@@ -5,10 +5,6 @@ import { search_icon } from "../../../assets/images/image";
 
 export const Wrapper = styled.section`
   text-align: center;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow-y: auto;
 
   hr {
     border: 0.7px solid #e5e5e5;
@@ -29,6 +25,7 @@ export const Header = styled.header`
   h3 {
     margin-left: 19%;
     vertical-align: middle;
+    font-weight: 500;
   }
 `;
 
@@ -60,15 +57,8 @@ export const SearchBar = styled.div`
     margin-left: -15px;
     padding: 0.4rem 1.5rem 0.4rem 3.2rem;
     width: 258px;
-    /* &::after {
-      content: "";
-      padding-left: 1rem;
-      /* padding-left: 3.2rem; */
-      border-right: 1px solid #777777;
-      vertical-align: middle;
-    }
-
   }
+
   input {
     width: 100%;
     border: none;

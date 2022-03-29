@@ -5,11 +5,7 @@ import { image_upload, black_back_button } from "../../assets/images/image";
 
 export const ReviewWrap = styled.div`
   h3 {
-    font-weight: 700;
-    font-size: 19px;
     color: #282828;
-    overflow-y: auto;
-    height: 100%;
   }
 
   textarea {

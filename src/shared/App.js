@@ -11,6 +11,7 @@ import {
   NavBar,
   KakaoLoginHandler,
   GoogleLoginHandler,
+  NaverLoginHandler,
 } from "../components/component";
 
 //pages
@@ -122,6 +123,11 @@ function App() {
               element={<GoogleLoginHandler />}
             />
             <Route path="/order/guide" element={<OrderGuide />} />
+            <Route
+              path="/user/naver/callback"
+              element={<NaverLoginHandler />}
+            />
+
             <Route path="/*" element={<NotFound />} />
           </Routes>
         </Setting>
@@ -134,8 +140,8 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  background: #f9c9c9;
-  overflow: hidden;
+  /* background: #f9c9c9; */
+  /* overflow: hidden; */
   position: relative;
   #wrap {
     width: 100%;
@@ -150,12 +156,12 @@ const Container = styled.div`
     @media (min-width: 500px) {
       left: 0%;
       top: 0%;
-      overflow: auto;
+      overflow: hidden auto;
     }
     @media (min-width: 1000px) {
       left: 25%;
       top: 0%;
-      overflow: auto;
+      overflow: hidden auto;
     }
   }
   @media (min-width: 500px) {
@@ -170,7 +176,7 @@ const Setting = styled.div`
   width: 100%;
   height: auto;
   max-height: 100vh;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 `;
 
 // const WebView = styled.div`

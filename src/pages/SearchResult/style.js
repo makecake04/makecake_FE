@@ -7,12 +7,7 @@ import {
   star_icon,
 } from "../../assets/images/image";
 
-export const Container = styled.div`
-
-  overflow-y: auto;
-
-  height: 100%;
-`;
+export const Container = styled.div``;
 
 export const HeaderWrap = styled.div`
   padding: 20px;

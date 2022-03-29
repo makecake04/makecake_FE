@@ -5,8 +5,6 @@ export const Wrapper = styled.div`
     border: 0.7px solid #e5e5e5;
     width: 100%;
   }
-  overflow-y: auto;
-  height: 100%;
 `;
 
 export const Header = styled.header`
@@ -241,11 +239,11 @@ export const ReviewContent = styled.p`
 `;
 
 export const ButtonWrapper = styled.div`
-  margin-top: 20px;
   display: flex;
+  margin: 1.25rem 0 0 18.25rem;
   /* justify-content: end; */
-  -webkit-justify-content: end;
-  -moz-justify-content: end;
+  /* -webkit-justify-content: end;
+  -moz-justify-content: end; */
   button:first-child {
     width: 80px;
     height: 35px;
