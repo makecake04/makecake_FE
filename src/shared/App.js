@@ -7,7 +7,11 @@ import smoothscroll from "smoothscroll-polyfill";
 import { actionCreators as userAction } from "../redux/modules/user";
 
 //components
-import { NavBar, KakaoLoginHandler } from "../components/component";
+import {
+  NavBar,
+  KakaoLoginHandler,
+  GoogleLoginHandler,
+} from "../components/component";
 
 //pages
 import {
@@ -118,6 +122,10 @@ function App() {
             <Route
               path="/user/kakao/callback"
               element={<KakaoLoginHandler />}
+            />
+            <Route
+              path="/user/google/callback"
+              element={<GoogleLoginHandler />}
             />
           </Routes>
         </Setting>

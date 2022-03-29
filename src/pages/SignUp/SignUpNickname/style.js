@@ -64,5 +64,5 @@ export const NextButton = styled.button`
   font-weight: bold;
   font-size: 16px;
   color: white;
-  margin: 376px auto 0 auto;
+  margin: 290px auto 0 auto;
 `;

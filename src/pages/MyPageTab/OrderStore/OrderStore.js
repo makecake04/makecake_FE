@@ -53,7 +53,7 @@ const OrderStore = () => {
         <p>주문 가능한 매장을 찾아보세요</p>
         <p>현재는 일부 매장만 주문하기를 지원하고 있어요.</p>
         <SearchBar onClick={() => setShowStores(!showStores)}>
-          <span>매장 ㅣ</span>
+          <span>매장</span>
           <input type="text" defaultValue={storeName} readOnly />
           <SearchIcon />
         </SearchBar>

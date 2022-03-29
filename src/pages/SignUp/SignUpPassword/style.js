@@ -82,5 +82,6 @@ export const NextButton = styled.button`
   font-weight: bold;
   font-size: 16px;
   color: white;
-  margin: 297px auto 0 auto;
+  /* margin: 297px auto 0 auto; */
+  margin: 211px auto 0 auto;
 `;
