@@ -39,6 +39,7 @@ import {
   PostWrite,
   PostDetail,
   ReviewWrite,
+  NotFound,
 } from "../pages/page";
 
 //css
@@ -80,7 +81,6 @@ function App() {
                 path="/post/write/:designid/:postid"
                 element={<PostWrite />}
               />
-              {/* <Route path="/*" element={<NotFound />} /> */}
             </Route>
 
             {/* {is_session && <Route path="/" element={<Home />} />}
@@ -119,6 +119,7 @@ function App() {
               path="/user/kakao/callback"
               element={<KakaoLoginHandler />}
             />
+            <Route path="/*" element={<NotFound />} />
           </Routes>
         </Setting>
         {/* </MobileView> */}

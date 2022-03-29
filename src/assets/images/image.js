@@ -91,6 +91,9 @@ import color_design from "./nav-bar/color-design.svg";
 import color_home from "./nav-bar/color-home.svg";
 import color_mypage from "./nav-bar/color-mypage.svg";
 
+//not-found
+import not_found from "./not-found/not-found-icon.svg";
+
 //order
 import beta from "./order/beta.svg";
 import order_circle from "./order/order-circle.svg";
@@ -193,6 +196,7 @@ export {
   color_design,
   color_home,
   color_mypage,
+  not_found,
   beta,
   order_circle,
   order_marker,
