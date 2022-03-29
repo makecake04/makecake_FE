@@ -188,11 +188,20 @@ const StoreDetail = (props) => {
       <DetailWrap>
         <ImgWrap src={store_info.mainImg}>
           <Title>
-            <WhiteBackIcon
-              onClick={() => {
-                navigate(-1);
-              }}
-            />
+            {is_session && (
+              <WhiteBackIcon
+                onClick={() => {
+                  navigate("/");
+                }}
+              />
+            )}
+            {!is_session && (
+              <WhiteBackIcon
+                onClick={() => {
+                  navigate("/home");
+                }}
+              />
+            )}
             <HrWrap />
           </Title>
         </ImgWrap>
@@ -270,7 +279,6 @@ const StoreDetail = (props) => {
         <ContainerBox>
           {toggleState === 4 &&
             (is_session ? (
-
               <Toggle>
                 <ReviewSvg
                   onClick={() => {
@@ -279,7 +287,6 @@ const StoreDetail = (props) => {
                   }}
                 />
               </Toggle>
-
             ) : (
               <Toggle>
                 <ReviewSvg
