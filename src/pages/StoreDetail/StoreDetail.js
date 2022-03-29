@@ -188,21 +188,11 @@ const StoreDetail = (props) => {
       <DetailWrap>
         <ImgWrap src={store_info.mainImg}>
           <Title>
-            {is_session && (
-              <WhiteBackIcon
-                onClick={() => {
-                  navigate("/");
-                }}
-              />
-            )}
-
-            {!is_session && (
-              <WhiteBackIcon
-                onClick={() => {
-                  navigate("/home");
-                }}
-              />
-            )}
+            <WhiteBackIcon
+              onClick={() => {
+                navigate(-1);
+              }}
+            />
             <HrWrap />
           </Title>
         </ImgWrap>
