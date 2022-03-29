@@ -10,6 +10,7 @@ import LoginPassword from "./Login/LoginPassword/LoginPassword";
 import Home from "./Home/Home";
 import CakeList from "./CakeList/CakeList";
 import DesignList from "./DesignList/DesignList";
+import NotFound from "./NotFound/NotFound";
 import Noti from "./Noti/Noti";
 
 import MyPage from "./MyPageTab/MyPage/MyPage";
@@ -50,6 +51,7 @@ export {
   OrderStore,
   OrderWrite,
   OrderDetail,
+  NotFound,
   Noti,
   SignUpEmail,
   SignUpNickname,
