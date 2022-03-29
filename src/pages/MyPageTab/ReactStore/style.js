@@ -31,7 +31,7 @@ export const LikeStore = styled.button`
   ${(props) =>
     props.toggleState === 1
       ? css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 15px;
           text-align: center;
           width: 50%;
@@ -54,14 +54,14 @@ export const LikeStore = styled.button`
             transform: translateX(-50%);
             width: calc(100% + 2px);
             height: 5px;
-            background: #fff;
+            background: #fcfcfc;
           }
         `
       : css`
           padding: 15px;
           text-align: center;
           width: 50%;
-          background: #fff;
+          background: #fcfcfc;
           cursor: pointer;
           border-top: none;
           border-left: none;
@@ -78,7 +78,7 @@ export const MyReview = styled.button`
   ${(props) =>
     props.toggleState === 2
       ? css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 15px;
           text-align: center;
           width: 50%;
@@ -101,14 +101,14 @@ export const MyReview = styled.button`
             transform: translateX(-50%);
             width: calc(100% + 2px);
             height: 5px;
-            background: #fff;
+            background: #fcfcfc;
           }
         `
       : css`
           padding: 15px;
           text-align: center;
           width: 50%;
-          background: #fff;
+          background: #fcfcfc;
           cursor: pointer;
           border-top: none;
           border-left: none;
@@ -138,7 +138,7 @@ export const StoreList = styled.div`
           margin-top: 10px;
         `
       : css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 20px;
           width: 100%;
           height: 100%;
@@ -156,7 +156,7 @@ export const ReviewList = styled.div`
           padding: 20px;
         `
       : css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 20px;
           width: 100%;
           height: 100%;
