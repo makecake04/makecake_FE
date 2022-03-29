@@ -26,8 +26,8 @@ export const BlackBackButton = styled.img.attrs({
 `;
 
 export const HeaderText = styled.h3`
-  margin-left: 22%;
-  vertical-align: center;
+  margin-left: 19%;
+  vertical-align: middle;
 `;
 
 export const Line = styled.hr`

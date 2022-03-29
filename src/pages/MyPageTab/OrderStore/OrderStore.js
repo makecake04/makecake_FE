@@ -53,7 +53,7 @@ const OrderStore = () => {
         <p>주문 가능한 매장을 찾아보세요</p>
         <p>현재는 일부 매장만 주문하기를 지원하고 있어요.</p>
         <SearchBar onClick={() => setShowStores(!showStores)}>
-          <span>매장 ㅣ</span>
+          <span>매장 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ㅣ</span>
           <input type="text" defaultValue={storeName} readOnly />
           <SearchIcon />
         </SearchBar>
@@ -67,112 +67,13 @@ const OrderStore = () => {
                     onClick={() => {
                       setStoreName(`${s.name}`);
                       setOrderId(`${s.orderFormId}`);
+                      setShowStores(false);
                     }}
                   >
                     {s.name}
                   </OneStore>
                 );
               })}
-            {/* <OneStore
-              onClick={() => {
-                setStoreName("밈미레터링케이크(홀케이크)");
-                setOrderId(1);
-              }}
-            >
-              밈미레터링케이크(홀케이크)
-            </OneStore>
-            <OneStore
-              onClick={() => {
-                setStoreName("밈미레터링케이크(도시락케이크)");
-                setOrderId(2);
-              }}
-            >
-              밈미레터링케이크(도시락케이크)
-            </OneStore>
-            <OneStore
-              onClick={() => {
-                setStoreName("밈미레터링케이크(홀케이크)");
-              }}
-            >
-              밈미레터링케이크(홀케이크)
-            </OneStore>
-            <OneStore
-              onClick={() => {
-                setStoreName("밈미레터링케이크(도시락케이크)");
-              }}
-            >
-              밈미레터링케이크(도시락케이크)
-            </OneStore>
-            <OneStore
-              onClick={() => {
-                setStoreName("밈미레터링케이크(홀케이크)");
-              }}
-            >
-              밈미레터링케이크(홀케이크)
-            </OneStore>
-            <OneStore
-              onClick={() => {
-                setStoreName("밈미레터링케이크(도시락케이크)");
-              }}
-            >
-              밈미레터링케이크(도시락케이크)
-            </OneStore>
-            <OneStore
-              onClick={() => {
-                setStoreName("밈미레터링케이크(홀케이크)");
-              }}
-            >
-              밈미레터링케이크(홀케이크)
-            </OneStore>
-            <OneStore
-              onClick={() => {
-                setStoreName("밈미레터링케이크(도시락케이크)");
-              }}
-            >
-              밈미레터링케이크(도시락케이크)
-            </OneStore>
-            <OneStore
-              onClick={() => {
-                setStoreName("밈미레터링케이크(홀케이크)");
-              }}
-            >
-              밈미레터링케이크(홀케이크)
-            </OneStore>
-            <OneStore
-              onClick={() => {
-                setStoreName("밈미레터링케이크(도시락케이크)");
-              }}
-            >
-              밈미레터링케이크(도시락케이크)
-            </OneStore>
-            <OneStore
-              onClick={() => {
-                setStoreName("밈미레터링케이크(홀케이크)");
-              }}
-            >
-              밈미레터링케이크(홀케이크)
-            </OneStore>
-            <OneStore
-              onClick={() => {
-                setStoreName("밈미레터링케이크(도시락케이크)");
-              }}
-            >
-              밈미레터링케이크(도시락케이크)
-            </OneStore>
-            <OneStore
-              onClick={() => {
-                setStoreName("밈미레터링케이크(홀케이크)");
-              }}
-            >
-              밈미레터링케이크(홀케이크)
-            </OneStore>
-            <OneStore
-              onClick={() => {
-                setStoreName("밈미레터링케이크(도시락케이크)");
-              }}
-            >
-              밈미레터링케이크(도시락케이크)
-            </OneStore> */}
           </SearchListBox>
         ) : null}
         {storeName && (
@@ -187,16 +88,3 @@ const OrderStore = () => {
   );
 };
 export default OrderStore;
-
-// const SearchList = (props) => {
-//   const { store_list } = props;
-//   console.log(store_list);
-//   return (
-//     // <SearchListBox>
-//     //   {store_list &&
-//     //     store_list.map((s, idx) => {
-//     //       return <OneStore key={idx} onClick={()=>setStoreName}>{s.name}</OneStore>;
-//     //     })}
-//     // </SearchListBox>
-//   );
-// };

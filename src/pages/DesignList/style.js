@@ -4,9 +4,6 @@ import styled, { css } from "styled-components";
 import { paint, write, plus_button, x_button } from "../../assets/images/image";
 
 export const DrawWrap = styled.div`
-  /* text-align: center;
-  overflow: scroll;
-  height: calc(100% - 6rem); */
   padding-bottom: 6rem;
   box-sizing: border-box;
   width: 100%;
@@ -14,7 +11,7 @@ export const DrawWrap = styled.div`
     padding: 2.25rem 0;
     text-align: center;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
     color: #282828;
   }
 
@@ -46,7 +43,7 @@ export const ButtonWrap = styled.div`
   button + button,
   button + button + button,
   button + button + button + button {
-    margin-left: 1rem;
+    margin-left: 1.2rem;
   }
 `;
 

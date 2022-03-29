@@ -5,11 +5,6 @@ import { profile_image } from "../../../assets/images/image";
 
 export const MyWrap = styled.div`
   padding-bottom: 7rem;
-  /* text-align: center;
-  overflow: scroll;
-  height: calc(100% - 6rem);
-  box-sizing: border-box;
-  width: 100%; */
   svg {
     color: red;
     path {
@@ -23,7 +18,7 @@ export const SubWrap = styled.div`
     padding: 2.25rem 0;
     text-align: center;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
     color: #282828;
   }
 `;

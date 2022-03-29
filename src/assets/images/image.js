@@ -43,7 +43,7 @@ import square_normal from "./drawing/cream/square-flower.png";
 import square_shell from "./drawing/cream/square-shell.png";
 ////header
 import remove_item from "./drawing/header/remove-item.svg";
-import logo from "./drawing/header/logo.png";
+import logo from "./drawing/header/logo.svg";
 ////icon
 import balloon from "./drawing/icon/balloon.png";
 import carrot from "./drawing/icon/carrot.png";

@@ -53,7 +53,7 @@ export const SubWrap = styled.div`
   float: left;
   width: 25%;
   padding-top: 5px;
-  background-color: #fafafa;
+  background-color: #f5f5f5;
   height: 60px;
   line-height: 60px;
 `;

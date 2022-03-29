@@ -29,7 +29,6 @@ export const Header = styled.header`
   h3 {
     margin-left: 19%;
     vertical-align: middle;
-    font-weight: 500;
   }
 `;
 
@@ -60,12 +59,14 @@ export const SearchBar = styled.div`
   span {
     margin-left: -15px;
     padding: 0.4rem 1.5rem 0.4rem 3.2rem;
-    &::after {
+    width: 258px;
+    /* &::after {
       content: "";
-      padding-left: 3.2rem;
-      /* border-right: 1px solid #777777; */
-      /* vertical-align: middle; */
-    }
+      padding-left: 3.2rem; */
+
+    /* border-right: 1px solid #777777; */
+    /* vertical-align: middle; */
+    /* } */
   }
   input {
     width: 100%;

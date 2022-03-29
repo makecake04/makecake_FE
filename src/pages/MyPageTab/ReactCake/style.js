@@ -25,7 +25,6 @@ export const BlackBackButton = styled.img.attrs({
 `;
 
 export const HeaderText = styled.h3`
-  font-weight: 700;
   font-size: 19px;
   color: #282828;
   margin-left: 21%;
