@@ -99,6 +99,11 @@ const OrderWrite = () => {
               <MustReadItem key={i}>
                 <p>*{o.split("/ln")[0]}</p>
                 {o.split("/ln")[1] && <p>&nbsp;&nbsp;{o.split("/ln")[1]}</p>}
+                {o.split("/ln")[2] && <p>&nbsp;&nbsp;{o.split("/ln")[2]}</p>}
+                {o.split("/ln")[3] && <p>&nbsp;&nbsp;{o.split("/ln")[3]}</p>}
+                {o.split("/ln")[4] && <p>&nbsp;&nbsp;{o.split("/ln")[4]}</p>}
+                {o.split("/ln")[5] && <p>&nbsp;&nbsp;{o.split("/ln")[5]}</p>}
+                {o.split("/ln")[6] && <p>&nbsp;&nbsp;{o.split("/ln")[6]}</p>}
               </MustReadItem>
             );
           })}

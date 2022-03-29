@@ -16,6 +16,7 @@ import KakaoLoginHandler from "./SocialLogin/KakaoLoginHandler/KakaoLoginHandler
 import KakaoMap from "./KakaoMap/KakaoMap";
 import ScrollToTop from "./ScrollToTop/ScrollToTop";
 import CommentList from "./CommentList/CommentList";
+import GoogleLoginHandler from "./SocialLogin/GoogleLoginHandler/GoogleLoginHandler";
 
 export {
   Cream,
@@ -34,6 +35,7 @@ export {
   GoogleLogin,
   NaverLogin,
   KakaoLoginHandler,
+  GoogleLoginHandler,
   KakaoMap,
   ScrollToTop,
 };

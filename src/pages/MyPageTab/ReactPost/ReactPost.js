@@ -58,6 +58,10 @@ const ReactWrite = (props) => {
   };
 
   useEffect(() => {
+    if (pageNumber === 0) {
+      dispatch(designAction.getLikeDesignDB(pageNumber));
+      dispatch(commentAction.getMyCommentDB(pageNumber));
+    }
     setPageNumber(0);
   }, [toggleState]);
 
