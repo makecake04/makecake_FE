@@ -28,13 +28,12 @@ import {
 const ReviewWrite = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const store_id = useSelector((state) => state.store);
   const one_review = useSelector((state) => state.review.list);
   const params = useParams();
   const review_id = params.reviewId;
+  const store_id = params.storeId;
   const imgUrl = one_review.reviewImage;
   const is_edit = review_id ? true : false;
-  console.log(store_id);
 
   React.useEffect(() => {
     if (is_edit) {
@@ -67,11 +66,7 @@ const ReviewWrite = (props) => {
 
   const addReview = () => {
     dispatch(
-      reviewAction.addReviewDB(
-        store_id.storeId,
-        contents,
-        fileInput.current.files[0]
-      )
+      reviewAction.addReviewDB(store_id, contents, fileInput.current.files[0])
     );
   };
 
