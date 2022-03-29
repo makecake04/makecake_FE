@@ -26,8 +26,8 @@ export const BlackBackButton = styled.img.attrs({
 `;
 
 export const HeaderText = styled.h3`
-  margin-left: 22%;
-  vertical-align: center;
+  margin-left: 19%;
+  vertical-align: middle;
 `;
 
 export const Line = styled.hr`
@@ -46,7 +46,7 @@ export const LikeButton = styled.button`
   ${(props) =>
     props.toggleState === 1
       ? css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 15px;
           text-align: center;
           width: 50%;
@@ -69,14 +69,14 @@ export const LikeButton = styled.button`
             transform: translateX(-50%);
             width: calc(100% + 2px);
             height: 5px;
-            background: #fff;
+            background: #fcfcfc;
           }
         `
       : css`
           padding: 15px;
           text-align: center;
           width: 50%;
-          background: #fff;
+          background: #fcfcfc;
           cursor: pointer;
           border-top: none;
           border-left: none;
@@ -94,7 +94,7 @@ export const CommentButton = styled.button`
   ${(props) =>
     props.toggleState === 2
       ? css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 15px;
           text-align: center;
           width: 50%;
@@ -117,14 +117,14 @@ export const CommentButton = styled.button`
             transform: translateX(-50%);
             width: calc(100% + 2px);
             height: 5px;
-            background: #fff;
+            background: #fcfcfc;
           }
         `
       : css`
           padding: 15px;
           text-align: center;
           width: 50%;
-          background: #fff;
+          background: #fcfcfc;
           cursor: pointer;
           border-top: none;
           border-left: none;
@@ -152,7 +152,7 @@ export const PostWrapOne = styled.div`
           height: 100%;
         `
       : css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 20px;
           width: 100%;
           height: 100%;
@@ -187,13 +187,13 @@ export const Info = styled.div`
 `;
 
 export const CreatedDate = styled.p`
-  color: #777;
+  color: #282828;
   font-size: 12px;
 `;
 
 export const NickName = styled.p`
   font-size: 14px;
-  color: #282828;
+  color: #777;
   text-decoration: underline;
   /* font-weight: 500; */
 `;
@@ -211,7 +211,7 @@ export const ContentWrap = styled.div`
 `;
 
 export const ContentText = styled.p`
-  color: #777;
+  color: #282828;
   font-size: 14px;
   word-break: break-all;
   display: -webkit-box;
@@ -250,7 +250,7 @@ export const PostWrapTwo = styled.div`
           height: 100%;
         `
       : css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 20px;
           width: 100%;
           height: 100%;

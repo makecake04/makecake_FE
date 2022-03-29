@@ -121,13 +121,12 @@ const getMyReviewDB = (page_num) => {
   };
 };
 
-const getStoreCakeListDB = (storeId, page_num) => {
+const getStoreCakeListDB = (storeId) => {
   return function (dispatch, getState) {
     axios
       .get(`https://devssk.shop/api/stores/cakes`, {
         storeId,
         params: {
-          page: parseInt(page_num),
           storeId: storeId,
         },
       })

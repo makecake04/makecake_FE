@@ -43,7 +43,7 @@ import square_normal from "./drawing/cream/square-flower.png";
 import square_shell from "./drawing/cream/square-shell.png";
 ////header
 import remove_item from "./drawing/header/remove-item.svg";
-import logo from "./drawing/header/logo.png";
+import logo from "./drawing/header/logo.svg";
 ////icon
 import balloon from "./drawing/icon/balloon.png";
 import carrot from "./drawing/icon/carrot.png";
@@ -90,6 +90,9 @@ import color_cake from "./nav-bar/color-cake.svg";
 import color_design from "./nav-bar/color-design.svg";
 import color_home from "./nav-bar/color-home.svg";
 import color_mypage from "./nav-bar/color-mypage.svg";
+
+//not-found
+import not_found from "./not-found/not-found-icon.svg";
 
 //order
 import beta from "./order/beta.svg";
@@ -193,6 +196,7 @@ export {
   color_design,
   color_home,
   color_mypage,
+  not_found,
   beta,
   order_circle,
   order_marker,

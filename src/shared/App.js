@@ -43,6 +43,7 @@ import {
   PostWrite,
   PostDetail,
   ReviewWrite,
+  NotFound,
 } from "../pages/page";
 
 //css
@@ -54,7 +55,7 @@ import { background } from "../assets/images/image";
 function App() {
   const dispatch = useDispatch();
   const is_session = localStorage.getItem("token");
-  // smoothscroll.polyfill();
+  smoothscroll.polyfill();
   useEffect(() => {
     if (is_session) {
       dispatch(userAction.loginCheckDB());
@@ -62,9 +63,7 @@ function App() {
   }, []);
 
   return (
-    // <WebView>
     <Container>
-      {/* <MobileView> */}
       <div id="wrap">
         <Setting>
           <Routes>
@@ -86,10 +85,6 @@ function App() {
               />
               {/* <Route path="/*" element={<NotFound />} /> */}
             </Route>
-
-            {/* {is_session && <Route path="/" element={<Home />} />}
-            {!is_session && <Route path="/home" element={<Home />} />}
-            <Route path="/home" element={<Home />} /> */}
             {!is_session && <Route path="/" element={<FirstPage />} />}
             <Route path="/mydesign" element={<MyDesign />} />
             <Route path="/react/post" element={<ReactPost />} />
@@ -109,10 +104,8 @@ function App() {
             <Route path="/signup/password" element={<SignUpPassword />} />
             <Route path="/login/email" element={<LoginEmail />} />
             <Route path="/login/password" element={<LoginPassword />} />
-
             <Route path="/review/write/:storeId" element={<ReviewWrite />} />
             <Route path="/review/:reviewId" element={<ReviewWrite />} />
-
             <Route path="/searchmap/:storeId/" element={<SearchMap />} />
             <Route
               path="/search/result/:searchSelect/:searchInput"
@@ -127,13 +120,13 @@ function App() {
               path="/user/google/callback"
               element={<GoogleLoginHandler />}
             />
+
+            <Route path="/*" element={<NotFound />} />
+
           </Routes>
         </Setting>
-        {/* </MobileView> */}
       </div>
     </Container>
-
-    // </WebView>
   );
 }
 
@@ -141,14 +134,9 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  /* flex-direction: column;
-  justify-content: flex-start; */
-  /* align-items: center; */
   background: #f9c9c9;
   overflow: hidden;
   position: relative;
-  /* font-style: normal;
-  font-weight: 400; */
   #wrap {
     width: 100%;
     max-width: 390px;
@@ -172,7 +160,6 @@ const Container = styled.div`
   }
   @media (min-width: 500px) {
     background: url(${background}) 0% 0% / cover no-repeat;
-    /* background-size: cover; */
   }
   & ::-webkit-scrollbar {
     display: none;

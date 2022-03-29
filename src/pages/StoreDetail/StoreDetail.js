@@ -170,7 +170,7 @@ const StoreDetail = (props) => {
 
   useEffect(() => {
     if (toggleState === 3) {
-      dispatch(storeAction.getStoreCakeListDB(store_id, pageNumber));
+      dispatch(storeAction.getStoreCakeListDB(store_id));
     }
     if (toggleState === 4) {
       dispatch(storeAction.getStoreReviewListDB(store_id, pageNumber));
@@ -188,21 +188,11 @@ const StoreDetail = (props) => {
       <DetailWrap>
         <ImgWrap src={store_info.mainImg}>
           <Title>
-            {is_session && (
-              <WhiteBackIcon
-                onClick={() => {
-                  navigate("/");
-                }}
-              />
-            )}
-
-            {!is_session && (
-              <WhiteBackIcon
-                onClick={() => {
-                  navigate("/home");
-                }}
-              />
-            )}
+            <WhiteBackIcon
+              onClick={() => {
+                navigate(-1);
+              }}
+            />
             <HrWrap />
           </Title>
         </ImgWrap>
@@ -314,7 +304,7 @@ const StoreDetail = (props) => {
             <ThreeButton
               onClick={() => {
                 toggleTab(3);
-                dispatch(storeAction.getStoreCakeListDB(store_id, pageNumber));
+                dispatch(storeAction.getStoreCakeListDB(store_id));
               }}
               toggleState={toggleState}
             >
@@ -362,9 +352,7 @@ const StoreDetail = (props) => {
                       <PlusP
                         onClick={() => {
                           toggleTab(3);
-                          dispatch(
-                            storeAction.getStoreCakeListDB(store_id, pageNumber)
-                          );
+                          dispatch(storeAction.getStoreCakeListDB(store_id));
                         }}
                       >
                         더보기
@@ -509,9 +497,7 @@ const StoreDetail = (props) => {
                       <PlusP
                         onClick={() => {
                           toggleTab(3);
-                          dispatch(
-                            storeAction.getStoreCakeListDB(store_id, pageNumber)
-                          );
+                          dispatch(storeAction.getStoreCakeListDB(store_id));
                         }}
                       >
                         더보기

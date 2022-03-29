@@ -11,7 +11,7 @@ export const CakeContainer = styled.div`
     padding: 2.25rem 0;
     text-align: center;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
     color: #282828;
   }
 `;

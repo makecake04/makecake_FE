@@ -4,9 +4,6 @@ import styled, { css } from "styled-components";
 import { remove_design, write_design } from "../../../assets/images/image";
 
 export const Wrapper = styled.div`
-  /* text-align: center;
-  overflow: scroll;
-  height: calc(100% - 6rem); */
   box-sizing: border-box;
   width: 100%;
   padding-bottom: 6rem;
@@ -38,7 +35,7 @@ export const NotPost = styled.button`
   ${(props) =>
     props.toggleState === 1
       ? css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 15px;
           text-align: center;
           width: 50%;
@@ -61,14 +58,14 @@ export const NotPost = styled.button`
             transform: translateX(-50%);
             width: calc(100% + 2px);
             height: 5px;
-            background: #fff;
+            background: #fcfcfc;
           }
         `
       : css`
           padding: 15px;
           text-align: center;
           width: 50%;
-          background: #fff;
+          background: #fcfcfc;
           cursor: pointer;
           border-top: none;
           border-left: none;
@@ -85,7 +82,7 @@ export const Post = styled.button`
   ${(props) =>
     props.toggleState === 2
       ? css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 15px;
           text-align: center;
           width: 50%;
@@ -108,14 +105,14 @@ export const Post = styled.button`
             transform: translateX(-50%);
             width: calc(100% + 2px);
             height: 5px;
-            background: #fff;
+            background: #fcfcfc;
           }
         `
       : css`
           padding: 15px;
           text-align: center;
           width: 50%;
-          background: #fff;
+          background: #fcfcfc;
           cursor: pointer;
           border-top: none;
           border-left: none;
@@ -145,7 +142,7 @@ export const DesignList = styled.div`
           margin-top: 10px;
         `
       : css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 20px;
           width: 100%;
           height: 100%;
@@ -166,7 +163,7 @@ export const PostList = styled.div`
           margin-top: 10px;
         `
       : css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 20px;
           width: 100%;
           height: 100%;

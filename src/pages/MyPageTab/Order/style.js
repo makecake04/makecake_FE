@@ -30,7 +30,6 @@ export const Header = styled.header`
   h3 {
     margin-left: 19%;
     vertical-align: middle;
-    font-weight: 500;
   }
 `;
 
@@ -43,7 +42,7 @@ export const OrderDesign = styled.button`
   ${(props) =>
     props.toggleState === 1
       ? css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 15px;
           text-align: center;
           width: 50%;
@@ -66,14 +65,14 @@ export const OrderDesign = styled.button`
             transform: translateX(-50%);
             width: calc(100% + 2px);
             height: 5px;
-            background: #fff;
+            background: #fcfcfc;
           }
         `
       : css`
           padding: 15px;
           text-align: center;
           width: 50%;
-          background: #fff;
+          background: #fcfcfc;
           cursor: pointer;
           border-top: none;
           border-left: none;
@@ -90,7 +89,7 @@ export const OrderCheck = styled.button`
   ${(props) =>
     props.toggleState === 2
       ? css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 15px;
           text-align: center;
           width: 50%;
@@ -113,14 +112,14 @@ export const OrderCheck = styled.button`
             transform: translateX(-50%);
             width: calc(100% + 2px);
             height: 5px;
-            background: #fff;
+            background: #fcfcfc;
           }
         `
       : css`
           padding: 15px;
           text-align: center;
           width: 50%;
-          background: #fff;
+          background: #fcfcfc;
           cursor: pointer;
           border-top: none;
           border-left: none;
@@ -150,7 +149,7 @@ export const DesignList = styled.div`
           margin-top: 10px;
         `
       : css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 20px;
           width: 100%;
           height: 100%;
@@ -186,7 +185,7 @@ export const OrderList = styled.div`
           margin-top: 10px;
         `
       : css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 20px;
           width: 100%;
           height: 100%;

@@ -43,7 +43,7 @@ export const Line = styled.hr`
 
 export const FixListBox = styled.div`
   width: 390px;
-  height: 112px;
+  height: 104px;
 
   background-color: #fff4f7;
   display: flex;
@@ -53,7 +53,7 @@ export const FixListBox = styled.div`
 
 export const PersonalListBox = styled.div`
   width: 390px;
-  height: 112px;
+  height: 104px;
   background-color: #ffffff;
   display: flex;
   flex-direction: row;
@@ -101,7 +101,7 @@ export const SubText = styled.p`
   color: #282828;
   font-size: 12px;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
   width: 280px;
@@ -113,6 +113,7 @@ export const TimeText = styled.p`
   width: 70px;
   width: 275px;
   text-align: right;
+  margin-top: 10px;
 `;
 
 export const NotNoti = styled.div`
