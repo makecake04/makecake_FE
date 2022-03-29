@@ -148,7 +148,9 @@ export const Place3 = styled.div`
 `;
 
 export const SeoulAreaText = styled.p`
-  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 15px;
   color: #777777;
   text-align: center;
   /* margin-top: 15px; */
