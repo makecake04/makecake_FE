@@ -615,7 +615,7 @@ const StoreDetail = (props) => {
                   </ModalWrap>
                 </Modal>
                 <BottomHr />
-                <div>
+                <PictureBox>
                   <PictureWrap>
                     <Picture>사진</Picture>
                     <RightWrap>
@@ -632,6 +632,7 @@ const StoreDetail = (props) => {
                       <RightSvg />
                     </RightWrap>
                   </PictureWrap>
+
                   <ImageBox>
                     {store_info.cakeImgList &&
                       store_info.cakeImgList.map((v, idx) => {
@@ -648,7 +649,7 @@ const StoreDetail = (props) => {
                         );
                       })}
                   </ImageBox>
-                </div>
+                </PictureBox>
               </ContentBox>
             </ContentTwo>
             <ContentThree toggleState={toggleState}>
