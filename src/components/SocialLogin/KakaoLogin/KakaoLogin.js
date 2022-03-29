@@ -5,12 +5,12 @@ import { Container, KakaoButton } from "./style";
 
 const KakaoLogin = (props) => {
   let REST_API_KEY = "acaeb2db08a3beea2ca7a11d9a22bb97";
-  let REDIRECT_URI = "http://localhost:3000/user/kakao/callback";
+  let REDIRECT_URI = "hhttps://make-cake.com//user/kakao/callback";
   return (
     <Container>
       <KakaoButton onClick={() => {
-        window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-      }}/>
+          window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+        }}/>
     </Container>
   );
 };
