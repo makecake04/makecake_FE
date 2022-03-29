@@ -11,13 +11,8 @@ import { event } from "../../../assets/images/image";
 import {
   StoreWrap,
   SubWrap,
-  Title,
   ImageWrap,
   AdItem,
-  ImagesWrap,
-  Images,
-  ImgBox,
-  Text,
   StyleSlider,
   HrWrap,
   AdTitle,

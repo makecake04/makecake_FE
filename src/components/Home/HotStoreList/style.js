@@ -78,7 +78,7 @@ export const StyleSlider = styled(Slider)`
       color: #212121;
     }
     right: 15px !important;
-    top: 42%;
+    top: 41%;
   }
 
   .slick-initialized .slick-slide {
