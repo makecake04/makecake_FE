@@ -166,6 +166,27 @@ const googleLoginDB = (code) => {
   };
 };
 
+// 네이버 로그인
+const naverLoginDB = (code, state) => {
+  return function (dispatch, getState, { history }) {
+    api
+      .NaverLogin(code, state)
+      .then((res) => {
+        const ACCESS_TOKEN = res.data.accessToken;
+        const ACCESS_TOKEN_EXP = res.data.accessTokenExpiresIn;
+        const REFRESH_TOKEN = res.data.refreshToken;
+        dispatch(setUser(res.headers));
+        localStorage.setItem("token", res.headers.authorization);
+        window.location.replace("/");
+      })
+      .catch((err) => {
+        console.log("구글로그인 에러", err);
+        window.location.replace("/");
+        dispatch(loading(false));
+      });
+  };
+};
+
 // 로그인
 const logInDB = (username, password) => {
   console.log(username, password);
@@ -356,6 +377,7 @@ const actionCreators = {
   editProfileDB,
   resignDB,
   googleLoginDB,
+  naverLoginDB,
 };
 
 export { actionCreators };

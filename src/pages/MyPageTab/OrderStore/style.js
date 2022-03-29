@@ -62,11 +62,12 @@ export const SearchBar = styled.div`
     width: 258px;
     /* &::after {
       content: "";
-      padding-left: 3.2rem; */
+      padding-left: 1rem;
+      /* padding-left: 3.2rem; */
+      border-right: 1px solid #777777;
+      vertical-align: middle;
+    }
 
-    /* border-right: 1px solid #777777; */
-    /* vertical-align: middle; */
-    /* } */
   }
   input {
     width: 100%;

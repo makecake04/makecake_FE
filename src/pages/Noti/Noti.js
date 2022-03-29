@@ -96,7 +96,8 @@ const Noti = (props) => {
                   <PersonalListBox
                     key={idx}
                     onClick={() => {
-                      window.open(v.redirectUrl);
+                      // window.open(v.redirectUrl);
+                      window.location.replace(v.redirectUrl);
                     }}
                   >
                     <ImgWrap>

@@ -80,5 +80,6 @@ export const MainLogo = styled.img.attrs({
   alt: "logo",
 })`
   margin-left: 100px;
-  margin-top: 150px;
+  /* margin-top: 150px; */
+  margin-top: 50px;
 `;

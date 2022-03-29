@@ -65,7 +65,8 @@ export const NextButton = styled.button`
   display: block;
   width: 337px;
   height: 49px;
-  margin: 376px auto 0 auto;
+  /* margin: 376px auto 0 auto; */
+  margin: 290px auto 0 auto;
   background: #ff8fa5;
   border-radius: 45px;
   border: none;

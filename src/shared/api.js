@@ -69,7 +69,6 @@ export const api = {
   NaverLogin: (code, state) =>
     instance.get(`/user/naver/callback?code=${code}&state=${state}`),
   GoogleLogin: (code) => instance.get(`/user/google/callback?code=${code}`),
-
   getNoti: () => instance.get(`/noti`),
   getNewNoti: () => instance.get(`/api/newNoti`),
 };

@@ -44,6 +44,7 @@ export const Line = styled.hr`
 export const FixListBox = styled.div`
   width: 390px;
   height: 104px;
+
   background-color: #fff4f7;
   display: flex;
   flex-direction: row;
@@ -138,7 +139,7 @@ export const NotNotiText = styled.p`
 
 export const LoginBox = styled.div`
   width: 201px;
-  height: 120px;
+  /* height: 120px; */
   margin: 150px auto auto auto;
 `;
 
