@@ -270,14 +270,16 @@ const StoreDetail = (props) => {
         <ContainerBox>
           {toggleState === 4 &&
             (is_session ? (
+
               <Toggle>
                 <ReviewSvg
                   onClick={() => {
-                    navigate("/review/write");
+                    navigate(`/review/write/${store_id}`);
                     dispatch(storeAction.getStoreDetailDB(store_id));
                   }}
                 />
               </Toggle>
+
             ) : (
               <Toggle>
                 <ReviewSvg

@@ -48,6 +48,7 @@ export const Header = styled.header`
 export const EnterP = styled.p`
   margin-left: 60px;
   color: #ff679e;
+  cursor: pointer;
 `;
 
 export const BlackBackButton = styled.img.attrs({
@@ -55,6 +56,7 @@ export const BlackBackButton = styled.img.attrs({
   alt: "back-button",
 })`
   margin-left: 3%;
+  cursor: pointer;
 `;
 
 export const HrWrap = styled.hr`
