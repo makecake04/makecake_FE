@@ -121,7 +121,7 @@ export const OneButton = styled.button`
   ${(props) =>
     props.toggleState === 1
       ? css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 15px;
           text-align: center;
           width: 50%;
@@ -144,14 +144,14 @@ export const OneButton = styled.button`
             transform: translateX(-50%);
             width: calc(100% + 2px);
             height: 5px;
-            background: #fff;
+            background: #fcfcfc;
           }
         `
       : css`
           padding: 15px;
           text-align: center;
           width: 50%;
-          background: #fff;
+          background: #fcfcfc;
           cursor: pointer;
           border-top: none;
           border-left: none;
@@ -169,7 +169,7 @@ export const TwoButton = styled.button`
   ${(props) =>
     props.toggleState === 2
       ? css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 15px;
           text-align: center;
           width: 50%;
@@ -192,14 +192,14 @@ export const TwoButton = styled.button`
             transform: translateX(-50%);
             width: calc(100% + 2px);
             height: 5px;
-            background: #fff;
+            background: #fcfcfc;
           }
         `
       : css`
           padding: 15px;
           text-align: center;
           width: 50%;
-          background: #fff;
+          background: #fcfcfc;
           cursor: pointer;
           border-top: none;
           border-left: none;
@@ -217,7 +217,7 @@ export const ThreeButton = styled.button`
   ${(props) =>
     props.toggleState === 3
       ? css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 15px;
           text-align: center;
           width: 50%;
@@ -240,14 +240,14 @@ export const ThreeButton = styled.button`
             transform: translateX(-50%);
             width: calc(100% + 2px);
             height: 5px;
-            background: #fff;
+            background: #fcfcfc;
           }
         `
       : css`
           padding: 15px;
           text-align: center;
           width: 50%;
-          background: #fff;
+          background: #fcfcfc;
           cursor: pointer;
           border-top: none;
           border-left: none;
@@ -265,7 +265,7 @@ export const FourButton = styled.button`
   ${(props) =>
     props.toggleState === 4
       ? css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 15px;
           text-align: center;
           width: 50%;
@@ -288,14 +288,14 @@ export const FourButton = styled.button`
             transform: translateX(-50%);
             width: calc(100% + 2px);
             height: 5px;
-            background: #fff;
+            background: #fcfcfc;
           }
         `
       : css`
           padding: 15px;
           text-align: center;
           width: 50%;
-          background: #fff;
+          background: #fcfcfc;
           cursor: pointer;
           border-top: none;
           border-left: none;
@@ -322,7 +322,7 @@ export const ContentOne = styled.div`
           height: 100%;
         `
       : css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 20px;
           width: 100%;
           height: 100%;
@@ -378,7 +378,7 @@ export const ContentTwo = styled.div`
           height: 100%;
         `
       : css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 20px;
           width: 100%;
           height: 100%;
@@ -397,7 +397,7 @@ export const ContentThree = styled.div`
           height: 100%;
         `
       : css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 20px;
           width: 100%;
           height: 100%;
@@ -416,7 +416,7 @@ export const ContentFour = styled.div`
           height: 100%;
         `
       : css`
-          background: #fff;
+          background: #fcfcfc;
           padding: 20px;
           width: 100%;
           height: 100%;
