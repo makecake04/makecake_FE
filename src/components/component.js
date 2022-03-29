@@ -18,6 +18,7 @@ import KakaoMap from "./KakaoMap/KakaoMap";
 import ScrollToTop from "./ScrollToTop/ScrollToTop";
 import CommentList from "./CommentList/CommentList";
 import GoogleLoginHandler from "./SocialLogin/GoogleLoginHandler/GoogleLoginHandler";
+import NaverLoginHandler from "./SocialLogin/NaverLoginHandler/NaverLoginHandler";
 
 export {
   Cream,
@@ -38,6 +39,7 @@ export {
   NaverLogin,
   KakaoLoginHandler,
   GoogleLoginHandler,
+  NaverLoginHandler,
   KakaoMap,
   ScrollToTop,
 };

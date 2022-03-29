@@ -180,7 +180,7 @@ const naverLoginDB = (code, state) => {
         window.location.replace("/");
       })
       .catch((err) => {
-        console.log("구글로그인 에러", err);
+        console.log("네이버로그인 에러", err);
         window.location.replace("/");
         dispatch(loading(false));
       });
