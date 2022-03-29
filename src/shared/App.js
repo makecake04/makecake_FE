@@ -11,6 +11,7 @@ import {
   NavBar,
   KakaoLoginHandler,
   GoogleLoginHandler,
+  NaverLoginHandler,
 } from "../components/component";
 
 //pages
@@ -119,6 +120,10 @@ function App() {
             <Route
               path="/user/google/callback"
               element={<GoogleLoginHandler />}
+            />
+            <Route
+              path="/user/naver/callback"
+              element={<NaverLoginHandler />}
             />
 
             <Route path="/*" element={<NotFound />} />
