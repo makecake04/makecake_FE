@@ -35,8 +35,7 @@ const KakaoMap = (props) => {
     var container = document.getElementById("map");
     container.style.width = "100%";
     // container.style.height = "59rem";
-    container.style.height = "78rem";
-
+    container.style.height = "88vh";
     var options = {
       center: new kakao.maps.LatLng(firstY, firstX),
       level: 3,

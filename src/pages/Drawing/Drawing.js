@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { fabric } from "fabric";
 import "fabric-history";
-import { saveAs } from "file-saver";
+// import { saveAs } from "file-saver";
 import disableScroll from "disable-scroll";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
@@ -219,7 +219,7 @@ const Design = () => {
       multiplier: 1.5,
     });
     dispatch(designAction.addDesignDB(canvasImage));
-    saveAs(canvasImage, "my cake");
+    // saveAs(canvasImage, "my cake");
   };
 
   //bring to front
