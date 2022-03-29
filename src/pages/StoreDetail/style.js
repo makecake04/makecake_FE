@@ -685,10 +685,11 @@ export const ImgWrapTwo = styled.div`
 `;
 
 export const ButtonWrap = styled.div`
-  margin: 20px 20px 0px 0px;
+  /* margin: 20px 20px 0px 0px; */
+  margin: 1.25rem 0 0 20.25rem;
   display: flex;
-  -webkit-justify-content: end;
-  -moz-justify-content: end;
+  /* -webkit-justify-content: end;
+  -moz-justify-content: end; */
   /* justify-content: end; */
 `;
 
