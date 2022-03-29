@@ -194,7 +194,8 @@ const StoreDetail = (props) => {
                   navigate("/");
                 }}
               />
-            )}{" "}
+            )}
+
             {!is_session && (
               <WhiteBackIcon
                 onClick={() => {

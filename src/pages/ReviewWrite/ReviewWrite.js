@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { actionCreators as reviewAction } from "../../redux/modules/review";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 //css
 import {
@@ -145,7 +146,7 @@ const ReviewWrite = (props) => {
               multiple
               ref={fileInput}
               onChange={selectFiles}
-              // accept=".jpg,.jpeg,.png,.heic"
+              accept=".jpg,.jpeg,.png"
             />
             <PlusImg>
               <ImageUpload />
