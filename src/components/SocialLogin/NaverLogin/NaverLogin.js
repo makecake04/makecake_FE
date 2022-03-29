@@ -5,7 +5,7 @@ import { Container, NaverButton } from "./style";
 
 const NaverLogin = (props) => {
   let _clientId = "T7GzPr_3JQK4eoFTQsEq";
-  let _callBack = "https://make-cake.com//user/naver/callback";
+  let _callBack = "https://make-cake.com/user/naver/callback";
 
   function randomString() {
     const chars =
@@ -22,11 +22,11 @@ const NaverLogin = (props) => {
 
   return (
     <Container>
-
-       <NaverButton onClick={() => {
+      <NaverButton
+        onClick={() => {
           window.location.href = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${_clientId}&redirect_uri=${_callBack}&state=${newState}`;
-        }}/>
-
+        }}
+      />
     </Container>
   );
 };
