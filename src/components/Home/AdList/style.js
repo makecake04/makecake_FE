@@ -82,6 +82,7 @@ export const AdItem = styled.div`
   box-shadow: inset -2px -2px 1px 0px #8b8b8bab;
   padding: 10px;
   border-radius: 6px;
+  text-align: center;
 `;
 
 export const AdTitle = styled.div`
