@@ -9,7 +9,9 @@ const LIKE_STORE = "LIKE_STORE";
 const MY_REVIEW = "MY_REVIEW";
 const STORE_DETAIL = "STORE_DETAIL";
 const STORE_CAKE_LIST = "STORE_CAKE_LIST";
+const STORE_CAKE_REPLACE = "STORE_CAKE_REPLACE";
 const STORE_REVIEW_LIST = "STORE_REVIEW_LIST";
+const STORE_REVIEW_REPLACE = "STORE_REVIEW_REPLACE";
 const ADD_LIKE_STORE = "ADD_LIKE_STORE";
 
 const initialState = {
@@ -28,7 +30,11 @@ const likeStore = createAction(LIKE_STORE, (likestore) => ({ likestore }));
 const myReview = createAction(MY_REVIEW, (myreview) => ({ myreview }));
 const storeDetail = createAction(STORE_DETAIL, (store) => ({ store }));
 const storeCakeList = createAction(STORE_CAKE_LIST, (cake) => ({ cake }));
+const storeCakeReplace = createAction(STORE_CAKE_REPLACE, (cake) => ({ cake }));
 const storeReviewList = createAction(STORE_REVIEW_LIST, (review) => ({
+  review,
+}));
+const storeReviewReplace = createAction(STORE_REVIEW_REPLACE, (review) => ({
   review,
 }));
 const addLikeStore = createAction(
@@ -259,6 +265,12 @@ export default handleActions(
         }, []);
         // }
       }),
+
+    [STORE_CAKE_REPLACE]: (state, action) =>
+      produce(state, (draft) => {
+        draft.cake = action.payload.cake;
+      }),
+
     [STORE_REVIEW_LIST]: (state, action) =>
       produce(state, (draft) => {
         draft.review.push(...action.payload.review);
@@ -271,6 +283,10 @@ export default handleActions(
             return acc;
           }
         }, []);
+      }),
+    [STORE_REVIEW_REPLACE]: (state, action) =>
+      produce(state, (draft) => {
+        draft.review = action.payload.review;
       }),
     [ADD_LIKE_STORE]: (state, action) =>
       produce(state, (draft) => {
@@ -294,7 +310,9 @@ const actionCreators = {
   getStoreDetailDB,
   storeCakeList,
   getStoreCakeListDB,
+  storeCakeReplace,
   storeReviewList,
+  storeReviewReplace,
   getStoreReviewListDB,
   addLikeStore,
   addLikeStoreDB,

@@ -66,7 +66,7 @@ const AdList = () => {
               </AdTitle>
               <Link
                 onClick={() => {
-                  navigate("/order");
+                  navigate("/order/guide");
                 }}
               >
                 👉🏻주문하기 기능 안내 보기
