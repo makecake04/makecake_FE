@@ -25,14 +25,8 @@ import {
   ButtonWrap,
   LogoutButton,
   SignoutButton,
-  DropOutButton,
-  TitleP,
-  DescriptionP,
-  ModalHr,
-  FooterWrap,
-  BackButton,
-  Vl,
-  EnterButton,
+  ModalChoice,
+  VerticalLine,
 } from "./style";
 
 const MyPage = (props) => {
@@ -163,22 +157,20 @@ const MyPage = (props) => {
         }}
       >
         <ModalWrap>
-          <TitleP>로그아웃</TitleP>
-          <DescriptionP>다시 돌아오실거죠..?</DescriptionP>
-          <ModalHr />
-          <FooterWrap>
-            <BackButton onClick={() => setModalIsOpen(false)}>
-              돌아가기
-            </BackButton>
-            <Vl />
-            <EnterButton
+          <p>로그아웃</p>
+          <p>다시 돌아오실거죠..?</p>
+          <hr />
+          <ModalChoice>
+            <button onClick={() => setModalIsOpen(false)}>돌아가기</button>
+            <VerticalLine />
+            <button
               onClick={() => {
                 dispatch(userAction.logOutDB());
               }}
             >
               확인
-            </EnterButton>
-          </FooterWrap>
+            </button>
+          </ModalChoice>
         </ModalWrap>
       </Modal>
       <ButtonWrap>
@@ -212,26 +204,20 @@ const MyPage = (props) => {
           }}
         >
           <ModalWrap>
-            <TitleP>회원탈퇴</TitleP>
-            <DescriptionP>다시 돌아오실거죠..?</DescriptionP>
-            <ModalHr />
-            <FooterWrap>
-              <BackButton
-                className="footer_one"
-                onClick={() => setModalIsOpen2(false)}
-              >
-                돌아가기
-              </BackButton>
-              <Vl />
-              <DropOutButton
-                className="footer_two"
+            <p>회원탈퇴</p>
+            <p>다시 돌아오실거죠..?</p>
+            <hr />
+            <ModalChoice>
+              <button onClick={() => setModalIsOpen2(false)}>돌아가기</button>
+              <VerticalLine />
+              <button
                 onClick={() => {
                   dispatch(userAction.resignDB());
                 }}
               >
                 탈퇴하기
-              </DropOutButton>
-            </FooterWrap>
+              </button>
+            </ModalChoice>
           </ModalWrap>
         </Modal>
       </ButtonWrap>
