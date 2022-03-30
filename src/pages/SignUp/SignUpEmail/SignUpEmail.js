@@ -66,6 +66,12 @@ const SignUpEmail = () => {
     // navigate("/signup/password");
   };
 
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") {
+      saveUsername();
+    }
+  };
+
   return (
     <Container>
       <BlackBackButton onClick={() => navigate("/")} />
@@ -79,6 +85,7 @@ const SignUpEmail = () => {
           value={username}
           onChange={is_Username}
           onKeyUp={checkActive}
+          onKeyPress={onKeyPress}
         />
 
         {username.length > 0 && (
