@@ -67,7 +67,10 @@ const Noti = (props) => {
               <FixListBox
                 key={idx}
                 onClick={() => {
-                  window.open(v.redirectUrl);
+                  v.type === "BETA"
+                    ? window.location.replace(v.redirectUrl)
+                    : window.open(v.redirectUrl);
+                  // window.open(v.redirectUrl);
                 }}
               >
                 <ImgWrap>
