@@ -27,18 +27,19 @@ export const Header = styled.header`
 export const UserInfo = styled.div`
   display: flex;
   p {
+    width: 96px;
     color: #777777;
     font-size: 12px;
     margin-top: 16px;
     margin-left: 5px;
   }
   h4 {
-    width: 80px;
+    width: 120px;
     height: 20px;
     color: #282828;
     font-size: 14px;
     margin-top: 32px;
-    margin-left: -61px;
+    margin-left: -96px;
   }
 `;
 
@@ -67,7 +68,7 @@ export const ButtonWrapper = styled.div`
     &:first-child {
       color: #777777;
       border: 1px solid #777777;
-      margin: 1.8rem 0 0 7.2rem;
+      margin: 1.8rem 0 0 3rem;
     }
     &:nth-of-type(2) {
       color: #e10000;

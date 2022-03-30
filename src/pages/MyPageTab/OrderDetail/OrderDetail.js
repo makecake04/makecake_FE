@@ -68,10 +68,12 @@ const OrderDetail = () => {
         {order_detail &&
           order_detail.formList?.map((o, i) => {
             return (
-              <OrderItem key={i}>
-                <span>{o}: </span>
-                <span>{order_detail.userInput[i]}</span>
-              </OrderItem>
+              <>
+                <OrderItem key={i}>
+                  <div>{o}: </div>
+                  <div>{order_detail.userInput[i]}</div>
+                </OrderItem>
+              </>
             );
           })}
         <CopyToClipboard text={order_detail.copyText}>

@@ -147,9 +147,9 @@ const PostDetail = () => {
           ) : (
             <EmptyHeartIcon onClick={likeToggle} />
           )}
-          <p className="likeCnt">{post.likeCnt}</p>
+          <p>{post.likeCnt}</p>
           <img src={view} alt="view-icon" />
-          <p className="seeCnt">{post.viewCnt}</p>
+          <p>{post.viewCnt}</p>
         </IconWrapper>
         <OptionWrapper>
           <button>{post.size}</button>
@@ -160,8 +160,8 @@ const PostDetail = () => {
       </ImageInfo>
 
       <PostInfo>
-        <h3 className="titleText">{post.title}</h3>
-        <p className="content">{post.content}</p>
+        <h3>{post.title}</h3>
+        <p>{post.content}</p>
       </PostInfo>
 
       <CommentWrapper>

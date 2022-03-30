@@ -96,7 +96,7 @@ const getStoresDB = () => {
   const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
     axios
-      .get("https://devssk.shop/orders/stores", {
+      .get("https://devssk.shop/api/orders/stores", {
         headers: {
           Authorization: `${token_key}`,
         },

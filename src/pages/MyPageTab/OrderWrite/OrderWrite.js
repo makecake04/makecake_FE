@@ -104,6 +104,7 @@ const OrderWrite = () => {
                 {o.split("/ln")[4] && <p>&nbsp;&nbsp;{o.split("/ln")[4]}</p>}
                 {o.split("/ln")[5] && <p>&nbsp;&nbsp;{o.split("/ln")[5]}</p>}
                 {o.split("/ln")[6] && <p>&nbsp;&nbsp;{o.split("/ln")[6]}</p>}
+                {o.split("/ln")[7] && <p>&nbsp;&nbsp;{o.split("/ln")[7]}</p>}
               </MustReadItem>
             );
           })}
