@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as orderAction } from "../../redux/modules/order";
 import { actionCreators as searchAction } from "../../redux/modules/search";
 
+import Swal from "sweetalert2";
+
 //image
 import { black_back_button, beta } from "../../assets/images/image";
 
@@ -30,6 +32,8 @@ const OrderGuide = (props) => {
   const dispatch = useDispatch();
 
   const guideInfo = useSelector((state) => state.order.order_guide);
+
+  const is_session = localStorage.getItem("token");
 
   useEffect(() => {
     dispatch(orderAction.getOrderGuideDB());
@@ -63,7 +67,23 @@ const OrderGuide = (props) => {
           <Answer>주문하기를 이용하시면 다양한 상품을 드린답니다!</Answer>
         </div>
       </GuideWrap>
-      <a href="/order">💸 주문서 작성하러 가기</a>
+      {is_session && <a href="/order">💸 주문서 작성하러 가기</a>}
+      {!is_session && (
+        <a
+          onClick={() => {
+            Swal.fire({
+              title: "로그인이 필요한 서비스입니다!",
+              showCancelButton: true,
+              confirmButtonText: '<a href="/">로그인 할래요!</a>',
+              confirmButtonColor: "#ff679e",
+              cancelButtonColor: "#777",
+              cancelButtonText: "그냥 둘러볼래요.",
+            });
+          }}
+        >
+          💸 주문서 작성하러 가기
+        </a>
+      )}
       <TitleWrap>
         <h3>주문하기 가능 매장 🍰</h3>
         <hr />
