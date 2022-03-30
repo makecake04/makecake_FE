@@ -39,7 +39,7 @@ import round_normal from "./drawing/cream/round-normal.png";
 import round_shell from "./drawing/cream/round-shell.png";
 import shell from "./drawing/cream/shell.png";
 import square_flower from "./drawing/cream/square-flower.png";
-import square_normal from "./drawing/cream/square-flower.png";
+import square_normal from "./drawing/cream/square-normal.png";
 import square_shell from "./drawing/cream/square-shell.png";
 ////header
 import remove_item from "./drawing/header/remove-item.svg";
