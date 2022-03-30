@@ -54,9 +54,9 @@ export const SearchBar = styled.div`
   color: #777777;
   font-weight: 500;
   span {
-    margin-left: -15px;
-    padding: 0.4rem 1.5rem 0.4rem 3.2rem;
-    width: 258px;
+    /* margin-left: -15px; */
+    padding: 0.4rem 0rem 0.4rem 2.2rem;
+    width: 161px;
   }
 
   input {
@@ -64,7 +64,7 @@ export const SearchBar = styled.div`
     border: none;
     background: none;
     outline: none;
-    padding: 1rem 2.5rem 1.2rem 1rem;
+    padding: 1rem 2.5rem 1.2rem 0rem;
     color: #777777;
     font-weight: 500;
   }

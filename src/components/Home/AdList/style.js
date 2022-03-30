@@ -13,7 +13,7 @@ export const SubWrap = styled.div`
 export const ImageWrap = styled.div`
   position: relative;
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 17px;
   text-align: start;
 `;
 
@@ -51,7 +51,7 @@ export const StyleSlider = styled(Slider)`
   .slick-dots {
     display: flex !important;
     justify-content: center;
-    bottom: -18px;
+    bottom: -20px;
     li {
       border: none !important;
       margin: 0;
@@ -75,7 +75,7 @@ export const HrWrap = styled.hr`
 `;
 
 export const AdItem = styled.div`
-  margin-top: 15px;
+  margin-top: 17px;
   background-color: #fee9ee;
   height: 72px;
   width: 100%;

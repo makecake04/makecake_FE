@@ -38,18 +38,6 @@ const AdList = () => {
             <AdItem>
               <AdTitle>
                 <img src={event} alt="event" />
-                <p>😘&nbsp; 기프티콘 & 2만원 페이백을 드려요!</p>
-              </AdTitle>
-              <Link
-                href="https://www.instagram.com/__makecake/"
-                target="_blank"
-              >
-                👉🏻이벤트 참여 방법 보러가기
-              </Link>
-            </AdItem>
-            <AdItem>
-              <AdTitle>
-                <img src={event} alt="event" />
                 <p>&nbsp;설문 참여하고 기프티콘 받아가세요!☕️ </p>
               </AdTitle>
               <Link
@@ -62,11 +50,23 @@ const AdList = () => {
             <AdItem>
               <AdTitle>
                 <img src={event} alt="event" />
+                <p>😘&nbsp; 기프티콘 & 2만원 페이백을 드려요!</p>
+              </AdTitle>
+              <Link
+                href="https://www.instagram.com/__makecake/"
+                target="_blank"
+              >
+                👉🏻이벤트 참여 방법 보러가기
+              </Link>
+            </AdItem>
+            <AdItem>
+              <AdTitle>
+                <img src={event} alt="event" />
                 <p>&nbsp;주문하기 기능을 이용해보세요💸️ </p>
               </AdTitle>
               <Link
                 onClick={() => {
-                  navigate("/order");
+                  navigate("/order/guide");
                 }}
               >
                 👉🏻주문하기 기능 안내 보기
