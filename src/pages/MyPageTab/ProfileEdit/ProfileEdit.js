@@ -1,9 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
+
+import { nicknameCheck } from "../../../shared/SignUpRule";
 import { actionCreators as userAction } from "../../../redux/modules/user";
 import { actionCreators as reviewAction } from "../../../redux/modules/review";
-import Swal from "sweetalert2";
 
 //css
 import {
@@ -55,7 +57,7 @@ const Profile = (props) => {
   };
 
   const editProfile = () => {
-    if (nickname?.length < 2 || nickname?.length > 8) {
+    if (!nicknameCheck(nickname)) {
       Swal.fire({
         title: "닉네임은 2글자 ~ 8글자에서 정해주세요!",
         showCancelButton: false,
