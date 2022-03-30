@@ -123,6 +123,7 @@ export const PostInfo = styled.div`
   h3 {
     color: #000000;
     padding: 1.5rem 2.5rem 0.5rem;
+    word-break: break-all;
   }
 
   p {
@@ -131,6 +132,7 @@ export const PostInfo = styled.div`
     font-size: 14px;
     line-height: 2rem;
     overflow: auto;
+    word-break: break-all;
   }
 `;
 

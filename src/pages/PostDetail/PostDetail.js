@@ -171,10 +171,11 @@ const PostDetail = () => {
 
         <CommentInput
           type="text"
-          placeholder="댓글을 입력해주세요"
+          placeholder="댓글을 입력해주세요(100자 이내)"
           value={content}
           onChange={changeComment}
           onKeyPress={onKeyPress}
+          maxLength={100}
         />
 
         <SendButton onClick={() => clickComment()}>

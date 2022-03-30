@@ -55,7 +55,9 @@ const SignUpPassword = () => {
     setPasswordCurrent(passwordCurrent);
 
     if (!pwdCheck(passwordCurrent)) {
+
       setPasswordMessage("올바른 비밀번호 형식이 아닙니다!");
+
       setIsPassword(false);
     } else {
       setPasswordMessage("올바른 비밀번호 형식입니다!");

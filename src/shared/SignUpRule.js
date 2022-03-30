@@ -1,15 +1,15 @@
 // 이메일 형식
 export const usernameCheck = (username) => {
   let _reg =
+
     /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+
   return _reg.test(username);
 };
 
 // 숫자, 영어, 한국어와 언더스코어를 허용하며 2~8 (공백 허용 X)
 export const nicknameCheck = (nickname) => {
   let _reg = /^[가-힣ㄱ-ㅎa-zA-Z0-9._-]{2,8}$/;
-  // /^(?!(?:[0-9]+)$)([a-zA-Z]|[0-9a-zA-Z]){2,8}$/;
-
   return _reg.test(nickname);
 };
 

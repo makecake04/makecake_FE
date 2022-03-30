@@ -54,8 +54,7 @@ const PostWrite = () => {
   const [size, setSize] = useState(post_id ? post.size : "");
   const [shape, setShape] = useState(post_id ? post.shape : "");
   const [purpose, setPurpose] = useState(post_id ? post.purpose : "");
-  console.log(post_id);
-  console.log(title, content, size, shape, purpose, design_id, post_id);
+
   const addTitle = (e) => {
     setTitle(e.target.value);
   };
@@ -110,7 +109,12 @@ const PostWrite = () => {
         {post_id ? (
           <input type="text" defaultValue={post.title} onChange={addTitle} />
         ) : (
-          <input type="text" placeholder="제목" onChange={addTitle} />
+          <input
+            type="text"
+            maxLength={20}
+            placeholder="제목 (20자 이내)"
+            onChange={addTitle}
+          />
         )}
       </Title>
 
@@ -118,7 +122,11 @@ const PostWrite = () => {
         {post_id ? (
           <textarea defaultValue={post.content} onChange={addContent} />
         ) : (
-          <textarea placeholder="내용을 입력하세요" onChange={addContent} />
+          <textarea
+            maxLength={250}
+            placeholder="내용을 입력하세요 (250자 이내)"
+            onChange={addContent}
+          />
         )}
       </Content>
 

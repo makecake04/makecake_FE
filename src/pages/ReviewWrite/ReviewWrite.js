@@ -127,14 +127,16 @@ const ReviewWrite = (props) => {
         <AreaWrap>
           {is_edit ? (
             <textarea
-              placeholder="내용을 입력하세요."
+              placeholder="내용을 입력하세요(100자 이내)"
               onChange={changeContent}
               defaultValue={one_review.content}
+              maxLength={100}
             />
           ) : (
             <textarea
-              placeholder="내용을 입력하세요."
+              placeholder="내용을 입력하세요(100자 이내)"
               onChange={changeContent}
+              maxLength={100}
             />
           )}
         </AreaWrap>
