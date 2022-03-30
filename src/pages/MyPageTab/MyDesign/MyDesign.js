@@ -84,10 +84,10 @@ const MyDraw = (props) => {
 
       <Tab>
         <NotPost toggleState={toggleState} onClick={() => toggleTab(1)}>
-          작성되지 않은 도안
+          게시되지 않은 도안
         </NotPost>
         <Post toggleState={toggleState} onClick={() => toggleTab(2)}>
-          작성된 도안
+          게시된 도안
         </Post>
       </Tab>
       <Body>
