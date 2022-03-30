@@ -6,7 +6,11 @@ import { logo } from "../../assets/images/image";
 export const Wrapper = styled.section`
   @media (min-width: 500px) {
     margin-top: calc((100vh - 844px) / 2.5);
+    @media (max-height: 844px) {
+      margin-top: 0;
+    }
   }
+
   text-align: center;
   button {
     border: none;
