@@ -115,6 +115,15 @@ const StoreDetail = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpen2, setModalIsOpen2] = useState(false);
 
+  useEffect(() => {
+    if (store_cake.length !== 0) {
+      dispatch(storeAction.storeCakeReplace([]));
+    }
+    if (store_review.length !== 0) {
+      dispatch(storeAction.storeReviewReplace([]));
+    }
+  }, []);
+
   const cake_img = useSelector((state) => state.cake.lists);
   const cake_id = useSelector((state) => state.cake.lists);
   const my_like = useSelector((state) => state.cake.lists);

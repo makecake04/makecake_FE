@@ -126,7 +126,7 @@ const Noti = (props) => {
             <NotNotiText>로그인 먼저 부탁드려요</NotNotiText>
             <LoginText
               onClick={() => {
-                navigate("/");
+                navigate(-1);
               }}
             >
               로그인하러 가기
