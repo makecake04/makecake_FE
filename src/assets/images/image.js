@@ -5,6 +5,11 @@ import white_back_button from "./back-button/white-back-button.svg";
 //background
 import background from "./background/background.svg";
 
+//banner
+import ad1 from "./banner/ad1.svg";
+import ad2 from "./banner/ad2.svg";
+import ad3 from "./banner/ad3.svg";
+
 //cake
 import cake_store_icon from "./cake/cake-store-icon.svg";
 import empty_heart_icon from "./cake/empty-heart-icon.svg";
@@ -134,6 +139,9 @@ export {
   black_back_button,
   white_back_button,
   background,
+  ad1,
+  ad2,
+  ad3,
   cake_store_icon,
   empty_heart_icon,
   full_heart_icon,

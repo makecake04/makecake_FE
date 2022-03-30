@@ -76,13 +76,15 @@ export const HrWrap = styled.hr`
 
 export const AdItem = styled.div`
   margin-top: 17px;
-  background-color: #fee9ee;
+  /* background-color: #fee9ee;
   height: 72px;
   width: 100%;
   box-shadow: inset -2px -2px 1px 0px #8b8b8bab;
-  padding: 10px;
-  border-radius: 6px;
-  text-align: center;
+  padding: 10px; */
+  img {
+    border-radius: 6px;
+  }
+  /* text-align: center; */
 `;
 
 export const AdTitle = styled.div`

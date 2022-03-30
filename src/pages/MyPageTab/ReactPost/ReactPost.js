@@ -40,10 +40,13 @@ import {
   NicknameAndDelete,
   Delete,
 } from "./style";
+import { indexOf } from "lodash";
 
 const ReactWrite = (props) => {
   const navigate = useNavigate();
+
   const likedesign = useSelector((state) => state.design.likeDesign);
+
   const [toggleState, setToggleState] = React.useState(1);
   const [content, setContent] = useState("");
   const [pageNumber, setPageNumber] = React.useState(0);
@@ -58,28 +61,24 @@ const ReactWrite = (props) => {
   };
 
   useEffect(() => {
-    if (pageNumber === 0) {
-      dispatch(designAction.getLikeDesignDB(pageNumber));
-      dispatch(commentAction.getMyCommentDB(pageNumber));
-    }
+    dispatch(designAction.getLikeDesignDB(0));
+    dispatch(commentAction.getMyCommentDB(0));
+
     setPageNumber(0);
   }, [toggleState]);
 
   useEffect(() => {
-    // dispatch(designAction.getLikeDesignDB(pageNumber));
-    // dispatch(commentAction.getMyCommentDB(pageNumber));
     if (toggleState === 1) {
       dispatch(designAction.getLikeDesignDB(pageNumber));
     } else if (toggleState === 2) {
       dispatch(commentAction.getMyCommentDB(pageNumber));
-      console.log("2");
     }
   }, [pageNumber]);
 
   useEffect(() => {
-    // if (inView) {
-    setPageNumber(pageNumber + 1);
-    // }
+    if (inView) {
+      setPageNumber(pageNumber + 1);
+    }
   }, [inView]);
 
   return (

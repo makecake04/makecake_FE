@@ -34,7 +34,7 @@ export const UserInfo = styled.div`
     margin-left: 5px;
   }
   h4 {
-    width: 120px;
+    width: 135px;
     height: 20px;
     color: #282828;
     font-size: 14px;
@@ -68,7 +68,7 @@ export const ButtonWrapper = styled.div`
     &:first-child {
       color: #777777;
       border: 1px solid #777777;
-      margin: 1.8rem 0 0 3rem;
+      margin: 1.8rem 0 0 1.3rem;
     }
     &:nth-of-type(2) {
       color: #e10000;
