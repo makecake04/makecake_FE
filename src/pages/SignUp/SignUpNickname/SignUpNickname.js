@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { actionCreators as userAction } from "../../../redux/modules/user";
 
+import { nicknameCheck } from "../../../shared/SignUpRule";
+
 import {
   Container,
   BlackBackButton,
@@ -21,8 +23,8 @@ const SignUpNickname = () => {
   const username = useSelector((state) => state.user.username);
   const password = useSelector((state) => state.user.password);
   const passwordCheck = useSelector((state) => state.user.passwordCheck);
-  console.log(username, password, passwordCheck);
-
+  console.log(nickname);
+  // console.log(nickname.length);
   // 중복 체크
   const [nicknameCurrent, setNicknameCurrent] = React.useState(false);
 
@@ -30,7 +32,19 @@ const SignUpNickname = () => {
   const [active, setActive] = React.useState(true);
 
   const checkActive = () => {
-    nickname !== "" ? setActive(false) : setActive(true);
+    if (!nicknameCheck(nickname)) {
+      console.log("ddd");
+      setActive(true);
+    } else if (nicknameCheck(nickname)) {
+      setActive(false);
+    }
+    // if (nickname.length < 2) {
+    //   setActive(true);
+    // }
+    // if (2 <= nickname.length) {
+    //   setActive(false);
+    //   if (nickname.length > 8) setActive(true);
+    // }
   };
 
   const is_Nickname = (e) => {
@@ -51,7 +65,7 @@ const SignUpNickname = () => {
         }}
       />
       <CakeText>케이크를 만들어요!</CakeText>
-      <SignupText>회원가입을 위한 닉네임을 입력해주세요.</SignupText>
+      <SignupText>회원가입을 위한 닉네임을 입력해주세요. (2자~8자)</SignupText>
 
       <InputAndButton>
         <Input

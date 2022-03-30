@@ -55,9 +55,7 @@ const SignUpPassword = () => {
     setPasswordCurrent(passwordCurrent);
 
     if (!pwdCheck(passwordCurrent)) {
-      setPasswordMessage(
-        "영문, 숫자, 특수문자를 조합하여 10~16자로 만들어주세요!"
-      );
+      setPasswordMessage("올바른 비밀번호 형식이 아닙니다!");
       setIsPassword(false);
     } else {
       setPasswordMessage("올바른 비밀번호 형식입니다!");
@@ -68,11 +66,11 @@ const SignUpPassword = () => {
   const is_PasswordCheck = (e) => {
     setPasswordCheck(e.target.value);
     const SamePasswordCurrent = e.target.value;
-
-    if (!pwdCheck(SamePasswordCurrent)) {
-      setPasswordCheckMessage("형식에 맞지 않는 비밀번호입니다!");
-      setIsPasswordCheck(false);
-    } else if (
+    // if (!pwdCheck(SamePasswordCurrent)) {
+    //   setPasswordCheckMessage("형식에 맞지 않는 비밀번호입니다!");
+    //   setIsPasswordCheck(false);
+    // }
+    if (
       password !== "" &&
       passwordCheck !== "" &&
       password === SamePasswordCurrent
@@ -104,7 +102,9 @@ const SignUpPassword = () => {
     <Container>
       <BlackBackButton onClick={() => navigate("/signup/email")} />
       <PwText>비밀번호를 알려주세요!</PwText>
-      <PwRuleText>* 영문자, 숫자 각각 하나 이상 포함, 10자리 이상</PwRuleText>
+      <PwRuleText>
+        영문/숫자/특수문자 조합으로 입력해주세요. (10~20자)
+      </PwRuleText>
 
       <InputAndButton>
         <InputPw

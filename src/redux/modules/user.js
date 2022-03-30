@@ -280,7 +280,13 @@ const editProfileDB = (nickname, img) => {
         window.location.replace("/mypage");
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response.data);
+        Swal.fire({
+          title: "이미 사용 중인 닉네임입니다!",
+          showCancelButton: false,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#ff679e",
+        });
       });
   };
 };

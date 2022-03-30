@@ -75,14 +75,14 @@ export const Info = styled.div`
 
 export const OrderItem = styled.div`
   text-align: left;
-  display: flex;
+  /* display: flex; */
   margin-bottom: 1.2rem;
   align-items: center;
-  span:first-child {
+  div:first-child {
     font-size: 1.4rem;
     font-weight: 500;
   }
-  span:nth-child(2) {
+  div:nth-child(2) {
     color: #777777;
     font-size: 1.2rem;
     padding-left: 5px;

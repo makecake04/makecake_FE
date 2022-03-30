@@ -83,7 +83,7 @@ export const SearchIcon = styled.img.attrs({
 export const SearchListBox = styled.div`
   margin-left: auto;
   margin-right: 2.3rem;
-  width: 211px;
+  width: 215px;
   height: 344px;
   border: 3px solid #fee9ee;
   border-top: 1px;

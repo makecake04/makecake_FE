@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as userAction } from "../../../redux/modules/user";
 import { actionCreators as reviewAction } from "../../../redux/modules/review";
+import Swal from "sweetalert2";
 
 //css
 import {
@@ -32,7 +33,7 @@ const Profile = (props) => {
   const preview = useSelector((state) => state.review.preview);
   const [fileName, setFileName] = React.useState(null);
   const fileInput = React.useRef();
-  console.log(preview);
+
   React.useEffect(() => {
     dispatch(userAction.getUserInfoDB());
   }, []);
@@ -54,9 +55,22 @@ const Profile = (props) => {
   };
 
   const editProfile = () => {
-    dispatch(userAction.editProfileDB(nickname, fileInput.current.files[0]));
+    if (nickname?.length < 2 || nickname?.length > 8) {
+      Swal.fire({
+        title: "닉네임은 2글자 ~ 8글자에서 정해주세요!",
+        showCancelButton: false,
+        confirmButtonText: "네",
+        confirmButtonColor: "#ff679e",
+      });
+    } else if (!nickname) {
+      dispatch(
+        userAction.editProfileDB(user_info.nickname, fileInput.current.files[0])
+      );
+    } else {
+      dispatch(userAction.editProfileDB(nickname, fileInput.current.files[0]));
+    }
   };
-
+  console.log(nickname);
   return (
     <ProfileWrap>
       <SubWrap>
