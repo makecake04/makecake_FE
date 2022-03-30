@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { logo } from "../../assets/images/image";
 
 export const Wrapper = styled.section`
+  overflow-x: hidden;
   @media (min-width: 500px) {
     margin-top: calc((100vh - 844px) / 2.5);
     @media (max-height: 844px) {

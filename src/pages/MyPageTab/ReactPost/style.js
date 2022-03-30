@@ -147,7 +147,7 @@ export const PostWrapOne = styled.div`
     props.toggleState === 1
       ? css`
           position: relative;
-          padding: 20px;
+          padding: 0 20px 20px;
           width: 100%;
           height: 100%;
         `
@@ -161,7 +161,9 @@ export const PostWrapOne = styled.div`
         `}
 `;
 
-export const PostWrap = styled.div``;
+export const PostWrap = styled.div`
+  padding-top: 15px;
+`;
 
 export const ReviewWrap = styled.div`
   display: flex;
@@ -220,7 +222,7 @@ export const ContentText = styled.p`
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-top: 20px;
+  margin-top: 15px;
   font-weight: 600;
 `;
 
@@ -238,7 +240,7 @@ export const Img = styled.img``;
 export const HrWrap = styled.hr`
   border: 0.7px solid #e5e5e5;
   width: 100%;
-  margin: 20px 0px;
+  margin-top: 15px;
 `;
 
 export const PostWrapTwo = styled.div`
