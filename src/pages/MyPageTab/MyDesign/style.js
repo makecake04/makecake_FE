@@ -250,5 +250,5 @@ export const WriteIcon = styled.img.attrs({
 })`
   position: absolute;
   top: 1rem;
-  right: 5rem;
+  right: 6.5rem;
 `;
