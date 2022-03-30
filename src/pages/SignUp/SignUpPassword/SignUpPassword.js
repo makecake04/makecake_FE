@@ -55,9 +55,7 @@ const SignUpPassword = () => {
     setPasswordCurrent(passwordCurrent);
 
     if (!pwdCheck(passwordCurrent)) {
-      setPasswordMessage(
-        "영문, 숫자, 특수문자를 조합하여 10~16자로 만들어주세요!"
-      );
+      setPasswordMessage("영문, 숫자를 조합하여 10~16자로 만들어주세요!");
       setIsPassword(false);
     } else {
       setPasswordMessage("올바른 비밀번호 형식입니다!");
