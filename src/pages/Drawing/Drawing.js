@@ -73,7 +73,7 @@ const Design = () => {
   useEffect(() => {
     setCanvas(initCanvas());
   }, []);
-
+  console.log(option);
   //color change
   const colorChange = (e) => {
     let obj = canvas.getActiveObject();
@@ -291,6 +291,7 @@ const Design = () => {
                     onClick={() => {
                       setOption("cream");
                       stopDrawing(canvas);
+                      setIcon("");
                     }}
                   >
                     크림 모양
@@ -340,6 +341,7 @@ const Design = () => {
                 onClick={() => {
                   setOption("cream");
                   stopDrawing(canvas);
+                  setIcon("");
                 }}
               >
                 크림 모양
