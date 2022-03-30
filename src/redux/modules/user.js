@@ -96,10 +96,20 @@ const nicknameCheckDB = (username, password, passwordCheck, nickname) => {
             .postSignUp(username, password, passwordCheck, nickname)
             .then((res) => {
               if (res.data.signup) {
-                window.alert("성공적으로 회원가입하셨습니다!");
+                // Swal.fire({
+                //   title: "성공적으로 회원가입 하셨습니다!",
+                //   showCancelButton: false,
+                //   confirmButtonText: "확인",
+                //   confirmButtonColor: "#ff679e",
+                // });
                 window.location.replace("/");
               } else if (!res.data.signup) {
-                window.alert("회원가입에 실패하셨습니다!");
+                Swal.fire({
+                  title: "회원가입에 실패하셨습니다!",
+                  showCancelButton: false,
+                  confirmButtonText: "확인",
+                  confirmButtonColor: "#ff679e",
+                });
                 window.location.replace("/signup/nickname");
               }
             })

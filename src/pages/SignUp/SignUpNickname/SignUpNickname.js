@@ -57,6 +57,12 @@ const SignUpNickname = () => {
     );
   };
 
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") {
+      saveNickname();
+    }
+  };
+
   return (
     <Container>
       <BlackBackButton
@@ -74,6 +80,7 @@ const SignUpNickname = () => {
           value={nickname}
           onChange={is_Nickname}
           onKeyUp={checkActive}
+          onKeyPress={onKeyPress}
         />
 
         <NextButton

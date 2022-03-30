@@ -100,6 +100,12 @@ const SignUpPassword = () => {
     navigate("/signup/nickname");
   };
 
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") {
+      savePassword();
+    }
+  };
+
   return (
     <Container>
       <BlackBackButton onClick={() => navigate("/signup/email")} />
@@ -130,6 +136,7 @@ const SignUpPassword = () => {
           value={passwordCheck}
           onChange={is_PasswordCheck}
           onKeyUp={checkActive}
+          onKeyPress={onKeyPress}
         />
 
         {passwordCheck.length > 0 && (
