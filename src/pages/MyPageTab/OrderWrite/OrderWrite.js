@@ -30,6 +30,7 @@ import {
   beta,
   help_icon,
   close,
+  order_location,
 } from "../../../assets/images/image";
 
 const OrderWrite = () => {
@@ -77,8 +78,14 @@ const OrderWrite = () => {
             alt="help"
             onClick={() => setModalIsOpen(true)}
           />
+          <img
+            src={order_location}
+            alt="location"
+            onClick={() => {
+              navigate(`/searchmap/${order_form.storeId}`);
+            }}
+          />
         </Info>
-
         {order_form &&
           order_form.formList?.map((o, i) => {
             return (

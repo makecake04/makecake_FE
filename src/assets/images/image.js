@@ -106,6 +106,7 @@ import order_circle from "./order/order-circle.svg";
 import order_marker from "./order/order-marker.svg";
 import help_icon from "./order/help-icon.svg";
 import close from "./order/close.svg";
+import order_location from "./order/order-location.svg";
 
 //post-detail
 import like from "./post-detail/like.svg";
@@ -212,6 +213,7 @@ export {
   order_marker,
   help_icon,
   close,
+  order_location,
   like,
   view,
   send,

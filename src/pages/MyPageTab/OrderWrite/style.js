@@ -38,6 +38,10 @@ export const Body = styled.section`
     border-radius: 0.4rem;
     padding-bottom: 1rem;
   }
+  img:nth-of-type(2) {
+    padding: 0 0 0.5rem 0;
+    cursor: pointer;
+  }
 `;
 
 export const Info = styled.div`

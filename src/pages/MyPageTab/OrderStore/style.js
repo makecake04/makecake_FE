@@ -29,8 +29,21 @@ export const Header = styled.header`
   }
 `;
 
+export const OrderBtn = styled.div`
+  padding: 10px;
+  text-align: end;
+
+  a {
+    color: #ff679e;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: underline;
+  }
+`;
+
 export const Body = styled.div`
-  padding: 6.5rem 2rem 1rem;
+  padding: 3.5rem 2rem 1rem;
+
   p:nth-of-type(1) {
     margin-top: 1rem;
     font-size: 1.8rem;

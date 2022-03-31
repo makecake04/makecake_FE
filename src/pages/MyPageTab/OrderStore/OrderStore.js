@@ -8,6 +8,7 @@ import { actionCreators as orderAction } from "../../../redux/modules/order";
 import {
   Wrapper,
   Header,
+  OrderBtn,
   Body,
   SearchBar,
   SearchIcon,
@@ -48,6 +49,9 @@ const OrderStore = () => {
         <img src={beta} alt="beta" />
       </Header>
       <hr />
+      <OrderBtn>
+        <a href="/order/guide2">❓ 주문 방법과 매장 위치가 궁금해요!</a>
+      </OrderBtn>
       <Body>
         <img src={order_marker} alt="marker" />
         <p>주문 가능한 매장을 찾아보세요</p>

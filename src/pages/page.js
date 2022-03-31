@@ -13,6 +13,7 @@ import DesignList from "./DesignList/DesignList";
 import NotFound from "./NotFound/NotFound";
 import Noti from "./Noti/Noti";
 import OrderGuide from "./OrderGuide/OrderGuide";
+import OrderGuide2 from "./OrderGuide2/OrderGuide2";
 
 import MyPage from "./MyPageTab/MyPage/MyPage";
 import ProfileEdit from "./MyPageTab/ProfileEdit/ProfileEdit";
@@ -55,6 +56,7 @@ export {
   NotFound,
   Noti,
   OrderGuide,
+  OrderGuide2,
   SignUpEmail,
   SignUpNickname,
   SignUpPassword,
