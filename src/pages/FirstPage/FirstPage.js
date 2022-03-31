@@ -67,7 +67,7 @@ const FirstPage = () => {
       <SocialLoginWrap>
         <KakaoLogin />
         <GoogleLogin />
-        {/* <NaverLogin /> */}
+        <NaverLogin />
       </SocialLoginWrap>
     </Container>
   );
