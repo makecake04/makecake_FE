@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useInView } from "react-intersection-observer";
+
 import { actionCreators as commentAction } from "../../../redux/modules/comment";
 import { actionCreators as designAction } from "../../../redux/modules/design";
-import { useInView } from "react-intersection-observer";
-import { useState } from "react";
 
-//import css
+//css
 import {
   ReactWriteWrap,
   Container,
@@ -40,32 +39,27 @@ import {
   NicknameAndDelete,
   Delete,
 } from "./style";
-import { indexOf } from "lodash";
 
 const ReactWrite = (props) => {
   const navigate = useNavigate();
+  const [refDesign, inViewDesign] = useInView();
+  const [refComment, inViewComment] = useInView();
+  const dispatch = useDispatch();
+
+  const [toggleState, setToggleState] = useState(1);
+  const [content, setContent] = useState("");
+  const [pageNumber, setPageNumber] = useState(0);
 
   const likedesign = useSelector((state) => state.design.likeDesign);
-
-  const [toggleState, setToggleState] = React.useState(1);
-  const [content, setContent] = useState("");
-  const [pageNumber, setPageNumber] = React.useState(0);
-  const [ref, inView] = useInView();
-  const dispatch = useDispatch();
   const commentList = useSelector((state) => state.comment.my_comment_list);
+
   const deleteComment = (commentId) => {
     dispatch(commentAction.deleteMyCommentDB(commentId));
   };
-  const toggleTab = (index) => {
-    setToggleState(index);
-  };
 
-  useEffect(() => {
-    dispatch(designAction.getLikeDesignDB(0));
-    dispatch(commentAction.getMyCommentDB(0));
-
-    setPageNumber(0);
-  }, [toggleState]);
+  // const toggleTab = (index) => {
+  //   setToggleState(index);
+  // };
 
   useEffect(() => {
     if (toggleState === 1) {
@@ -73,13 +67,15 @@ const ReactWrite = (props) => {
     } else if (toggleState === 2) {
       dispatch(commentAction.getMyCommentDB(pageNumber));
     }
-  }, [pageNumber]);
+  }, [pageNumber, toggleState]);
 
   useEffect(() => {
-    if (inView) {
+    if (inViewDesign) {
+      setPageNumber(pageNumber + 1);
+    } else if (inViewComment) {
       setPageNumber(pageNumber + 1);
     }
-  }, [inView]);
+  }, [inViewDesign, inViewComment]);
 
   return (
     <ReactWriteWrap>
@@ -95,11 +91,22 @@ const ReactWrite = (props) => {
         <Line />
         <Wrap>
           <LikeAndCommentWrap>
-            <LikeButton onClick={() => toggleTab(1)} toggleState={toggleState}>
+            <LikeButton
+              onClick={() => {
+                setToggleState(1);
+                setPageNumber(0);
+                // dispatch(designAction.getLikeDesignDB(0));
+              }}
+              toggleState={toggleState}
+            >
               좋아요 한 게시글
             </LikeButton>
             <CommentButton
-              onClick={() => toggleTab(2)}
+              onClick={() => {
+                setToggleState(2);
+                setPageNumber(0);
+                // dispatch(commentAction.getMyCommentDB(0));
+              }}
               toggleState={toggleState}
             >
               내가 남긴 댓글
@@ -112,7 +119,7 @@ const ReactWrite = (props) => {
                   return (
                     <PostWrap
                       key={idx}
-                      ref={ref}
+                      ref={likedesign.length === idx + 1 ? refDesign : null}
                       onClick={() => {
                         navigate(`/post/${v.postId}`);
                       }}
@@ -143,7 +150,10 @@ const ReactWrite = (props) => {
               {commentList &&
                 commentList.map((v, i) => {
                   return (
-                    <CommentWrap key={i} ref={ref}>
+                    <CommentWrap
+                      key={i}
+                      ref={commentList.length === i + 1 ? refComment : null}
+                    >
                       <ContentText
                         onClick={() => {
                           navigate(`/post/${v.postId}`);
