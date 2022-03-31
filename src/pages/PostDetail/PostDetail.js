@@ -42,6 +42,7 @@ const PostDetail = () => {
   const post = useSelector((state) => state.post.list);
   const nickname = useSelector((state) => state.user.user?.nickname);
   const login = useSelector((state) => state.user.is_login);
+  const is_session = localStorage.getItem("token");
 
   const getMoreComment = async () => {
     setPageNumber(pageNumber + 1);
@@ -64,6 +65,17 @@ const PostDetail = () => {
         showCancelButton: false,
         confirmButtonText: "댓글 입력할래요!",
         confirmButtonColor: "#ff679e",
+      });
+      return;
+    }
+    if (!is_session) {
+      Swal.fire({
+        title: "로그인이 필요한 서비스입니다!",
+        showCancelButton: true,
+        confirmButtonText: '<a href="/">로그인 할래요!</a>',
+        confirmButtonColor: "#ff679e",
+        cancelButtonColor: "#777",
+        cancelButtonText: "그냥 둘러볼래요.",
       });
       return;
     }
@@ -168,7 +180,6 @@ const PostDetail = () => {
         <h3>
           댓글<span>{post.commentCnt}</span>
         </h3>
-
         <CommentInput
           type="text"
           placeholder="댓글을 입력해주세요(100자 이내)"
@@ -177,7 +188,6 @@ const PostDetail = () => {
           onKeyPress={onKeyPress}
           maxLength={100}
         />
-
         <SendButton onClick={() => clickComment()}>
           <img src={send} alt="send" />
         </SendButton>

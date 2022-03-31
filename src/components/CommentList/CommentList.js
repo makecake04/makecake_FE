@@ -36,7 +36,6 @@ const CommentList = (props) => {
                 {/* <CommentDate>{v.createdDate}</CommentDate>  */}
                 <CommentDate>{v.createdDate?.split(" ")[0]}</CommentDate>
               </InfoBox>
-
               <Content>{v.content}</Content>
 
               <Button>
