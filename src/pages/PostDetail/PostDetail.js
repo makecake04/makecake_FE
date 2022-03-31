@@ -44,13 +44,9 @@ const PostDetail = () => {
   const login = useSelector((state) => state.user.is_login);
   const is_session = localStorage.getItem("token");
 
-  const getMoreComment = async () => {
-    setPageNumber(pageNumber + 1);
-  };
-
   useEffect(() => {
     if (inView) {
-      getMoreComment();
+      setPageNumber(pageNumber + 1);
     }
   }, [inView]);
 
