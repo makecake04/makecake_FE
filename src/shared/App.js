@@ -33,6 +33,7 @@ import {
   StoreDetail,
   Noti,
   OrderGuide,
+  OrderGuide2,
   SignUpEmail,
   SignUpNickname,
   SignUpPassword,
@@ -123,6 +124,7 @@ function App() {
               element={<GoogleLoginHandler />}
             />
             <Route path="/order/guide" element={<OrderGuide />} />
+            <Route path="/order/guide2" element={<OrderGuide2 />} />
             <Route
               path="/user/naver/callback"
               element={<NaverLoginHandler />}

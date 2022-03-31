@@ -3,12 +3,11 @@ import { produce } from "immer";
 import { api } from "../../shared/api";
 import axios from "axios";
 
-const CAKE_LIST = "CAKE_LIST";
-const LIKE_CAKE_LIST = "LIKE_CAKE_LIST";
-const RANDOM_CAKE_LIST = "RANDOM_CAKE_LIST";
+const GET_CAKE_LIST = "GET_CAKE_LIST";
 const CAKE_IMAGE = "CAKE_IMAGE";
 const LIKE_CAKE = "LIKE_CAKE";
 const ADD_LIKE_CAKE = "ADD_LIKE_CAKE";
+const CHANGE_SORT = "CHANGE_SORT";
 
 const initialState = {
   list: [],
@@ -16,12 +15,10 @@ const initialState = {
   likeCake: [],
   like_cake_list: [],
   random_cake_list: [],
+  cake_list: [],
 };
 
-const cakeList = createAction(CAKE_LIST, (list) => ({ list }));
-const likeCakeList = createAction(LIKE_CAKE_LIST, (list) => ({ list }));
-const randomCakeList = createAction(RANDOM_CAKE_LIST, (list) => ({ list }));
-
+const getCakeList = createAction(GET_CAKE_LIST, (list) => ({ list }));
 const cakeImage = createAction(CAKE_IMAGE, (img) => ({ img }));
 const likeCake = createAction(LIKE_CAKE, (likeCake) => ({ likeCake }));
 const addLikeCake = createAction(ADD_LIKE_CAKE, (cakeId, isLike, likeCnt) => ({
@@ -29,8 +26,29 @@ const addLikeCake = createAction(ADD_LIKE_CAKE, (cakeId, isLike, likeCnt) => ({
   isLike,
   likeCnt,
 }));
+const changeSort = createAction(CHANGE_SORT, (list) => ({ list }));
+
+const changeSortDB = (sortType) => {
+  console.log(sortType);
+  return function (dispatch, getState) {
+    axios
+      .get("https://devssk.shop/api/cakes", {
+        params: {
+          page: 0,
+          sortType: sortType,
+        },
+      })
+      .then((res) => {
+        dispatch(changeSort(res.data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
 
 const getCakeListDB = (page_num, sortType) => {
+  console.log(sortType);
   return function (dispatch, getState) {
     axios
       .get("https://devssk.shop/api/cakes", {
@@ -40,11 +58,7 @@ const getCakeListDB = (page_num, sortType) => {
         },
       })
       .then((res) => {
-        // if (sortType === "random") {
-        //   dispatch(randomCakeList(res.data));
-        // } else {
-        dispatch(likeCakeList(res.data));
-        // }
+        dispatch(getCakeList(res.data));
       })
       .catch((err) => {
         console.log(err);
@@ -115,7 +129,7 @@ const addLikeCakeDB = (cakeId, myLike) => {
 
 export default handleActions(
   {
-    [CAKE_LIST]: (state, action) =>
+    [GET_CAKE_LIST]: (state, action) =>
       produce(state, (draft) => {
         draft.list.push(...action.payload.list);
         //중복 검사
@@ -128,32 +142,11 @@ export default handleActions(
           }
         }, []);
       }),
-    [LIKE_CAKE_LIST]: (state, action) =>
+    [CHANGE_SORT]: (state, action) =>
       produce(state, (draft) => {
-        draft.like_cake_list.push(...action.payload.list);
-        //중복 검사
-        draft.like_cake_list = draft.like_cake_list.reduce((acc, cur) => {
-          if (acc.findIndex((a) => a.cakeId === cur.cakeId) === -1) {
-            return [...acc, cur];
-          } else {
-            acc[acc.findIndex((a) => a.cakeId === cur.cakeId)] = cur;
-            return acc;
-          }
-        }, []);
+        draft.list = [];
+        draft.list.push(...action.payload.list);
       }),
-    // [RANDOM_CAKE_LIST]: (state, action) =>
-    //   produce(state, (draft) => {
-    //     draft.random_cake_list.push(...action.payload.list);
-    //     // 중복 검사
-    //     draft.random_cake_list = draft.random_cake_list.reduce((acc, cur) => {
-    //       if (acc.findIndex((a) => a.cakeId === cur.cakeId) === -1) {
-    //         return [...acc, cur];
-    //       } else {
-    //         acc[acc.findIndex((a) => a.cakeId === cur.cakeId)] = cur;
-    //         return acc;
-    //       }
-    //     }, []);
-    //   }),
     [CAKE_IMAGE]: (state, action) =>
       produce(state, (draft) => {
         draft.lists = action.payload.img;
@@ -171,6 +164,7 @@ export default handleActions(
           }
         }, []);
       }),
+
     [ADD_LIKE_CAKE]: (state, action) =>
       produce(state, (draft) => {
         // const idx = draft.is_like.findIndex(
@@ -184,7 +178,8 @@ export default handleActions(
 );
 
 const actionCreators = {
-  cakeList,
+  // cakeList,
+  changeSortDB,
   getCakeListDB,
   cakeImage,
   getCakeImageDB,

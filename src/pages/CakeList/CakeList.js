@@ -31,31 +31,19 @@ Modal.setAppElement("#root");
 const CakeList = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [pageNumber, setPageNumber] = useState(0);
   const [sortType, setSortType] = useState("likeCnt");
+
   const [ref, inView] = useInView();
-  const like_cake_list = useSelector((state) => state.cake.like_cake_list);
-  // const random_cake_list = useSelector((state) => state.cake.random_cake_list);
+
+  const cake_list = useSelector((state) => state.cake.list);
   const cake_img = useSelector((state) => state.cake.lists);
   const store_id = useSelector((state) => state.cake.lists);
   const cake_id = useSelector((state) => state.cake.lists);
   const login = useSelector((state) => state.user.is_login);
   const my_like = useSelector((state) => state.cake.lists);
-
-  useEffect(() => {
-    setPageNumber(0);
-  }, [sortType]);
-
-  useEffect(() => {
-    dispatch(cakeAction.getCakeListDB(pageNumber, sortType));
-  }, [pageNumber]);
-
-  useEffect(() => {
-    if (inView) {
-      setPageNumber(pageNumber + 1);
-    }
-  }, [inView]);
 
   const likeToggle = () => {
     if (!login) {
@@ -72,14 +60,26 @@ const CakeList = (props) => {
     }
   };
 
+  useEffect(() => {
+    dispatch(cakeAction.getCakeListDB(pageNumber, sortType));
+  }, [pageNumber]);
+
+  useEffect(() => {
+    if (inView) {
+      setPageNumber(pageNumber + 1);
+    }
+  }, [inView]);
+
   return (
     <CakeContainer>
       <h3>케이크 모아보기</h3>
       <HrWrap />
-      {/* <ButtonWrap>
+      <ButtonWrap>
         <LikeButton
           onClick={() => {
+            setPageNumber(0);
             setSortType("likeCnt");
+            dispatch(cakeAction.changeSortDB("likeCnt"));
           }}
           sortType={sortType}
         >
@@ -87,19 +87,23 @@ const CakeList = (props) => {
         </LikeButton>
         <AllButton
           onClick={() => {
+            setPageNumber(0);
             setSortType("random");
+            dispatch(cakeAction.changeSortDB("random"));
           }}
           sortType={sortType}
         >
           랜덤순
         </AllButton>
-      </ButtonWrap> */}
+      </ButtonWrap>
       <ImageWrap>
-        {sortType === "likeCnt" &&
-          like_cake_list &&
-          like_cake_list.map((v, idx) => {
+        {cake_list &&
+          cake_list.map((v, idx) => {
             return (
-              <ImgWrap key={idx} ref={ref}>
+              <ImgWrap
+                key={idx}
+                ref={cake_list.length === idx + 1 ? ref : null}
+              >
                 <ImgBox
                   src={v.img}
                   onClick={() => {
@@ -111,22 +115,6 @@ const CakeList = (props) => {
               </ImgWrap>
             );
           })}
-        {/* {sortType === "random" &&
-          random_cake_list &&
-          random_cake_list.map((v, idx) => {
-            return (
-              <ImgWrap key={idx} ref={ref}>
-                <ImgBox
-                  src={v.img}
-                  onClick={() => {
-                    setModalIsOpen(true);
-                    dispatch(cakeAction.getCakeImageDB(v.cakeId));
-                  }}
-                  alt="cakeImage"
-                />
-              </ImgWrap>
-            );
-          })} */}
       </ImageWrap>
       <Modal
         isOpen={modalIsOpen}
