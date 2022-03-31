@@ -50,6 +50,7 @@ export const Info = styled.div`
   h3 {
     font-size: 1.7rem;
     padding-bottom: 1rem;
+    text-decoration: underline;
   }
   img {
     padding-left: 0.4rem;

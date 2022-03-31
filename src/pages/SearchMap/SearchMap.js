@@ -46,7 +46,6 @@ const SearchMap = () => {
   console.log(searchs);
 
   const storeData = searchs.filter((a) => a.storeId === +storeId);
-  console.log(storeData);
 
   const mapSearching = () => {
     if (!selected && searchInput) {
