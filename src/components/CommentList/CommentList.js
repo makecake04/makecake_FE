@@ -35,7 +35,6 @@ const CommentList = (props) => {
                 <NickName>{v.nickname}</NickName>
                 <CommentDate>{v.createdDate}</CommentDate>
               </InfoBox>
-
               <Content>{v.content}</Content>
 
               <Button>
