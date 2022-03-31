@@ -50,7 +50,30 @@ const PostDetail = () => {
     }
   }, [inView]);
 
+  const checkLogin = () => {
+    if (!is_session) {
+      Swal.fire({
+        title: "로그인이 필요한 서비스입니다!",
+        showCancelButton: true,
+        confirmButtonText: '<a href="/">로그인 할래요!</a>',
+        confirmButtonColor: "#ff679e",
+        cancelButtonColor: "#777",
+        cancelButtonText: "그냥 둘러볼래요.",
+      });
+    }
+  };
+
   const changeComment = (e) => {
+    if (!is_session) {
+      Swal.fire({
+        title: "로그인이 필요한 서비스입니다!",
+        showCancelButton: true,
+        confirmButtonText: '<a href="/">로그인 할래요!</a>',
+        confirmButtonColor: "#ff679e",
+        cancelButtonColor: "#777",
+        cancelButtonText: "그냥 둘러볼래요.",
+      });
+    }
     setContent(e.target.value);
   };
 
@@ -183,6 +206,7 @@ const PostDetail = () => {
           onChange={changeComment}
           onKeyPress={onKeyPress}
           maxLength={100}
+          onClick={() => checkLogin()}
         />
         <SendButton onClick={() => clickComment()}>
           <img src={send} alt="send" />
