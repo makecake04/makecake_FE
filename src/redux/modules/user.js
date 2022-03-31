@@ -316,12 +316,7 @@ const resignDB = () => {
       )
       .then((res) => {
         localStorage.removeItem("token");
-        Swal.fire({
-          title: "꼭 다시 돌아와주세요! 😢",
-          showCancelButton: false,
-          confirmButtonText: '<a href="/home">생각해볼게요.</a>',
-          confirmButtonColor: "#ff679e",
-        });
+        window.location.replace("/home");
       })
       .catch((err) => {
         console.log(err);

@@ -43,13 +43,9 @@ const PostDetail = () => {
   const nickname = useSelector((state) => state.user.user?.nickname);
   const login = useSelector((state) => state.user.is_login);
 
-  const getMoreComment = async () => {
-    setPageNumber(pageNumber + 1);
-  };
-
   useEffect(() => {
     if (inView) {
-      getMoreComment();
+      setPageNumber(pageNumber + 1);
     }
   }, [inView]);
 

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
-import { actionCreators as cakeAction } from "../../redux/modules/cake";
 import { useInView } from "react-intersection-observer";
-import { actionCreators as storeAction } from "../../redux/modules/store";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-//import css
+import { actionCreators as cakeAction } from "../../redux/modules/cake";
+
+//css
 import {
   CakeContainer,
   HrWrap,
