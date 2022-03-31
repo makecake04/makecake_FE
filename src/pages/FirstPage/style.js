@@ -71,8 +71,8 @@ export const Span = styled.span`
 
 export const SocialLoginWrap = styled.div`
   display: flex;
-  /* margin-left: 82.5px; */
-  margin-left: 121.5px;
+  margin-left: 80.5px;
+  /* margin-left: 121.5px; */
   cursor: pointer;
 `;
 
