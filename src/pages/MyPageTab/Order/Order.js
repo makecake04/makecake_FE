@@ -48,7 +48,6 @@ const Order = () => {
       setOrder("ordered");
     }
   };
-
   useEffect(() => {
     setPageNumber(0);
     dispatch(orderAction.getOrdersDB(0, order));
