@@ -104,7 +104,12 @@ const Noti = (props) => {
                     }}
                   >
                     <ImgWrap>
-                      {v.type === "LIKE" ? <NotiHeart /> : <NotiComment />}
+                      {/* {v.type === "LIKE" ? <NotiHeart /> : <NotiComment />} */}
+                      {v.type === "LIKE" && <NotiHeart />}
+                      {v.type === "COMMENT" && <NotiComment />}
+                      {v.type === "AD" && <CakeIcon />}
+                      {v.type === "NOTICE" && <CakeIcon />}
+                      {v.type === "BETA" && <CakeIcon />}
                       {/* <CakeIcon/> */}
                     </ImgWrap>
 
