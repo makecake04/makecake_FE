@@ -33,7 +33,8 @@ const CommentList = (props) => {
             <CommentBox key={i}>
               <InfoBox>
                 <NickName>{v.nickname}</NickName>
-                <CommentDate>{v.createdDate}</CommentDate>
+                {/* <CommentDate>{v.createdDate}</CommentDate>  */}
+                <CommentDate>{v.createdDate?.split(" ")[0]}</CommentDate>
               </InfoBox>
 
               <Content>{v.content}</Content>
