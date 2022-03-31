@@ -5,6 +5,7 @@ import Modal from "react-modal";
 
 import { actionCreators as designAction } from "../../../redux/modules/design";
 import { actionCreators as orderAction } from "../../../redux/modules/order";
+import { actionCreators as searchAction } from "../../../redux/modules/search";
 
 //css
 import {
@@ -44,6 +45,7 @@ const OrderWrite = () => {
   const design_detail = useSelector((state) => state.design.design_detail);
   const order_form = useSelector((state) => state.order.order_form);
   const question_length = order_form.formList?.length;
+  console.log(order_form);
   const list = Object.values(inputs);
   const setUserInput = (e, i) => {
     let key = `${i}`;
@@ -72,19 +74,26 @@ const OrderWrite = () => {
       <Body>
         <img src={design_detail.img} alt="img" />
         <Info>
-          <h3>{order_form.name}</h3>
+          <h3
+            onClick={() => {
+              navigate(`/searchmap/${order_form.storeId}`);
+              dispatch(searchAction.mapInfoDB(order_form.storeId));
+            }}
+          >
+            {order_form.name}
+          </h3>
           <img
             src={help_icon}
             alt="help"
             onClick={() => setModalIsOpen(true)}
           />
-          <img
+          {/* <img
             src={order_location}
             alt="location"
             onClick={() => {
               navigate(`/searchmap/${order_form.storeId}`);
             }}
-          />
+          /> */}
         </Info>
         {order_form &&
           order_form.formList?.map((o, i) => {
