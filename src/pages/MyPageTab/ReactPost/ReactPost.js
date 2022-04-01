@@ -49,12 +49,12 @@ import {
 
 const ReactWrite = (props) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [refDesign, inViewDesign] = useInView();
   const [refComment, inViewComment] = useInView();
-  const dispatch = useDispatch();
 
   const [toggleState, setToggleState] = useState(1);
-  const [content, setContent] = useState("");
+
   const [pageNumber, setPageNumber] = useState(0);
 
   const likedesign = useSelector((state) => state.design.likeDesign);
@@ -64,10 +64,6 @@ const ReactWrite = (props) => {
   const deleteComment = (commentId) => {
     dispatch(commentAction.deleteMyCommentDB(commentId));
   };
-
-  // const toggleTab = (index) => {
-  //   setToggleState(index);
-  // };
 
   useEffect(() => {
     if (toggleState === 1) {
@@ -107,7 +103,9 @@ const ReactWrite = (props) => {
               onClick={() => {
                 setToggleState(1);
                 setPageNumber(0);
+
                 dispatch(postAction.setPostSortType(1));
+
               }}
               toggleState={toggleState}
             >
@@ -117,7 +115,9 @@ const ReactWrite = (props) => {
               onClick={() => {
                 setToggleState(2);
                 setPageNumber(0);
+
                 dispatch(postAction.setPostSortType(2));
+
               }}
               toggleState={toggleState}
             >
@@ -195,7 +195,6 @@ const ReactWrite = (props) => {
                         onClick={() => {
                           navigate(`/post/${v.postId}`);
                         }}
-                        value={content}
                       >
                         {v.content}
                       </ContentText>

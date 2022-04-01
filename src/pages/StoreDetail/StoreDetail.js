@@ -115,15 +115,6 @@ const StoreDetail = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpen2, setModalIsOpen2] = useState(false);
 
-  useEffect(() => {
-    if (store_cake.length !== 0) {
-      dispatch(storeAction.storeCakeReplace([]));
-    }
-    if (store_review.length !== 0) {
-      dispatch(storeAction.storeReviewReplace([]));
-    }
-  }, []);
-
   const cake_img = useSelector((state) => state.cake.lists);
   const cake_id = useSelector((state) => state.cake.lists);
   const my_like = useSelector((state) => state.cake.lists);
@@ -170,21 +161,22 @@ const StoreDetail = (props) => {
   };
 
   useEffect(() => {
+    if (store_cake.length !== 0) {
+      dispatch(storeAction.storeCakeReplace([]));
+    }
+    if (store_review.length !== 0) {
+      dispatch(storeAction.storeReviewReplace([]));
+    }
     dispatch(storeAction.getStoreDetailDB(store_id));
   }, []);
 
   useEffect(() => {
-    setPageNumber(0);
-  }, [toggleState]);
-
-  useEffect(() => {
     if (toggleState === 3) {
       dispatch(storeAction.getStoreCakeListDB(store_id));
-    }
-    if (toggleState === 4) {
+    } else if (toggleState === 4) {
       dispatch(storeAction.getStoreReviewListDB(store_id, pageNumber));
     }
-  }, [pageNumber]);
+  }, [toggleState, pageNumber]);
 
   useEffect(() => {
     if (inView) {
@@ -307,7 +299,9 @@ const StoreDetail = (props) => {
             <OneButton
               onClick={() => {
                 toggleTab(1);
+
                 dispatch(storeAction.setStoreSortType(1));
+
               }}
               toggleState={toggleState}
             >
@@ -324,7 +318,6 @@ const StoreDetail = (props) => {
             <ThreeButton
               onClick={() => {
                 toggleTab(3);
-                dispatch(storeAction.getStoreCakeListDB(store_id));
               }}
               toggleState={toggleState}
             >
@@ -333,9 +326,7 @@ const StoreDetail = (props) => {
             <FourButton
               onClick={() => {
                 toggleTab(4);
-                dispatch(
-                  storeAction.getStoreReviewListDB(store_id, pageNumber)
-                );
+                setPageNumber(0);
               }}
               toggleState={toggleState}
             >
@@ -551,7 +542,7 @@ const StoreDetail = (props) => {
                   {store_cake &&
                     store_cake.map((v, idx) => {
                       return (
-                        <Images key={idx} ref={ref}>
+                        <Images key={idx}>
                           <ImgBox
                             src={v.img}
                             onClick={() => {
@@ -569,7 +560,10 @@ const StoreDetail = (props) => {
               {store_review &&
                 store_review.map((v, idx) => {
                   return (
-                    <CommentWrap key={idx} ref={ref}>
+                    <CommentWrap
+                      key={idx}
+                      ref={store_review.length === idx + 1 ? ref : null}
+                    >
                       <TitleTwo>
                         <InfoTwo>
                           <ProfileImage src={v.writerImg} />

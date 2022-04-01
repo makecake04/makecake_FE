@@ -8,11 +8,8 @@ import { actionCreators as postAction } from "../../redux/modules/post";
 import { actionCreators as commentAction } from "../../redux/modules/comment";
 import { actionCreators as designAction } from "../../redux/modules/design";
 
-//component
-import { CommentList } from "../../components/component";
-
 //image
-import { black_back_button, like, view, send } from "../../assets/images/image";
+import { black_back_button, view, send } from "../../assets/images/image";
 
 //css
 import {
@@ -38,7 +35,6 @@ import {
   CommentDate,
   Content,
   Button,
-  EditBox,
   DeleteBox,
 } from "./style";
 
@@ -46,27 +42,25 @@ const PostDetail = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const post_id = useParams().id;
+
   const [content, setContent] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
   const [ref, inView] = useInView();
+
+  const is_session = localStorage.getItem("token");
+
   const post = useSelector((state) => state.post.list);
   const nickname = useSelector((state) => state.user.user?.nickname);
-  const login = useSelector((state) => state.user.is_login);
-  const is_session = localStorage.getItem("token");
+
   const sort = useSelector((state) => state.design.mydesign_sort_type);
   const locationState = useLocation().state?.sortType;
+
   const commentList = useSelector((state) => state.comment.list);
   const userInfo = useSelector((state) => state.user.user);
 
   const deleteComment = (commentId) => {
     dispatch(commentAction.deleteCommentDB(commentId));
   };
-
-  useEffect(() => {
-    if (inView) {
-      setPageNumber(pageNumber + 1);
-    }
-  }, [inView]);
 
   const checkLogin = () => {
     if (!is_session) {
@@ -95,16 +89,7 @@ const PostDetail = () => {
     setContent(e.target.value);
   };
 
-  const clickComment = (storeId) => {
-    if (!content) {
-      Swal.fire({
-        title: "댓글을 입력해 주세요!",
-        showCancelButton: false,
-        confirmButtonText: "댓글 입력할래요!",
-        confirmButtonColor: "#ff679e",
-      });
-      return;
-    }
+  const clickComment = () => {
     if (!is_session) {
       Swal.fire({
         title: "로그인이 필요한 서비스입니다!",
@@ -114,22 +99,21 @@ const PostDetail = () => {
         cancelButtonColor: "#777",
         cancelButtonText: "그냥 둘러볼래요.",
       });
-      return;
+    }
+    if (is_session && !content) {
+      Swal.fire({
+        title: "댓글을 입력해 주세요!",
+        showCancelButton: false,
+        confirmButtonText: "댓글 입력할래요!",
+        confirmButtonColor: "#ff679e",
+      });
     }
     dispatch(commentAction.addCommentDB(post_id, content));
     setContent("");
   };
 
-  useEffect(() => {
-    dispatch(postAction.getOnePostDB(post_id));
-  }, []);
-
-  useEffect(() => {
-    dispatch(commentAction.getCommentDB(post_id, pageNumber));
-  }, [pageNumber]);
-
   const likeToggle = () => {
-    if (!login) {
+    if (!is_session) {
       Swal.fire({
         title: "로그인이 필요한 서비스입니다!",
         showCancelButton: true,
@@ -148,6 +132,22 @@ const PostDetail = () => {
       clickComment();
     }
   };
+  useEffect(() => {
+    if (commentList.length !== 0) {
+      dispatch(commentAction.commentReplace([]));
+    }
+    dispatch(postAction.getOnePostDB(post_id));
+  }, []);
+
+  useEffect(() => {
+    dispatch(commentAction.getCommentDB(post_id, pageNumber));
+  }, [pageNumber]);
+
+  useEffect(() => {
+    if (inView) {
+      setPageNumber(pageNumber + 1);
+    }
+  }, [inView]);
 
   return (
     <Wrapper>
@@ -236,15 +236,16 @@ const PostDetail = () => {
         <SendButton onClick={() => clickComment()}>
           <img src={send} alt="send" />
         </SendButton>
-        {/* <CommentList /> */}
         <Container>
           {commentList &&
             commentList.map((v, i) => {
               return (
-                <CommentBox key={i}>
+                <CommentBox
+                  key={i}
+                  ref={commentList.length === i + 1 ? ref : null}
+                >
                   <InfoBox>
                     <NickName>{v.nickname}</NickName>
-                    {/* <CommentDate>{v.createdDate}</CommentDate>  */}
                     <CommentDate>{v.createdDate?.split(" ")[0]}</CommentDate>
                   </InfoBox>
                   <Content>{v.content}</Content>

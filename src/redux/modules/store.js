@@ -134,7 +134,6 @@ const getStoreCakeListDB = (storeId) => {
   return function (dispatch, getState) {
     axios
       .get(`https://devssk.shop/api/stores/cakes`, {
-        storeId,
         params: {
           storeId: storeId,
         },
