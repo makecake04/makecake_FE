@@ -13,6 +13,7 @@ const STORE_CAKE_REPLACE = "STORE_CAKE_REPLACE";
 const STORE_REVIEW_LIST = "STORE_REVIEW_LIST";
 const STORE_REVIEW_REPLACE = "STORE_REVIEW_REPLACE";
 const ADD_LIKE_STORE = "ADD_LIKE_STORE";
+const SET_STORE_SORTTPYE = "SET_STORE_SORTTYPE";
 
 const initialState = {
   list: [],
@@ -22,6 +23,7 @@ const initialState = {
   store: [],
   cake: [],
   review: [],
+  store_sort_type: 1,
 };
 
 const hotList = createAction(HOT_LIST, (list) => ({ list }));
@@ -45,6 +47,7 @@ const addLikeStore = createAction(
     likeCnt,
   })
 );
+const setStoreSortType = createAction(SET_STORE_SORTTPYE, (list) => ({ list }));
 
 const getHotListDB = () => {
   return function (dispatch, getState) {
@@ -293,6 +296,10 @@ export default handleActions(
         draft.store.myLike = action.payload.isLike;
         draft.store.likeCnt = action.payload.likeCnt;
       }),
+    [SET_STORE_SORTTPYE]: (state, action) =>
+      produce(state, (draft) => {
+        draft.store_sort_type = action.payload.list;
+      }),
   },
   initialState
 );
@@ -316,6 +323,7 @@ const actionCreators = {
   getStoreReviewListDB,
   addLikeStore,
   addLikeStoreDB,
+  setStoreSortType,
 };
 
 export { actionCreators };

@@ -8,6 +8,7 @@ const CAKE_IMAGE = "CAKE_IMAGE";
 const LIKE_CAKE = "LIKE_CAKE";
 const ADD_LIKE_CAKE = "ADD_LIKE_CAKE";
 const CHANGE_SORT = "CHANGE_SORT";
+const SET_CAKE_SORTTYPE = "SET_CAKE_SORTTYPE";
 
 const initialState = {
   list: [],
@@ -16,6 +17,7 @@ const initialState = {
   like_cake_list: [],
   random_cake_list: [],
   cake_list: [],
+  cake_sort_type: "likeCnt",
 };
 
 const getCakeList = createAction(GET_CAKE_LIST, (list) => ({ list }));
@@ -27,6 +29,7 @@ const addLikeCake = createAction(ADD_LIKE_CAKE, (cakeId, isLike, likeCnt) => ({
   likeCnt,
 }));
 const changeSort = createAction(CHANGE_SORT, (list) => ({ list }));
+const setCakeSortType = createAction(SET_CAKE_SORTTYPE, (list) => ({ list }));
 
 const changeSortDB = (sortType) => {
   console.log(sortType);
@@ -173,6 +176,10 @@ export default handleActions(
         draft.lists.myLike = action.payload.isLike;
         draft.lists.likeCnt = action.payload.likeCnt;
       }),
+    [SET_CAKE_SORTTYPE]: (state, action) =>
+      produce(state, (draft) => {
+        draft.cake_sort_type = action.payload.list;
+      }),
   },
   initialState
 );
@@ -187,6 +194,7 @@ const actionCreators = {
   getLikeCakeDB,
   addLikeCake,
   addLikeCakeDB,
+  setCakeSortType,
 };
 
 export { actionCreators };

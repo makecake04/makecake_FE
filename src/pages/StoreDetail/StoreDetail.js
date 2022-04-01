@@ -132,7 +132,7 @@ const StoreDetail = (props) => {
   const user_nickname = useSelector((state) => state.user.user);
   const login = useSelector((state) => state.user.is_login);
   const store_info = useSelector((state) => state.store.store);
-
+  const sort = useSelector((state) => state.store.store_sort_type);
   const is_session = localStorage.getItem("token");
 
   const toggleTab = (index) => {
@@ -304,10 +304,21 @@ const StoreDetail = (props) => {
               </Toggle>
             ))}
           <BlocTab>
-            <OneButton onClick={() => toggleTab(1)} toggleState={toggleState}>
+            <OneButton
+              onClick={() => {
+                toggleTab(1);
+                dispatch(storeAction.setStoreSortType(1));
+              }}
+              toggleState={toggleState}
+            >
               소개
             </OneButton>
-            <TwoButton onClick={() => toggleTab(2)} toggleState={toggleState}>
+            <TwoButton
+              onClick={() => {
+                toggleTab(2);
+              }}
+              toggleState={toggleState}
+            >
               메뉴
             </TwoButton>
             <ThreeButton

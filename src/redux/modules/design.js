@@ -13,6 +13,8 @@ const MY_DESIGN_LIST = "MY_DESIGN_LIST";
 const MY_POST_LIST = "MY_POST_LIST";
 const DESIGN_DETAIL = "DESIGN_DETAIL";
 const LIKE_DESIGN = "LIKE_DESIGN";
+const SET_DESIGN_SORTTYPE = "SET_DESIGN_SORTTYPE";
+const SET_MYDESIGN_SORTTYPE = "SET_MYDESIGN_SORTTYPE";
 // const DELETE_DESIGN = "DELETE_DESIGN";
 // const POST_DETAIL = "POST_DETAIL";
 
@@ -30,6 +32,12 @@ const myDesigntList = createAction(MY_DESIGN_LIST, (list) => ({ list }));
 const myPostList = createAction(MY_POST_LIST, (list) => ({ list }));
 const designDetail = createAction(DESIGN_DETAIL, (list) => ({ list }));
 const likeDesign = createAction(LIKE_DESIGN, (likedesign) => ({ likedesign }));
+const setDesignSortType = createAction(SET_DESIGN_SORTTYPE, (list) => ({
+  list,
+}));
+const setMyDesignSortType = createAction(SET_MYDESIGN_SORTTYPE, (list) => ({
+  list,
+}));
 // const deleteDesign = createAction(DELETE_DESIGN, (list) => ({ list }));
 // const postDetail = createAction(POST_DETAIL, (list) => ({ list }));
 
@@ -43,6 +51,8 @@ const initialState = {
   like_list: [],
   comment_list: [],
   view_list: [],
+  design_sort_type: "createdDate",
+  mydesign_sort_type: 1,
 };
 
 //middleware
@@ -323,6 +333,14 @@ export default handleActions(
           }
         }, []);
       }),
+    [SET_DESIGN_SORTTYPE]: (state, action) =>
+      produce(state, (draft) => {
+        draft.design_sort_type = action.payload.list;
+      }),
+    [SET_MYDESIGN_SORTTYPE]: (state, action) =>
+      produce(state, (draft) => {
+        draft.mydesign_sort_type = action.payload.list;
+      }),
     // [POST_DETAIL]: (state, action) =>
     //   produce(state, (draft) => {
     //     draft.post_detail = action.payload.list;
@@ -339,6 +357,8 @@ const actionCreators = {
   getDesignImageDB,
   deleteDesignDB,
   getLikeDesignDB,
+  setDesignSortType,
+  setMyDesignSortType,
   // getPostImageDB,
 };
 
