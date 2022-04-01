@@ -21,6 +21,10 @@ import {
   CommentButton,
   ContentTabs,
   PostWrapOne,
+  NeedLikeBox,
+  CakeIcon,
+  PressLikeText,
+  GoToSeePostText,
   PostWrap,
   ReviewWrap,
   TitleWrap,
@@ -35,6 +39,8 @@ import {
   Img,
   HrWrap,
   PostWrapTwo,
+  NeedCommentBox,
+  NeedCommentText,
   CommentWrap,
   InsertDt,
   NicknameAndDelete,
@@ -120,7 +126,19 @@ const ReactWrite = (props) => {
           </LikeAndCommentWrap>
           <ContentTabs>
             <PostWrapOne toggleState={toggleState}>
-              {likedesign &&
+              {likedesign.length === 0 ? (
+                <NeedLikeBox>
+                  <CakeIcon />
+                  <PressLikeText>게시글에 좋아요를 눌러보세요</PressLikeText>
+                  <GoToSeePostText
+                    onClick={() => {
+                      navigate("/design/list");
+                    }}
+                  >
+                    게시글 구경하러 가기
+                  </GoToSeePostText>
+                </NeedLikeBox>
+              ) : (
                 likedesign.map((v, idx) => {
                   return (
                     <PostWrap
@@ -149,11 +167,24 @@ const ReactWrite = (props) => {
                       <HrWrap />
                     </PostWrap>
                   );
-                })}
+                })
+              )}
             </PostWrapOne>
 
             <PostWrapTwo toggleState={toggleState}>
-              {commentList &&
+              {commentList.length === 0 ? (
+                <NeedCommentBox>
+                  <CakeIcon />
+                  <NeedCommentText>게시글에 댓글을 달아보세요</NeedCommentText>
+                  <GoToSeePostText
+                    onClick={() => {
+                      navigate("/design/list");
+                    }}
+                  >
+                    게시글 구경하러 가기
+                  </GoToSeePostText>
+                </NeedCommentBox>
+              ) : (
                 commentList.map((v, i) => {
                   return (
                     <CommentWrap
@@ -192,7 +223,8 @@ const ReactWrite = (props) => {
                       <HrWrap />
                     </CommentWrap>
                   );
-                })}
+                })
+              )}
             </PostWrapTwo>
           </ContentTabs>
         </Wrap>

@@ -19,7 +19,14 @@ import {
   OrderCheck,
   Body,
   DesignList,
+  NeedDesignBox,
+  DrawingIcon,
+  NeedDesignText,
+  GoToDesignText,
   OrderList,
+  NeedOrderBox,
+  PostIcon,
+  NeedOrderText,
   ImgWrap,
   ImgBox,
   ModalWrap,
@@ -107,7 +114,17 @@ const Order = () => {
       </Tab>
       <Body>
         <DesignList toggleState={toggleState}>
-          {no_order_list &&
+          {no_order_list.length === 0 ? (
+            <NeedDesignBox>
+              <DrawingIcon />
+              <NeedDesignText>
+                주문을 하기 위해서는 도안이 필요해요!
+              </NeedDesignText>
+              <GoToDesignText onClick={() => navigate("/drawing")}>
+                도안 그리러 가기
+              </GoToDesignText>
+            </NeedDesignBox>
+          ) : (
             no_order_list.map((v, idx) => {
               return (
                 <ImgWrap key={idx} ref={ref}>
@@ -121,10 +138,16 @@ const Order = () => {
                   />
                 </ImgWrap>
               );
-            })}
+            })
+          )}
         </DesignList>
         <OrderList toggleState={toggleState}>
-          {order_list &&
+          {order_list.length === 0 ? (
+            <NeedOrderBox>
+              <PostIcon />
+              <NeedOrderText>주문서 작성을 먼저 해주세요!</NeedOrderText>
+            </NeedOrderBox>
+          ) : (
             order_list.map((v, idx) => {
               return (
                 <ImgWrap key={idx} ref={ref}>
@@ -137,7 +160,8 @@ const Order = () => {
                   />
                 </ImgWrap>
               );
-            })}
+            })
+          )}
         </OrderList>
       </Body>
       <Modal

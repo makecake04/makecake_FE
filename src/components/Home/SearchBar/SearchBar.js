@@ -32,7 +32,7 @@ const SearchBar = (props) => {
           navigate("/search");
         }}
       >
-        <input type="text" placeholder="검색하기" />
+        <input type="text" placeholder="매장 검색하기" />
         <SearchIcon />
       </Search>
 

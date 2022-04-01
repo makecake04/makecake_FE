@@ -1,7 +1,11 @@
 import styled, { css } from "styled-components";
 
 //image
-import { order_circle } from "../../../assets/images/image";
+import {
+  drawing_icon,
+  order_circle,
+  post_icon,
+} from "../../../assets/images/image";
 
 export const Wrapper = styled.div`
   hr {
@@ -152,6 +156,29 @@ export const DesignList = styled.div`
         `}
 `;
 
+export const NeedDesignBox = styled.div`
+  width: 150px;
+  margin-left: 100px;
+  margin-top: 100px;
+`;
+
+export const NeedDesignText = styled.p`
+  color: #e1e1e1;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+`;
+
+export const GoToDesignText = styled.p`
+  text-align: center;
+  color: #000000;
+  font-weight: 100;
+  font-size: 16px;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 5px;
+`;
+
 export const ImgWrap = styled.div`
   position: relative;
   width: 100%;
@@ -188,6 +215,20 @@ export const OrderList = styled.div`
         `}
 `;
 
+export const NeedOrderBox = styled.div`
+  width: 220px;
+  margin-left: 75px;
+  margin-top: 100px;
+`;
+
+export const NeedOrderText = styled.p`
+  color: #e1e1e1;
+  font-weight: bold;
+  /* text-align: center; */
+  margin-top: 10px;
+  margin-left: 5px;
+`;
+
 export const ModalWrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -209,4 +250,16 @@ export const OrderIcon = styled.img.attrs({
   position: absolute;
   top: 1rem;
   right: 1rem;
+`;
+
+export const DrawingIcon = styled.img.attrs({
+  src: `${drawing_icon}`,
+})`
+  margin-left: 40px;
+`;
+
+export const PostIcon = styled.img.attrs({
+  src: `${post_icon}`,
+})`
+  margin-left: 65px;
 `;

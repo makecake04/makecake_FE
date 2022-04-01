@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 //image
-import { black_back_button } from "../../../assets/images/image";
+import { black_back_button, cake_icon } from "../../../assets/images/image";
 
 export const ReactCakeWrap = styled.div``;
 
@@ -55,6 +55,36 @@ export const ImgWrap = styled.div`
   width: 100%;
   height: 0;
   padding-bottom: 100%;
+`;
+
+export const SelectCakeBox = styled.div`
+  width: 220px;
+  margin-left: 75px;
+  margin-top: 100px;
+`;
+
+export const CakeIcon = styled.img.attrs({
+  src: `${cake_icon}`,
+  alt: "CakeIcon",
+})`
+  margin-left: 75px;
+`;
+
+export const SelectCakeText = styled.p`
+  color: #e1e1e1;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+`;
+
+export const GoToSeeCakeText = styled.p`
+  text-align: center;
+  color: #000000;
+  font-weight: 100;
+  font-size: 16px;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 5px;
 `;
 
 export const Img = styled.img`
