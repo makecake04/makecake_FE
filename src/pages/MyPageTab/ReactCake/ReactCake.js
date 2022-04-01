@@ -15,6 +15,10 @@ import {
   ImageWrap,
   PostWrap,
   ImgWrap,
+  SelectCakeBox,
+  CakeIcon,
+  SelectCakeText,
+  GoToSeeCakeText,
   Img,
   StoreName,
 } from "./style";
@@ -52,7 +56,19 @@ const ReactCake = (props) => {
         </HeaderWrap>
         <Line />
         <ImageWrap>
-          {likeCake &&
+          {likeCake.length === 0 ? (
+            <SelectCakeBox>
+              <CakeIcon />
+              <SelectCakeText>맘에드는 케이크를 골라보세요</SelectCakeText>
+              <GoToSeeCakeText
+                onClick={() => {
+                  navigate("/cake");
+                }}
+              >
+                케이크 구경하러 가기
+              </GoToSeeCakeText>
+            </SelectCakeBox>
+          ) : (
             likeCake.map((v, idx) => {
               return (
                 <PostWrap
@@ -68,7 +84,8 @@ const ReactCake = (props) => {
                   <StoreName>{v.storeName}</StoreName>
                 </PostWrap>
               );
-            })}
+            })
+          )}
         </ImageWrap>
       </Container>
     </ReactCakeWrap>

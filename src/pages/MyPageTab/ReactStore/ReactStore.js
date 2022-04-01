@@ -20,7 +20,13 @@ import {
   Body,
   ImgWrap,
   StoreList,
+  SelectStoreBox,
+  CakeIcon,
+  SelectStoreText,
+  SearchStoreText,
   ReviewList,
+  NeedReviewBox,
+  NeedReviewText,
   OneStore,
   StoreAddress,
   OneReview,
@@ -91,7 +97,19 @@ const ReactStore = (props) => {
       </Tab>
       <Body>
         <StoreList toggleState={toggleState}>
-          {likeStore &&
+          {likeStore.length === 0 ? (
+            <SelectStoreBox>
+              <CakeIcon />
+              <SelectStoreText>마음에 드는 매장을 골라보세요</SelectStoreText>
+              <SearchStoreText
+                onClick={() => {
+                  navigate("/search");
+                }}
+              >
+                매장 검색하기
+              </SearchStoreText>
+            </SelectStoreBox>
+          ) : (
             likeStore.map((v, idx) => {
               return (
                 <OneStore
@@ -112,10 +130,23 @@ const ReactStore = (props) => {
                   </StoreAddress>
                 </OneStore>
               );
-            })}
+            })
+          )}
         </StoreList>
         <ReviewList toggleState={toggleState}>
-          {myReview &&
+          {myReview.length === 0 ? (
+            <NeedReviewBox>
+              <CakeIcon />
+              <NeedReviewText>방문한 매장에 후기를 남겨보세요</NeedReviewText>
+              <SearchStoreText
+                onClick={() => {
+                  navigate("/search");
+                }}
+              >
+                매장 검색하기
+              </SearchStoreText>
+            </NeedReviewBox>
+          ) : (
             myReview.map((v, idx) => {
               return (
                 <OneReview key={idx} ref={ref}>
@@ -152,7 +183,8 @@ const ReactStore = (props) => {
                   <hr />
                 </OneReview>
               );
-            })}
+            })
+          )}
         </ReviewList>
       </Body>
     </Wrapper>

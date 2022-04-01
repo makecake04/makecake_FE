@@ -86,6 +86,9 @@ import write_design from "./my-design-modal/write.svg";
 //mypage
 import nav_icon from "./mypage/nav-icon.svg";
 import pink_nav_icon from "./mypage/pink-nav-icon.svg";
+import cake_icon from "./mypage/cake-icon.svg";
+import drawing_icon from "./mypage/drawing-icon.svg";
+import post_icon from "./mypage/post-icon.svg";
 
 //nav-bar
 import cake from "./nav-bar/cake.svg";
@@ -199,6 +202,9 @@ export {
   write_design,
   nav_icon,
   pink_nav_icon,
+  cake_icon,
+  drawing_icon,
+  post_icon,
   cake,
   design,
   home,
