@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 
 import { actionCreators as commentAction } from "../../../redux/modules/comment";
 import { actionCreators as designAction } from "../../../redux/modules/design";
+import { actionCreators as postAction } from "../../../redux/modules/post";
 
 //css
 import {
@@ -48,24 +49,20 @@ import {
 
 const ReactWrite = (props) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [refDesign, inViewDesign] = useInView();
   const [refComment, inViewComment] = useInView();
-  const dispatch = useDispatch();
 
   const [toggleState, setToggleState] = useState(1);
-  // const [content, setContent] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
 
   const likedesign = useSelector((state) => state.design.likeDesign);
   const commentList = useSelector((state) => state.comment.my_comment_list);
+  const sort = useSelector((state) => state.post.post_sort_type);
 
   const deleteComment = (commentId) => {
     dispatch(commentAction.deleteMyCommentDB(commentId));
   };
-
-  // const toggleTab = (index) => {
-  //   setToggleState(index);
-  // };
 
   useEffect(() => {
     if (toggleState === 1) {
@@ -82,6 +79,10 @@ const ReactWrite = (props) => {
       setPageNumber(pageNumber + 1);
     }
   }, [inViewDesign, inViewComment]);
+
+  useEffect(() => {
+    setToggleState(sort);
+  }, [sort]);
 
   return (
     <ReactWriteWrap>
@@ -101,7 +102,9 @@ const ReactWrite = (props) => {
               onClick={() => {
                 setToggleState(1);
                 setPageNumber(0);
-                // dispatch(designAction.getLikeDesignDB(0));
+
+                dispatch(postAction.setPostSortType(1));
+
               }}
               toggleState={toggleState}
             >
@@ -111,7 +114,9 @@ const ReactWrite = (props) => {
               onClick={() => {
                 setToggleState(2);
                 setPageNumber(0);
-                // dispatch(commentAction.getMyCommentDB(0));
+
+                dispatch(postAction.setPostSortType(2));
+
               }}
               toggleState={toggleState}
             >
@@ -189,7 +194,6 @@ const ReactWrite = (props) => {
                         onClick={() => {
                           navigate(`/post/${v.postId}`);
                         }}
-                        // value={content}
                       >
                         {v.content}
                       </ContentText>

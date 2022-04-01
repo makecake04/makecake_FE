@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import Swal from "sweetalert2";
@@ -39,20 +39,25 @@ const DesignList = (props) => {
   const comment_list = useSelector((state) => state.design.comment_list);
   const view_list = useSelector((state) => state.design.view_list);
   const is_session = localStorage.getItem("token");
+  const sort = useSelector((state) => state.design.design_sort_type);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setPageNumber(0);
   }, [sortType]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(designAction.getDesignListDB(pageNumber, sortType));
   }, [sortType, pageNumber]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) {
       setPageNumber(pageNumber + 1);
     }
   }, [inView]);
+
+  useEffect(() => {
+    setSortType(sort);
+  }, [sort]);
 
   return (
     <DrawWrap>
@@ -62,6 +67,7 @@ const DesignList = (props) => {
         <NewButton
           onClick={() => {
             setSortType("createdDate");
+            dispatch(designAction.setDesignSortType("createdDate"));
           }}
           sortType={sortType}
         >
@@ -71,6 +77,7 @@ const DesignList = (props) => {
         <LikeButton
           onClick={() => {
             setSortType("likeCnt");
+            dispatch(designAction.setDesignSortType("likeCnt"));
           }}
           sortType={sortType}
         >
@@ -79,6 +86,7 @@ const DesignList = (props) => {
         <CommentButton
           onClick={() => {
             setSortType("commentCnt");
+            dispatch(designAction.setDesignSortType("commentCnt"));
           }}
           sortType={sortType}
         >
@@ -87,6 +95,7 @@ const DesignList = (props) => {
         <CheckButton
           onClick={() => {
             setSortType("viewCnt");
+            dispatch(designAction.setDesignSortType("viewCnt"));
           }}
           sortType={sortType}
         >
@@ -102,7 +111,7 @@ const DesignList = (props) => {
                   src={v.img}
                   alt="post-img"
                   onClick={() => {
-                    navigate(`/post/${v.postId}`);
+                    navigate(`/post/${v.postId}`, { state: { sortType } });
                   }}
                 />
               </ImgWrap>
@@ -116,7 +125,7 @@ const DesignList = (props) => {
                   src={v.img}
                   alt="post-img"
                   onClick={() => {
-                    navigate(`/post/${v.postId}`);
+                    navigate(`/post/${v.postId}`, { state: { sortType } });
                   }}
                 />
               </ImgWrap>
@@ -130,7 +139,7 @@ const DesignList = (props) => {
                   src={v.img}
                   alt="post-img"
                   onClick={() => {
-                    navigate(`/post/${v.postId}`);
+                    navigate(`/post/${v.postId}`, { state: { sortType } });
                   }}
                 />
               </ImgWrap>
@@ -144,7 +153,7 @@ const DesignList = (props) => {
                   src={v.img}
                   alt="post-img"
                   onClick={() => {
-                    navigate(`/post/${v.postId}`);
+                    navigate(`/post/${v.postId}`, { state: { sortType } });
                   }}
                 />
               </ImgWrap>

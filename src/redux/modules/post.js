@@ -12,6 +12,7 @@ const GET_POST = "GET_POST";
 const EDIT_POST = "EDIT_POST";
 const DELETE_POST = "DELETE_POST";
 const ADD_LIKE_POST = "ADD_LIKE_POST";
+const SET_POST_SORTTYPE = "SET_POST_SORTTYPE";
 
 //actioncreators
 const addPost = createAction(ADD_POST, (list) => ({ list }));
@@ -23,10 +24,12 @@ const addLikePost = createAction(ADD_LIKE_POST, (postId, isLike, likeCnt) => ({
   isLike,
   likeCnt,
 }));
+const setPostSortType = createAction(SET_POST_SORTTYPE, (list) => ({ list }));
 
 const initialState = {
   lists: [],
   list: [],
+  post_sort_type: 1,
 };
 
 //middlewear
@@ -196,6 +199,10 @@ export default handleActions(
         draft.list.myLike = action.payload.isLike;
         draft.list.likeCnt = action.payload.likeCnt;
       }),
+    [SET_POST_SORTTYPE]: (state, action) =>
+      produce(state, (draft) => {
+        draft.post_sort_type = action.payload.list;
+      }),
   },
   initialState
 );
@@ -207,6 +214,7 @@ const actionCreators = {
   deletePostDB,
   addLikePost,
   addLikePostDB,
+  setPostSortType,
 };
 
 export { actionCreators };

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { actionCreators as reviewAction } from "../../redux/modules/review";
+import { actionCreators as storeAction } from "../../redux/modules/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
@@ -35,7 +36,10 @@ const ReviewWrite = (props) => {
   const imgUrl = one_review.reviewImage;
   const is_edit = review_id ? true : false;
 
-  React.useEffect(() => {
+  useEffect(() => {
+    if (one_review.length !== 0) {
+      dispatch(reviewAction.reviewReplace([]));
+    }
     if (is_edit) {
       dispatch(reviewAction.getOneReviewDB(review_id));
     }

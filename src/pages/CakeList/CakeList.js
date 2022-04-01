@@ -44,7 +44,7 @@ const CakeList = (props) => {
   const cake_id = useSelector((state) => state.cake.lists);
   const login = useSelector((state) => state.user.is_login);
   const my_like = useSelector((state) => state.cake.lists);
-
+  const sort = useSelector((state) => state.cake.cake_sort_type);
   const likeToggle = () => {
     if (!login) {
       Swal.fire({
@@ -62,13 +62,17 @@ const CakeList = (props) => {
 
   useEffect(() => {
     dispatch(cakeAction.getCakeListDB(pageNumber, sortType));
-  }, [pageNumber]);
+  }, [sortType, pageNumber]);
 
   useEffect(() => {
     if (inView) {
       setPageNumber(pageNumber + 1);
     }
   }, [inView]);
+
+  useEffect(() => {
+    setSortType(sort);
+  }, [sort]);
 
   return (
     <CakeContainer>
@@ -80,6 +84,7 @@ const CakeList = (props) => {
             setPageNumber(0);
             setSortType("likeCnt");
             dispatch(cakeAction.changeSortDB("likeCnt"));
+            dispatch(cakeAction.setCakeSortType("likeCnt"));
           }}
           sortType={sortType}
         >
@@ -90,6 +95,7 @@ const CakeList = (props) => {
             setPageNumber(0);
             setSortType("random");
             dispatch(cakeAction.changeSortDB("random"));
+            dispatch(cakeAction.setCakeSortType("random"));
           }}
           sortType={sortType}
         >
