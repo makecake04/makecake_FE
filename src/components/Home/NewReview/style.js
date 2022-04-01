@@ -21,7 +21,7 @@ export const CommentWrap = styled.div`
   p {
     width: 220px;
     margin-left: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 7px;
     word-break: break-all;
     display: -webkit-box;
     word-wrap: break-word;
@@ -50,9 +50,7 @@ export const Image = styled.div`
   cursor: pointer;
 `;
 
-export const ContentText = styled.p`
-  font-weight: bold;
-`;
+export const ContentText = styled.p``;
 
 export const ImgBox = styled.img`
   position: absolute;
@@ -68,15 +66,20 @@ export const Reviews = styled.div`
   position: relative;
   margin: 0 10px;
   text-align: start;
+  align-items: center;
 `;
 
 export const InfoWrap = styled.div`
   display: flex;
   margin: 0px 10px;
+  align-items: center;
 `;
 
 export const Name = styled.div`
   margin-right: 10px;
 `;
 
-export const CreatedDate = styled.div``;
+export const CreatedDate = styled.div`
+  font-size: 14px;
+  color: #777;
+`;
