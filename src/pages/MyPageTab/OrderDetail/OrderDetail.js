@@ -30,7 +30,6 @@ const OrderDetail = () => {
   const user_order_id = useParams().id;
   const order_detail = useSelector((state) => state.order.order_detail);
   const image_file = useSelector((state) => state.order.image_file);
-  console.log(order_detail.copyText);
   // console.log(image_file);
 
   useEffect(() => {
@@ -44,7 +43,10 @@ const OrderDetail = () => {
         <img
           src={black_back_button}
           alt="back-button"
-          onClick={() => navigate("/order")}
+          onClick={() => {
+            navigate("/order");
+            dispatch(orderAction.setOrderSortType(2));
+          }}
         />
         <h3>주문서 확인</h3>
         <img src={beta} alt="beta" />

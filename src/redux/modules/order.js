@@ -11,6 +11,7 @@ const GET_ORDER_FORM = "GET_ORDER_FORM";
 const GET_ONE_ORDER = "GET_ONE_ORDER";
 const GET_IMAGE_FILE = "GET_IMAGE_FILE";
 const GET_ORDER_GUIDE = "GET_ORDER_GUIDE";
+const SET_ORDER_SORTTYPE = "SET_ORDER_SORTTYPE";
 // const DELETE_ORDER = "DELETE_ORDER";
 // const ADD_ORDER = "ADD_ORDER";
 
@@ -35,6 +36,7 @@ const getImageFile = createAction(GET_IMAGE_FILE, (list) => ({
 }));
 const getOrderGuide = createAction(GET_ORDER_GUIDE, (list) => ({ list }));
 // const addOrder = createAction(ADD_ORDER, (list) => ({ list }));
+const setOrderSortType = createAction(SET_ORDER_SORTTYPE, (list) => ({ list }));
 
 const initialState = {
   order_list: [],
@@ -44,6 +46,7 @@ const initialState = {
   order_detail: [],
   order_guide: [],
   image_file: "",
+  order_sort_type: 1,
 };
 
 //middlewear
@@ -61,7 +64,6 @@ const getOrdersDB = (page_num, option) => {
         },
       })
       .then((res) => {
-        console.log(res.data);
         if (page_num === 0 && option === "notOrdered") {
           dispatch(getNoOrders(res.data));
         } else if (page_num === 0 && option === "ordered") {
@@ -121,7 +123,6 @@ const getOrderFormDB = (orderFormId) => {
         },
       })
       .then((res) => {
-        console.log(res.data);
         dispatch(getOrderForm(res.data));
       })
       .catch((err) => {
@@ -283,6 +284,10 @@ export default handleActions(
       produce(state, (draft) => {
         draft.order_guide = action.payload.list;
       }),
+    [SET_ORDER_SORTTYPE]: (state, action) =>
+      produce(state, (draft) => {
+        draft.order_sort_type = action.payload.list;
+      }),
   },
   initialState
 );
@@ -297,6 +302,7 @@ const actionCreators = {
   getImageFileDB,
   getOrderGuide,
   getOrderGuideDB,
+  setOrderSortType,
 };
 
 export { actionCreators };

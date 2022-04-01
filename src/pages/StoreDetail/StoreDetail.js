@@ -123,7 +123,7 @@ const StoreDetail = (props) => {
   const user_nickname = useSelector((state) => state.user.user);
   const login = useSelector((state) => state.user.is_login);
   const store_info = useSelector((state) => state.store.store);
-
+  const sort = useSelector((state) => state.store.store_sort_type);
   const is_session = localStorage.getItem("token");
 
   const toggleTab = (index) => {
@@ -299,6 +299,9 @@ const StoreDetail = (props) => {
             <OneButton
               onClick={() => {
                 toggleTab(1);
+
+                dispatch(storeAction.setStoreSortType(1));
+
               }}
               toggleState={toggleState}
             >

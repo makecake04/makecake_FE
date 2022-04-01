@@ -9,12 +9,16 @@ const SET_PREVIEW = "SET_PREVIEW";
 const EDIT_REVEIW = "EDIT_REVIEW";
 const DELETE_REVIEW = "DELETE_REVIEW";
 const GET_ONE_REVIEW = "GET_ONE_REVIEW";
+const REVIEW_REPLACE = "REVIEW_REPLACE";
 
 const addReview = createAction(ADD_REVIEW, (review) => ({ review }));
 const setPreview = createAction(SET_PREVIEW, (preview) => ({ preview }));
 const editReview = createAction(EDIT_REVEIW, (review) => ({ review }));
 const deleteReview = createAction(DELETE_REVIEW, (reviewId) => ({ reviewId }));
 const getOneReview = createAction(GET_ONE_REVIEW, (oneReview) => ({
+  oneReview,
+}));
+const reviewReplace = createAction(REVIEW_REPLACE, (oneReview) => ({
   oneReview,
 }));
 
@@ -46,9 +50,9 @@ const addReviewDB = (storeId, content, img) => {
   };
 };
 
-const editReviewDB = (reviewId, content, img, imgurl, storeId) => {
+const editReviewDB = (reviewId, content, img, imgurl, storeId, toggleState) => {
   const token = localStorage.getItem("token");
-  console.log(storeId);
+  console.log(toggleState);
   return function (dispatch, getState) {
     const form = new FormData();
     if (img) {
@@ -70,7 +74,7 @@ const editReviewDB = (reviewId, content, img, imgurl, storeId) => {
       })
       .then((res) => {
         dispatch(editReview(res.data));
-        window.location.replace(`/storedetail/${storeId}`);
+        window.history.back();
       })
       .catch((err) => {
         console.log(err);
@@ -155,6 +159,10 @@ export default handleActions(
       produce(state, (draft) => {
         draft.list = action.payload.oneReview;
       }),
+    [REVIEW_REPLACE]: (state, action) =>
+      produce(state, (draft) => {
+        draft.list = action.payload.oneReview;
+      }),
   },
   initialState
 );
@@ -169,6 +177,7 @@ const actionCreators = {
   editReviewDB,
   getOneReview,
   getOneReviewDB,
+  reviewReplace,
 };
 
 export { actionCreators };

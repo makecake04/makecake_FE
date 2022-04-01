@@ -49,6 +49,8 @@ const ReactStore = (props) => {
 
   const likeStore = useSelector((state) => state.store.likeStore);
   const myReview = useSelector((state) => state.store.myReview);
+  const sort = useSelector((state) => state.store.store_sort_type);
+  console.log(sort);
 
   useEffect(() => {
     if (toggleState === 1) {
@@ -66,6 +68,10 @@ const ReactStore = (props) => {
     }
   }, [inViewStore, inViewReview]);
 
+  useEffect(() => {
+    setToggleState(sort);
+  }, [sort]);
+
   return (
     <Wrapper>
       <Header>
@@ -81,8 +87,11 @@ const ReactStore = (props) => {
         <LikeStore
           toggleState={toggleState}
           onClick={() => {
+
             setToggleState(1);
             setPageNumber(0);
+            dispatch(storeAction.setStoreSortType(1));
+
           }}
         >
           좋아요한 매장
@@ -90,8 +99,13 @@ const ReactStore = (props) => {
         <MyReview
           toggleState={toggleState}
           onClick={() => {
+
             setToggleState(2);
             setPageNumber(0);
+
+
+            dispatch(storeAction.setStoreSortType(2));
+
           }}
         >
           내가 남긴 후기

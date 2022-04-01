@@ -45,7 +45,6 @@ const OrderWrite = () => {
   const design_detail = useSelector((state) => state.design.design_detail);
   const order_form = useSelector((state) => state.order.order_form);
   const question_length = order_form.formList?.length;
-  console.log(order_form);
   const list = Object.values(inputs);
   const setUserInput = (e, i) => {
     let key = `${i}`;
@@ -129,8 +128,6 @@ const OrderWrite = () => {
       <OrderButton
         disabled={active}
         onClick={() => {
-          if (inputs.length < question_length) {
-          }
           dispatch(orderAction.addOrderDB(list, order_id, design_id));
         }}
       >
