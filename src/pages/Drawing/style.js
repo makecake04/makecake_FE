@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Slider from "react-slick";
 
 //image
 import { logo } from "../../assets/images/image";
@@ -31,7 +32,7 @@ export const CanvasWrapper = styled.section`
 
 export const Header = styled.header`
   padding: 0.5rem 0.5rem 1.2rem 0;
-  height: 100%;
+  height: 64px;
   button {
     width: 4rem;
     height: 4rem;
@@ -82,8 +83,9 @@ export const Logo = styled.img.attrs({
   alt: "logo",
 })`
   width: 30%;
-  margin-right: ${(props) => (props.cakeShape === "" ? "32%" : "7%;")};
-  margin-top: ${(props) => (props.cakeShape === "" ? "1.3%;" : "1%;")};
+  position: absolute;
+  left: 35%;
+  margin-top: ${(props) => (props.cakeShape === "" ? "13%;" : "1%;")};
 `;
 export const DefaultButtons = styled.div`
   height: 6.2rem;
@@ -270,4 +272,11 @@ export const VerticalLine = styled.div`
   position: absolute;
   left: 50%;
   bottom: 0;
+`;
+
+export const ModalWrap2 = styled.div`
+  border: none;
+  img {
+    background-size: cover;
+  }
 `;
