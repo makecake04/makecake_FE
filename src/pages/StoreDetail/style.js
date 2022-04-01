@@ -32,6 +32,7 @@ export const WhiteBackIcon = styled.img.attrs({
   position: absolute;
   margin-top: 40px;
   margin-left: 20px;
+  cursor: pointer;
 `;
 
 export const HrWrap = styled.hr`
@@ -449,6 +450,7 @@ export const ModalWrap = styled.div`
     position: absolute;
     right: 4%;
     top: 1%;
+    cursor: pointer;
   }
 `;
 
@@ -563,6 +565,7 @@ export const RightWrap = styled.div`
 export const PlusP = styled.p`
   color: #777;
   font-size: 15px;
+  cursor: pointer;
 `;
 
 export const ImageBox = styled.div`
@@ -581,6 +584,7 @@ export const Images = styled.div`
   padding-bottom: 100%;
   border-radius: 10px;
   overflow: hidden;
+  cursor: pointer;
 `;
 
 export const Kind = styled.div`
@@ -772,6 +776,7 @@ right: 1.3rem; */
   height: 5rem;
   bottom: 2.5rem;
   right: 1.8rem;
+  cursor: pointer;
   /* z-index: 2; */
 `;
 
@@ -785,9 +790,13 @@ export const Toggle = styled.div`
 export const EmptyHeartIcon = styled.img.attrs({
   src: `${empty_heart_icon}`,
   alt: "img",
-})``;
+})`
+  cursor: pointer;
+`;
 
 export const FullHeartIcon = styled.img.attrs({
   src: `${full_heart_icon}`,
   alt: "img",
-})``;
+})`
+  cursor: pointer;
+`;

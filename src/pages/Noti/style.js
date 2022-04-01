@@ -46,6 +46,7 @@ export const FixListBox = styled.div`
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #e5e5e5;
+  cursor: pointer;
 `;
 
 export const PersonalListBox = styled.div`
@@ -56,6 +57,7 @@ export const PersonalListBox = styled.div`
   flex-direction: row;
   border-bottom: 1px solid #e5e5e5;
   position: relative;
+  cursor: pointer;
 `;
 
 export const ImgWrap = styled.div`

@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 //image
-import { cake_icon } from "../../../assets/images/image";
+import { cake_icon, black_back_button } from "../../../assets/images/image";
 
 export const Wrapper = styled.div`
   hr {
@@ -21,6 +21,14 @@ export const Header = styled.header`
     margin-left: 20%;
     vertical-align: middle;
   }
+`;
+
+export const BlackBackButton = styled.img.attrs({
+  src: `${black_back_button}`,
+  alt: "BlackBackButton",
+})`
+  cursor: pointer;
+  margin-left: 3%;
 `;
 
 export const Tab = styled.div`
@@ -220,6 +228,7 @@ export const ImgWrap = styled.div`
   width: 100%;
   height: 0;
   padding-bottom: 100%;
+  cursor: pointer;
 
   img {
     position: absolute;

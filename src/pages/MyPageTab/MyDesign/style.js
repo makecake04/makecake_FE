@@ -182,6 +182,7 @@ export const ImageList = styled.div`
   width: 100%;
   height: 0;
   padding-bottom: 100%;
+  cursor: pointer;
 `;
 
 export const ModalWrap = styled.div`

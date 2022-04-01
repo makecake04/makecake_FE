@@ -7,16 +7,18 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import { actionCreators as orderAction } from "../../../redux/modules/order";
 
 //image
-import { black_back_button, beta } from "../../../assets/images/image";
+import { beta } from "../../../assets/images/image";
 
 //css
 import {
   Wrapper,
   Header,
+  BlackBackButton,
   Body,
   MustRead,
   Info,
   OrderItem,
+  CopyText,
   Default,
   MustReadItem,
   ConnectButton,
@@ -40,14 +42,9 @@ const OrderDetail = () => {
   return (
     <Wrapper>
       <Header>
-        <img
-          src={black_back_button}
-          alt="back-button"
-          onClick={() => {
+        <BlackBackButton   onClick={() => {
             navigate("/order");
-            dispatch(orderAction.setOrderSortType(2));
-          }}
-        />
+            dispatch(orderAction.setOrderSortType(2)); />
         <h3>주문서 확인</h3>
         <img src={beta} alt="beta" />
       </Header>
@@ -79,7 +76,8 @@ const OrderDetail = () => {
             );
           })}
         <CopyToClipboard text={order_detail.copyText}>
-          <span onClick={() => setCopied(true)}>복사</span>
+          {/* <span onClick={() => setCopied(true)}>복사</span> */}
+          <CopyText onClick={() => setCopied(true)}>복사</CopyText>
         </CopyToClipboard>
         {copied && <p>복사되었습니다!</p>}
       </Body>

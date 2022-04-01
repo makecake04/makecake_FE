@@ -45,12 +45,14 @@ export const NotiIcon = styled.img.attrs({
   src: `${noti_icon}`,
 })`
   margin-top: 0.7rem;
+  cursor: pointer;
 `;
 
 export const SearchIcon = styled.img.attrs({
   src: `${search_icon}`,
 })`
   margin-left: 1.7rem;
+  cursor: pointer;
 `;
 
 export const NotiCheckDot = styled.img.attrs({

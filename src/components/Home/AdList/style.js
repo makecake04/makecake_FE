@@ -76,6 +76,7 @@ export const HrWrap = styled.hr`
 
 export const AdItem = styled.div`
   margin-top: 17px;
+  cursor: pointer;
   /* background-color: #fee9ee;
   height: 72px;
   width: 100%;

@@ -88,6 +88,7 @@ export const ProfileEditButton = styled.img.attrs({
   z-index: 2;
   left: 55%;
   top: -1.8rem;
+  cursor: pointer;
 `;
 
 export const NicknameP = styled.p`

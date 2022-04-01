@@ -100,6 +100,7 @@ export const ImgWrap = styled.div`
   width: 100%;
   height: 0;
   padding-bottom: 100%;
+  cursor: pointer;
 `;
 
 export const ImgBox = styled.img`
@@ -144,6 +145,7 @@ export const StoreName = styled.p`
   color: #fcfcfc;
   font-weight: 300;
   text-decoration: underline;
+  cursor: pointer;
 `;
 
 export const StoreBody = styled.div`
@@ -155,6 +157,7 @@ export const EmptyHeartIcon = styled.img.attrs({
   alt: "img",
 })`
   margin-right: 5px;
+  cursor: pointer;
 `;
 
 export const FullHeartIcon = styled.img.attrs({
@@ -162,4 +165,5 @@ export const FullHeartIcon = styled.img.attrs({
   alt: "img",
 })`
   margin-right: 5px;
+  cursor: pointer;
 `;

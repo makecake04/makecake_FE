@@ -11,6 +11,7 @@ import { black_back_button, beta } from "../../assets/images/image";
 
 //css
 import {
+  BlackBackButton,
   OrderGuideWrap,
   Header,
   GuideWrap,
@@ -42,11 +43,12 @@ const OrderGuide = (props) => {
   return (
     <OrderGuideWrap>
       <Header>
-        <img
+        <BlackBackButton onClick={() => navigate(-1)} />
+        {/* <img
           src={black_back_button}
           alt="back-button"
           onClick={() => navigate(-1)}
-        />
+        /> */}
         <h3>주문하기 안내</h3>
         <img src={beta} alt="beta" />
       </Header>

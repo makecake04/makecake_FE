@@ -54,7 +54,6 @@ const ReactWrite = (props) => {
   const [refComment, inViewComment] = useInView();
 
   const [toggleState, setToggleState] = useState(1);
-
   const [pageNumber, setPageNumber] = useState(0);
 
   const likedesign = useSelector((state) => state.design.likeDesign);

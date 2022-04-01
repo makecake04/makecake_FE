@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   Wrapper,
   Header,
+  BlackBackButton,
   Tab,
   LikeStore,
   MyReview,
@@ -75,11 +76,12 @@ const ReactStore = (props) => {
   return (
     <Wrapper>
       <Header>
-        <img
+        <BlackBackButton onClick={() => navigate(-1)} />
+        {/* <img
           src={black_back_button}
           alt="back-button"
           onClick={() => navigate(-1)}
-        />
+        /> */}
         <h3>내가 반응한 매장</h3>
       </Header>
       <hr />

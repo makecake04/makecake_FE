@@ -39,11 +39,13 @@ export const BlackBackIcon = styled.img.attrs({
   src: `${black_back_button}`,
 })`
   margin: 0px 70px 0px 0px;
+  cursor: pointer;
 `;
 
 export const Enter = styled.p`
   margin-left: 50px;
   color: #ff679e;
+  cursor: pointer;
 `;
 
 export const HrWrap = styled.hr`
@@ -80,6 +82,7 @@ export const PlusImg = styled.div`
   justify-content: center;
   align-items: center;
   padding: 20px;
+  cursor: pointer;
 `;
 
 export const ImageWrap = styled.div`
