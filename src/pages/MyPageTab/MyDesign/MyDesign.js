@@ -23,6 +23,13 @@ import {
   ModalWrap2,
   ModalChoice,
   VerticalLine,
+  NeedDrawingBox,
+  NeedDrawingText,
+  GoToDrawingText,
+  DrawingIcon,
+  NeedPostingBox,
+  PostIcon,
+  NeedPostingText,
 } from "./style";
 
 //image
@@ -92,7 +99,19 @@ const MyDraw = (props) => {
       </Tab>
       <Body>
         <DesignList toggleState={toggleState}>
-          {design_list &&
+          {design_list.length === 0 ? (
+            <NeedDrawingBox>
+              <DrawingIcon />
+              <NeedDrawingText>도안을 그리러 가볼까요?</NeedDrawingText>
+              <GoToDrawingText
+                onClick={() => {
+                  navigate("/drawing");
+                }}
+              >
+                도안 그리러 가기
+              </GoToDrawingText>
+            </NeedDrawingBox>
+          ) : (
             design_list.map((a, i) => {
               return (
                 <ImageList key={i} ref={ref}>
@@ -106,10 +125,18 @@ const MyDraw = (props) => {
                   />
                 </ImageList>
               );
-            })}
+            })
+          )}
         </DesignList>
         <PostList toggleState={toggleState}>
-          {post_list &&
+          {post_list.length === 0 ? (
+            <NeedPostingBox>
+              <PostIcon />
+              <NeedPostingText>
+                그려주신 도안으로 게시글을 작성해주세요!
+              </NeedPostingText>
+            </NeedPostingBox>
+          ) : (
             post_list.map((a, i) => {
               return (
                 <ImageList key={i} ref={ref} className="img_wrap">
@@ -122,7 +149,8 @@ const MyDraw = (props) => {
                   />
                 </ImageList>
               );
-            })}
+            })
+          )}
         </PostList>
       </Body>
 

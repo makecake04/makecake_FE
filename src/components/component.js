@@ -16,7 +16,6 @@ import NaverLogin from "./SocialLogin/NaverLogin/NaverLogin";
 import KakaoLoginHandler from "./SocialLogin/KakaoLoginHandler/KakaoLoginHandler";
 import KakaoMap from "./KakaoMap/KakaoMap";
 import ScrollToTop from "./ScrollToTop/ScrollToTop";
-import CommentList from "./CommentList/CommentList";
 import GoogleLoginHandler from "./SocialLogin/GoogleLoginHandler/GoogleLoginHandler";
 import NaverLoginHandler from "./SocialLogin/NaverLoginHandler/NaverLoginHandler";
 
@@ -33,7 +32,6 @@ export {
   NewReview,
   NavBar,
   Spinner,
-  CommentList,
   KakaoLogin,
   GoogleLogin,
   NaverLogin,

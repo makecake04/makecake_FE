@@ -1,7 +1,12 @@
 import styled, { css } from "styled-components";
 
 //image
-import { remove_design, write_design } from "../../../assets/images/image";
+import {
+  remove_design,
+  write_design,
+  post_icon,
+  drawing_icon,
+} from "../../../assets/images/image";
 
 export const Wrapper = styled.div`
   box-sizing: border-box;
@@ -236,6 +241,43 @@ export const VerticalLine = styled.div`
   bottom: 0;
 `;
 
+export const NeedDrawingBox = styled.div`
+  width: 200px;
+  margin-left: 75px;
+  margin-top: 100px;
+`;
+
+export const NeedDrawingText = styled.p`
+  color: #e1e1e1;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+`;
+
+export const GoToDrawingText = styled.p`
+  text-align: center;
+  color: #000000;
+  font-weight: 100;
+  font-size: 16px;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 5px;
+`;
+
+export const NeedPostingBox = styled.div`
+  width: 200px;
+  margin-left: 75px;
+  margin-top: 100px;
+`;
+
+export const NeedPostingText = styled.p`
+  color: #e1e1e1;
+  font-weight: bold;
+  width: 200px;
+  margin-top: 10px;
+  text-align: center;
+`;
+
 //image
 export const DeleteIcon = styled.img.attrs({
   src: `${remove_design}`,
@@ -251,4 +293,16 @@ export const WriteIcon = styled.img.attrs({
   position: absolute;
   top: 1rem;
   right: 6.5rem;
+`;
+
+export const DrawingIcon = styled.img.attrs({
+  src: `${drawing_icon}`,
+})`
+  margin-left: 65px;
+`;
+
+export const PostIcon = styled.img.attrs({
+  src: `${post_icon}`,
+})`
+  margin-left: 65px;
 `;

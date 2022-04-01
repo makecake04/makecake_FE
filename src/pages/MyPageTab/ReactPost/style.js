@@ -5,6 +5,7 @@ import {
   profile_image,
   black_back_button,
   like,
+  cake_icon,
 } from "../../../assets/images/image";
 
 export const ReactWriteWrap = styled.div``;
@@ -161,6 +162,36 @@ export const PostWrapOne = styled.div`
         `}
 `;
 
+export const NeedLikeBox = styled.div`
+  width: 200px;
+  margin-left: 75px;
+  margin-top: 100px;
+`;
+
+export const CakeIcon = styled.img.attrs({
+  src: `${cake_icon}`,
+  alt: "CakeIcon",
+})`
+  margin-left: 65px;
+`;
+
+export const PressLikeText = styled.p`
+  color: #e1e1e1;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+`;
+
+export const GoToSeePostText = styled.p`
+  text-align: center;
+  color: #000000;
+  font-weight: 100;
+  font-size: 16px;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 5px;
+`;
+
 export const PostWrap = styled.div`
   padding-top: 15px;
 `;
@@ -259,6 +290,19 @@ export const PostWrapTwo = styled.div`
           border: none;
           display: none;
         `}
+`;
+
+export const NeedCommentBox = styled.div`
+  width: 200px;
+  margin-left: 95px;
+  margin-top: 100px;
+`;
+
+export const NeedCommentText = styled.p`
+  color: #e1e1e1;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
 `;
 
 export const CommentWrap = styled.div`

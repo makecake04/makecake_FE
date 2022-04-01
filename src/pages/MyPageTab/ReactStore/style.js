@@ -1,5 +1,8 @@
 import styled, { css } from "styled-components";
 
+//image
+import { cake_icon } from "../../../assets/images/image";
+
 export const Wrapper = styled.div`
   hr {
     border: 0.7px solid #e5e5e5;
@@ -145,6 +148,35 @@ export const StoreList = styled.div`
         `}
 `;
 
+export const SelectStoreBox = styled.div`
+  width: 220px;
+  margin-left: 75px;
+  margin-top: 100px;
+`;
+
+export const CakeIcon = styled.img.attrs({
+  src: `${cake_icon}`,
+})`
+  margin-left: 75px;
+`;
+
+export const SelectStoreText = styled.p`
+  color: #e1e1e1;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+`;
+
+export const SearchStoreText = styled.p`
+  text-align: center;
+  color: #000000;
+  font-weight: 100;
+  font-size: 16px;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 5px;
+`;
+
 export const ReviewList = styled.div`
   ${(props) =>
     props.toggleState === 2
@@ -161,6 +193,19 @@ export const ReviewList = styled.div`
           border: none;
           display: none;
         `}
+`;
+
+export const NeedReviewBox = styled.div`
+  width: 220px;
+  margin-left: 75px;
+  margin-top: 110px;
+`;
+
+export const NeedReviewText = styled.p`
+  color: #e1e1e1;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
 `;
 
 export const OneStore = styled.div`
