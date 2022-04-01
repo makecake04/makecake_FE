@@ -58,6 +58,12 @@ import flower_icon from "./drawing/icon/flower.png";
 import heart_icon from "./drawing/icon/heart.png";
 import pearl from "./drawing/icon/pearl.png";
 import sprinkle from "./drawing/icon/sprinkle.png";
+import white_circle from "./drawing/icon/white_circle.png";
+import white_square from "./drawing/icon/white_square.png";
+import note from "./drawing/icon/note.png";
+import white_star from "./drawing/icon/white_star.png";
+//tutorial
+import one from "./drawing/tutorial/one.svg";
 
 //home
 import noti_icon from "./home/noti-icon.svg";
@@ -184,6 +190,11 @@ export {
   heart_icon,
   pearl,
   sprinkle,
+  white_circle,
+  white_square,
+  note,
+  white_star,
+  one,
   noti_icon,
   swiper_arrow,
   search_icon,
