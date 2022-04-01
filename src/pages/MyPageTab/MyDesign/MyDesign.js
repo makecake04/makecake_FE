@@ -62,15 +62,8 @@ const MyDraw = (props) => {
   };
 
   useEffect(() => {
-    setPageNumber(0);
-    if (design_list.length === 0 || post_list.length === 0) {
-      dispatch(designAction.getMyDesignListDB(pageNumber, post));
-    }
-  }, [toggleState]);
-
-  useEffect(() => {
     dispatch(designAction.getMyDesignListDB(pageNumber, post));
-  }, [pageNumber]);
+  }, [pageNumber, toggleState]);
 
   useEffect(() => {
     if (inView) {
@@ -82,10 +75,6 @@ const MyDraw = (props) => {
     setToggleState(sort);
   }, [sort]);
 
-  useEffect(() => {
-    dispatch(designAction.getMyDesignListDB(pageNumber, "post"));
-  }, []);
-
   return (
     <Wrapper>
       <Header>
@@ -93,11 +82,7 @@ const MyDraw = (props) => {
           src={black_back_button}
           alt="back-button"
           onClick={() => {
-            if (locationState) {
-              navigate("/mypage");
-            } else {
-              navigate(-1);
-            }
+            navigate(-1);
           }}
         />
         <h3>내가 그린 도안</h3>
@@ -109,6 +94,7 @@ const MyDraw = (props) => {
         <NotPost
           toggleState={toggleState}
           onClick={() => {
+            setPageNumber(0);
             toggleTab(1);
             dispatch(designAction.setMyDesignSortType(1));
           }}
@@ -118,6 +104,7 @@ const MyDraw = (props) => {
         <Post
           toggleState={toggleState}
           onClick={() => {
+            setPageNumber(0);
             toggleTab(2);
             dispatch(designAction.setMyDesignSortType(2));
           }}
