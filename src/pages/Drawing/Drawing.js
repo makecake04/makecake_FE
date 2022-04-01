@@ -258,7 +258,7 @@ const Design = () => {
                   onChange={colorChange}
                 />
               )}
-              {cakeShape && (
+              {cakeShape && !isDrawing && (
                 <button onClick={() => remove(canvas)}>
                   <img src={remove_item} alt="delete" />
                 </button>
