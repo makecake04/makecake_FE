@@ -7,6 +7,7 @@ const GET_COMMENT = "GET_COMMENT";
 const ADD_COMMENT = "ADD_COMMENT";
 const DELETE_COMMENT = "DELETE_COMMENT";
 const GET_MY_COMMENT = "GET_MY_COMMENT";
+const COMMENT_REPLACE = "COMMENT_REPLACE";
 // const DELETE_MY_COMMENT = "DELETE_MY_COMMENT";
 
 const getComment = createAction(GET_COMMENT, (commentList) => ({
@@ -22,9 +23,9 @@ const deleteComment = createAction(DELETE_COMMENT, (commentId) => ({
 const getMyComment = createAction(GET_MY_COMMENT, (commentList) => ({
   commentList,
 }));
-// const deleteMyComment = createAction(DELETE_MY_COMMENT, (commentId) => ({
-//   commentId,
-// }));
+const commentReplace = createAction(COMMENT_REPLACE, (comment) => ({
+  comment,
+}));
 
 const initialState = {
   list: [],
@@ -152,7 +153,16 @@ export default handleActions(
   {
     [GET_COMMENT]: (state, action) =>
       produce(state, (draft) => {
-        draft.list = action.payload.commentList;
+        draft.list.push(...action.payload.commentList);
+        //중복 검사
+        draft.list = draft.list.reduce((acc, cur) => {
+          if (acc.findIndex((a) => a.commentId === cur.commentId) === -1) {
+            return [...acc, cur];
+          } else {
+            acc[acc.findIndex((a) => a.commentId === cur.commentId)] = cur;
+            return acc;
+          }
+        }, []);
       }),
 
     [ADD_COMMENT]: (state, action) =>
@@ -172,6 +182,10 @@ export default handleActions(
           }
         }, []);
       }),
+    [COMMENT_REPLACE]: (state, action) =>
+      produce(state, (draft) => {
+        draft.list = action.payload.comment;
+      }),
   },
   initialState
 );
@@ -185,6 +199,7 @@ const actionCreators = {
   deleteCommentDB,
   getMyCommentDB,
   deleteMyCommentDB,
+  commentReplace,
 };
 
 export { actionCreators };

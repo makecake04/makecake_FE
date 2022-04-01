@@ -41,6 +41,8 @@ import { black_back_button, location } from "../../../assets/images/image";
 const ReactStore = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [refStore, inViewStore] = useInView();
+  const [refReview, inViewReview] = useInView();
 
   const [toggleState, setToggleState] = React.useState(1);
   const [pageNumber, setPageNumber] = React.useState(0);
@@ -48,33 +50,21 @@ const ReactStore = (props) => {
   const likeStore = useSelector((state) => state.store.likeStore);
   const myReview = useSelector((state) => state.store.myReview);
 
-  const [ref, inView] = useInView();
-
-  const toggleTab = (index) => {
-    setToggleState(index);
-  };
-
-  useEffect(() => {
-    if (pageNumber === 0) {
-      dispatch(storeAction.getLikeStoreDB(pageNumber));
-      dispatch(storeAction.getMyReviewDB(pageNumber));
-    }
-    setPageNumber(0);
-  }, [toggleState]);
-
   useEffect(() => {
     if (toggleState === 1) {
       dispatch(storeAction.getLikeStoreDB(pageNumber));
     } else if (toggleState === 2) {
       dispatch(storeAction.getMyReviewDB(pageNumber));
     }
-  }, [pageNumber]);
+  }, [pageNumber, toggleState]);
 
   useEffect(() => {
-    if (inView) {
+    if (inViewStore) {
+      setPageNumber(pageNumber + 1);
+    } else if (inViewReview) {
       setPageNumber(pageNumber + 1);
     }
-  }, [inView]);
+  }, [inViewStore, inViewReview]);
 
   return (
     <Wrapper>
@@ -88,10 +78,22 @@ const ReactStore = (props) => {
       </Header>
       <hr />
       <Tab>
-        <LikeStore toggleState={toggleState} onClick={() => toggleTab(1)}>
+        <LikeStore
+          toggleState={toggleState}
+          onClick={() => {
+            setToggleState(1);
+            setPageNumber(0);
+          }}
+        >
           좋아요한 매장
         </LikeStore>
-        <MyReview toggleState={toggleState} onClick={() => toggleTab(2)}>
+        <MyReview
+          toggleState={toggleState}
+          onClick={() => {
+            setToggleState(2);
+            setPageNumber(0);
+          }}
+        >
           내가 남긴 후기
         </MyReview>
       </Tab>
@@ -114,7 +116,7 @@ const ReactStore = (props) => {
               return (
                 <OneStore
                   key={idx}
-                  ref={ref}
+                  ref={likeStore.length === idx + 1 ? refStore : null}
                   onClick={() => {
                     navigate(`/storedetail/${v.storeId}`);
                   }}
@@ -149,7 +151,10 @@ const ReactStore = (props) => {
           ) : (
             myReview.map((v, idx) => {
               return (
-                <OneReview key={idx} ref={ref}>
+                <OneReview
+                  key={idx}
+                  ref={myReview.length === idx + 1 ? refReview : null}
+                >
                   <ReviewHeader>
                     <span>{v.name}</span>
                     <p>{v.createdDate?.split(" ")[0]}</p>
