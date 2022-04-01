@@ -13,6 +13,7 @@ import {
   ReviewsWrap,
   ImageWrap,
   Image,
+  ContentText,
   ImgBox,
   Reviews,
   InfoWrap,
@@ -48,7 +49,8 @@ const NewReview = (props) => {
                     </Image>
                   </ImageWrap>
                   <Reviews>
-                    <p>{v.content}</p>
+                    {/* <p>{v.content}</p> */}
+                    <ContentText>{v.content}</ContentText>
                     <InfoWrap>
                       <Name>{v.nickname}</Name>
                       <CreatedDate>{v.createdDate?.split(" ")[0]}</CreatedDate>

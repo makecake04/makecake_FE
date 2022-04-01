@@ -47,6 +47,11 @@ export const Image = styled.div`
   width: 100%;
   height: 0;
   padding-bottom: 100%;
+  cursor: pointer;
+`;
+
+export const ContentText = styled.p`
+  font-weight: bold;
 `;
 
 export const ImgBox = styled.img`

@@ -1,5 +1,8 @@
 import styled, { css } from "styled-components";
 
+//image
+import { black_back_button } from "../../../assets/images/image";
+
 export const Wrapper = styled.section`
   text-align: center;
   padding-bottom: 3rem;
@@ -28,6 +31,14 @@ export const Header = styled.header`
     vertical-align: middle;
     font-weight: 500;
   }
+`;
+
+export const BlackBackButton = styled.img.attrs({
+  src: `${black_back_button}`,
+  alt: "BlackBackButton",
+})`
+  cursor: pointer;
+  margin-left: 3%;
 `;
 
 export const Body = styled.section`
@@ -87,6 +98,10 @@ export const OrderItem = styled.div`
     font-size: 1.2rem;
     padding-left: 5px;
   }
+`;
+
+export const CopyText = styled.span`
+  cursor: pointer;
 `;
 
 export const MustRead = styled.footer`

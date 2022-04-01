@@ -60,16 +60,24 @@ export const SubWrap = styled.div`
 
 export const HomeIcon = styled.img.attrs({
   src: `${home}`,
-})``;
+})`
+  cursor: pointer;
+`;
 export const CakeIcon = styled.img.attrs({
   src: `${cake}`,
-})``;
+})`
+  cursor: pointer;
+`;
 export const DrawIcon = styled.img.attrs({
   src: `${design}`,
-})``;
+})`
+  cursor: pointer;
+`;
 export const MypageIcon = styled.img.attrs({
   src: `${mypage}`,
-})``;
+})`
+  cursor: pointer;
+`;
 export const ColorCakeIcon = styled.img.attrs({
   src: `${color_cake}`,
 })``;

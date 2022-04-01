@@ -53,7 +53,7 @@ const ReactWrite = (props) => {
   const dispatch = useDispatch();
 
   const [toggleState, setToggleState] = useState(1);
-  const [content, setContent] = useState("");
+  // const [content, setContent] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
 
   const likedesign = useSelector((state) => state.design.likeDesign);
@@ -189,7 +189,7 @@ const ReactWrite = (props) => {
                         onClick={() => {
                           navigate(`/post/${v.postId}`);
                         }}
-                        value={content}
+                        // value={content}
                       >
                         {v.content}
                       </ContentText>

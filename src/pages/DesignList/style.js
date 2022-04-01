@@ -176,6 +176,7 @@ export const ImgWrap = styled.div`
   width: 100%;
   height: 0;
   padding-bottom: 100%;
+  cursor: pointer;
 `;
 
 export const ImgBox = styled.img`
@@ -198,6 +199,7 @@ export const PlusOff = styled.div`
   background-color: #ff679e;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const PlusOn = styled.div`
@@ -211,6 +213,7 @@ export const PlusOn = styled.div`
   background-color: #fff;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const PlusIcon = styled.img.attrs({

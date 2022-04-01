@@ -60,6 +60,7 @@ export const SearchIcon = styled.img.attrs({
   alt: "SearchIcon",
 })`
   padding-right: 1rem;
+  cursor: pointer;
 `;
 
 export const StoreInfoWrap = styled.div`
@@ -94,6 +95,7 @@ export const Img = styled.img`
   height: 89px;
   background: #c4c4c4;
   border-radius: 10px;
+  cursor: pointer;
 `;
 
 export const StoreInfo = styled.div``;

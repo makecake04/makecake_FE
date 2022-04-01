@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 //image
 import {
+  black_back_button,
   drawing_icon,
   order_circle,
   post_icon,
@@ -184,6 +185,7 @@ export const ImgWrap = styled.div`
   width: 100%;
   height: 0;
   padding-bottom: 100%;
+  cursor: pointer;
 `;
 
 export const ImgBox = styled.img`
@@ -262,4 +264,11 @@ export const PostIcon = styled.img.attrs({
   src: `${post_icon}`,
 })`
   margin-left: 65px;
+`;
+
+export const BlackBackButton = styled.img.attrs({
+  src: `${black_back_button}`,
+})`
+  margin-left: 65px;
+  cursor: pointer;
 `;

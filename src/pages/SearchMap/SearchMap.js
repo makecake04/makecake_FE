@@ -130,7 +130,12 @@ const SearchMap = () => {
             }}
           >
             <ImgWrap>
-              <Img src={v.mainImg}></Img>
+              <Img
+                src={v.mainImg}
+                onClick={() => {
+                  navigate(`/storedetail/${storeId}`);
+                }}
+              ></Img>
             </ImgWrap>
 
             <StoreInfo>

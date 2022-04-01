@@ -64,6 +64,7 @@ export const SearchIcon = styled.img.attrs({
   alt: "logo",
 })`
   padding-right: 1rem;
+  cursor: pointer;
 `;
 
 export const SortType = styled.div`
@@ -132,6 +133,7 @@ export const StoreInfoWrap = styled.div`
 export const ImageWrap = styled.div`
   margin-left: 10px;
   margin-top: 25px;
+  cursor: pointer;
 `;
 
 export const Img = styled.img`

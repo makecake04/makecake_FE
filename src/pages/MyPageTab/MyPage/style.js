@@ -81,6 +81,7 @@ export const ContenteP = styled.p`
   font-weight: 400;
   font-size: 16px;
   color: #282828;
+  cursor: pointer;
 `;
 
 export const ProfileHr = styled.hr`

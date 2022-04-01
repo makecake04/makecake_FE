@@ -8,12 +8,13 @@ import { actionCreators as designAction } from "../../../redux/modules/design";
 import { actionCreators as orderAction } from "../../../redux/modules/order";
 
 //image
-import { black_back_button, beta } from "../../../assets/images/image";
+import { beta } from "../../../assets/images/image";
 
 //css
 import {
   Wrapper,
   Header,
+  BlackBackButton,
   Tab,
   OrderDesign,
   OrderCheck,
@@ -75,11 +76,12 @@ const Order = () => {
   return (
     <Wrapper>
       <Header>
-        <img
+        <BlackBackButton onClick={() => navigate("/mypage")} />
+        {/* <img
           src={black_back_button}
           alt="back-button"
           onClick={() => navigate("/mypage")}
-        />
+        /> */}
         <h3>케이크 주문하기</h3>
         <img src={beta} alt="beta" />
       </Header>

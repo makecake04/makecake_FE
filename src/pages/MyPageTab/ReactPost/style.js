@@ -229,6 +229,7 @@ export const NickName = styled.p`
   color: #777;
   text-decoration: underline;
   /* font-weight: 500; */
+  cursor: pointer;
 `;
 
 export const HeartIcon = styled.img.attrs({
@@ -264,6 +265,7 @@ export const ImgWrap = styled.div`
   background-position: center;
   background-size: 100%;
   object-fit: cover;
+  cursor: pointer;
 `;
 
 export const Img = styled.img``;

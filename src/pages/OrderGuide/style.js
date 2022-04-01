@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+//image
+import { black_back_button } from "../../assets/images/image";
+
 export const OrderGuideWrap = styled.div`
   text-align: center;
   width: 100%;
@@ -35,6 +38,14 @@ export const Header = styled.header`
     margin-left: 19%;
     vertical-align: middle;
   }
+`;
+
+export const BlackBackButton = styled.img.attrs({
+  src: `${black_back_button}`,
+  alt: "BlackBackButton",
+})`
+  margin-left: 3%;
+  cursor: pointer;
 `;
 
 export const GuideWrap = styled.div`
@@ -121,4 +132,5 @@ export const StoreButton = styled.p`
   color: #777;
   font-size: 14px;
   text-decoration: underline;
+  cursor: pointer;
 `;

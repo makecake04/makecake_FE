@@ -36,6 +36,7 @@ export const Select = styled.select`
   border: none;
   background-color: #fff;
   color: #777777;
+  cursor: pointer;
 `;
 
 export const Option = styled.option``;
@@ -56,6 +57,7 @@ export const SearchIcon = styled.img.attrs({
   alt: "search_icon",
 })`
   padding-right: 1rem;
+  cursor: pointer;
 `;
 
 export const Bell = styled.img.attrs({
@@ -63,6 +65,7 @@ export const Bell = styled.img.attrs({
   alt: "noti_icon",
 })`
   margin-top: 0.85rem;
+  cursor: pointer;
 `;
 
 export const EmptySpace = styled.div`

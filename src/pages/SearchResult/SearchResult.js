@@ -167,7 +167,12 @@ const SearchResult = (props) => {
           return (
             <StoreInfoWrap key={i}>
               <ImageWrap>
-                <Img src={v.mainImg}></Img>
+                <Img
+                  src={v.mainImg}
+                  onClick={() => {
+                    saveInformation(v.storeId);
+                  }}
+                ></Img>
               </ImageWrap>
 
               <StoreInfo>

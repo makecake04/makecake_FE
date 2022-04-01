@@ -37,6 +37,7 @@ export const Pwrap = styled.p`
   margin: 10px 0px 10px 0px;
   color: #777;
   font-size: 15px;
+  cursor: pointer;
 `;
 
 export const RightSvg = styled.img.attrs({
@@ -77,6 +78,7 @@ export const ImgBox = styled.div`
   height: 100%;
   background: url(${(props) => props.src}) no-repeat center / cover;
   object-fit: cover;
+  cursor: pointer;
 `;
 
 export const ModalWrap = styled.div`
@@ -112,6 +114,7 @@ export const StoreName = styled.p`
   color: #fcfcfc;
   font-weight: 300;
   text-decoration: underline;
+  cursor: pointer;
 `;
 
 export const StoreBody = styled.div`
@@ -123,6 +126,7 @@ export const EmptyHeartIcon = styled.img.attrs({
   alt: "img",
 })`
   margin-right: 5px;
+  cursor: pointer;
 `;
 
 export const FullHeartIcon = styled.img.attrs({
@@ -130,6 +134,7 @@ export const FullHeartIcon = styled.img.attrs({
   alt: "img",
 })`
   margin-right: 5px;
+  cursor: pointer;
 `;
 
 export const StyleSlider = styled(Slider)`
