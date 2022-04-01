@@ -111,7 +111,7 @@ const DesignList = (props) => {
                   src={v.img}
                   alt="post-img"
                   onClick={() => {
-                    navigate(`/post/${v.postId}`, { state: { sortType } });
+                    navigate(`/post/${v.postId}`);
                   }}
                 />
               </ImgWrap>
@@ -125,7 +125,7 @@ const DesignList = (props) => {
                   src={v.img}
                   alt="post-img"
                   onClick={() => {
-                    navigate(`/post/${v.postId}`, { state: { sortType } });
+                    navigate(`/post/${v.postId}`);
                   }}
                 />
               </ImgWrap>
@@ -139,7 +139,7 @@ const DesignList = (props) => {
                   src={v.img}
                   alt="post-img"
                   onClick={() => {
-                    navigate(`/post/${v.postId}`, { state: { sortType } });
+                    navigate(`/post/${v.postId}`);
                   }}
                 />
               </ImgWrap>
@@ -153,7 +153,7 @@ const DesignList = (props) => {
                   src={v.img}
                   alt="post-img"
                   onClick={() => {
-                    navigate(`/post/${v.postId}`, { state: { sortType } });
+                    navigate(`/post/${v.postId}`);
                   }}
                 />
               </ImgWrap>

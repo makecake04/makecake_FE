@@ -51,13 +51,12 @@ const PostDetail = () => {
 
   const post = useSelector((state) => state.post.list);
   const nickname = useSelector((state) => state.user.user?.nickname);
-
   const sort = useSelector((state) => state.design.mydesign_sort_type);
-  const locationState = useLocation().state?.sortType;
-
   const commentList = useSelector((state) => state.comment.list);
   const userInfo = useSelector((state) => state.user.user);
-
+  const noti = useSelector((state) => state.noti?.fixlist);
+  const locationState = useLocation().state?.sortType;
+  console.log(noti);
   const deleteComment = (commentId) => {
     dispatch(commentAction.deleteCommentDB(commentId));
   };
@@ -156,12 +155,8 @@ const PostDetail = () => {
           src={black_back_button}
           alt="back-button"
           onClick={() => {
-            if (locationState) {
-              navigate(-1);
-            } else {
-              navigate("/mydesign", { state: { pageNumber } });
-              dispatch(designAction.setMyDesignSortType(2));
-            }
+            navigate(-1);
+            dispatch(designAction.setMyDesignSortType(2));
           }}
         />
         <h3>게시글</h3>
