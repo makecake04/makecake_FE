@@ -42,9 +42,12 @@ const OrderDetail = () => {
   return (
     <Wrapper>
       <Header>
-        <BlackBackButton   onClick={() => {
+        <BlackBackButton
+          onClick={() => {
             navigate("/order");
-            dispatch(orderAction.setOrderSortType(2)); />
+            dispatch(orderAction.setOrderSortType(2));
+          }}
+        />
         <h3>주문서 확인</h3>
         <img src={beta} alt="beta" />
       </Header>
