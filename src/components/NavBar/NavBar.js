@@ -34,7 +34,7 @@ const NavBar = (props) => {
     } else if (
       pathName === "/design/list" ||
       pathName === "/post/:id" ||
-      pathName === "post/write/:designid" ||
+      pathName === "/post/write/:designid" ||
       pathName === "/post/write/:designid/:postid"
     ) {
       setActiveNav("design");

@@ -41,6 +41,8 @@ const ReactStore = (props) => {
 
   const likeStore = useSelector((state) => state.store.likeStore);
   const myReview = useSelector((state) => state.store.myReview);
+  const sort = useSelector((state) => state.store.store_sort_type);
+  console.log(sort);
 
   const [ref, inView] = useInView();
 
@@ -70,6 +72,10 @@ const ReactStore = (props) => {
     }
   }, [inView]);
 
+  useEffect(() => {
+    setToggleState(sort);
+  }, [sort]);
+
   return (
     <Wrapper>
       <Header>
@@ -82,10 +88,22 @@ const ReactStore = (props) => {
       </Header>
       <hr />
       <Tab>
-        <LikeStore toggleState={toggleState} onClick={() => toggleTab(1)}>
+        <LikeStore
+          toggleState={toggleState}
+          onClick={() => {
+            toggleTab(1);
+            dispatch(storeAction.setStoreSortType(1));
+          }}
+        >
           좋아요한 매장
         </LikeStore>
-        <MyReview toggleState={toggleState} onClick={() => toggleTab(2)}>
+        <MyReview
+          toggleState={toggleState}
+          onClick={() => {
+            toggleTab(2);
+            dispatch(storeAction.setStoreSortType(2));
+          }}
+        >
           내가 남긴 후기
         </MyReview>
       </Tab>

@@ -35,6 +35,7 @@ const Order = () => {
   const no_order_list = useSelector((state) => state.order.no_order_list);
   const order_list = useSelector((state) => state.order.order_list);
   const design_image = useSelector((state) => state.design.design_detail);
+  const sort = useSelector((state) => state.order.order_sort_type);
   const [toggleState, setToggleState] = React.useState(1);
   const [order, setOrder] = useState("notOrdered");
   const [pageNumber, setPageNumber] = React.useState(0);
@@ -55,7 +56,6 @@ const Order = () => {
   }, [toggleState]);
 
   useEffect(() => {
-    console.log("dispatch");
     if (pageNumber > 0) dispatch(orderAction.getOrdersDB(pageNumber, order));
   }, [pageNumber]);
 
@@ -64,6 +64,14 @@ const Order = () => {
       setPageNumber(pageNumber + 1);
     }
   }, [inView]);
+
+  useEffect(() => {
+    setToggleState(sort);
+  }, [sort]);
+
+  useEffect(() => {
+    dispatch(orderAction.getOrdersDB(pageNumber, "ordered"));
+  }, []);
 
   return (
     <Wrapper>
@@ -78,10 +86,22 @@ const Order = () => {
       </Header>
       <hr />
       <Tab>
-        <OrderDesign toggleState={toggleState} onClick={() => toggleTab(1)}>
+        <OrderDesign
+          toggleState={toggleState}
+          onClick={() => {
+            toggleTab(1);
+            dispatch(orderAction.setOrderSortType(1));
+          }}
+        >
           주문할 도안 선택
         </OrderDesign>
-        <OrderCheck toggleState={toggleState} onClick={() => toggleTab(2)}>
+        <OrderCheck
+          toggleState={toggleState}
+          onClick={() => {
+            toggleTab(2);
+            dispatch(orderAction.setOrderSortType(2));
+          }}
+        >
           주문서 확인
         </OrderCheck>
       </Tab>

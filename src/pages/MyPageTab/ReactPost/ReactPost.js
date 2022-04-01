@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 
 import { actionCreators as commentAction } from "../../../redux/modules/comment";
 import { actionCreators as designAction } from "../../../redux/modules/design";
+import { actionCreators as postAction } from "../../../redux/modules/post";
 
 //css
 import {
@@ -52,6 +53,7 @@ const ReactWrite = (props) => {
 
   const likedesign = useSelector((state) => state.design.likeDesign);
   const commentList = useSelector((state) => state.comment.my_comment_list);
+  const sort = useSelector((state) => state.post.post_sort_type);
 
   const deleteComment = (commentId) => {
     dispatch(commentAction.deleteMyCommentDB(commentId));
@@ -77,6 +79,10 @@ const ReactWrite = (props) => {
     }
   }, [inViewDesign, inViewComment]);
 
+  useEffect(() => {
+    setToggleState(sort);
+  }, [sort]);
+
   return (
     <ReactWriteWrap>
       <Container>
@@ -95,7 +101,7 @@ const ReactWrite = (props) => {
               onClick={() => {
                 setToggleState(1);
                 setPageNumber(0);
-                // dispatch(designAction.getLikeDesignDB(0));
+                dispatch(postAction.setPostSortType(1));
               }}
               toggleState={toggleState}
             >
@@ -105,7 +111,7 @@ const ReactWrite = (props) => {
               onClick={() => {
                 setToggleState(2);
                 setPageNumber(0);
-                // dispatch(commentAction.getMyCommentDB(0));
+                dispatch(postAction.setPostSortType(2));
               }}
               toggleState={toggleState}
             >

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import Modal from "react-modal";
@@ -42,6 +42,8 @@ const MyDraw = (props) => {
   const design_list = useSelector((state) => state.design.design_list);
   const post_list = useSelector((state) => state.design.post_list);
   const design_detail = useSelector((state) => state.design.design_detail);
+  const sort = useSelector((state) => state.design.mydesign_sort_type);
+  const locationState = useLocation().state;
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -69,13 +71,27 @@ const MyDraw = (props) => {
     }
   }, [inView]);
 
+  useEffect(() => {
+    setToggleState(sort);
+  }, [sort]);
+
+  useEffect(() => {
+    dispatch(designAction.getMyDesignListDB(pageNumber, "post"));
+  }, []);
+
   return (
     <Wrapper>
       <Header>
         <img
           src={black_back_button}
           alt="back-button"
-          onClick={() => navigate(-1)}
+          onClick={() => {
+            if (locationState) {
+              navigate("/mypage");
+            } else {
+              navigate(-1);
+            }
+          }}
         />
         <h3>내가 그린 도안</h3>
       </Header>
@@ -83,10 +99,22 @@ const MyDraw = (props) => {
       <hr />
 
       <Tab>
-        <NotPost toggleState={toggleState} onClick={() => toggleTab(1)}>
+        <NotPost
+          toggleState={toggleState}
+          onClick={() => {
+            toggleTab(1);
+            dispatch(designAction.setMyDesignSortType(1));
+          }}
+        >
           게시되지 않은 도안
         </NotPost>
-        <Post toggleState={toggleState} onClick={() => toggleTab(2)}>
+        <Post
+          toggleState={toggleState}
+          onClick={() => {
+            toggleTab(2);
+            dispatch(designAction.setMyDesignSortType(2));
+          }}
+        >
           게시된 도안
         </Post>
       </Tab>

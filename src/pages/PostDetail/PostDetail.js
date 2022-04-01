@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import Swal from "sweetalert2";
 
 import { actionCreators as postAction } from "../../redux/modules/post";
 import { actionCreators as commentAction } from "../../redux/modules/comment";
+import { actionCreators as designAction } from "../../redux/modules/design";
 
 //component
 import { CommentList } from "../../components/component";
@@ -43,6 +44,9 @@ const PostDetail = () => {
   const nickname = useSelector((state) => state.user.user?.nickname);
   const login = useSelector((state) => state.user.is_login);
   const is_session = localStorage.getItem("token");
+  const sort = useSelector((state) => state.design.mydesign_sort_type);
+  const locationState = useLocation().state?.sortType;
+  console.log(locationState);
 
   useEffect(() => {
     if (inView) {
@@ -137,7 +141,14 @@ const PostDetail = () => {
         <img
           src={black_back_button}
           alt="back-button"
-          onClick={() => navigate(-1)}
+          onClick={() => {
+            if (locationState) {
+              navigate(-1);
+            } else {
+              navigate("/mydesign", { state: { pageNumber } });
+              dispatch(designAction.setMyDesignSortType(2));
+            }
+          }}
         />
         <h3>게시글</h3>
       </Header>
