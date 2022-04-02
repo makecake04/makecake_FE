@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Slider from "react-slick";
 
 //image
-import { logo } from "../../assets/images/image";
+import { logo, help_icon } from "../../assets/images/image";
 
 export const Wrapper = styled.section`
   overflow-x: hidden;
@@ -82,11 +82,23 @@ export const Logo = styled.img.attrs({
   src: `${logo}`,
   alt: "logo",
 })`
-  width: 30%;
+  width: 25%;
   position: absolute;
-  left: 35%;
+  left: 40%;
   margin-top: ${(props) => (props.cakeShape === "" ? "13%;" : "1%;")};
+  cursor: pointer;
 `;
+
+export const Tutorial = styled.img.attrs({
+  src: `${help_icon}`,
+  alt: "tutorial",
+})`
+  position: absolute;
+  right: 28%;
+  margin-top: 1.2rem;
+  cursor: pointer;
+`;
+
 export const DefaultButtons = styled.div`
   height: 6.2rem;
   padding: 1rem 1.5rem 0.8rem;
@@ -275,8 +287,16 @@ export const VerticalLine = styled.div`
 `;
 
 export const ModalWrap2 = styled.div`
-  border: none;
-  img {
-    background-size: cover;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  height: 75vh;
+  overflow-y: auto;
+  img:first-child {
+    position: absolute;
+    right: 4%;
+    top: 1%;
   }
 `;
