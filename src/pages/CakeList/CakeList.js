@@ -124,7 +124,10 @@ const CakeList = (props) => {
       </ImageWrap>
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
+        onRequestClose={() => {
+          setModalIsOpen(false);
+          dispatch(cakeAction.cakeImage({}));
+        }}
         style={{
           overlay: {
             position: "fixed",

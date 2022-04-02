@@ -301,7 +301,6 @@ const StoreDetail = (props) => {
                 toggleTab(1);
 
                 dispatch(storeAction.setStoreSortType(1));
-
               }}
               toggleState={toggleState}
             >
@@ -607,7 +606,9 @@ const StoreDetail = (props) => {
       </DetailWrap>
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
+        onRequestClose={() => {
+          setModalIsOpen(false);
+        }}
         style={{
           overlay: {
             position: "fixed",
