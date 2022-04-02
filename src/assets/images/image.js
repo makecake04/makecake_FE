@@ -63,7 +63,7 @@ import white_square from "./drawing/icon/white_square.png";
 import note from "./drawing/icon/note.png";
 import white_star from "./drawing/icon/white_star.png";
 //tutorial
-import one from "./drawing/tutorial/one.svg";
+import tutorial from "./drawing/tutorial/tutorial.svg";
 
 //home
 import noti_icon from "./home/noti-icon.svg";
@@ -115,6 +115,7 @@ import order_circle from "./order/order-circle.svg";
 import order_marker from "./order/order-marker.svg";
 import help_icon from "./order/help-icon.svg";
 import close from "./order/close.svg";
+import close_white from "./order/close_white.svg";
 import order_location from "./order/order-location.svg";
 
 //post-detail
@@ -194,7 +195,7 @@ export {
   white_square,
   note,
   white_star,
-  one,
+  tutorial,
   noti_icon,
   swiper_arrow,
   search_icon,
@@ -230,6 +231,7 @@ export {
   order_marker,
   help_icon,
   close,
+  close_white,
   order_location,
   like,
   view,

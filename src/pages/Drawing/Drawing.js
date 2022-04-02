@@ -26,7 +26,9 @@ import {
   heart,
   square,
   remove_item,
-  one,
+  tutorial,
+  close_white,
+  help_icon,
 } from "../../assets/images/image";
 
 //css
@@ -38,6 +40,7 @@ import {
   LeftButtons,
   RightButton,
   Logo,
+  Tutorial,
   BodyWrapper,
   DefaultButtons,
   CreamButton,
@@ -70,7 +73,7 @@ const Design = () => {
   const [option, setOption] = useState("cream");
   const [icon, setIcon] = useState("icons");
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  // const [modal2IsOpen, setModal2IsOpen] = useState(true);
+  const [modal2IsOpen, setModal2IsOpen] = useState(true);
 
   useEffect(() => {
     setCanvas(initCanvas());
@@ -303,11 +306,13 @@ const Design = () => {
             </LeftButtons>
 
             <Logo cakeShape={cakeShape} onClick={() => navigate("/")} />
+            <Tutorial onClick={() => setModal2IsOpen(true)} />
 
             {cakeShape && (
               <RightButton onClick={() => setModalIsOpen(true)}>
                 완료
               </RightButton>
+
               // <RightButton onClick={() => complete()}>완료</RightButton>
             )}
           </ButtonWrapper>
@@ -419,6 +424,7 @@ const Design = () => {
                   onClick={() => {
                     addRect(canvas);
                     setCakeShape("square");
+                    setModal2IsOpen(true);
                   }}
                 >
                   <img src={square} alt="Square" />
@@ -427,6 +433,7 @@ const Design = () => {
                   onClick={() => {
                     addCircle(canvas);
                     setCakeShape("circle");
+                    setModal2IsOpen(true);
                   }}
                 >
                   <img src={circle} alt="Circle" />
@@ -435,6 +442,7 @@ const Design = () => {
                   onClick={() => {
                     addHeart(canvas);
                     setCakeShape("heart");
+                    setModal2IsOpen(true);
                   }}
                 >
                   <img src={heart} alt="Heart" />
@@ -625,7 +633,7 @@ const Design = () => {
         </ModalWrap>
       </Modal>
 
-      {/* <Modal
+      <Modal
         isOpen={modal2IsOpen}
         onRequestClose={() => {
           setModal2IsOpen(false);
@@ -637,27 +645,35 @@ const Design = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: "rgba(76, 76, 76, 0.7)",
+            backgroundColor: "rgba(0, 0, 0, 0.8)",
             zIndex: "20",
           },
           content: {
-    
-            top: "20%",
+            position: "absolute",
+            top: "50%",
             left: "50%",
             bottom: "auto",
-            width: "390px",
-            height: "830px",
+            width: "300px",
+            height: "auto",
             padding: "0",
-            overflow: "hidden",
-            transform: "translate(-50%,0%)",
+            border: "none",
+            overflow: "auto",
+            borderRadius: "5px",
+            backgroundColor: "transparent",
+            transform: "translate(-50%,-50%)",
             WebkitOverflowScrolling: "touch",
           },
         }}
       >
         <ModalWrap2>
-        <img src={one} alt="one" />
+          <img
+            src={close_white}
+            alt="close"
+            onClick={() => setModal2IsOpen(false)}
+          />
+          <img src={tutorial} alt="tutorial" />
         </ModalWrap2>
-      </Modal> */}
+      </Modal>
     </Wrapper>
   );
 };
