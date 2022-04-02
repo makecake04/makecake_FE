@@ -670,12 +670,6 @@ export const CreatedDateP = styled.p`
 
 export const Pwrap = styled.p`
   word-break: break-all;
-  display: -webkit-box;
-  word-wrap: break-word;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
   padding: 0px 20px;
 `;
 
