@@ -82,10 +82,12 @@ export const Logo = styled.img.attrs({
   src: `${logo}`,
   alt: "logo",
 })`
-  width: 25%;
-  position: absolute;
-  left: 40%;
-  margin-top: ${(props) => (props.cakeShape === "" ? "13%;" : "1%;")};
+  width: 40%;
+  margin-right: 0.5rem;
+  /* margin-top: ${(props) => (props.cakeShape === "" ? "13%;" : "1%;")}; */
+  /* margin-top: ${(props) =>
+    props.cakeShape === "" ? "5rem;" : "0.3rem;"}; */
+
   cursor: pointer;
 `;
 
@@ -93,10 +95,17 @@ export const Tutorial = styled.img.attrs({
   src: `${help_icon}`,
   alt: "tutorial",
 })`
-  position: absolute;
-  right: 28%;
-  margin-top: 1.2rem;
+  width: 9.5%;
+  padding-bottom: 0.3rem;
+  /* margin-top: ${(props) =>
+    props.cakeShape === "" ? "5.7rem;" : "1rem;"}; */
   cursor: pointer;
+`;
+
+export const LogoBtn = styled.div`
+  position: absolute;
+  left: 26%;
+  margin-top: 1rem;
 `;
 
 export const DefaultButtons = styled.div`

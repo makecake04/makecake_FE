@@ -41,6 +41,7 @@ import {
   RightButton,
   Logo,
   Tutorial,
+  LogoBtn,
   BodyWrapper,
   DefaultButtons,
   CreamButton,
@@ -279,6 +280,10 @@ const Design = () => {
     <Wrapper>
       <CanvasWrapper>
         <Header>
+          <LogoBtn>
+            <Logo onClick={() => navigate("/")} />
+            <Tutorial onClick={() => setModal2IsOpen(true)} />
+          </LogoBtn>
           <ButtonWrapper>
             <LeftButtons>
               {cakeShape && isDrawing && (
@@ -304,9 +309,6 @@ const Design = () => {
                 </button>
               )}
             </LeftButtons>
-
-            <Logo cakeShape={cakeShape} onClick={() => navigate("/")} />
-            <Tutorial onClick={() => setModal2IsOpen(true)} />
 
             {cakeShape && (
               <RightButton onClick={() => setModalIsOpen(true)}>
@@ -424,7 +426,6 @@ const Design = () => {
                   onClick={() => {
                     addRect(canvas);
                     setCakeShape("square");
-                    setModal2IsOpen(true);
                   }}
                 >
                   <img src={square} alt="Square" />
@@ -433,7 +434,6 @@ const Design = () => {
                   onClick={() => {
                     addCircle(canvas);
                     setCakeShape("circle");
-                    setModal2IsOpen(true);
                   }}
                 >
                   <img src={circle} alt="Circle" />
@@ -442,7 +442,6 @@ const Design = () => {
                   onClick={() => {
                     addHeart(canvas);
                     setCakeShape("heart");
-                    setModal2IsOpen(true);
                   }}
                 >
                   <img src={heart} alt="Heart" />
@@ -653,7 +652,7 @@ const Design = () => {
             top: "50%",
             left: "50%",
             bottom: "auto",
-            width: "300px",
+            width: "100vw",
             height: "auto",
             padding: "0",
             border: "none",

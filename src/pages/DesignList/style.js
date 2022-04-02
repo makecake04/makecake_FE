@@ -9,7 +9,7 @@ export const DrawWrap = styled.div`
   width: 100%;
   h3 {
     padding: 2.25rem 0;
-    text-align: center;
+    margin-left: 37%;
     font-weight: 500;
     font-size: 20px;
     color: #282828;
