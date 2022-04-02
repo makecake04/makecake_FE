@@ -85,7 +85,7 @@ const MyDraw = (props) => {
             navigate(-1);
           }}
         />
-        <h3>내가 그린 도안!!!!!!!!</h3>
+        <h3>내가 그린 도안</h3>
       </Header>
       <hr />
       <Tab>
