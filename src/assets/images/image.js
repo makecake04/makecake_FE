@@ -145,6 +145,7 @@ import store_plus_button from "./store-detail/store-plus-button.svg";
 //store-review
 import image_upload from "./store-review/image-upload.svg";
 import preview_delete from "./store-review/preview-delete.svg";
+import preview_icon from "./store-review/preview-icon.svg";
 
 export {
   black_back_button,
@@ -251,4 +252,5 @@ export {
   more_button,
   image_upload,
   preview_delete,
+  preview_icon,
 };

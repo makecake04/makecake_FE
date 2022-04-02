@@ -26,6 +26,9 @@ import {
   ImageUpload,
 } from "./style";
 
+//image
+import { preview_icon } from "../../assets/images/image";
+
 const ReviewWrite = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -161,14 +164,7 @@ const ReviewWrite = (props) => {
         </PlusButton>
         <ImageWrap>
           <ImageBox>
-            <ImgBox
-              src={
-                preview
-                  ? preview
-                  : "https://k-startup.go.kr/images/homepage/prototype/noimage.gif"
-              }
-              alt="reviewImage"
-            />
+            <ImgBox src={preview ? preview : preview_icon} alt="reviewImage" />
           </ImageBox>
         </ImageWrap>
       </SubWrap>
