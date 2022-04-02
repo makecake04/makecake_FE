@@ -40,9 +40,6 @@ const ReviewWrite = (props) => {
   const is_edit = review_id ? true : false;
 
   useEffect(() => {
-    if (one_review.length !== 0) {
-      dispatch(reviewAction.reviewReplace([]));
-    }
     if (is_edit) {
       dispatch(reviewAction.getOneReviewDB(review_id));
     }
@@ -81,6 +78,7 @@ const ReviewWrite = (props) => {
       });
       return;
     }
+    dispatch(reviewAction.reviewReplace([]));
     dispatch(
       reviewAction.addReviewDB(store_id, contents, fileInput.current.files[0])
     );

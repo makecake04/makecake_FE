@@ -583,7 +583,10 @@ const StoreDetail = (props) => {
                       {v.writerNickname === user_nickname?.nickname && (
                         <ButtonWrap>
                           <EditButton
-                            onClick={() => navigate(`/review/${v.reviewId}`)}
+                            onClick={() => {
+                              dispatch(reviewAction.reviewReplace([]));
+                              navigate(`/review/${v.reviewId}`);
+                            }}
                           >
                             수정하기
                           </EditButton>
