@@ -26,6 +26,9 @@ import {
   ImageUpload,
 } from "./style";
 
+//image
+import { preview_icon } from "../../assets/images/image";
+
 const ReviewWrite = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -37,9 +40,6 @@ const ReviewWrite = (props) => {
   const is_edit = review_id ? true : false;
 
   useEffect(() => {
-    if (one_review.length !== 0) {
-      dispatch(reviewAction.reviewReplace([]));
-    }
     if (is_edit) {
       dispatch(reviewAction.getOneReviewDB(review_id));
     }
@@ -78,6 +78,7 @@ const ReviewWrite = (props) => {
       });
       return;
     }
+    dispatch(reviewAction.reviewReplace([]));
     dispatch(
       reviewAction.addReviewDB(store_id, contents, fileInput.current.files[0])
     );
@@ -161,14 +162,7 @@ const ReviewWrite = (props) => {
         </PlusButton>
         <ImageWrap>
           <ImageBox>
-            <ImgBox
-              src={
-                preview
-                  ? preview
-                  : "https://k-startup.go.kr/images/homepage/prototype/noimage.gif"
-              }
-              alt="reviewImage"
-            />
+            <ImgBox src={preview ? preview : preview_icon} alt="reviewImage" />
           </ImageBox>
         </ImageWrap>
       </SubWrap>

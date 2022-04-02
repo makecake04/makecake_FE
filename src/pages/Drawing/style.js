@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import Slider from "react-slick";
 
 //image
-import { logo } from "../../assets/images/image";
+import { logo, help_icon } from "../../assets/images/image";
 
 export const Wrapper = styled.section`
   overflow-x: hidden;
@@ -31,7 +32,7 @@ export const CanvasWrapper = styled.section`
 
 export const Header = styled.header`
   padding: 0.5rem 0.5rem 1.2rem 0;
-  height: 100%;
+  height: 64px;
   button {
     width: 4rem;
     height: 4rem;
@@ -81,10 +82,32 @@ export const Logo = styled.img.attrs({
   src: `${logo}`,
   alt: "logo",
 })`
-  width: 30%;
-  margin-right: ${(props) => (props.cakeShape === "" ? "32%" : "7%;")};
-  margin-top: ${(props) => (props.cakeShape === "" ? "1.3%;" : "1%;")};
+  width: 40%;
+  margin-right: 0.5rem;
+  /* margin-top: ${(props) => (props.cakeShape === "" ? "13%;" : "1%;")}; */
+  /* margin-top: ${(props) =>
+    props.cakeShape === "" ? "5rem;" : "0.3rem;"}; */
+
+  cursor: pointer;
 `;
+
+export const Tutorial = styled.img.attrs({
+  src: `${help_icon}`,
+  alt: "tutorial",
+})`
+  width: 9.5%;
+  padding-bottom: 0.3rem;
+  /* margin-top: ${(props) =>
+    props.cakeShape === "" ? "5.7rem;" : "1rem;"}; */
+  cursor: pointer;
+`;
+
+export const LogoBtn = styled.div`
+  position: absolute;
+  left: 26%;
+  margin-top: 1rem;
+`;
+
 export const DefaultButtons = styled.div`
   height: 6.2rem;
   padding: 1rem 1.5rem 0.8rem;
@@ -270,4 +293,19 @@ export const VerticalLine = styled.div`
   position: absolute;
   left: 50%;
   bottom: 0;
+`;
+
+export const ModalWrap2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  height: 75vh;
+  overflow-y: auto;
+  img:first-child {
+    position: absolute;
+    right: 4%;
+    top: 1%;
+  }
 `;

@@ -301,7 +301,6 @@ const StoreDetail = (props) => {
                 toggleTab(1);
 
                 dispatch(storeAction.setStoreSortType(1));
-
               }}
               toggleState={toggleState}
             >
@@ -392,7 +391,10 @@ const StoreDetail = (props) => {
             </ContentOne>
             <Modal
               isOpen={modalIsOpen2}
-              onRequestClose={() => setModalIsOpen2(false)}
+              onRequestClose={() => {
+                setModalIsOpen2(false);
+                dispatch(cakeAction.cakeImage({}));
+              }}
               style={{
                 overlay: {
                   position: "fixed",
@@ -584,7 +586,10 @@ const StoreDetail = (props) => {
                       {v.writerNickname === user_nickname?.nickname && (
                         <ButtonWrap>
                           <EditButton
-                            onClick={() => navigate(`/review/${v.reviewId}`)}
+                            onClick={() => {
+                              dispatch(reviewAction.reviewReplace([]));
+                              navigate(`/review/${v.reviewId}`);
+                            }}
                           >
                             수정하기
                           </EditButton>
@@ -607,7 +612,10 @@ const StoreDetail = (props) => {
       </DetailWrap>
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
+        onRequestClose={() => {
+          setModalIsOpen(false);
+          dispatch(cakeAction.cakeImage({}));
+        }}
         style={{
           overlay: {
             position: "fixed",

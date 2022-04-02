@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { fabric } from "fabric";
-import "fabric-history";
-// import { saveAs } from "file-saver";
-import disableScroll from "disable-scroll";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import { useDispatch } from "react-redux";
@@ -29,6 +26,9 @@ import {
   heart,
   square,
   remove_item,
+  tutorial,
+  close_white,
+  help_icon,
 } from "../../assets/images/image";
 
 //css
@@ -40,6 +40,8 @@ import {
   LeftButtons,
   RightButton,
   Logo,
+  Tutorial,
+  LogoBtn,
   BodyWrapper,
   DefaultButtons,
   CreamButton,
@@ -56,6 +58,7 @@ import {
   ModalWrap,
   VerticalLine,
   ModalChoice,
+  ModalWrap2,
 } from "./style";
 
 const Design = () => {
@@ -63,17 +66,21 @@ const Design = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [canvas, setCanvas] = useState("");
+  const [pickerColor, setPickerColor] = useState("#ffadcb");
   const [cakeShape, setCakeShape] = useState("");
   const [isDrawing, setIsDrawing] = useState(false);
+  const [drawBrushWidth, setDrawBrushWidth] = useState(1);
   const [originLength, setOriginLength] = useState(0);
   const [option, setOption] = useState("cream");
-  const [icon, setIcon] = useState("");
+  const [icon, setIcon] = useState("icons");
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modal2IsOpen, setModal2IsOpen] = useState(true);
 
   useEffect(() => {
     setCanvas(initCanvas());
   }, []);
   console.log(option);
+
   //color change
   const colorChange = (e) => {
     let obj = canvas.getActiveObject();
@@ -100,6 +107,37 @@ const Design = () => {
         obj.set({ stroke: e.target.value });
       }
     }
+    setPickerColor(e.target.value);
+    canvas.renderAll();
+  };
+
+  //change color when clicked
+  const colorClickChange = (e) => {
+    let obj = canvas.getActiveObject();
+    if (icon === "backgroundColor" || (obj && icon === "backgroundColor")) {
+      canvas.backgroundColor = e.target.value;
+    } else if (obj) {
+      if (!obj.filters && obj.fill !== null && !obj._objects) {
+        obj.set({ fill: e.target.value });
+      } else if (obj._objects) {
+        for (let i = 0; i < obj._objects.length; i++) {
+          obj._objects[i].set({
+            fill: e.target.value,
+          });
+        }
+      } else if (obj.filters) {
+        let tint = new fabric.Image.filters.BlendColor({
+          color: e.target.value,
+          mode: "multiply",
+        });
+        obj.filters.push(tint);
+        obj.applyFilters();
+        obj.filters.pop(); //reset the filter so the obj's color can be changed in response to the color picker
+      } else {
+        obj.set({ stroke: e.target.value });
+      }
+    }
+    setPickerColor(e.target.value);
     canvas.renderAll();
   };
 
@@ -169,7 +207,7 @@ const Design = () => {
     setOriginLength(originData);
     setIsDrawing(true);
     canvas.isDrawingMode = true;
-    // canvas.historyUndo = [];
+    canvas.freeDrawingBrush.color = pickerColor;
     // canvas.freeDrawingCursor = "none";
     canvas.renderAll();
   };
@@ -195,12 +233,14 @@ const Design = () => {
   //Brush Width
   const brushWidth = (e) => {
     canvas.freeDrawingBrush.width = parseInt(e.target.value, 10);
+    setDrawBrushWidth(canvas.freeDrawingBrush.width);
     canvas.renderAll();
   };
 
   //Brush Color
   const brushColor = (e) => {
     canvas.freeDrawingBrush.color = e.target.value;
+    setPickerColor(e.target.value);
     canvas.renderAll();
   };
 
@@ -240,13 +280,17 @@ const Design = () => {
     <Wrapper>
       <CanvasWrapper>
         <Header>
+          <LogoBtn>
+            <Logo onClick={() => navigate("/")} />
+            <Tutorial onClick={() => setModal2IsOpen(true)} />
+          </LogoBtn>
           <ButtonWrapper>
             <LeftButtons>
               {cakeShape && isDrawing && (
                 <input
                   id="drawing-line-color"
                   type="color"
-                  defaultValue={"#000000"}
+                  value={pickerColor}
                   onChange={brushColor}
                 />
               )}
@@ -254,8 +298,9 @@ const Design = () => {
                 <input
                   id="object-color"
                   type="color"
-                  defaultValue="#ffadcb"
+                  value={pickerColor}
                   onChange={colorChange}
+                  onClick={colorClickChange}
                 />
               )}
               {cakeShape && !isDrawing && (
@@ -265,12 +310,11 @@ const Design = () => {
               )}
             </LeftButtons>
 
-            <Logo cakeShape={cakeShape} onClick={() => navigate("/")} />
-
             {cakeShape && (
               <RightButton onClick={() => setModalIsOpen(true)}>
                 완료
               </RightButton>
+
               // <RightButton onClick={() => complete()}>완료</RightButton>
             )}
           </ButtonWrapper>
@@ -291,7 +335,7 @@ const Design = () => {
                     onClick={() => {
                       setOption("cream");
                       stopDrawing(canvas);
-                      setIcon("");
+                      if (icon === "backgroundColor") setIcon("icons");
                     }}
                   >
                     크림 모양
@@ -341,7 +385,7 @@ const Design = () => {
                 onClick={() => {
                   setOption("cream");
                   stopDrawing(canvas);
-                  setIcon("");
+                  // if (icon === "backgroundColor") setIcon("");
                 }}
               >
                 크림 모양
@@ -507,7 +551,7 @@ const Design = () => {
                           height: 8,
                           color: "#ff679e",
                         }}
-                        defaultValue={1}
+                        value={drawBrushWidth}
                         onChange={brushWidth}
                       />
                     </Box>
@@ -586,6 +630,48 @@ const Design = () => {
             <button onClick={() => setModalIsOpen(false)}>취소</button>
           </ModalChoice>
         </ModalWrap>
+      </Modal>
+
+      <Modal
+        isOpen={modal2IsOpen}
+        onRequestClose={() => {
+          setModal2IsOpen(false);
+        }}
+        style={{
+          overlay: {
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.8)",
+            zIndex: "20",
+          },
+          content: {
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            bottom: "auto",
+            width: "100vw",
+            height: "auto",
+            padding: "0",
+            border: "none",
+            overflow: "auto",
+            borderRadius: "5px",
+            backgroundColor: "transparent",
+            transform: "translate(-50%,-50%)",
+            WebkitOverflowScrolling: "touch",
+          },
+        }}
+      >
+        <ModalWrap2>
+          <img
+            src={close_white}
+            alt="close"
+            onClick={() => setModal2IsOpen(false)}
+          />
+          <img src={tutorial} alt="tutorial" />
+        </ModalWrap2>
       </Modal>
     </Wrapper>
   );

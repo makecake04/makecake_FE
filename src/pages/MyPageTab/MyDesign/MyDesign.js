@@ -90,9 +90,7 @@ const MyDraw = (props) => {
         /> */}
         <h3>내가 그린 도안</h3>
       </Header>
-
       <hr />
-
       <Tab>
         <NotPost
           toggleState={toggleState}
@@ -174,7 +172,10 @@ const MyDraw = (props) => {
 
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
+        onRequestClose={() => {
+          setModalIsOpen(false);
+          dispatch(designAction.designDetail({}));
+        }}
         style={{
           overlay: {
             position: "fixed",
