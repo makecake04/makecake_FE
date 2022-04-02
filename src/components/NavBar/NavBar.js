@@ -33,9 +33,10 @@ const NavBar = (props) => {
       setActiveNav("cake");
     } else if (
       pathName === "/design/list" ||
-      pathName === "/post/:id" ||
-      pathName === "/post/write/:designid" ||
-      pathName === "/post/write/:designid/:postid"
+      pathName.includes("/post/")
+      // pathName === "/post/:id" ||
+      // pathName === "/post/write/:designid" ||
+      // pathName === "/post/write/:designid/:postid"
     ) {
       setActiveNav("design");
     } else if (
