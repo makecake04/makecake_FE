@@ -391,7 +391,10 @@ const StoreDetail = (props) => {
             </ContentOne>
             <Modal
               isOpen={modalIsOpen2}
-              onRequestClose={() => setModalIsOpen2(false)}
+              onRequestClose={() => {
+                setModalIsOpen2(false);
+                dispatch(cakeAction.cakeImage({}));
+              }}
               style={{
                 overlay: {
                   position: "fixed",
@@ -611,6 +614,7 @@ const StoreDetail = (props) => {
         isOpen={modalIsOpen}
         onRequestClose={() => {
           setModalIsOpen(false);
+          dispatch(cakeAction.cakeImage({}));
         }}
         style={{
           overlay: {

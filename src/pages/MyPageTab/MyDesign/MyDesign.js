@@ -169,7 +169,10 @@ const MyDraw = (props) => {
 
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
+        onRequestClose={() => {
+          setModalIsOpen(false);
+          dispatch(designAction.designDetail({}));
+        }}
         style={{
           overlay: {
             position: "fixed",

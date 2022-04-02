@@ -352,6 +352,7 @@ export default handleActions(
 const actionCreators = {
   addDesignDB,
   newDesignList,
+  designDetail,
   getDesignListDB,
   getMyDesignListDB,
   getDesignImageDB,
