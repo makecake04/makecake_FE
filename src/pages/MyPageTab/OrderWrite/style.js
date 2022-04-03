@@ -51,10 +51,12 @@ export const Info = styled.div`
     font-size: 1.7rem;
     padding-bottom: 1rem;
     text-decoration: underline;
+    cursor: pointer;
   }
   img {
     padding-left: 0.4rem;
     padding-bottom: 0.5rem;
+    cursor: pointer;
   }
 `;
 
