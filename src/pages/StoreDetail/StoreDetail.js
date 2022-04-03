@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { actionCreators as storeAction } from "../../redux/modules/store";
-import { actionCreators as cakeAction } from "../../redux/modules/cake";
-import { actionCreators as reviewAction } from "../../redux/modules/review";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import Swal from "sweetalert2";
 import Modal from "react-modal";
+
+import { actionCreators as storeAction } from "../../redux/modules/store";
+import { actionCreators as cakeAction } from "../../redux/modules/cake";
+import { actionCreators as reviewAction } from "../../redux/modules/review";
 
 //import css
 import {
@@ -301,7 +301,6 @@ const StoreDetail = (props) => {
                 toggleTab(1);
 
                 dispatch(storeAction.setStoreSortType(1));
-
               }}
               toggleState={toggleState}
             >
@@ -392,7 +391,10 @@ const StoreDetail = (props) => {
             </ContentOne>
             <Modal
               isOpen={modalIsOpen2}
-              onRequestClose={() => setModalIsOpen2(false)}
+              onRequestClose={() => {
+                setModalIsOpen2(false);
+                dispatch(cakeAction.cakeImage({}));
+              }}
               style={{
                 overlay: {
                   position: "fixed",
@@ -607,7 +609,10 @@ const StoreDetail = (props) => {
       </DetailWrap>
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
+        onRequestClose={() => {
+          setModalIsOpen(false);
+          dispatch(cakeAction.cakeImage({}));
+        }}
         style={{
           overlay: {
             position: "fixed",
