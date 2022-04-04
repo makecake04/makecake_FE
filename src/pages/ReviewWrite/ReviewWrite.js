@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
-import { actionCreators as reviewAction } from "../../redux/modules/review";
-import { actionCreators as storeAction } from "../../redux/modules/store";
+import React, { useEffect, useState, useRef } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+import imageCompression from "browser-image-compression";
+
+import { actionCreators as reviewAction } from "../../redux/modules/review";
 
 //css
 import {
@@ -28,6 +28,8 @@ import {
 
 //image
 import { preview_icon } from "../../assets/images/image";
+import { current } from "immer";
+import Compressor from "compressorjs";
 
 const ReviewWrite = (props) => {
   const dispatch = useDispatch();
@@ -45,22 +47,45 @@ const ReviewWrite = (props) => {
     }
   }, []);
 
-  const [contents, setContents] = React.useState(
-    review_id ? one_review.content : ""
-  );
+  const [contents, setContents] = useState(review_id ? one_review.content : "");
 
-  const [fileName, setFileName] = React.useState(null);
-  const fileInput = React.useRef();
+  const [file, setFile] = useState(null);
+  const fileInput = useRef();
 
-  const selectFiles = (e) => {
+  const selectFiles = async (e) => {
     const reader = new FileReader();
     const currentFile = fileInput.current.files[0];
-    setFileName(currentFile.name);
+
+    new Compressor(currentFile, {
+      quality: 0.6,
+      success(result) {
+        console.log(result);
+        setFile(result);
+      },
+    });
+
+    //browser-image-compression
+    // const compressedFile = await compressImage(currentFile);
+    // console.log(compressedFile);
+    // setFile(compressedFile);
     reader.readAsDataURL(currentFile);
     reader.onloadend = () => {
       dispatch(reviewAction.setPreview(reader.result));
     };
   };
+
+  //browser-image-compression
+  // const compressImage = async (image) => {
+  //   try {
+  //     const options = {
+  //       maxSizeMb: 1,
+  //       maxWidthOrHeight: 300,
+  //     };
+  //     return await imageCompression(image, options);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
 
   const preview = useSelector((state) => state.review.preview);
 
@@ -79,9 +104,8 @@ const ReviewWrite = (props) => {
       return;
     }
     dispatch(reviewAction.reviewReplace([]));
-    dispatch(
-      reviewAction.addReviewDB(store_id, contents, fileInput.current.files[0])
-    );
+    console.log(file);
+    dispatch(reviewAction.addReviewDB(store_id, contents, file));
   };
 
   const editReview = () => {
@@ -90,7 +114,8 @@ const ReviewWrite = (props) => {
         reviewAction.editReviewDB(
           review_id,
           one_review.content,
-          fileInput.current.files[0],
+          // fileInput.current.files[0],
+          file,
           imgUrl,
           one_review.storeId
         )
@@ -100,7 +125,8 @@ const ReviewWrite = (props) => {
         reviewAction.editReviewDB(
           review_id,
           contents,
-          fileInput.current.files[0],
+          // fileInput.current.files[0],
+          file,
           imgUrl,
           one_review.storeId
         )
