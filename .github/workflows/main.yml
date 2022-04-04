@@ -35,12 +35,20 @@ jobs:
       - name: Generate Environment Variables File for Production
         run: |
           echo "REACT_APP_REST_API_KEY=$REACT_APP_REST_API_KEY" >> .env.production
-          echo "REACT_APP_REDIRECT_URI=$REACT_APP_REDIRECT_URI" >> .env.production
-          echo "REACT_APP_API_URL=$REACT_APP_API_URL" >> .env.production
+          echo "REACT_APP_REDIRECT_URL=$REACT_APP_REDIRECT_URL" >> .env.production
+          echo "REACT_APP_CLIENT_ID=$REACT_APP_CLIENT_ID" >> .env.production
+          echo "REACT_APP_CALLBACKURL=$REACT_APP_CALLBACKURL" >> .env.production
+          echo "REACT_APP_CLIENTID=$REACT_APP_CLIENTID" >> .env.production
+          echo "REACT_APP_CALLBACK=$REACT_APP_CALLBACK" >> .env.production
+          echo "REACT_APP_BASEURL=$REACT_APP_BASEURL" >> .env.production
         env:
           REACT_APP_REST_API_KEY: ${{ secrets.REACT_APP_REST_API_KEY }}
-          REACT_APP_REDIRECT_URI: ${{ secrets.REACT_APP_REDIRECT_URI }}
-          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+          REACT_APP_REDIRECT_URL: ${{ secrets.REACT_APP_REDIRECT_URL }}
+          REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
+          REACT_APP_CALLBACKURL: ${{ secrets.REACT_APP_CALLBACKURL }}
+          REACT_APP_CLIENTID: ${{ secrets.REACT_APP_CLIENTID }}
+          REACT_APP_CALLBACK: ${{ secrets.REACT_APP_CALLBACK }}
+          REACT_APP_BASEURL: ${{ secrets.REACT_APP_BASEURL }}
       
       - name: yarn install 
         run: yarn install
