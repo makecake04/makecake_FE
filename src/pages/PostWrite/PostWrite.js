@@ -80,6 +80,15 @@ const PostWrite = () => {
   };
 
   const editPost = () => {
+    if (!title || !content || !postSize || !postShape || !postPurpose) {
+      Swal.fire({
+        title: "모든 입력값을 입력해주세요!",
+        showCancelButton: false,
+        confirmButtonText: "확인",
+        confirmButtonColor: "#ff679e",
+      });
+      return;
+    }
     dispatch(
       postAction.editPostDB(
         title,
