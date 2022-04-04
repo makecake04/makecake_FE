@@ -113,8 +113,10 @@ const CakeList = (props) => {
                 <ImgBox
                   src={v.img}
                   onClick={() => {
-                    setModalIsOpen(true);
                     dispatch(cakeAction.getCakeImageDB(v.cakeId));
+                    setTimeout(() => {
+                      setModalIsOpen(true);
+                    }, 70);
                   }}
                   alt="cakeImage"
                 />
