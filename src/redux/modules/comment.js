@@ -35,7 +35,7 @@ const initialState = {
 const getCommentDB = (postId, page_num) => {
   return function (dispatch, getState, { history }) {
     api
-      .getComment()
+      .getComment(postId, page_num)
       .then((res) => {
         console.log(res.data);
         dispatch(getComment(res.data));
@@ -51,7 +51,7 @@ const addCommentDB = (postId, content) => {
   return function (dispatch, getState, { history }) {
     // api
     api
-      .addComment()
+      .postComment(postId, content)
       // .post("https://devssk.shop/comments/10307" , {
       //     // .addComment1(content)
       //     content: content,
@@ -82,7 +82,7 @@ const deleteCommentDB = (commentId) => {
     //   .delete(`https://devssk.shop/comments/${commentId}` , {
     // })
     api
-      .deleteComment()
+      .deleteComment(commentId)
       .then((res) => {
         // dispatch(deleteComment(commentId));
         window.location.reload();
@@ -94,12 +94,10 @@ const deleteCommentDB = (commentId) => {
 };
 
 const getMyCommentDB = (page_num) => {
-  const token = localStorage.getItem("token");
   return function (dispatch, getState, { history }) {
     api
-      .getMyComment()
+      .getMyComment(page_num)
       .then((res) => {
-        console.log(res.data);
         dispatch(getMyComment(res.data));
       })
       .catch((err) => {

@@ -89,17 +89,9 @@ const getStoreDetailDB = (storeId) => {
 };
 
 const getLikeStoreDB = (page_num) => {
-  const token = localStorage.getItem("token");
   return function (dispatch, getState) {
     api
-      .getLikeStore({
-        params: {
-          page: parseInt(page_num),
-        },
-        headers: {
-          Authorization: `${token}`,
-        },
-      })
+      .getLikeStore(page_num)
       .then((res) => {
         dispatch(likeStore(res.data));
       })
@@ -110,17 +102,9 @@ const getLikeStoreDB = (page_num) => {
 };
 
 const getMyReviewDB = (page_num) => {
-  const token = localStorage.getItem("token");
   return function (dispatch, getState) {
     api
-      .getMyReview({
-        params: {
-          page: parseInt(page_num),
-        },
-        headers: {
-          Authorization: `${token}`,
-        },
-      })
+      .getMyReview(page_num)
       .then((res) => {
         dispatch(myReview(res.data));
       })
@@ -146,14 +130,8 @@ const getStoreCakeListDB = (storeId) => {
 const getStoreReviewListDB = (storeId, page_num) => {
   return function (dispatch, getState) {
     api
-      .getStoreReview({
-        storeId,
-        params: {
-          page: parseInt(page_num),
-        },
-      })
+      .getStoreReview(storeId, page_num)
       .then((res) => {
-        console.log(res.data);
         dispatch(storeReviewList(res.data));
       })
       .catch((err) => {
@@ -163,16 +141,10 @@ const getStoreReviewListDB = (storeId, page_num) => {
 };
 
 const addLikeStoreDB = (storeId, myLike) => {
-  const token = localStorage.getItem("token");
   return function (dispatch, getState) {
     api
-      .addStoreLike(myLike, {
-        headers: {
-          Authorization: `${token}`,
-        },
-      })
+      .addStoreLike(storeId, myLike)
       .then((res) => {
-        console.log(res.data);
         dispatch(addLikeStore(storeId, res.data.myLike, res.data.likeCnt));
       })
       .catch((err) => {

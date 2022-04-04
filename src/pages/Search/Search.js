@@ -69,7 +69,7 @@ const Search = (props) => {
       });
       return;
     }
-    dispatch(searchAction.searchPlaceDB(selected, searchInput, "null"));
+    dispatch(searchAction.searchPlaceDB(selected, searchInput));
     navigate(`/search/result/${selected}/${searchInput}`);
   };
 
@@ -112,7 +112,7 @@ const Search = (props) => {
         <PlaceList1>
           <Place
             onClick={() => {
-              dispatch(searchAction.searchPlaceDB("store", "터틀힙", "null"));
+              dispatch(searchAction.searchPlaceDB("store", "터틀힙"));
               navigate("/search/result/store/터틀힙");
             }}
           >
@@ -120,7 +120,7 @@ const Search = (props) => {
           </Place>
           <Place
             onClick={() => {
-              dispatch(searchAction.searchPlaceDB("store", "메모레", "null"));
+              dispatch(searchAction.searchPlaceDB("store", "메모레"));
               navigate("/search/result/store/메모레");
             }}
           >
@@ -128,9 +128,7 @@ const Search = (props) => {
           </Place>
           <Place
             onClick={() => {
-              dispatch(
-                searchAction.searchPlaceDB("store", "베니케이크", "null")
-              );
+              dispatch(searchAction.searchPlaceDB("store", "베니케이크"));
               navigate("/search/result/store/베니케이크");
             }}
           >
@@ -140,9 +138,7 @@ const Search = (props) => {
         <PlaceList2>
           <Place
             onClick={() => {
-              dispatch(
-                searchAction.searchPlaceDB("store", "더케익스토리", "null")
-              );
+              dispatch(searchAction.searchPlaceDB("store", "더케익스토리"));
               navigate("/search/result/store/더케익스토리");
             }}
           >
@@ -150,9 +146,7 @@ const Search = (props) => {
           </Place>
           <Place
             onClick={() => {
-              dispatch(
-                searchAction.searchPlaceDB("store", "두두케이크", "null")
-              );
+              dispatch(searchAction.searchPlaceDB("store", "두두케이크"));
               navigate("/search/result/store/두두케이크");
             }}
           >
@@ -166,7 +160,7 @@ const Search = (props) => {
         <PlaceList1>
           <Place2
             onClick={() => {
-              dispatch(searchAction.searchPlaceDB("address", "논현동", "null"));
+              dispatch(searchAction.searchPlaceDB("address", "논현동"));
               navigate("/search/result/address/논현동");
             }}
           >
@@ -174,9 +168,7 @@ const Search = (props) => {
           </Place2>
           <Place2
             onClick={() => {
-              dispatch(
-                searchAction.searchPlaceDB("address", "강남구 신사동", "null")
-              );
+              dispatch(searchAction.searchPlaceDB("address", "강남구 신사동"));
               navigate("/search/result/address/강남구 신사동");
             }}
           >
@@ -184,7 +176,7 @@ const Search = (props) => {
           </Place2>
           <Place2
             onClick={() => {
-              dispatch(searchAction.searchPlaceDB("address", "서초구", "null"));
+              dispatch(searchAction.searchPlaceDB("address", "서초구"));
               navigate("/search/result/address/서초구");
             }}
           >
@@ -194,9 +186,7 @@ const Search = (props) => {
         <PlaceList2>
           <Place2
             onClick={() => {
-              dispatch(
-                searchAction.searchPlaceDB("address", "강서구 화곡동", "null")
-              );
+              dispatch(searchAction.searchPlaceDB("address", "강서구 화곡동"));
               navigate("/search/result/address/강서구 화곡동");
             }}
           >
@@ -204,7 +194,7 @@ const Search = (props) => {
           </Place2>
           <Place2
             onClick={() => {
-              dispatch(searchAction.searchPlaceDB("address", "용산구", "null"));
+              dispatch(searchAction.searchPlaceDB("address", "용산구"));
               navigate("/search/result/address/용산구");
             }}
           >
@@ -218,7 +208,7 @@ const Search = (props) => {
         <PlaceList1>
           <Place3
             onClick={() => {
-              dispatch(searchAction.searchPlaceDB("place", "가로수길", "null"));
+              dispatch(searchAction.searchPlaceDB("place", "가로수길"));
               navigate("/search/result/place/가로수길");
             }}
           >
@@ -226,7 +216,7 @@ const Search = (props) => {
           </Place3>
           <Place3
             onClick={() => {
-              dispatch(searchAction.searchPlaceDB("place", "서울숲", "null"));
+              dispatch(searchAction.searchPlaceDB("place", "서울숲"));
               navigate("/search/result/place/서울숲");
             }}
           >
@@ -250,7 +240,7 @@ const Search = (props) => {
         <PlaceList2>
           <Place3
             onClick={() => {
-              dispatch(searchAction.searchPlaceDB("place", "건대입구", "null"));
+              dispatch(searchAction.searchPlaceDB("place", "건대입구"));
               navigate("/search/result/place/건대입구");
             }}
           >
@@ -258,7 +248,7 @@ const Search = (props) => {
           </Place3>
           <Place3
             onClick={() => {
-              dispatch(searchAction.searchPlaceDB("place", "샤로수길", "null"));
+              dispatch(searchAction.searchPlaceDB("place", "샤로수길"));
               navigate("/search/result/place/샤로수길");
             }}
           >

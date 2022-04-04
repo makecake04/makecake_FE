@@ -117,9 +117,6 @@ const kakaoLoginDB = (code) => {
     api
       .kakaoLogin(code)
       .then((res) => {
-        const ACCESS_TOKEN = res.data.accessToken;
-        const ACCESS_TOKEN_EXP = res.data.accessTokenExpiresIn;
-        const REFRESH_TOKEN = res.data.refreshToken;
         dispatch(setUser(res.headers));
         localStorage.setItem("token", res.headers.authorization);
         window.location.replace("/");
@@ -138,9 +135,6 @@ const googleLoginDB = (code) => {
     api
       .googleLogin(code)
       .then((res) => {
-        const ACCESS_TOKEN = res.data.accessToken;
-        const ACCESS_TOKEN_EXP = res.data.accessTokenExpiresIn;
-        const REFRESH_TOKEN = res.data.refreshToken;
         dispatch(setUser(res.headers));
         localStorage.setItem("token", res.headers.authorization);
         window.location.replace("/");
@@ -159,9 +153,6 @@ const naverLoginDB = (code, state) => {
     api
       .naverLogin(code, state)
       .then((res) => {
-        const ACCESS_TOKEN = res.data.accessToken;
-        const ACCESS_TOKEN_EXP = res.data.accessTokenExpiresIn;
-        const REFRESH_TOKEN = res.data.refreshToken;
         dispatch(setUser(res.headers));
         localStorage.setItem("token", res.headers.authorization);
         window.location.replace("/");
@@ -241,7 +232,6 @@ const getUserInfoDB = () => {
 };
 
 const editProfileDB = (nickname, img) => {
-  const token = localStorage.getItem("token");
   return function (dispatch, getState) {
     const form = new FormData();
     if (img) {
@@ -253,7 +243,6 @@ const editProfileDB = (nickname, img) => {
     api
       .editProfile(form)
       .then((res) => {
-        console.log(res);
         dispatch(editProfile(res.data));
         window.location.replace("/mypage");
       })
@@ -270,10 +259,9 @@ const editProfileDB = (nickname, img) => {
 };
 
 const resignDB = () => {
-  const token = localStorage.getItem("token");
   return function (dispatch, getState) {
     api
-      .resign()
+      .putResign()
       .then((res) => {
         localStorage.removeItem("token");
         window.location.replace("/home");

@@ -26,94 +26,106 @@ instance.interceptors.request.use(function (config) {
 });
 
 export const api = {
-  getlist: () => instance.get(`/home`),
-
-  getCake: () => instance.get(`/cakes`),
-
+  //cake.js
+  getChangeSort: (sortType) =>
+    instance.get("/cakes", {
+      params: {
+        page: 0,
+        sortType: sortType,
+      },
+    }),
+  getCakeList: (page_num, sortType) =>
+    instance.get("/cakes", {
+      params: {
+        page: parseInt(page_num),
+        sortType: sortType,
+      },
+    }),
   getImage: (cakeId) => instance.get(`/cakes/${cakeId}/detail`),
 
-  getLikeCake: () => instance.get(`mypage/cakes`),
+  getLikeCake: (page_num) =>
+    instance.get(`mypage/cakes`, {
+      params: {
+        page: parseInt(page_num),
+      },
+    }),
 
   addCakeLike: (cakeId, myLike) =>
     instance.post(`/cakes/${cakeId}/like`, { myLike: myLike }),
 
-  getreview: () => instance.get(`/home/review`),
-
   getdesign: () => instance.get(`api/designs`),
 
+  //comment.js
   getComment: (postId, page_num) =>
-    instance.get(
-      `/posts/${postId}/comments
-  `,
-      {
-        params: {
-          page: parseInt(page_num),
-        },
-      }
-    ),
-
-  addComment: (postId, token) =>
-    instance.post(`/posts/${postId}/comments`, {
-      headers: {
-        Authorization: `${token}`,
+    instance.get(`/posts/${postId}/comments`, {
+      params: {
+        page: parseInt(page_num),
       },
     }),
-
-  deleteComment: (commentId, token) =>
-    instance.delete(`/comments/${commentId}`, {
-      headers: {
-        Authorization: `${token}`,
-      },
-    }),
-
-  getMyComment: (page_num, token) =>
+  postComment: (postId, content) =>
+    instance.post(`/posts/${postId}/comments`, { content: content }),
+  deleteComment: (commentId) => instance.delete(`/comments/${commentId}`),
+  getMyComment: (page_num) =>
     instance.get(`/mypage/comments`, {
       params: {
         page: parseInt(page_num),
       },
-      headers: { Authorization: `${token}` },
     }),
+
+  //store.js
+  getlist: () => instance.get(`/home`),
+
+  getreview: () => instance.get(`/home/reviews`),
 
   getStore: (storeId) =>
     instance.get(`/stores/${storeId}`, { storeId: storeId }),
 
-  getLikeStore: () => instance.get(`/mypages/stores`),
+  getLikeStore: (page_num) =>
+    instance.get(`/mypage/stores`, {
+      params: {
+        page: parseInt(page_num),
+      },
+    }),
 
-  getMyReview: () => instance.get(`/mypages/reviews`),
+  getMyReview: (page_num) =>
+    instance.get(`/mypage/reviews`, {
+      params: {
+        page: parseInt(page_num),
+      },
+    }),
 
   getStoreCake: (storeId) => instance.get(`/stores/${storeId}/cakes`),
 
-  getStoreReview: (storeId) => instance.get(`/stores/${storeId}/reviews`),
+  getStoreReview: (storeId, page_num) =>
+    instance.get(`/stores/${storeId}/reviews`, {
+      params: {
+        page: parseInt(page_num),
+      },
+    }),
 
   addStoreLike: (storeId, myLike) =>
     instance.post(`/stores/${storeId}/likes`, { myLike: myLike }),
 
-  addReview: (storeId, content, imgFileList) =>
-    instance.post(`/stores/${storeId}/reviews`, {
-      content: content,
-      imgFileList: imgFileList,
-    }),
+  //review.js
+  postReview: (storeId, form) =>
+    instance.post(`/stores/${storeId}/reviews`, form),
 
-  editReview: (reviewId, content, imgFileList, imgUrl) =>
-    instance.put(`/reviews/${reviewId}`, {
-      content: content,
-      imgFileList: imgFileList,
-      imgUrl: imgUrl,
-    }),
+  putReview: (reviewId, form) => instance.put(`/reviews/${reviewId}`, form),
 
   deleteReview: (reviewId) =>
     instance.delete(`/reviews/${reviewId}`, { reviewId: reviewId }),
 
   getOneReview: (reviewId) => instance.get(`/reviews/${reviewId}`),
 
+  //user.js
   postUsernameCheck: (username) =>
-    instance.post(`/user/usernameCheck`, { username: username }),
+    instance.post(`/users/username-check`, { username: username }),
 
   postNicknameCheck: (nickname) =>
-    instance.post(`/user/nicknameCheck`, { nickname: nickname }),
+    instance.post(`/users/nickname-check`, { nickname: nickname }),
 
   postSignUp: (username, password, passwordCheck, nickname) =>
-    instance.post(`/user/signup`, {
+    instance.post(`/users/signup`, {
       username: username,
       password: password,
       passwordCheck: passwordCheck,
@@ -123,39 +135,20 @@ export const api = {
   postLogin: (username, password) =>
     instance.post(`/login`, { username: username, password: password }),
   getUserInfo: () => instance.get(`/mypage`),
-  editProfile: (token) =>
-    instance.get(`/users/profile`, {
-      headers: {
-        Authorization: `${token}`,
-      },
-    }),
-  resign: (token) =>
-    instance.get(`/users/resign`, {
-      headers: {
-        Authorization: `${token}`,
-      },
-    }),
+  editProfile: (form) => instance.put(`/users/profile`, form),
+  putResign: () => instance.put(`/users/resign`),
+  loginCheck: () => instance.get(`/users/login-check`),
 
-  postSearch: (searchType, searchText, sortType) =>
-    instance.post(`/api/search`, {
-      searchType: searchType,
-      searchText: searchText,
-      sortType: sortType,
+  //search.js
+  getSearch: (searchType, searchText) =>
+    instance.get(`/search`, {
+      params: { searchType: searchType, searchText: searchText },
     }),
-  mapSearch: (storeId) => instance.get(`/api/search/${storeId}`),
+  mapSearch: (storeId) => instance.get(`/search/${storeId}`),
 
-  loginCheck: (token) =>
-    instance.get(`/users/login-check`, {
-      headers: {
-        Authorization: `${token}`,
-      },
-    }),
-  kakaoLogin: (code) => instance.get(`/user/kakao/callback?code=${code}`),
-  naverLogin: (code, state) =>
-    instance.get(`/user/naver/callback?code=${code}&state=${state}`),
-  googleLogin: (code) => instance.get(`/user/google/callback?code=${code}`),
+  //noti.js
   getNoti: () => instance.get(`/noti`),
-  getNewNoti: () => instance.get(`/api/newNoti`),
+  getNewNoti: () => instance.get(`/home/new-noti`),
 
   //design.js
   postDesign: (form) => instance.post("/designs", form),
@@ -179,9 +172,9 @@ export const api = {
     instance.get("/mypage/orders", {
       params: { page: parseInt(page_num), option: option },
     }),
-  getOrderStores: () => instance.get("/orders/order-guide"),
+  getOrderStores: () => instance.get("/orders/stores"),
   getOrderForm: (orderFormId) =>
-    instance.get(`/publicorders/order-forms/${orderFormId}`),
+    instance.get(`/orders/order-forms/${orderFormId}`),
   postOrder: (list, orderFormId, designId) =>
     instance.post(`/orders/${orderFormId}`, {
       designId: designId,
@@ -201,4 +194,10 @@ export const api = {
   deletePost: (postId) => instance.delete(`/posts/${postId}`),
   postLikePost: (postId, myLike) =>
     instance.post(`/posts/${postId}/like`, { myLike: myLike }),
+
+  //social login
+  kakaoLogin: (code) => instance.get(`/user/kakao/callback?code=${code}`),
+  naverLogin: (code, state) =>
+    instance.get(`/user/naver/callback?code=${code}&state=${state}`),
+  googleLogin: (code) => instance.get(`/user/google/callback?code=${code}`),
 };
