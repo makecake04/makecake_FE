@@ -4,8 +4,10 @@ import React from "react";
 import { Container, KakaoButton } from "./style";
 
 const KakaoLogin = (props) => {
-  let REST_API_KEY = "acaeb2db08a3beea2ca7a11d9a22bb97";
-  let REDIRECT_URI = "https://make-cake.com/user/kakao/callback";
+  // let REST_API_KEY = "acaeb2db08a3beea2ca7a11d9a22bb97";
+  // let REDIRECT_URI = "https://make-cake.com/user/kakao/callback";
+  let REST_API_KEY = process.env.REACT_APP_REST_API_KEY;
+  let REDIRECT_URI = process.env.REACT_APP_REDIRECT_URL;
   return (
     <Container>
       <KakaoButton
