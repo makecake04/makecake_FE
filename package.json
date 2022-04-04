@@ -18,6 +18,8 @@
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
     "axios": "^0.26.0",
+    "browser-image-compression": "^1.0.17",
+    "compressorjs": "^1.1.1",
     "connected-react-router": "^6.9.2",
     "disable-scroll": "^0.6.0",
     "fabric": "^5.2.1",
