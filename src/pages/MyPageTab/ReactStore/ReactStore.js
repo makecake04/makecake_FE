@@ -33,7 +33,7 @@ import {
 } from "./style";
 
 //image
-import { black_back_button, location } from "../../../assets/images/image";
+import { location, preview_icon } from "../../../assets/images/image";
 
 const ReactStore = (props) => {
   const navigate = useNavigate();

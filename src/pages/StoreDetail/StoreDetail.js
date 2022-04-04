@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation, useParmas } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { actionCreators as storeAction } from "../../redux/modules/store";
 import { actionCreators as cakeAction } from "../../redux/modules/cake";
 import { actionCreators as reviewAction } from "../../redux/modules/review";
@@ -7,10 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import Swal from "sweetalert2";
 import Modal from "react-modal";
-
-import { actionCreators as storeAction } from "../../redux/modules/store";
-import { actionCreators as cakeAction } from "../../redux/modules/cake";
-import { actionCreators as reviewAction } from "../../redux/modules/review";
 
 //import css
 import {
@@ -101,7 +97,7 @@ import {
 } from "./style";
 
 //image
-import { close } from "../../assets/images/image";
+import { close, preview_icon } from "../../assets/images/image";
 
 //component
 
@@ -130,7 +126,7 @@ const StoreDetail = (props) => {
   const store_info = useSelector((state) => state.store.store);
   const is_session = localStorage.getItem("token");
 
-  console.log(locationState);
+  const preview = useSelector((state) => state.review.preview);
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -600,6 +596,9 @@ const StoreDetail = (props) => {
                           <EditButton
                             onClick={() => {
                               dispatch(reviewAction.reviewReplace([]));
+                              dispatch(
+                                reviewAction.previewReplace(preview_icon)
+                              );
                               navigate(`/review/${v.reviewId}`);
                             }}
                           >
