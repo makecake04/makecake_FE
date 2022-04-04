@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 
 const ADD_REVIEW = "ADD_REVIEW";
 const SET_PREVIEW = "SET_PREVIEW";
+const PREVIEW_REPLACE = "PREVIEW_REPLACE";
 const EDIT_REVEIW = "EDIT_REVIEW";
 const DELETE_REVIEW = "DELETE_REVIEW";
 const GET_ONE_REVIEW = "GET_ONE_REVIEW";
@@ -13,6 +14,9 @@ const REVIEW_REPLACE = "REVIEW_REPLACE";
 
 const addReview = createAction(ADD_REVIEW, (review) => ({ review }));
 const setPreview = createAction(SET_PREVIEW, (preview) => ({ preview }));
+const previewReplace = createAction(PREVIEW_REPLACE, (preview) => ({
+  preview,
+}));
 const editReview = createAction(EDIT_REVEIW, (review) => ({ review }));
 const deleteReview = createAction(DELETE_REVIEW, (reviewId) => ({ reviewId }));
 const getOneReview = createAction(GET_ONE_REVIEW, (oneReview) => ({
@@ -40,7 +44,6 @@ const addReviewDB = (storeId, content, img) => {
         },
       })
       .then((res) => {
-        console.log(res);
         dispatch(addReview(res.data));
         window.location.replace(`/storedetail/${storeId}`);
       })
@@ -140,6 +143,10 @@ export default handleActions(
       produce(state, (draft) => {
         draft.preview = action.payload.preview;
       }),
+    [PREVIEW_REPLACE]: (state, action) =>
+      produce(state, (draft) => {
+        draft.preview = action.payload.preview;
+      }),
     // [EDIT_REVEIW]: (state, action) =>
     //   produce(state, (draft) => {
     //     const new_review = draft.list[action.payload.reviewId].find(
@@ -171,6 +178,7 @@ const actionCreators = {
   addReview,
   addReviewDB,
   setPreview,
+  previewReplace,
   deleteReview,
   deleteReviewDB,
   editReview,

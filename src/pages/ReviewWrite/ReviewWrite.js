@@ -40,7 +40,6 @@ const ReviewWrite = (props) => {
   const is_edit = review_id ? true : false;
 
   useEffect(() => {
-
     if (is_edit) {
       dispatch(reviewAction.getOneReviewDB(review_id));
     }
@@ -116,6 +115,7 @@ const ReviewWrite = (props) => {
           <BlackBackIcon
             onClick={() => {
               navigate(-1);
+              dispatch(reviewAction.previewReplace(preview_icon));
             }}
           />
           <h3>{is_edit ? "매장 리뷰 수정하기" : "매장 리뷰 작성하기"}</h3>

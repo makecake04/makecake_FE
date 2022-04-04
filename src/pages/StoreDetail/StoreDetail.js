@@ -98,7 +98,7 @@ import {
 } from "./style";
 
 //image
-import { close } from "../../assets/images/image";
+import { close, preview_icon } from "../../assets/images/image";
 
 //component
 
@@ -127,7 +127,7 @@ const StoreDetail = (props) => {
   const store_info = useSelector((state) => state.store.store);
   const is_session = localStorage.getItem("token");
 
-  console.log(locationState);
+  const preview = useSelector((state) => state.review.preview);
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -607,6 +607,9 @@ const StoreDetail = (props) => {
                           <EditButton
                             onClick={() => {
                               dispatch(reviewAction.reviewReplace([]));
+                              dispatch(
+                                reviewAction.previewReplace(preview_icon)
+                              );
                               navigate(`/review/${v.reviewId}`);
                             }}
                           >
