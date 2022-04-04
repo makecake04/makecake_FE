@@ -1,8 +1,10 @@
 import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
+import { actionCreators as storeAction } from "../../../redux/modules/store";
 
 //import css
 import {
@@ -20,6 +22,7 @@ import {
 
 const HotStoreList = (props) => {
   const store_list = useSelector((state) => state.store.list);
+  const dispatch = useDispatch();
   const storeId = store_list.homeStoreDtoList;
   const navigate = useNavigate();
 
@@ -45,6 +48,7 @@ const HotStoreList = (props) => {
                       <ImgBox
                         src={v.mainImg}
                         onClick={() => {
+                          dispatch(storeAction.storeDetail([]));
                           navigate(`/storedetail/${v.storeId}`);
                         }}
                       />
