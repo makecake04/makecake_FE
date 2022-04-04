@@ -266,7 +266,7 @@ const Search = (props) => {
           </Place3>
         </PlaceList2>
       </Container>
-      {/* <EmptySpace2 /> */}
+      <EmptySpace2 />
       {/* <SeoulAreaText>현재는 서울시 내에서만 검색이 가능합니다.</SeoulAreaText> */}
     </SDetailWrap>
   );

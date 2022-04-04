@@ -10,6 +10,7 @@ import { actionCreators as designAction } from "../../../redux/modules/design";
 import {
   Wrapper,
   Header,
+  BlackBackButton,
   Tab,
   Post,
   NotPost,
@@ -31,9 +32,6 @@ import {
   PostIcon,
   NeedPostingText,
 } from "./style";
-
-//image
-import { black_back_button } from "../../../assets/images/image";
 
 const MyDraw = (props) => {
   const navigate = useNavigate();
@@ -78,13 +76,18 @@ const MyDraw = (props) => {
   return (
     <Wrapper>
       <Header>
-        <img
+        <BlackBackButton
+          onClick={() => {
+            navigate(-1);
+          }}
+        />
+        {/* <img
           src={black_back_button}
           alt="back-button"
           onClick={() => {
             navigate(-1);
           }}
-        />
+        /> */}
         <h3>내가 그린 도안</h3>
       </Header>
       <hr />

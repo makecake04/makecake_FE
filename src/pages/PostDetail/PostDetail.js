@@ -9,12 +9,13 @@ import { actionCreators as commentAction } from "../../redux/modules/comment";
 import { actionCreators as designAction } from "../../redux/modules/design";
 
 //image
-import { black_back_button, view, send } from "../../assets/images/image";
+import { view, send } from "../../assets/images/image";
 
 //css
 import {
   Wrapper,
   Header,
+  BlackBackButton,
   UserInfo,
   ProfileImage,
   ButtonWrapper,
@@ -151,13 +152,19 @@ const PostDetail = () => {
   return (
     <Wrapper>
       <Header>
-        <img
+        <BlackBackButton
+          onClick={() => {
+            navigate(-1);
+            dispatch(designAction.setMyDesignSortType(2));
+          }}
+        />
+        {/* <img
           src={black_back_button}
           alt="back-button"
           onClick={() => {
             navigate(-1);
           }}
-        />
+        /> */}
         <h3>게시글</h3>
       </Header>
 
@@ -211,7 +218,7 @@ const PostDetail = () => {
 
       <PostInfo>
         <h3>{post.title}</h3>
-        <p>{post.content}</p>
+        <p style={{ whiteSpace: "pre-wrap" }}>{post.content}</p>
       </PostInfo>
 
       <CommentWrapper>

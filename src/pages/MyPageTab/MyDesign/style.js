@@ -6,6 +6,7 @@ import {
   write_design,
   post_icon,
   drawing_icon,
+  black_back_button,
 } from "../../../assets/images/image";
 
 export const Wrapper = styled.div`
@@ -280,6 +281,13 @@ export const NeedPostingText = styled.p`
 `;
 
 //image
+export const BlackBackButton = styled.img.attrs({
+  src: `${black_back_button}`,
+})`
+  margin-left: 3%;
+  cursor: pointer;
+`;
+
 export const DeleteIcon = styled.img.attrs({
   src: `${remove_design}`,
 })`

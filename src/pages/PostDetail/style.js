@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 //image
-import { empty_heart_icon, full_heart_icon } from "../../assets/images/image";
+import {
+  black_back_button,
+  empty_heart_icon,
+  full_heart_icon,
+} from "../../assets/images/image";
 
 export const Wrapper = styled.section`
   box-sizing: border-box;
@@ -22,6 +26,14 @@ export const Header = styled.header`
     margin-left: 30%;
     vertical-align: middle;
   }
+`;
+
+export const BlackBackButton = styled.img.attrs({
+  src: `${black_back_button}`,
+  alt: "BlackBackButton",
+})`
+  margin-left: 3%;
+  cursor: pointer;
 `;
 
 export const UserInfo = styled.div`
