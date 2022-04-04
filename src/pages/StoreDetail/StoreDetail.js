@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation, useParmas } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { actionCreators as storeAction } from "../../redux/modules/store";
 import { actionCreators as cakeAction } from "../../redux/modules/cake";
 import { actionCreators as reviewAction } from "../../redux/modules/review";
@@ -7,10 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import Swal from "sweetalert2";
 import Modal from "react-modal";
-
-import { actionCreators as storeAction } from "../../redux/modules/store";
-import { actionCreators as cakeAction } from "../../redux/modules/cake";
-import { actionCreators as reviewAction } from "../../redux/modules/review";
 
 //import css
 import {
