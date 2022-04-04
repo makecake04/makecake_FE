@@ -87,6 +87,7 @@ import {
   CallSvg,
   ClockSvg,
   MarkerSvg,
+  DescriptionAddress,
   ShopSvg,
   ImgWrap,
   ImgBox,
@@ -158,6 +159,10 @@ const StoreDetail = (props) => {
     } else {
       dispatch(cakeAction.addLikeCakeDB(cake_id.cakeId, !my_like.myLike));
     }
+  };
+
+  const saveInformation = (storeId) => {
+    navigate(`/searchmap/${storeId}`);
   };
 
   useEffect(() => {
@@ -338,7 +343,13 @@ const StoreDetail = (props) => {
                 <ContentWrap>
                   <IconWrap>
                     <MarkerSvg />
-                    <Description>{store_info.roadAddress}</Description>
+                    <DescriptionAddress
+                      onClick={() => {
+                        navigate(`/searchmap/${store_id}`);
+                      }}
+                    >
+                      {store_info.roadAddress}
+                    </DescriptionAddress>
                   </IconWrap>
                   <IconWrap>
                     <ClockSvg />

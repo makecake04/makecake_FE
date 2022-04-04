@@ -219,7 +219,7 @@ const PostDetail = () => {
 
       <PostInfo>
         <h3>{post.title}</h3>
-        <p>{post.content}</p>
+        <p style={{ whiteSpace: "pre-wrap" }}>{post.content}</p>
       </PostInfo>
 
       <CommentWrapper>

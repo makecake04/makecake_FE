@@ -781,6 +781,23 @@ export const Toggle = styled.div`
   z-index: 2;
 `;
 
+export const DescriptionAddress = styled.div`
+  font-size: 15px;
+  color: #777;
+  flex: 1;
+  cursor: pointer;
+  text-decoration: underline;
+  span + span {
+    margin-left: 0.5rem;
+  }
+  span + span + span {
+    margin-left: 0.5rem;
+  }
+  span + span + span + span {
+    margin-left: 0.5rem;
+  }
+`;
+
 export const EmptyHeartIcon = styled.img.attrs({
   src: `${empty_heart_icon}`,
   alt: "img",

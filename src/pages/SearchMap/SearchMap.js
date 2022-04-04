@@ -78,9 +78,9 @@ const SearchMap = () => {
   };
 
   useEffect(() => {
-    if (searchs.length === 0) {
-      dispatch(searchAction.mapInfoDB(storeId));
-    }
+    // if (searchs.length === 0) {
+    dispatch(searchAction.mapInfoDB(storeId));
+    // }
   }, []);
 
   const onKeyPress = (e) => {
