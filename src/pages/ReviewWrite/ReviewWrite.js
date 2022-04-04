@@ -40,6 +40,7 @@ const ReviewWrite = (props) => {
   const is_edit = review_id ? true : false;
 
   useEffect(() => {
+
     if (is_edit) {
       dispatch(reviewAction.getOneReviewDB(review_id));
     }

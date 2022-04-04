@@ -92,10 +92,9 @@ export const Size = styled.div`
 
 export const Shape = styled(Size)``;
 export const Purpose = styled(Size)``;
-
 export const MiniSize = styled.button`
   ${(props) =>
-    (props.size || props.postSize) === "도시락"
+    props.size === "도시락"
       ? css`
           background-color: rgba(255, 103, 158, 0.1);
           color: #ff679e;
@@ -107,7 +106,7 @@ export const MiniSize = styled.button`
 `;
 export const OneSize = styled.button`
   ${(props) =>
-    (props.size || props.postSize) === "1호"
+    props.size === "1호"
       ? css`
           background-color: rgba(255, 103, 158, 0.1);
           color: #ff679e;
@@ -119,7 +118,7 @@ export const OneSize = styled.button`
 `;
 export const TwoSize = styled.button`
   ${(props) =>
-    (props.size || props.postSize) === "2호"
+    props.size === "2호"
       ? css`
           background-color: rgba(255, 103, 158, 0.1);
           color: #ff679e;
@@ -131,7 +130,7 @@ export const TwoSize = styled.button`
 `;
 export const ThreeSize = styled.button`
   ${(props) =>
-    (props.size || props.postSize) === "3호"
+    props.size === "3호"
       ? css`
           background-color: rgba(255, 103, 158, 0.1);
           color: #ff679e;
@@ -143,7 +142,7 @@ export const ThreeSize = styled.button`
 `;
 export const OtherSize = styled.button`
   ${(props) =>
-    (props.size || props.postSize) === "기타"
+    props.size === "기타"
       ? css`
           background-color: rgba(255, 103, 158, 0.1);
           color: #ff679e;
@@ -156,7 +155,7 @@ export const OtherSize = styled.button`
 
 export const Square = styled.button`
   ${(props) =>
-    (props.shape || props.postShape) === "네모"
+    props.shape === "네모"
       ? css`
           background-color: rgba(255, 103, 158, 0.1);
           color: #ff679e;
@@ -168,7 +167,7 @@ export const Square = styled.button`
 `;
 export const Heart = styled.button`
   ${(props) =>
-    (props.shape || props.postShape) === "하트"
+    props.shape === "하트"
       ? css`
           background-color: rgba(255, 103, 158, 0.1);
           color: #ff679e;
@@ -180,7 +179,7 @@ export const Heart = styled.button`
 `;
 export const Circle = styled.button`
   ${(props) =>
-    (props.shape || props.postShape) === "원형"
+    props.shape === "원형"
       ? css`
           background-color: rgba(255, 103, 158, 0.1);
           color: #ff679e;
@@ -192,7 +191,7 @@ export const Circle = styled.button`
 `;
 export const Birthday = styled.button`
   ${(props) =>
-    (props.purpose || props.postPurpose) === "생일"
+    props.purpose === "생일"
       ? css`
           background-color: rgba(255, 103, 158, 0.1);
           color: #ff679e;
@@ -204,7 +203,7 @@ export const Birthday = styled.button`
 `;
 export const Parents = styled.button`
   ${(props) =>
-    (props.purpose || props.postPurpose) === "부모님"
+    props.purpose === "부모님"
       ? css`
           background-color: rgba(255, 103, 158, 0.1);
           color: #ff679e;
@@ -216,7 +215,7 @@ export const Parents = styled.button`
 `;
 export const Friends = styled.button`
   ${(props) =>
-    (props.purpose || props.postPurpose) === "친구"
+    props.purpose === "친구"
       ? css`
           background-color: rgba(255, 103, 158, 0.1);
           color: #ff679e;
@@ -228,7 +227,7 @@ export const Friends = styled.button`
 `;
 export const Lovers = styled.button`
   ${(props) =>
-    (props.purpose || props.postPurpose) === "연인"
+    props.purpose === "연인"
       ? css`
           background-color: rgba(255, 103, 158, 0.1);
           color: #ff679e;
@@ -238,29 +237,15 @@ export const Lovers = styled.button`
           color: #777777;
         `}
 `;
-// export const Celebration = styled.button`
-//   ${(props) =>
-//     (props.purpose || props.postPurpose) === "축하"
-//       ? css`
-//           background-color: rgba(255, 103, 158, 0.1);
-//           color: #ff679e;
-//         `
-//       : css`
-//           background-color: rgba(196, 196, 196, 0.16);
-//           color: #777777;
-//         `}
-// `;
 export const Others = styled.button`
   ${(props) =>
-    (props.purpose || props.postPurpose) === "기타"
+    props.purpose === "기타"
       ? css`
           background-color: rgba(255, 103, 158, 0.1);
           color: #ff679e;
-          /* margin-top: 1rem; */
         `
       : css`
           background-color: rgba(196, 196, 196, 0.16);
           color: #777777;
-          /* margin-top: 1rem; */
         `}
 `;
