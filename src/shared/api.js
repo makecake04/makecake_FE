@@ -30,7 +30,7 @@ export const api = {
 
   getcake: () => instance.get(`api/cakes`),
 
-  getImage: (cakeId) => instance.post(`api/cakes/detail`, { cakeId: cakeId }),
+  getImage: (cakeId) => instance.get(`api/cakes/${cakeId}/detail`),
 
   getreview: () => instance.get(`api/home/review`),
 
