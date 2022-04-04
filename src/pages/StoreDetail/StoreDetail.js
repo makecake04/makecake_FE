@@ -199,6 +199,7 @@ const StoreDetail = (props) => {
             <WhiteBackIcon
               onClick={() => {
                 navigate(-1);
+                dispatch(storeAction.storeDetail([]));
               }}
             />
             <HrWrap />
