@@ -34,7 +34,7 @@ const OrderStore = () => {
   const store_list = useSelector((state) => state.order.store_list);
 
   useEffect(() => {
-    dispatch(orderAction.getStoresDB());
+    dispatch(orderAction.getOrderStoresDB());
   }, []);
 
   return (

@@ -72,4 +72,49 @@ export const api = {
   GoogleLogin: (code) => instance.get(`/user/google/callback?code=${code}`),
   getNoti: () => instance.get(`/noti`),
   getNewNoti: () => instance.get(`/api/newNoti`),
+
+  //design.js
+  postDesign: (form) => instance.post("/designs", form),
+  getDesignList: (page_num, sortType) =>
+    instance.get("/posts", {
+      params: { page: parseInt(page_num), sortType: sortType },
+    }),
+  getMyDesignList: (page_num, option) =>
+    instance.get("/mypage/designs", {
+      params: { page: parseInt(page_num), option: option },
+    }),
+  getDesignImage: (designId) => instance.get(`/mypage/designs/${designId}`),
+  deleteDesign: (designId) => instance.delete(`/designs/${designId}`),
+  getLikeDesign: (page_num) =>
+    instance.get("/mypage/posts", {
+      params: { page: parseInt(page_num) },
+    }),
+
+  //order.js
+  getOrders: (page_num, option) =>
+    instance.get("/mypage/orders", {
+      params: { page: parseInt(page_num), option: option },
+    }),
+  getOrderStores: () => instance.get("/orders/order-guide"),
+  getOrderForm: (orderFormId) =>
+    instance.get(`/publicorders/order-forms/${orderFormId}`),
+  postOrder: (list, orderFormId, designId) =>
+    instance.post(`/orders/${orderFormId}`, {
+      designId: designId,
+      userInput: list,
+    }),
+  getOneOrder: (userOrdersId) => instance.get(`/orders/${userOrdersId}`),
+  deleteOrder: (userOrdersId) => instance.delete(`/orders/${userOrdersId}`),
+  getOrderGuide: () => instance.get("/order-guide"),
+
+  //post.js
+  postPost: (post, designId) =>
+    instance.post(`/posts/${designId}`, {
+      ...post,
+    }),
+  getOnePost: (postId) => instance.get(`/posts/${postId}`),
+  putPost: (post, postId) => instance.put(`/posts/${postId}`, { ...post }),
+  deletePost: (postId) => instance.delete(`/posts/${postId}`),
+  postLikePost: (postId, myLike) =>
+    instance.post(`/posts/${postId}/like`, { myLike: myLike }),
 };
