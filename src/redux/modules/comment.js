@@ -34,13 +34,8 @@ const initialState = {
 
 const getCommentDB = (postId, page_num) => {
   return function (dispatch, getState, { history }) {
-    axios
-      .get(`https://devssk.shop/api/designs/${postId}/comments`, {
-        params: {
-          page: parseInt(page_num),
-        },
-      })
-
+    api
+      .getComment()
       .then((res) => {
         console.log(res.data);
         dispatch(getComment(res.data));
@@ -55,13 +50,8 @@ const addCommentDB = (postId, content) => {
   const token = localStorage.getItem("token");
   return function (dispatch, getState, { history }) {
     // api
-
-    axios({
-      method: "post",
-      url: `https://devssk.shop/comments/${postId}`,
-      data: { content: content },
-      headers: { Authorization: `${token}` },
-    })
+    api
+      .addComment()
       // .post("https://devssk.shop/comments/10307" , {
       //     // .addComment1(content)
       //     content: content,
@@ -91,11 +81,8 @@ const deleteCommentDB = (commentId) => {
     //   axios
     //   .delete(`https://devssk.shop/comments/${commentId}` , {
     // })
-    axios({
-      method: "delete",
-      url: `https://devssk.shop/comments/${commentId}`,
-      headers: { Authorization: `${token}` },
-    })
+    api
+      .deleteComment()
       .then((res) => {
         // dispatch(deleteComment(commentId));
         window.location.reload();
@@ -109,41 +96,14 @@ const deleteCommentDB = (commentId) => {
 const getMyCommentDB = (page_num) => {
   const token = localStorage.getItem("token");
   return function (dispatch, getState, { history }) {
-    axios({
-      method: "get",
-      url: "https://devssk.shop/designs/myComment",
-      params: {
-        page: parseInt(page_num),
-      },
-      headers: { Authorization: `${token}` },
-    })
+    api
+      .getMyComment()
       .then((res) => {
         console.log(res.data);
         dispatch(getMyComment(res.data));
       })
       .catch((err) => {
         console.log("댓글 정보를 가져올 수 없어요!", err);
-      });
-  };
-};
-
-const deleteMyCommentDB = (commentId) => {
-  const token = localStorage.getItem("token");
-  return function (dispatch, getState, { history }) {
-    //   axios
-    //   .delete(`https://devssk.shop/comments/${commentId}` , {
-    // })
-    axios({
-      method: "delete",
-      url: `https://devssk.shop/comments/${commentId}`,
-      headers: { Authorization: `${token}` },
-    })
-      .then((res) => {
-        // dispatch(deleteComment(commentId));
-        window.location.reload();
-      })
-      .catch((e) => {
-        alert("댓글 삭제에 실패하였습니다.");
       });
   };
 };
@@ -198,7 +158,6 @@ const actionCreators = {
   deleteComment,
   deleteCommentDB,
   getMyCommentDB,
-  deleteMyCommentDB,
   commentReplace,
 };
 

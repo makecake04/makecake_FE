@@ -44,7 +44,6 @@ const initialState = {
 // 이메일 중복검사
 const usernameCheckDB = (username) => {
   return async function (dispatch, getState, { history }) {
-    // const navigate = useNavigate();
     try {
       const email = await api.postUsernameCheck(username);
       if (!email.data.isTrue) {
@@ -63,22 +62,6 @@ const usernameCheckDB = (username) => {
       console.log("아이디 중복", err);
       window.alert("아이디 중복확인에 문제가 생겼습니다!");
     }
-    // console.log(username);
-    // api
-    //   .postUsernameCheck(username)
-    //   .then((res) => {
-    //     console.log(res.data);
-    //     if (!res.data.isTrue) {
-    //       dispatch(setUsername(username, res.data.isTrue));
-    //     } else {
-    //       window.alert("이미 사용 중인 아이디입니다!");
-    //       window.location.replace("/signup/email");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log("아이디 중복", err);
-    //     window.alert("아이디 중복확인에 문제가 생겼습니다!");
-    //   });
   };
 };
 
@@ -96,12 +79,6 @@ const nicknameCheckDB = (username, password, passwordCheck, nickname) => {
             .postSignUp(username, password, passwordCheck, nickname)
             .then((res) => {
               if (res.data.signup) {
-                // Swal.fire({
-                //   title: "성공적으로 회원가입 하셨습니다!",
-                //   showCancelButton: false,
-                //   confirmButtonText: "확인",
-                //   confirmButtonColor: "#ff679e",
-                // });
                 window.location.replace("/");
               } else if (!res.data.signup) {
                 Swal.fire({
@@ -138,7 +115,7 @@ const nicknameCheckDB = (username, password, passwordCheck, nickname) => {
 const kakaoLoginDB = (code) => {
   return function (dispatch, getState, { history }) {
     api
-      .KakaoLogin(code)
+      .kakaoLogin(code)
       .then((res) => {
         const ACCESS_TOKEN = res.data.accessToken;
         const ACCESS_TOKEN_EXP = res.data.accessTokenExpiresIn;
@@ -159,7 +136,7 @@ const kakaoLoginDB = (code) => {
 const googleLoginDB = (code) => {
   return function (dispatch, getState, { history }) {
     api
-      .GoogleLogin(code)
+      .googleLogin(code)
       .then((res) => {
         const ACCESS_TOKEN = res.data.accessToken;
         const ACCESS_TOKEN_EXP = res.data.accessTokenExpiresIn;
@@ -180,7 +157,7 @@ const googleLoginDB = (code) => {
 const naverLoginDB = (code, state) => {
   return function (dispatch, getState, { history }) {
     api
-      .NaverLogin(code, state)
+      .naverLogin(code, state)
       .then((res) => {
         const ACCESS_TOKEN = res.data.accessToken;
         const ACCESS_TOKEN_EXP = res.data.accessTokenExpiresIn;
@@ -226,13 +203,8 @@ const logInDB = (username, password) => {
 const loginCheckDB = () => {
   const token = localStorage.getItem("token");
   return function (dispatch, getState, { history }) {
-    axios({
-      method: "get",
-      url: "https://devssk.shop/user/loginCheck",
-      headers: {
-        Authorization: `${token}`,
-      },
-    })
+    api
+      .loginCheck()
       .then((res) => {
         dispatch(
           setUser({
@@ -278,12 +250,8 @@ const editProfileDB = (nickname, img) => {
     } else if (!img) {
       form.append("nickname", nickname);
     }
-    axios
-      .put("https://devssk.shop/user/editProfile", form, {
-        headers: {
-          Authorization: `${token}`,
-        },
-      })
+    api
+      .editProfile(form)
       .then((res) => {
         console.log(res);
         dispatch(editProfile(res.data));
@@ -304,16 +272,8 @@ const editProfileDB = (nickname, img) => {
 const resignDB = () => {
   const token = localStorage.getItem("token");
   return function (dispatch, getState) {
-    axios
-      .put(
-        "https://devssk.shop/user/resign",
-        {},
-        {
-          headers: {
-            Authorization: `${token}`,
-          },
-        }
-      )
+    api
+      .resign()
       .then((res) => {
         localStorage.removeItem("token");
         window.location.replace("/home");

@@ -21,8 +21,6 @@ const searchPlaceDB = (searchType, searchText, sortType) => {
       .then((res) => {
         console.log(res);
         dispatch(setSearch(res.data));
-        // window.location.replace(`/search/result/${searchType}/${searchText}`);
-        // window.location.replace('/searchDetail')
       })
       .catch((err) => {
         console.log("리스트 불러오기 실패", err);

@@ -61,7 +61,7 @@ const ReactWrite = (props) => {
   const sort = useSelector((state) => state.post.post_sort_type);
 
   const deleteComment = (commentId) => {
-    dispatch(commentAction.deleteMyCommentDB(commentId));
+    dispatch(commentAction.deleteCommentDB(commentId));
   };
 
   useEffect(() => {
@@ -104,7 +104,6 @@ const ReactWrite = (props) => {
                 setPageNumber(0);
 
                 dispatch(postAction.setPostSortType(1));
-
               }}
               toggleState={toggleState}
             >
@@ -116,7 +115,6 @@ const ReactWrite = (props) => {
                 setPageNumber(0);
 
                 dispatch(postAction.setPostSortType(2));
-
               }}
               toggleState={toggleState}
             >
