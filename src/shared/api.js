@@ -26,18 +26,52 @@ instance.interceptors.request.use(function (config) {
 });
 
 export const api = {
-  getlist: () => instance.get(`api/home/`),
+  getlist: () => instance.get(`/home`),
 
-  getcake: () => instance.get(`api/cakes`),
+  getCake: () => instance.get(`/cakes`),
 
-  getImage: (cakeId) => instance.get(`api/cakes/${cakeId}/detail`),
+  getImage: (cakeId) => instance.get(`/cakes/${cakeId}/detail`),
 
-  getreview: () => instance.get(`api/home/review`),
+  getLikeCake: () => instance.get(`mypage/cakes`),
+
+  addCakeLike: (cakeId, myLike) =>
+    instance.post(`/cakes/${cakeId}/like`, { myLike: myLike }),
+
+  getreview: () => instance.get(`/home/review`),
 
   getdesign: () => instance.get(`api/designs`),
 
   getStore: (storeId) =>
-    instance.get(`api/stores/${storeId}`, { storeId: storeId }),
+    instance.get(`/stores/${storeId}`, { storeId: storeId }),
+
+  getLikeStore: () => instance.get(`/mypages/stores`),
+
+  getMyReview: () => instance.get(`/mypages/reviews`),
+
+  getStoreCake: (storeId) => instance.get(`/stores/${storeId}/cakes`),
+
+  getStoreReview: (storeId) => instance.get(`/stores/${storeId}/reviews`),
+
+  addStoreLike: (storeId, myLike) =>
+    instance.post(`/stores/${storeId}/likes`, { myLike: myLike }),
+
+  addReview: (storeId, content, imgFileList) =>
+    instance.post(`/stores/${storeId}/reviews`, {
+      content: content,
+      imgFileList: imgFileList,
+    }),
+
+  editReview: (reviewId, content, imgFileList, imgUrl) =>
+    instance.put(`/reviews/${reviewId}`, {
+      content: content,
+      imgFileList: imgFileList,
+      imgUrl: imgUrl,
+    }),
+
+  deleteReview: (reviewId) =>
+    instance.delete(`/reviews/${reviewId}`, { reviewId: reviewId }),
+
+  getOneReview: (reviewId) => instance.get(`/reviews/${reviewId}`),
 
   postUsernameCheck: (username) =>
     instance.post(`/user/usernameCheck`, { username: username }),

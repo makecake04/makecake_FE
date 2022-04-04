@@ -34,8 +34,8 @@ const setCakeSortType = createAction(SET_CAKE_SORTTYPE, (list) => ({ list }));
 const changeSortDB = (sortType) => {
   console.log(sortType);
   return function (dispatch, getState) {
-    axios
-      .get("https://devssk.shop/api/cakes", {
+    api
+      .getCake({
         params: {
           page: 0,
           sortType: sortType,
@@ -51,10 +51,9 @@ const changeSortDB = (sortType) => {
 };
 
 const getCakeListDB = (page_num, sortType) => {
-  console.log(sortType);
   return function (dispatch, getState) {
-    axios
-      .get("https://devssk.shop/api/cakes", {
+    api
+      .getCake({
         params: {
           page: parseInt(page_num),
           sortType: sortType,
@@ -85,8 +84,8 @@ const getCakeImageDB = (cakeId) => {
 const getLikeCakeDB = (page_num) => {
   const token = localStorage.getItem("token");
   return function (dispatch, getState) {
-    axios
-      .get("https://devssk.shop/cakes/myReact", {
+    api
+      .getLikeCake({
         params: {
           page: parseInt(page_num),
         },
@@ -105,21 +104,14 @@ const getLikeCakeDB = (page_num) => {
 };
 
 const addLikeCakeDB = (cakeId, myLike) => {
-  console.log(myLike);
   const token = localStorage.getItem("token");
   return function (dispatch, getState) {
     axios
-      .post(
-        `https://devssk.shop/cakes/like/${cakeId}`,
-        {
-          myLike: myLike,
+      .post(myLike, {
+        headers: {
+          Authorization: `${token}`,
         },
-        {
-          headers: {
-            Authorization: `${token}`,
-          },
-        }
-      )
+      })
       .then((res) => {
         console.log(res.data);
         dispatch(addLikeCake(cakeId, res.data.myLike, res.data.likeCnt));
