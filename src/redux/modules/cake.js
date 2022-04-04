@@ -35,12 +35,7 @@ const changeSortDB = (sortType) => {
   console.log(sortType);
   return function (dispatch, getState) {
     api
-      .getCake({
-        params: {
-          page: 0,
-          sortType: sortType,
-        },
-      })
+      .getChangeSort(sortType)
       .then((res) => {
         dispatch(changeSort(res.data));
       })
@@ -53,12 +48,7 @@ const changeSortDB = (sortType) => {
 const getCakeListDB = (page_num, sortType) => {
   return function (dispatch, getState) {
     api
-      .getCake({
-        params: {
-          page: parseInt(page_num),
-          sortType: sortType,
-        },
-      })
+      .getCakeList(page_num, sortType)
       .then((res) => {
         dispatch(getCakeList(res.data));
       })
@@ -82,17 +72,9 @@ const getCakeImageDB = (cakeId) => {
 };
 
 const getLikeCakeDB = (page_num) => {
-  const token = localStorage.getItem("token");
   return function (dispatch, getState) {
     api
-      .getLikeCake({
-        params: {
-          page: parseInt(page_num),
-        },
-        headers: {
-          Authorization: `${token}`,
-        },
-      })
+      .getLikeCake(page_num)
       .then((res) => {
         console.log(res);
         dispatch(likeCake(res.data));
@@ -104,14 +86,16 @@ const getLikeCakeDB = (page_num) => {
 };
 
 const addLikeCakeDB = (cakeId, myLike) => {
-  const token = localStorage.getItem("token");
+  // const token = localStorage.getItem("token");
   return function (dispatch, getState) {
-    axios
-      .post(myLike, {
-        headers: {
-          Authorization: `${token}`,
-        },
-      })
+    // axios
+    //   .post(myLike, {
+    //     headers: {
+    //       Authorization: `${token}`,
+    //     },
+    //   })
+    api
+      .addCakeLike(cakeId, myLike)
       .then((res) => {
         console.log(res.data);
         dispatch(addLikeCake(cakeId, res.data.myLike, res.data.likeCnt));

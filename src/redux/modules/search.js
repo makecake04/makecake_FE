@@ -1,7 +1,6 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import { api } from "../../shared/api";
-import { useNavigate } from "react-router-dom";
 
 const SET_SEARCH = "SET_SEARCH";
 
@@ -12,12 +11,10 @@ const initialState = {
 };
 
 // 매장 불러오기
-const searchPlaceDB = (searchType, searchText, sortType) => {
-  console.log(searchType, searchText, sortType);
+const searchPlaceDB = (searchType, searchText) => {
   return function (dispatch, getState) {
-    console.log(searchType, searchText, sortType);
     api
-      .postSearch(searchType, searchText, sortType)
+      .getSearch(searchType, searchText)
       .then((res) => {
         console.log(res);
         dispatch(setSearch(res.data));

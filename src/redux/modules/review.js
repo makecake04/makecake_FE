@@ -32,17 +32,12 @@ const initialState = {
 };
 
 const addReviewDB = (storeId, content, imgFileList) => {
-  const token = localStorage.getItem("token");
   return function (dispatch, getState) {
     const form = new FormData();
     form.append("content", content);
     form.append("imgFileList", imgFileList);
     api
-      .addReview(form, {
-        headers: {
-          Authorization: `${token}`,
-        },
-      })
+      .postReview(storeId, form)
       .then((res) => {
         dispatch(addReview(res.data));
         window.location.replace(`/storedetail/${storeId}`);
@@ -54,7 +49,6 @@ const addReviewDB = (storeId, content, imgFileList) => {
 };
 
 const editReviewDB = (reviewId, content, imgFileList, imgUrl) => {
-  const token = localStorage.getItem("token");
   return function (dispatch, getState) {
     const form = new FormData();
     if (imgFileList) {
@@ -69,11 +63,7 @@ const editReviewDB = (reviewId, content, imgFileList, imgUrl) => {
       form.append("imgUrlList", "");
     }
     api
-      .editReview(form, {
-        headers: {
-          Authorization: `${token}`,
-        },
-      })
+      .putReview(reviewId, form)
       .then((res) => {
         dispatch(editReview(res.data));
         window.history.back();
@@ -107,14 +97,9 @@ const deleteReviewDB = (reviewId) => {
 };
 
 const getOneReviewDB = (reviewId) => {
-  const token = localStorage.getItem("token");
   return function (dispatch, getState) {
     api
-      .getOneReview({
-        headers: {
-          Authorization: `${token}`,
-        },
-      })
+      .getOneReview(reviewId)
       .then((res) => {
         dispatch(getOneReview(res.data));
         if (res.data.reviewImage) {
