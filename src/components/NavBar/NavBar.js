@@ -1,7 +1,10 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+
+import { actionCreators as storeAction } from "../../redux/modules/store";
 
 import Swal from "sweetalert2";
 
@@ -19,6 +22,7 @@ import {
   ColorMypageIcon,
 } from "./style";
 const NavBar = (props) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const pathName = window.location.pathname;
   const [activeNav, setActiveNav] = React.useState(
@@ -55,24 +59,28 @@ const NavBar = (props) => {
           {is_session && activeNav === "home" ? (
             <ColorHomeIcon
               onClick={() => {
+                dispatch(storeAction.storeDetail([]));
                 navigate("/");
               }}
             />
           ) : is_session && activeNav !== "home" ? (
             <HomeIcon
               onClick={() => {
+                dispatch(storeAction.storeDetail([]));
                 navigate(`/`);
               }}
             />
           ) : !is_session && activeNav === "home" ? (
             <ColorHomeIcon
               onClick={() => {
+                dispatch(storeAction.storeDetail([]));
                 navigate(`/home`);
               }}
             />
           ) : (
             <HomeIcon
               onClick={() => {
+                dispatch(storeAction.storeDetail([]));
                 navigate(`/home`);
               }}
             />
@@ -82,12 +90,14 @@ const NavBar = (props) => {
           {activeNav === "cake" ? (
             <ColorCakeIcon
               onClick={() => {
+                dispatch(storeAction.storeDetail([]));
                 navigate(`/cake`);
               }}
             />
           ) : (
             <CakeIcon
               onClick={() => {
+                dispatch(storeAction.storeDetail([]));
                 navigate(`/cake`);
               }}
             />
@@ -97,12 +107,14 @@ const NavBar = (props) => {
           {activeNav === "design" ? (
             <ColorDesignIcon
               onClick={() => {
+                dispatch(storeAction.storeDetail([]));
                 navigate(`/design/list`);
               }}
             />
           ) : (
             <DrawIcon
               onClick={() => {
+                dispatch(storeAction.storeDetail([]));
                 navigate(`/design/list`);
               }}
             />
@@ -112,12 +124,14 @@ const NavBar = (props) => {
           {is_session && activeNav === "mypage" ? (
             <ColorMypageIcon
               onClick={() => {
+                dispatch(storeAction.storeDetail([]));
                 navigate(`/mypage`);
               }}
             />
           ) : is_session && activeNav !== "mypage" ? (
             <MypageIcon
               onClick={() => {
+                dispatch(storeAction.storeDetail([]));
                 navigate(`/mypage`);
               }}
             />

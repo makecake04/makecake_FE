@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { actionCreators as searchAction } from "../../redux/modules/search";
+import { actionCreators as storeAction } from "../../redux/modules/store";
 import Swal from "sweetalert2";
 
 //component
@@ -126,6 +127,7 @@ const SearchMap = () => {
           <StoreInfoWrap
             key={i}
             onClick={() => {
+              dispatch(storeAction.storeDetail([]));
               navigate(`/storedetail/${storeId}`);
             }}
           >
