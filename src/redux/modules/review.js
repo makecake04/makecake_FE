@@ -31,14 +31,14 @@ const initialState = {
   preview: null,
 };
 
-const addReviewDB = (storeId, content, img) => {
+const addReviewDB = (storeId, content, imgFileList) => {
   const token = localStorage.getItem("token");
   return function (dispatch, getState) {
     const form = new FormData();
     form.append("content", content);
-    form.append("imgFileList", img);
-    axios
-      .post(`https://devssk.shop/reviews/${storeId}`, form, {
+    form.append("imgFileList", imgFileList);
+    api
+      .addReview(form, {
         headers: {
           Authorization: `${token}`,
         },
@@ -53,24 +53,23 @@ const addReviewDB = (storeId, content, img) => {
   };
 };
 
-const editReviewDB = (reviewId, content, img, imgurl, storeId, toggleState) => {
+const editReviewDB = (reviewId, content, imgFileList, imgUrl) => {
   const token = localStorage.getItem("token");
-  console.log(toggleState);
   return function (dispatch, getState) {
     const form = new FormData();
-    if (img) {
+    if (imgFileList) {
       form.append("content", content);
-      form.append("imgFileList", img);
+      form.append("imgFileList", imgFileList);
       form.append("imgUrlList", "");
-    } else if (!img && imgurl) {
+    } else if (!imgFileList && imgUrl) {
       form.append("content", content);
-      form.append("imgUrlList", imgurl);
-    } else if (!img && !imgurl) {
+      form.append("imgUrlList", imgUrl);
+    } else if (!imgFileList && !imgUrl) {
       form.append("content", content);
       form.append("imgUrlList", "");
     }
-    axios
-      .put(`https://devssk.shop/reviews/${reviewId}`, form, {
+    api
+      .editReview(form, {
         headers: {
           Authorization: `${token}`,
         },
@@ -91,16 +90,12 @@ const deleteReviewDB = (reviewId) => {
     if (!reviewId) {
       return;
     }
-    axios({
-      method: "delete",
-      url: `https://devssk.shop/reviews/${reviewId}`,
-      data: {
-        reviewId: reviewId,
-      },
-      headers: {
-        Authorization: `${token}`,
-      },
-    })
+    api
+      .deleteReview(reviewId, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
       .then((res) => {
         dispatch(deleteReview(reviewId));
         window.location.reload();
@@ -114,13 +109,12 @@ const deleteReviewDB = (reviewId) => {
 const getOneReviewDB = (reviewId) => {
   const token = localStorage.getItem("token");
   return function (dispatch, getState) {
-    axios({
-      method: "get",
-      url: `https://devssk.shop/reviews/${reviewId}`,
-      headers: {
-        Authorization: `${token}`,
-      },
-    })
+    api
+      .getOneReview({
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
       .then((res) => {
         dispatch(getOneReview(res.data));
         if (res.data.reviewImage) {

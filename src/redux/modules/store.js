@@ -91,8 +91,8 @@ const getStoreDetailDB = (storeId) => {
 const getLikeStoreDB = (page_num) => {
   const token = localStorage.getItem("token");
   return function (dispatch, getState) {
-    axios
-      .get("https://devssk.shop/stores/myReact", {
+    api
+      .getLikeStore({
         params: {
           page: parseInt(page_num),
         },
@@ -112,8 +112,8 @@ const getLikeStoreDB = (page_num) => {
 const getMyReviewDB = (page_num) => {
   const token = localStorage.getItem("token");
   return function (dispatch, getState) {
-    axios
-      .get("https://devssk.shop/stores/myReview", {
+    api
+      .getMyReview({
         params: {
           page: parseInt(page_num),
         },
@@ -132,12 +132,8 @@ const getMyReviewDB = (page_num) => {
 
 const getStoreCakeListDB = (storeId) => {
   return function (dispatch, getState) {
-    axios
-      .get(`https://devssk.shop/api/stores/cakes`, {
-        params: {
-          storeId: storeId,
-        },
-      })
+    api
+      .getStoreCake(storeId)
       .then((res) => {
         dispatch(storeCakeList(res.data));
       })
@@ -149,12 +145,11 @@ const getStoreCakeListDB = (storeId) => {
 
 const getStoreReviewListDB = (storeId, page_num) => {
   return function (dispatch, getState) {
-    axios
-      .get(`https://devssk.shop/api/stores/reviews`, {
+    api
+      .getStoreReview({
         storeId,
         params: {
           page: parseInt(page_num),
-          storeId: storeId,
         },
       })
       .then((res) => {
@@ -170,18 +165,12 @@ const getStoreReviewListDB = (storeId, page_num) => {
 const addLikeStoreDB = (storeId, myLike) => {
   const token = localStorage.getItem("token");
   return function (dispatch, getState) {
-    axios
-      .post(
-        `https://devssk.shop/stores/like/${storeId}`,
-        {
-          myLike: myLike,
+    api
+      .addStoreLike(myLike, {
+        headers: {
+          Authorization: `${token}`,
         },
-        {
-          headers: {
-            Authorization: `${token}`,
-          },
-        }
-      )
+      })
       .then((res) => {
         console.log(res.data);
         dispatch(addLikeStore(storeId, res.data.myLike, res.data.likeCnt));
