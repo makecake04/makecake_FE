@@ -36,6 +36,39 @@ export const api = {
 
   getdesign: () => instance.get(`api/designs`),
 
+  getComment: (postId, page_num) =>
+    instance.get(
+      `/posts/${postId}/comments
+  `,
+      {
+        params: {
+          page: parseInt(page_num),
+        },
+      }
+    ),
+
+  addComment: (postId, token) =>
+    instance.post(`/posts/${postId}/comments`, {
+      headers: {
+        Authorization: `${token}`,
+      },
+    }),
+
+  deleteComment: (commentId, token) =>
+    instance.delete(`/comments/${commentId}`, {
+      headers: {
+        Authorization: `${token}`,
+      },
+    }),
+
+  getMyComment: (page_num, token) =>
+    instance.get(`/mypage/comments`, {
+      params: {
+        page: parseInt(page_num),
+      },
+      headers: { Authorization: `${token}` },
+    }),
+
   getStore: (storeId) =>
     instance.get(`api/stores/${storeId}`, { storeId: storeId }),
 
@@ -55,9 +88,20 @@ export const api = {
 
   postLogin: (username, password) =>
     instance.post(`/login`, { username: username, password: password }),
-
-  getLoginCheck: () => instance.post(`/user/loginCheck`),
   getUserInfo: () => instance.get(`/mypage`),
+  editProfile: (token) =>
+    instance.get(`/users/profile`, {
+      headers: {
+        Authorization: `${token}`,
+      },
+    }),
+  resign: (token) =>
+    instance.get(`/users/resign`, {
+      headers: {
+        Authorization: `${token}`,
+      },
+    }),
+
   postSearch: (searchType, searchText, sortType) =>
     instance.post(`/api/search`, {
       searchType: searchType,
@@ -66,10 +110,16 @@ export const api = {
     }),
   mapSearch: (storeId) => instance.get(`/api/search/${storeId}`),
 
-  KakaoLogin: (code) => instance.get(`/user/kakao/callback?code=${code}`),
-  NaverLogin: (code, state) =>
+  loginCheck: (token) =>
+    instance.get(`/users/login-check`, {
+      headers: {
+        Authorization: `${token}`,
+      },
+    }),
+  kakaoLogin: (code) => instance.get(`/user/kakao/callback?code=${code}`),
+  naverLogin: (code, state) =>
     instance.get(`/user/naver/callback?code=${code}&state=${state}`),
-  GoogleLogin: (code) => instance.get(`/user/google/callback?code=${code}`),
+  googleLogin: (code) => instance.get(`/user/google/callback?code=${code}`),
   getNoti: () => instance.get(`/noti`),
   getNewNoti: () => instance.get(`/api/newNoti`),
 };
