@@ -41,7 +41,11 @@ const NewReview = (props) => {
               return (
                 <ReviewsWrap
                   key={idx}
-                  onClick={() => navigate(`/storedetail/${v.storeId}`)}
+                  onClick={() =>
+                    navigate(`/storedetail/${v.storeId}`, {
+                      state: { review_list },
+                    })
+                  }
                 >
                   <ImageWrap>
                     <Image>
