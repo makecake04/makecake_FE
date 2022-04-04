@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useLocation, useParmas } from "react-router-dom";
+import { actionCreators as storeAction } from "../../redux/modules/store";
+import { actionCreators as cakeAction } from "../../redux/modules/cake";
+import { actionCreators as reviewAction } from "../../redux/modules/review";
 import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import Swal from "sweetalert2";
@@ -106,12 +109,14 @@ const StoreDetail = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const locationState = useLocation().state?.review_list;
+
   const params = useParams();
   const store_id = params.storeid;
 
   const [pageNumber, setPageNumber] = useState(0);
   const [ref, inView] = useInView();
-  const [toggleState, setToggleState] = useState(1);
+  const [toggleState, setToggleState] = useState(locationState ? 4 : 1);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpen2, setModalIsOpen2] = useState(false);
 
@@ -123,8 +128,9 @@ const StoreDetail = (props) => {
   const user_nickname = useSelector((state) => state.user.user);
   const login = useSelector((state) => state.user.is_login);
   const store_info = useSelector((state) => state.store.store);
-  const sort = useSelector((state) => state.store.store_sort_type);
   const is_session = localStorage.getItem("token");
+
+  console.log(locationState);
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -346,7 +352,13 @@ const StoreDetail = (props) => {
                       <span>{store_info.openTimeToday?.type}: </span>
                       <span>{store_info.openTimeToday?.startTime} ~</span>
                       <span>{store_info.openTimeToday?.endTime}</span>
-                      <span>({store_info.openTimeToday?.descriptionTime})</span>
+                      {store_info.openTimeToday?.descriptionTime ? (
+                        <span>
+                          ({store_info.openTimeToday?.descriptionTime})
+                        </span>
+                      ) : (
+                        <span>{store_info.openTimeToday?.descriptionTime}</span>
+                      )}
                     </Description>
                   </IconWrap>
                   <CallWrap>
