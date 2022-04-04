@@ -148,7 +148,6 @@ const addOrderDB = (list, orderFormId, designId) => {
         }
       )
       .then((res) => {
-        console.log(res.data);
         // dispatch(addOrder(res.data));
         window.location.replace(`/order/detail/${res.data.userOrdersId}`);
       })
@@ -159,7 +158,6 @@ const addOrderDB = (list, orderFormId, designId) => {
 };
 
 const getOneOrderDB = (userOrdersId) => {
-  console.log(userOrdersId);
   const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
     axios
@@ -169,7 +167,6 @@ const getOneOrderDB = (userOrdersId) => {
         },
       })
       .then((res) => {
-        console.log(res.data);
         dispatch(getOneOrder(res.data));
       })
       .catch((err) => {
@@ -177,8 +174,8 @@ const getOneOrderDB = (userOrdersId) => {
       });
   };
 };
+
 const getImageFileDB = (userOrdersId) => {
-  console.log(userOrdersId);
   const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
     axios

@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import Swal from "sweetalert2";
 
 import { actionCreators as designAction } from "../../redux/modules/design";
+import { actionCreators as postAction } from "../../redux/modules/post";
 
 //import css
 import {
@@ -111,6 +112,7 @@ const DesignList = (props) => {
                   src={v.img}
                   alt="post-img"
                   onClick={() => {
+                    dispatch(dispatch(postAction.getOnePost({})));
                     navigate(`/post/${v.postId}`);
                   }}
                 />
@@ -125,6 +127,7 @@ const DesignList = (props) => {
                   src={v.img}
                   alt="post-img"
                   onClick={() => {
+                    dispatch(dispatch(postAction.getOnePost({})));
                     navigate(`/post/${v.postId}`);
                   }}
                 />
@@ -139,6 +142,7 @@ const DesignList = (props) => {
                   src={v.img}
                   alt="post-img"
                   onClick={() => {
+                    dispatch(dispatch(postAction.getOnePost({})));
                     navigate(`/post/${v.postId}`);
                   }}
                 />
@@ -153,6 +157,7 @@ const DesignList = (props) => {
                   src={v.img}
                   alt="post-img"
                   onClick={() => {
+                    dispatch(dispatch(postAction.getOnePost({})));
                     navigate(`/post/${v.postId}`);
                   }}
                 />

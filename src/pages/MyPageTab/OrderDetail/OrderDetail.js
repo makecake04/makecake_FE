@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { saveAs } from "file-saver";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import { actionCreators as orderAction } from "../../../redux/modules/order";
@@ -31,8 +30,6 @@ const OrderDetail = () => {
   const [copied, setCopied] = useState(false);
   const user_order_id = useParams().id;
   const order_detail = useSelector((state) => state.order.order_detail);
-  const image_file = useSelector((state) => state.order.image_file);
-  // console.log(image_file);
 
   useEffect(() => {
     dispatch(orderAction.getOneOrderDB(user_order_id));
@@ -70,16 +67,13 @@ const OrderDetail = () => {
         {order_detail &&
           order_detail.formList?.map((o, i) => {
             return (
-              <>
-                <OrderItem key={i}>
-                  <div>{o}: </div>
-                  <div>{order_detail.userInput[i]}</div>
-                </OrderItem>
-              </>
+              <OrderItem key={i}>
+                <div>{o}: </div>
+                <div>{order_detail.userInput[i]}</div>
+              </OrderItem>
             );
           })}
         <CopyToClipboard text={order_detail.copyText}>
-          {/* <span onClick={() => setCopied(true)}>복사</span> */}
           <CopyText onClick={() => setCopied(true)}>복사</CopyText>
         </CopyToClipboard>
         {copied && <p>복사되었습니다!</p>}

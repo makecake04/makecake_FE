@@ -163,7 +163,6 @@ const PostDetail = () => {
           alt="back-button"
           onClick={() => {
             navigate(-1);
-            dispatch(designAction.setMyDesignSortType(2));
           }}
         /> */}
         <h3>게시글</h3>

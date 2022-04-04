@@ -1,10 +1,6 @@
 import React, { useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { useInView } from "react-intersection-observer";
 import { actionCreators as storeAction } from "../../../redux/modules/store";
 import { actionCreators as reviewAction } from "../../../redux/modules/review";
@@ -89,11 +85,9 @@ const ReactStore = (props) => {
         <LikeStore
           toggleState={toggleState}
           onClick={() => {
-
             setToggleState(1);
             setPageNumber(0);
             dispatch(storeAction.setStoreSortType(1));
-
           }}
         >
           좋아요한 매장
@@ -101,13 +95,10 @@ const ReactStore = (props) => {
         <MyReview
           toggleState={toggleState}
           onClick={() => {
-
             setToggleState(2);
             setPageNumber(0);
 
-
             dispatch(storeAction.setStoreSortType(2));
-
           }}
         >
           내가 남긴 후기
@@ -189,6 +180,7 @@ const ReactStore = (props) => {
                     <button
                       onClick={() => {
                         navigate(`/review/${v.reviewId}`);
+                        dispatch(reviewAction.reviewReplace([]));
                       }}
                     >
                       수정하기

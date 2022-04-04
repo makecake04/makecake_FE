@@ -118,7 +118,6 @@ const editPostDB = (title, content, size, shape, purpose, postId) => {
       )
       .then((res) => {
         console.log(res.data);
-        // dispatch(editPost(res.data));
         window.location.replace(`/post/${postId}`);
       })
       .catch((err) => {
@@ -210,6 +209,7 @@ export default handleActions(
 const actionCreators = {
   addPostDB,
   getOnePostDB,
+  getOnePost,
   editPostDB,
   deletePostDB,
   addLikePost,

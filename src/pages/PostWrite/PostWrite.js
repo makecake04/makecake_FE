@@ -51,7 +51,11 @@ const PostWrite = () => {
   const [size, setSize] = useState(post_id ? post.size : "");
   const [shape, setShape] = useState(post_id ? post.shape : "");
   const [purpose, setPurpose] = useState(post_id ? post.purpose : "");
+  const [postSize, setPostSize] = useState("");
+  const [postShape, setPostShape] = useState("");
+  const [postPurpose, setPostPurpose] = useState("");
 
+  console.log(postSize, postShape, postPurpose);
   const addTitle = (e) => {
     setTitle(e.target.value);
   };
@@ -76,14 +80,38 @@ const PostWrite = () => {
   };
 
   const editPost = () => {
+    if (!title || !content || !postSize || !postShape || !postPurpose) {
+      Swal.fire({
+        title: "모든 입력값을 입력해주세요!",
+        showCancelButton: false,
+        confirmButtonText: "확인",
+        confirmButtonColor: "#ff679e",
+      });
+      return;
+    }
     dispatch(
-      postAction.editPostDB(title, content, size, shape, purpose, post_id)
+      postAction.editPostDB(
+        title,
+        content,
+        postSize,
+        postShape,
+        postPurpose,
+        post_id
+      )
     );
   };
 
   useEffect(() => {
+    setPostSize(post.size);
+    setPostShape(post.shape);
+    setPostPurpose(post.purpose);
+  }, [post.shape]);
+
+  useEffect(() => {
     dispatch(designAction.getDesignImageDB(design_id));
-    if (post_id) dispatch(postAction.getOnePostDB(post_id));
+    if (post_id) {
+      dispatch(postAction.getOnePostDB(post_id));
+    }
   }, []);
 
   return (
@@ -135,37 +163,34 @@ const PostWrite = () => {
         <Size>
           <h3>사이즈</h3>
           <MiniSize
-            size={size}
-            postSize={post.size}
-            onClick={() => setSize("도시락")}
+            size={post_id ? postSize : size}
+            onClick={() =>
+              post_id ? setPostSize("도시락") : setSize("도시락")
+            }
           >
             도시락
           </MiniSize>
           <OneSize
-            size={size}
-            postSize={post.size}
-            onClick={() => setSize("1호")}
+            size={post_id ? postSize : size}
+            onClick={() => (post_id ? setPostSize("1호") : setSize("1호"))}
           >
             1호
           </OneSize>
           <TwoSize
-            size={size}
-            postSize={post.size}
-            onClick={() => setSize("2호")}
+            size={post_id ? postSize : size}
+            onClick={() => (post_id ? setPostSize("2호") : setSize("2호"))}
           >
             2호
           </TwoSize>
           <ThreeSize
-            size={size}
-            postSize={post.size}
-            onClick={() => setSize("3호")}
+            size={post_id ? postSize : size}
+            onClick={() => (post_id ? setPostSize("3호") : setSize("3호"))}
           >
             3호
           </ThreeSize>
           <OtherSize
-            size={size}
-            postSize={post.size}
-            onClick={() => setSize("기타")}
+            size={post_id ? postSize : size}
+            onClick={() => (post_id ? setPostSize("기타") : setSize("기타"))}
           >
             기타
           </OtherSize>
@@ -174,23 +199,20 @@ const PostWrite = () => {
         <Shape>
           <h3>모양</h3>
           <Square
-            shape={shape}
-            postShape={post.shape}
-            onClick={() => setShape("네모")}
+            shape={post_id ? postShape : shape}
+            onClick={() => (post_id ? setPostShape("네모") : setShape("네모"))}
           >
             네모
           </Square>
           <Heart
-            shape={shape}
-            postShape={post.shape}
-            onClick={() => setShape("하트")}
+            shape={post_id ? postShape : shape}
+            onClick={() => (post_id ? setPostShape("하트") : setShape("하트"))}
           >
             하트
           </Heart>
           <Circle
-            shape={shape}
-            postShape={post.shape}
-            onClick={() => setShape("원형")}
+            shape={post_id ? postShape : shape}
+            onClick={() => (post_id ? setPostShape("원형") : setShape("원형"))}
           >
             원형
           </Circle>
@@ -200,44 +222,42 @@ const PostWrite = () => {
           <h3>용도</h3>
 
           <Birthday
-            purpose={purpose}
-            postPurpose={post.purpose}
-            onClick={() => setPurpose("생일")}
+            purpose={post_id ? postPurpose : purpose}
+            onClick={() =>
+              post_id ? setPostPurpose("생일") : setPurpose("생일")
+            }
           >
             생일
           </Birthday>
           <Parents
-            purpose={purpose}
-            postPurpose={post.purpose}
-            onClick={() => setPurpose("부모님")}
+            purpose={post_id ? postPurpose : purpose}
+            onClick={() =>
+              post_id ? setPostPurpose("부모님") : setPurpose("부모님")
+            }
           >
             부모님
           </Parents>
           <Friends
-            purpose={purpose}
-            postPurpose={post.purpose}
-            onClick={() => setPurpose("친구")}
+            purpose={post_id ? postPurpose : purpose}
+            onClick={() =>
+              post_id ? setPostPurpose("친구") : setPurpose("친구")
+            }
           >
             친구
           </Friends>
           <Lovers
-            purpose={purpose}
-            postPurpose={post.purpose}
-            onClick={() => setPurpose("연인")}
+            purpose={post_id ? postPurpose : purpose}
+            onClick={() =>
+              post_id ? setPostPurpose("연인") : setPurpose("연인")
+            }
           >
             연인
           </Lovers>
-          {/* <Celebration
-            purpose={purpose}
-            postPurpose={post.purpose}
-            onClick={() => setPurpose("축하")}
-          >
-            축하
-          </Celebration> */}
           <Others
-            purpose={purpose}
-            postPurpose={post.purpose}
-            onClick={() => setPurpose("기타")}
+            purpose={post_id ? postPurpose : purpose}
+            onClick={() =>
+              post_id ? setPostPurpose("기타") : setPurpose("기타")
+            }
           >
             기타
           </Others>
