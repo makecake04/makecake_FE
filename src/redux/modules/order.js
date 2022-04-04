@@ -1,6 +1,5 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
-import axios from "axios";
 import { api } from "../../shared/api";
 
 //action type
@@ -9,11 +8,8 @@ const GET_NO_ORDERS = "GET_NO_ORDERS";
 const GET_STORES = "GET_STORES";
 const GET_ORDER_FORM = "GET_ORDER_FORM";
 const GET_ONE_ORDER = "GET_ONE_ORDER";
-const GET_IMAGE_FILE = "GET_IMAGE_FILE";
 const GET_ORDER_GUIDE = "GET_ORDER_GUIDE";
 const SET_ORDER_SORTTYPE = "SET_ORDER_SORTTYPE";
-// const DELETE_ORDER = "DELETE_ORDER";
-// const ADD_ORDER = "ADD_ORDER";
 
 //actionCreator
 const getOrders = createAction(GET_ORDERS, (list) => ({
@@ -31,11 +27,7 @@ const getOrderForm = createAction(GET_ORDER_FORM, (list) => ({
 const getOneOrder = createAction(GET_ONE_ORDER, (list) => ({
   list,
 }));
-const getImageFile = createAction(GET_IMAGE_FILE, (list) => ({
-  list,
-}));
 const getOrderGuide = createAction(GET_ORDER_GUIDE, (list) => ({ list }));
-// const addOrder = createAction(ADD_ORDER, (list) => ({ list }));
 const setOrderSortType = createAction(SET_ORDER_SORTTYPE, (list) => ({ list }));
 
 const initialState = {
@@ -51,18 +43,20 @@ const initialState = {
 
 //middlewear
 const getOrdersDB = (page_num, option) => {
-  const token_key = `${localStorage.getItem("token")}`;
+  // const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
-    axios
-      .get("https://devssk.shop/designs/mine/orders", {
-        params: {
-          page: page_num,
-          option: option,
-        },
-        headers: {
-          Authorization: `${token_key}`,
-        },
-      })
+    // axios
+    //   .get("https://devssk.shop/designs/mine/orders", {
+    //     params: {
+    //       page: page_num,
+    //       option: option,
+    //     },
+    //     headers: {
+    //       Authorization: `${token_key}`,
+    //     },
+    //   })
+    api
+      .getOrders(page_num, option)
       .then((res) => {
         if (page_num === 0 && option === "notOrdered") {
           dispatch(getNoOrders(res.data));
@@ -89,39 +83,42 @@ const getOrdersDB = (page_num, option) => {
         }
       })
       .catch((err) => {
-        console.log("order 불러오기 error:", err);
+        console.log("orders 불러오기 error:", err);
       });
   };
 };
 
-const getStoresDB = () => {
-  const token_key = `${localStorage.getItem("token")}`;
+const getOrderStoresDB = () => {
+  // const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
-    axios
-      .get("https://devssk.shop/api/orders/stores", {
-        headers: {
-          Authorization: `${token_key}`,
-        },
-      })
+    // axios
+    //   .get("https://devssk.shop/api/orders/stores", {
+    //     headers: {
+    //       Authorization: `${token_key}`,
+    //     },
+    //   })
+    api
+      .getOrderStores()
       .then((res) => {
-        console.log(res.data);
         dispatch(getStores(res.data));
       })
       .catch((err) => {
-        console.log("stores 불러오기 error:", err);
+        console.log("order stores 불러오기 error:", err);
       });
   };
 };
 
 const getOrderFormDB = (orderFormId) => {
-  const token_key = `${localStorage.getItem("token")}`;
+  // const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
-    axios
-      .get(`https://devssk.shop/order-forms/${orderFormId}`, {
-        headers: {
-          Authorization: `${token_key}`,
-        },
-      })
+    // axios
+    //   .get(`https://devssk.shop/order-forms/${orderFormId}`, {
+    //     headers: {
+    //       Authorization: `${token_key}`,
+    //     },
+    //   })
+    api
+      .getOrderForm(orderFormId)
       .then((res) => {
         dispatch(getOrderForm(res.data));
       })
@@ -132,40 +129,43 @@ const getOrderFormDB = (orderFormId) => {
 };
 
 const addOrderDB = (list, orderFormId, designId) => {
-  const token_key = `${localStorage.getItem("token")}`;
+  // const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
-    axios
-      .post(
-        `https://devssk.shop/orders/${orderFormId}`,
-        {
-          designId: designId,
-          userInput: list,
-        },
-        {
-          headers: {
-            Authorization: `${token_key}`,
-          },
-        }
-      )
+    // axios
+    //   .post(
+    //     `https://devssk.shop/orders/${orderFormId}`,
+    //     {
+    //       designId: designId,
+    //       userInput: list,
+    //     },
+    //     {
+    //       headers: {
+    //         Authorization: `${token_key}`,
+    //       },
+    //     }
+    //   )
+    api
+      .postOrder(list, orderFormId, designId)
       .then((res) => {
-        // dispatch(addOrder(res.data));
         window.location.replace(`/order/detail/${res.data.userOrdersId}`);
       })
       .catch((err) => {
-        console.log("order form 불러오기 error:", err);
+        console.log("order 작성하기 error:", err);
       });
   };
 };
 
 const getOneOrderDB = (userOrdersId) => {
-  const token_key = `${localStorage.getItem("token")}`;
+  // const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
-    axios
-      .get(`https://devssk.shop/orders/${userOrdersId}`, {
-        headers: {
-          Authorization: `${token_key}`,
-        },
-      })
+    // axios
+    //   .get(`https://devssk.shop/orders/${userOrdersId}`, {
+    //     headers: {
+    //       Authorization: `${token_key}`,
+    //     },
+    //   })
+    api
+      .getOneOrder(userOrdersId)
       .then((res) => {
         dispatch(getOneOrder(res.data));
       })
@@ -175,33 +175,17 @@ const getOneOrderDB = (userOrdersId) => {
   };
 };
 
-const getImageFileDB = (userOrdersId) => {
-  const token_key = `${localStorage.getItem("token")}`;
-  return function (dispatch, getState, { history }) {
-    axios
-      .get(`https://devssk.shop/orders/${userOrdersId}/design`, {
-        headers: {
-          Authorization: `${token_key}`,
-        },
-      })
-      .then((res) => {
-        dispatch(getImageFile(res.data));
-      })
-      .catch((err) => {
-        console.log("one order 불러오기 error:", err);
-      });
-  };
-};
-
 const deleteOrderDB = (userOrdersId) => {
-  const token_key = `${localStorage.getItem("token")}`;
+  // const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
-    axios
-      .delete(`https://devssk.shop/orders/${userOrdersId}`, {
-        headers: {
-          Authorization: `${token_key}`,
-        },
-      })
+    // axios
+    //   .delete(`https://devssk.shop/orders/${userOrdersId}`, {
+    //     headers: {
+    //       Authorization: `${token_key}`,
+    //     },
+    //   })
+    api
+      .deleteOrder(userOrdersId)
       .then((res) => {
         console.log(res.data);
         window.location.replace("/order");
@@ -213,14 +197,16 @@ const deleteOrderDB = (userOrdersId) => {
 };
 
 const getOrderGuideDB = () => {
-  const token_key = `${localStorage.getItem("token")}`;
+  // const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState) {
-    axios
-      .get("https://devssk.shop/api/pages/order-guide", {
-        headers: {
-          Authorization: `${token_key}`,
-        },
-      })
+    // axios
+    //   .get("https://devssk.shop/api/pages/order-guide", {
+    //     headers: {
+    //       Authorization: `${token_key}`,
+    //     },
+    //   })
+    api
+      .getOrderGuide()
       .then((res) => {
         console.log(res.data);
         dispatch(getOrderGuide(res.data));
@@ -273,10 +259,6 @@ export default handleActions(
       produce(state, (draft) => {
         draft.order_detail = action.payload.list;
       }),
-    [GET_IMAGE_FILE]: (state, action) =>
-      produce(state, (draft) => {
-        draft.image_file = action.payload.list;
-      }),
     [GET_ORDER_GUIDE]: (state, action) =>
       produce(state, (draft) => {
         draft.order_guide = action.payload.list;
@@ -291,12 +273,11 @@ export default handleActions(
 
 const actionCreators = {
   getOrdersDB,
-  getStoresDB,
+  getOrderStoresDB,
   getOrderFormDB,
   addOrderDB,
   getOneOrderDB,
   deleteOrderDB,
-  getImageFileDB,
   getOrderGuide,
   getOrderGuideDB,
   setOrderSortType,

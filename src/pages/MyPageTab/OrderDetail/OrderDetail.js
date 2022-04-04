@@ -33,7 +33,6 @@ const OrderDetail = () => {
 
   useEffect(() => {
     dispatch(orderAction.getOneOrderDB(user_order_id));
-    dispatch(orderAction.getImageFileDB(user_order_id));
   }, []);
 
   return (

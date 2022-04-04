@@ -1,6 +1,6 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
-import axios from "axios";
+
 import { api } from "../../shared/api";
 
 //action type
@@ -15,8 +15,6 @@ const DESIGN_DETAIL = "DESIGN_DETAIL";
 const LIKE_DESIGN = "LIKE_DESIGN";
 const SET_DESIGN_SORTTYPE = "SET_DESIGN_SORTTYPE";
 const SET_MYDESIGN_SORTTYPE = "SET_MYDESIGN_SORTTYPE";
-// const DELETE_DESIGN = "DELETE_DESIGN";
-// const POST_DETAIL = "POST_DETAIL";
 
 //action creators
 const addDesign = createAction(ADD_DESIGN, (design) => ({
@@ -38,8 +36,6 @@ const setDesignSortType = createAction(SET_DESIGN_SORTTYPE, (list) => ({
 const setMyDesignSortType = createAction(SET_MYDESIGN_SORTTYPE, (list) => ({
   list,
 }));
-// const deleteDesign = createAction(DELETE_DESIGN, (list) => ({ list }));
-// const postDetail = createAction(POST_DETAIL, (list) => ({ list }));
 
 const initialState = {
   list: [],
@@ -58,42 +54,42 @@ const initialState = {
 //middleware
 const addDesignDB = (design) => {
   return function (dispatch, getState, { history }) {
-    const token_key = `${localStorage.getItem("token")}`;
-    console.log(design);
+    // const token_key = `${localStorage.getItem("token")}`;
     fetch(design)
       .then((res) => res.blob())
       .then((blob) => {
         const form = new FormData();
         form.append("imgFile", blob);
-        axios
-          .post("https://devssk.shop/designs", form, {
-            headers: {
-              Authorization: `${token_key}`,
-            },
-          })
+        api
+          .postDesign(form)
+          // axios
+          //   .post("https://devssk.shop/designs", form, {
+          //     headers: {
+          //       Authorization: `${token_key}`,
+          //     },
+          //   })
           .then((res) => {
-            console.log("도안 이미지 전송 성공!: ", res.data);
             dispatch(addDesign(res.data.img));
             window.location.replace("/mydesign");
           })
           .catch(function (error) {
             console.log(error);
           });
-        console.log(blob);
       });
   };
 };
 
 const getDesignListDB = (page_num, sortType) => {
-  console.log(sortType);
   return function (dispatch, getState) {
-    axios
-      .get("https://devssk.shop/api/designs", {
-        params: {
-          page: parseInt(page_num),
-          sortType: sortType,
-        },
-      })
+    // axios
+    //   .get("https://devssk.shop/api/designs", {
+    //     params: {
+    //       page: parseInt(page_num),
+    //       sortType: sortType,
+    //     },
+    //   })
+    api
+      .getDesignList(page_num, sortType)
       .then((res) => {
         if (sortType === "createdDate") {
           dispatch(newDesignList(res.data));
@@ -112,15 +108,17 @@ const getDesignListDB = (page_num, sortType) => {
 };
 
 const getMyDesignListDB = (page_num, option) => {
-  const token_key = `${localStorage.getItem("token")}`;
+  // const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState) {
-    axios
-      .get("https://devssk.shop/designs/mine", {
-        params: { page: page_num, option: option },
-        headers: {
-          Authorization: `${token_key}`,
-        },
-      })
+    // axios
+    //   .get("https://devssk.shop/designs/mine", {
+    //     params: { page: page_num, option: option },
+    //     headers: {
+    //       Authorization: `${token_key}`,
+    //     },
+    //   })
+    api
+      .getMyDesignList(page_num, option)
       .then((res) => {
         if (page_num === 0 && option === "nonpost") {
           dispatch(myDesigntList(res.data));
@@ -145,9 +143,6 @@ const getMyDesignListDB = (page_num, option) => {
           }
           dispatch(myPostList(post_list));
         }
-
-        // if (option === "nonpost") dispatch(myDesigntList(res.data));
-        // else dispatch(myPostList(res.data));
       })
       .catch((err) => {
         console.log(err);
@@ -156,14 +151,16 @@ const getMyDesignListDB = (page_num, option) => {
 };
 
 const getDesignImageDB = (designId) => {
-  const token_key = `${localStorage.getItem("token")}`;
+  // const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState) {
-    axios
-      .get(`https://devssk.shop/designs/mine/${designId}`, {
-        headers: {
-          Authorization: `${token_key}`,
-        },
-      })
+    // axios
+    //   .get(`https://devssk.shop/designs/mine/${designId}`, {
+    //     headers: {
+    //       Authorization: `${token_key}`,
+    //     },
+    //   })
+    api
+      .getDesignImage(designId)
       .then((res) => {
         dispatch(designDetail(res.data));
       })
@@ -175,14 +172,15 @@ const getDesignImageDB = (designId) => {
 
 const deleteDesignDB = (designId) => {
   return async function (dispatch, getState) {
-    const token_key = `${localStorage.getItem("token")}`;
-
-    axios
-      .delete(`https://devssk.shop/designs/${designId}`, {
-        headers: {
-          Authorization: `${token_key}`,
-        },
-      })
+    // const token_key = `${localStorage.getItem("token")}`;
+    // axios
+    //   .delete(`https://devssk.shop/designs/${designId}`, {
+    //     headers: {
+    //       Authorization: `${token_key}`,
+    //     },
+    //   })
+    api
+      .deleteDesign(designId)
       .then((res) => {
         window.location.replace("/mydesign");
       })
@@ -193,17 +191,19 @@ const deleteDesignDB = (designId) => {
 };
 
 const getLikeDesignDB = (page_num) => {
-  const token = localStorage.getItem("token");
+  // const token = localStorage.getItem("token");
   return function (dispatch, getState) {
-    axios
-      .get("https://devssk.shop/designs/myReact", {
-        params: {
-          page: parseInt(page_num),
-        },
-        headers: {
-          Authorization: `${token}`,
-        },
-      })
+    //   axios
+    //     .get("https://devssk.shop/designs/myReact", {
+    //       params: {
+    //         page: parseInt(page_num),
+    //       },
+    //       headers: {
+    //         Authorization: `${token}`,
+    //       },
+    //     })
+    api
+      .getLikeDesign(page_num)
       .then((res) => {
         dispatch(likeDesign(res.data));
       })
@@ -212,24 +212,6 @@ const getLikeDesignDB = (page_num) => {
       });
   };
 };
-
-// const getPostImageDB = (postId) => {
-//   const token_key = `${localStorage.getItem("token")}`;
-//   return function (dispatch, getState) {
-//     axios
-//       .get(`https://devssk.shop/posts/mine/${postId}`, {
-//         headers: {
-//           Authorization: `${token_key}`,
-//         },
-//       })
-//       .then((res) => {
-//         dispatch(postDetail(res.data));
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   };
-// };
 
 export default handleActions(
   {
@@ -341,10 +323,6 @@ export default handleActions(
       produce(state, (draft) => {
         draft.mydesign_sort_type = action.payload.list;
       }),
-    // [POST_DETAIL]: (state, action) =>
-    //   produce(state, (draft) => {
-    //     draft.post_detail = action.payload.list;
-    //   }),
   },
   initialState
 );
@@ -360,7 +338,6 @@ const actionCreators = {
   getLikeDesignDB,
   setDesignSortType,
   setMyDesignSortType,
-  // getPostImageDB,
 };
 
 export { actionCreators };
