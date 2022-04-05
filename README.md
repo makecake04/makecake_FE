@@ -1,10 +1,13 @@
 
 
-# **<span style="color:#23C8AF">메이크케이크(MakeCake) - 커스텀 케이크 주문 과정을 도와주는 서비스 </span>**
+# **<p align="center"><span style="color:#23C8AF">메이크케이크(MakeCake) - 커스텀 케이크 주문 과정을 도와주는 서비스 </span></p>**
+
 
 <p align="center"><a href="https://make-cake.com">MAKE CAKE</a></p>
 
-<p align="center"><img src="https://user-images.githubusercontent.com/97425158/161680492-266f80e7-709d-41c5-82b0-eb025f387f9c.png"></p>
+![메인페이지](https://user-images.githubusercontent.com/97425158/161822033-65104ec3-7968-4479-8ee2-20b48db765b4.jpeg)
+
+<!-- <p align="center"><img src="https://user-images.githubusercontent.com/97425158/161680492-266f80e7-709d-41c5-82b0-eb025f387f9c.png"></p> -->
 
 ## MakeCake Notion <a href="https://www.notion.so/4-Make-Cake-335c038c8d354afeb549b6dbe7b9a8f5"><img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white&link=https://available-parent-09c.notion.site/12-aac1c51225424d16bda9bcce1bdb2360"></a>
 
@@ -298,5 +301,9 @@ const cakeImage = createAction(CAKE_IMAGE, (img) => ({ img }));
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/97425158/161795793-3f4b2698-f00e-4226-a157-339efbb24cb3.gif)
 
+- 도안 그리기 사용 방법을 잘 모르겠어요. </br>
+➤ 그리기 토글 클릭 시 튜토리얼 모달을 띄어주어서 해결완료!
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/97425158/161824870-109b7f47-a6be-4370-bd9b-3d6c45064b26.gif)
 
 
