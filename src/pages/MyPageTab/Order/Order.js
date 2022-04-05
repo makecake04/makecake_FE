@@ -85,11 +85,6 @@ const Order = () => {
     <Wrapper>
       <Header>
         <BlackBackButton onClick={() => navigate("/mypage")} />
-        {/* <img
-          src={black_back_button}
-          alt="back-button"
-          onClick={() => navigate("/mypage")}
-        /> */}
         <h3>케이크 주문하기</h3>
         <img src={beta} alt="beta" />
       </Header>

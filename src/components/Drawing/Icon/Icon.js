@@ -28,84 +28,72 @@ const Icons = (props) => {
         img.scale(0.1);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     } else if (shape === "sprinkle") {
       new fabric.Image.fromURL(`${sprinkle}`, (img) => {
         img.scale(0.1);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     } else if (shape === "cherry") {
       new fabric.Image.fromURL(`${cherry}`, (img) => {
         img.scale(0.1);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     } else if (shape === "heart_icon") {
       new fabric.Image.fromURL(`${heart_icon}`, (img) => {
         img.scale(0.1);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     } else if (shape === "flower_icon") {
       new fabric.Image.fromURL(`${flower_icon}`, (img) => {
         img.scale(0.1);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     } else if (shape === "carrot") {
       new fabric.Image.fromURL(`${carrot}`, (img) => {
         img.scale(0.1);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     } else if (shape === "balloon") {
       new fabric.Image.fromURL(`${balloon}`, (img) => {
         img.scale(0.1);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     } else if (shape === "pearl") {
       new fabric.Image.fromURL(`${pearl}`, (img) => {
         img.scale(0.1);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     } else if (shape === "white_circle") {
       new fabric.Image.fromURL(`${white_circle}`, (img) => {
         img.scale(0.1);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     } else if (shape === "white_square") {
       new fabric.Image.fromURL(`${white_square}`, (img) => {
         img.scale(0.1);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     } else if (shape === "white_star") {
       new fabric.Image.fromURL(`${white_star}`, (img) => {
         img.scale(0.1);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     } else if (shape === "note") {
       new fabric.Image.fromURL(`${note}`, (img) => {
         img.scale(0.1);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     }
   };

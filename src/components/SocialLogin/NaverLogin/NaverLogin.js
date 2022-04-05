@@ -4,8 +4,6 @@ import React from "react";
 import { Container, NaverButton } from "./style";
 
 const NaverLogin = (props) => {
-  // let _clientId = "Sz8iSQ5HmjJyT9BosjJf";
-  // let _callBack = "https://make-cake.com/user/naver/callback";
   let _clientId = process.env.REACT_APP_CLIENTID;
   let _callBack = process.env.REACT_APP_CALLBACK;
 

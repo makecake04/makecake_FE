@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { actionCreators as searchAction } from "../../redux/modules/search";
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -43,11 +42,9 @@ const SearchResult = (props) => {
   const searchs = useSelector((state) => state.search.list);
   const [sortType, setSortType] = useState("likeCount");
   const [review, setReview] = useState(false);
-  const [storeId, setStoreId] = React.useState("");
 
   const _searchSelect = useParams().searchSelect;
   const _searchInput = useParams().searchInput;
-  const _storeId = useParams().storeId;
 
   const navigate = useNavigate();
 
@@ -127,7 +124,6 @@ const SearchResult = (props) => {
           />
           <SearchIcon
             onClick={() => {
-              // if (!selected || !searchInput) return;
               mapSearching();
             }}
           />

@@ -19,9 +19,6 @@ import {
 } from "./style";
 
 const SignUpPassword = () => {
-  const username = useSelector((state) => state.user.username);
-  console.log(username);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -55,7 +52,6 @@ const SignUpPassword = () => {
     setPasswordCurrent(passwordCurrent);
 
     if (!pwdCheck(passwordCurrent)) {
-
       setPasswordMessage("올바른 비밀번호 형식이 아닙니다!");
 
       setIsPassword(false);
@@ -68,10 +64,6 @@ const SignUpPassword = () => {
   const is_PasswordCheck = (e) => {
     setPasswordCheck(e.target.value);
     const SamePasswordCurrent = e.target.value;
-    // if (!pwdCheck(SamePasswordCurrent)) {
-    //   setPasswordCheckMessage("형식에 맞지 않는 비밀번호입니다!");
-    //   setIsPasswordCheck(false);
-    // }
     if (
       password !== "" &&
       passwordCheck !== "" &&

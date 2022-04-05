@@ -72,7 +72,6 @@ export const Span = styled.span`
 export const SocialLoginWrap = styled.div`
   display: flex;
   margin-left: 80.5px;
-  /* margin-left: 121.5px; */
   cursor: pointer;
 `;
 
@@ -81,6 +80,5 @@ export const MainLogo = styled.img.attrs({
   alt: "logo",
 })`
   margin-left: 100px;
-  /* margin-top: 150px; */
   margin-top: 50px;
 `;

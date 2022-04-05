@@ -7,7 +7,7 @@ import { actionCreators as searchAction } from "../../redux/modules/search";
 import Swal from "sweetalert2";
 
 //image
-import { black_back_button, beta } from "../../assets/images/image";
+import { beta } from "../../assets/images/image";
 
 //css
 import {
@@ -44,11 +44,7 @@ const OrderGuide = (props) => {
     <OrderGuideWrap>
       <Header>
         <BlackBackButton onClick={() => navigate(-1)} />
-        {/* <img
-          src={black_back_button}
-          alt="back-button"
-          onClick={() => navigate(-1)}
-        /> */}
+
         <h3>주문하기 안내</h3>
         <img src={beta} alt="beta" />
       </Header>

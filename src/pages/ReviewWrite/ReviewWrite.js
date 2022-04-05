@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
-import imageCompression from "browser-image-compression";
 
 import { actionCreators as reviewAction } from "../../redux/modules/review";
 
@@ -59,33 +58,15 @@ const ReviewWrite = (props) => {
     new Compressor(currentFile, {
       quality: 0.6,
       success(result) {
-        console.log(result);
         setFile(result);
       },
     });
 
-    //browser-image-compression
-    // const compressedFile = await compressImage(currentFile);
-    // console.log(compressedFile);
-    // setFile(compressedFile);
     reader.readAsDataURL(currentFile);
     reader.onloadend = () => {
       dispatch(reviewAction.setPreview(reader.result));
     };
   };
-
-  //browser-image-compression
-  // const compressImage = async (image) => {
-  //   try {
-  //     const options = {
-  //       maxSizeMb: 1,
-  //       maxWidthOrHeight: 300,
-  //     };
-  //     return await imageCompression(image, options);
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
 
   const preview = useSelector((state) => state.review.preview);
 
@@ -104,7 +85,6 @@ const ReviewWrite = (props) => {
       return;
     }
     dispatch(reviewAction.reviewReplace([]));
-    console.log(file);
     dispatch(reviewAction.addReviewDB(store_id, contents, file));
   };
 
@@ -114,7 +94,6 @@ const ReviewWrite = (props) => {
         reviewAction.editReviewDB(
           review_id,
           one_review.content,
-          // fileInput.current.files[0],
           file,
           imgUrl,
           one_review.storeId
@@ -125,7 +104,6 @@ const ReviewWrite = (props) => {
         reviewAction.editReviewDB(
           review_id,
           contents,
-          // fileInput.current.files[0],
           file,
           imgUrl,
           one_review.storeId

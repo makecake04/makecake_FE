@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import Swal from "sweetalert2";
@@ -52,12 +52,9 @@ const PostDetail = () => {
 
   const post = useSelector((state) => state.post.list);
   const nickname = useSelector((state) => state.user.user?.nickname);
-  const sort = useSelector((state) => state.design.mydesign_sort_type);
   const commentList = useSelector((state) => state.comment.list);
   const userInfo = useSelector((state) => state.user.user);
-  const noti = useSelector((state) => state.noti?.fixlist);
-  const locationState = useLocation().state?.sortType;
-  console.log(noti);
+
   const deleteComment = (commentId) => {
     dispatch(commentAction.deleteCommentDB(commentId));
   };
@@ -158,13 +155,6 @@ const PostDetail = () => {
             dispatch(designAction.setMyDesignSortType(2));
           }}
         />
-        {/* <img
-          src={black_back_button}
-          alt="back-button"
-          onClick={() => {
-            navigate(-1);
-          }}
-        /> */}
         <h3>게시글</h3>
       </Header>
 
@@ -270,62 +260,3 @@ const PostDetail = () => {
 };
 
 export default PostDetail;
-
-// import React from "react";
-// import { useSelector } from "react-redux";
-// import { useDispatch } from "react-redux";
-
-// import { actionCreators as commentAction } from "../../redux/modules/comment";
-
-// //css
-// import {
-//   Container,
-//   CommentBox,
-//   InfoBox,
-//   NickName,
-//   CommentDate,
-//   Content,
-//   Button,
-//   EditBox,
-//   DeleteBox,
-// } from "./style";
-
-// const CommentList = (props) => {
-//   const dispatch = useDispatch();
-//   const commentList = useSelector((state) => state.comment.list);
-//   const userInfo = useSelector((state) => state.user.user);
-
-//   const deleteComment = (commentId) => {
-//     dispatch(commentAction.deleteCommentDB(commentId));
-//   };
-
-//   return (
-//     <Container>
-//       {commentList &&
-//         commentList.map((v, i) => {
-//           return (
-//             <CommentBox key={i}>
-//               <InfoBox>
-//                 <NickName>{v.nickname}</NickName>
-//                 {/* <CommentDate>{v.createdDate}</CommentDate>  */}
-//                 <CommentDate>{v.createdDate?.split(" ")[0]}</CommentDate>
-//               </InfoBox>
-//               <Content>{v.content}</Content>
-
-//               <Button>
-//                 {v.nickname === userInfo?.nickname ? (
-//                   <>
-//                     <DeleteBox onClick={() => deleteComment(v.commentId)}>
-//                       삭제하기
-//                     </DeleteBox>
-//                   </>
-//                 ) : null}
-//               </Button>
-//             </CommentBox>
-//           );
-//         })}
-//     </Container>
-//   );
-// };
-
-// export default CommentList;

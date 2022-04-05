@@ -31,8 +31,6 @@ const OrderGuide2 = (props) => {
 
   const guideInfo = useSelector((state) => state.order.order_guide);
 
-  const is_session = localStorage.getItem("token");
-
   useEffect(() => {
     dispatch(orderAction.getOrderGuideDB());
   }, []);

@@ -2,13 +2,13 @@ import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useDispatch, useSelector } from "react-redux";
-import { actionCreators as cakeAction } from "../../../redux/modules/cake";
-import { actionCreators as storeAction } from "../../../redux/modules/store";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import Swal from "sweetalert2";
 
-//import css
+import { actionCreators as cakeAction } from "../../../redux/modules/cake";
+
+//css
 import {
   CakeWrap,
   SubWrap,

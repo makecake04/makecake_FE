@@ -1,8 +1,8 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
-import { api } from "../../shared/api";
 import Swal from "sweetalert2";
-import axios from "axios";
+
+import { api } from "../../shared/api";
 
 const SET_USER = "SET_USER";
 const SET_USERNAME = "SET_USERNAME";
@@ -67,13 +67,10 @@ const usernameCheckDB = (username) => {
 
 // 닉네임 중복검사
 const nicknameCheckDB = (username, password, passwordCheck, nickname) => {
-  console.log(username, password, passwordCheck, nickname);
-
   return function (dispatch, getState) {
     api
       .postNicknameCheck(nickname)
       .then((res) => {
-        console.log(res.data);
         if (!res.data.isTrue) {
           api
             .postSignUp(username, password, passwordCheck, nickname)
@@ -167,12 +164,10 @@ const naverLoginDB = (code, state) => {
 
 // 로그인
 const logInDB = (username, password) => {
-  console.log(username, password);
   return function (dispatch, getState, { history }) {
     api
       .postLogin(username, password)
       .then((res) => {
-        console.log(res.headers);
         dispatch(setUser(res.headers));
         localStorage.setItem("token", res.headers.authorization);
         window.location.replace("/");
@@ -192,7 +187,6 @@ const logInDB = (username, password) => {
 
 // 로그인 유지
 const loginCheckDB = () => {
-  const token = localStorage.getItem("token");
   return function (dispatch, getState, { history }) {
     api
       .loginCheck()

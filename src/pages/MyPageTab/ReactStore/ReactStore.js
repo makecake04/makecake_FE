@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
+import { useDispatch, useSelector } from "react-redux";
+
 import { actionCreators as storeAction } from "../../../redux/modules/store";
 import { actionCreators as reviewAction } from "../../../redux/modules/review";
-import { useDispatch, useSelector } from "react-redux";
 
 //css
 import {
@@ -33,7 +33,7 @@ import {
 } from "./style";
 
 //image
-import { location, preview_icon } from "../../../assets/images/image";
+import { location } from "../../../assets/images/image";
 
 const ReactStore = (props) => {
   const navigate = useNavigate();
@@ -47,7 +47,6 @@ const ReactStore = (props) => {
   const likeStore = useSelector((state) => state.store.likeStore);
   const myReview = useSelector((state) => state.store.myReview);
   const sort = useSelector((state) => state.store.store_sort_type);
-  console.log(sort);
 
   useEffect(() => {
     if (toggleState === 1) {
@@ -73,11 +72,6 @@ const ReactStore = (props) => {
     <Wrapper>
       <Header>
         <BlackBackButton onClick={() => navigate(-1)} />
-        {/* <img
-          src={black_back_button}
-          alt="back-button"
-          onClick={() => navigate(-1)}
-        /> */}
         <h3>내가 반응한 매장</h3>
       </Header>
       <hr />

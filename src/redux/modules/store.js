@@ -1,7 +1,6 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import { api } from "../../shared/api";
-import axios from "axios";
 
 const HOT_LIST = "HOT_LIST";
 const NEW_REVIEW_LIST = "NEW_REVIEW_LIST";
@@ -199,23 +198,6 @@ export default handleActions(
       }),
     [STORE_CAKE_LIST]: (state, action) =>
       produce(state, (draft) => {
-        // if (
-        //   action.payload.cake
-        //     .map((a) => a.cakedId)
-        //     .includes(draft.cake[0]?.cakeId)
-        // ) {
-        //   draft.cake = [];
-        //   draft.cake.push(...action.payload.cake);
-        //   //중복 검사
-        //   draft.cake = draft.cake.reduce((acc, cur) => {
-        //     if (acc.findIndex((a) => a.cakeId === cur.cakeId) === -1) {
-        //       return [...acc, cur];
-        //     } else {
-        //       acc[acc.findIndex((a) => a.cakeId === cur.cakeId)] = cur;
-        //       return acc;
-        //     }
-        //   }, []);
-        // } else {
         draft.cake.push(...action.payload.cake);
         //중복 검사
         draft.cake = draft.cake.reduce((acc, cur) => {

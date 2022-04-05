@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 //image
 import { black_back_button } from "../../../assets/images/image";

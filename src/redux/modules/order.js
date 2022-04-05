@@ -43,18 +43,7 @@ const initialState = {
 
 //middlewear
 const getOrdersDB = (page_num, option) => {
-  // const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
-    // axios
-    //   .get("https://devssk.shop/designs/mine/orders", {
-    //     params: {
-    //       page: page_num,
-    //       option: option,
-    //     },
-    //     headers: {
-    //       Authorization: `${token_key}`,
-    //     },
-    //   })
     api
       .getOrders(page_num, option)
       .then((res) => {
@@ -89,14 +78,7 @@ const getOrdersDB = (page_num, option) => {
 };
 
 const getOrderStoresDB = () => {
-  // const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
-    // axios
-    //   .get("https://devssk.shop/api/orders/stores", {
-    //     headers: {
-    //       Authorization: `${token_key}`,
-    //     },
-    //   })
     api
       .getOrderStores()
       .then((res) => {
@@ -109,14 +91,7 @@ const getOrderStoresDB = () => {
 };
 
 const getOrderFormDB = (orderFormId) => {
-  // const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
-    // axios
-    //   .get(`https://devssk.shop/order-forms/${orderFormId}`, {
-    //     headers: {
-    //       Authorization: `${token_key}`,
-    //     },
-    //   })
     api
       .getOrderForm(orderFormId)
       .then((res) => {
@@ -129,21 +104,7 @@ const getOrderFormDB = (orderFormId) => {
 };
 
 const addOrderDB = (list, orderFormId, designId) => {
-  // const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
-    // axios
-    //   .post(
-    //     `https://devssk.shop/orders/${orderFormId}`,
-    //     {
-    //       designId: designId,
-    //       userInput: list,
-    //     },
-    //     {
-    //       headers: {
-    //         Authorization: `${token_key}`,
-    //       },
-    //     }
-    //   )
     api
       .postOrder(list, orderFormId, designId)
       .then((res) => {
@@ -156,14 +117,7 @@ const addOrderDB = (list, orderFormId, designId) => {
 };
 
 const getOneOrderDB = (userOrdersId) => {
-  // const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
-    // axios
-    //   .get(`https://devssk.shop/orders/${userOrdersId}`, {
-    //     headers: {
-    //       Authorization: `${token_key}`,
-    //     },
-    //   })
     api
       .getOneOrder(userOrdersId)
       .then((res) => {
@@ -176,18 +130,10 @@ const getOneOrderDB = (userOrdersId) => {
 };
 
 const deleteOrderDB = (userOrdersId) => {
-  // const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState, { history }) {
-    // axios
-    //   .delete(`https://devssk.shop/orders/${userOrdersId}`, {
-    //     headers: {
-    //       Authorization: `${token_key}`,
-    //     },
-    //   })
     api
       .deleteOrder(userOrdersId)
       .then((res) => {
-        console.log(res.data);
         window.location.replace("/order");
       })
       .catch((err) => {
@@ -197,18 +143,10 @@ const deleteOrderDB = (userOrdersId) => {
 };
 
 const getOrderGuideDB = () => {
-  // const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState) {
-    // axios
-    //   .get("https://devssk.shop/api/pages/order-guide", {
-    //     headers: {
-    //       Authorization: `${token_key}`,
-    //     },
-    //   })
     api
       .getOrderGuide()
       .then((res) => {
-        console.log(res.data);
         dispatch(getOrderGuide(res.data));
       })
       .catch((err) => {

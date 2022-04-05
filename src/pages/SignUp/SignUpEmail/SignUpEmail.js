@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { usernameCheck } from "../../../shared/SignUpRule";
 import { useNavigate } from "react-router-dom";
 import { actionCreators as userAction } from "../../../redux/modules/user";
@@ -35,7 +35,6 @@ const SignUpEmail = () => {
   const [active, setActive] = React.useState(true);
 
   const checkActive = () => {
-    console.log(usernameCheck(usernameCurrent));
     usernameCheck(usernameCurrent) ? setActive(false) : setActive(true);
   };
 
@@ -63,7 +62,6 @@ const SignUpEmail = () => {
         return;
       }
     });
-    // navigate("/signup/password");
   };
 
   const onKeyPress = (e) => {
@@ -81,7 +79,6 @@ const SignUpEmail = () => {
       <InputAndButton>
         <Input
           placeholder="이메일"
-          // type="text"
           value={username}
           onChange={is_Username}
           onKeyUp={checkActive}

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { actionCreators as storeAction } from "../../../redux/modules/store";
 
-//import css
+//css
 import {
   ReviewWrap,
   SubWrap,
@@ -53,7 +53,6 @@ const NewReview = (props) => {
                     </Image>
                   </ImageWrap>
                   <Reviews>
-                    {/* <p>{v.content}</p> */}
                     <ContentText>{v.content}</ContentText>
                     <InfoWrap>
                       <Name>{v.nickname}</Name>
