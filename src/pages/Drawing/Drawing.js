@@ -28,7 +28,6 @@ import {
   remove_item,
   tutorial,
   close_white,
-  help_icon,
 } from "../../assets/images/image";
 
 //css
@@ -79,7 +78,6 @@ const Design = () => {
   useEffect(() => {
     setCanvas(initCanvas());
   }, []);
-  console.log(option);
 
   //color change
   const colorChange = (e) => {
@@ -248,7 +246,6 @@ const Design = () => {
   const stopDrawing = (canvas) => {
     setIsDrawing(false);
     canvas.isDrawingMode = false;
-    console.log(canvas.isDrawingMode);
     canvas.renderAll();
   };
 
@@ -314,8 +311,6 @@ const Design = () => {
               <RightButton onClick={() => setModalIsOpen(true)}>
                 완료
               </RightButton>
-
-              // <RightButton onClick={() => complete()}>완료</RightButton>
             )}
           </ButtonWrapper>
         </Header>
@@ -385,7 +380,6 @@ const Design = () => {
                 onClick={() => {
                   setOption("cream");
                   stopDrawing(canvas);
-                  // if (icon === "backgroundColor") setIcon("");
                 }}
               >
                 크림 모양

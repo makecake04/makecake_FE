@@ -1,7 +1,6 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import { api } from "../../shared/api";
-import axios from "axios";
 
 const GET_CAKE_LIST = "GET_CAKE_LIST";
 const CAKE_IMAGE = "CAKE_IMAGE";
@@ -32,7 +31,6 @@ const changeSort = createAction(CHANGE_SORT, (list) => ({ list }));
 const setCakeSortType = createAction(SET_CAKE_SORTTYPE, (list) => ({ list }));
 
 const changeSortDB = (sortType) => {
-  console.log(sortType);
   return function (dispatch, getState) {
     api
       .getChangeSort(sortType)
@@ -76,7 +74,6 @@ const getLikeCakeDB = (page_num) => {
     api
       .getLikeCake(page_num)
       .then((res) => {
-        console.log(res);
         dispatch(likeCake(res.data));
       })
       .catch((err) => {
@@ -86,18 +83,10 @@ const getLikeCakeDB = (page_num) => {
 };
 
 const addLikeCakeDB = (cakeId, myLike) => {
-  // const token = localStorage.getItem("token");
   return function (dispatch, getState) {
-    // axios
-    //   .post(myLike, {
-    //     headers: {
-    //       Authorization: `${token}`,
-    //     },
-    //   })
     api
       .addCakeLike(cakeId, myLike)
       .then((res) => {
-        console.log(res.data);
         dispatch(addLikeCake(cakeId, res.data.myLike, res.data.likeCnt));
       })
       .catch((err) => {
@@ -146,9 +135,6 @@ export default handleActions(
 
     [ADD_LIKE_CAKE]: (state, action) =>
       produce(state, (draft) => {
-        // const idx = draft.is_like.findIndex(
-        //   (c) => c.cakeId === action.payload.cakeId
-        // );
         draft.lists.myLike = action.payload.isLike;
         draft.lists.likeCnt = action.payload.likeCnt;
       }),
@@ -161,7 +147,6 @@ export default handleActions(
 );
 
 const actionCreators = {
-  // cakeList,
   changeSortDB,
   getCakeListDB,
   cakeImage,

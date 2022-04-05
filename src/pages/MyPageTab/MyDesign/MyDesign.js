@@ -48,7 +48,6 @@ const MyDraw = (props) => {
   const post_list = useSelector((state) => state.design.post_list);
   const design_detail = useSelector((state) => state.design.design_detail);
   const sort = useSelector((state) => state.design.mydesign_sort_type);
-  const locationState = useLocation().state;
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -81,13 +80,6 @@ const MyDraw = (props) => {
             navigate(-1);
           }}
         />
-        {/* <img
-          src={black_back_button}
-          alt="back-button"
-          onClick={() => {
-            navigate(-1);
-          }}
-        /> */}
         <h3>내가 그린 도안</h3>
       </Header>
       <hr />
@@ -194,7 +186,6 @@ const MyDraw = (props) => {
             width: "300px",
             height: "auto",
             padding: "0",
-            // border: "solid 1px #eee",
             border: "none",
             overflow: "auto",
             borderRadius: "5px",

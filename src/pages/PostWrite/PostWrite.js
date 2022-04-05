@@ -30,7 +30,6 @@ import {
   Parents,
   Friends,
   Lovers,
-  // Celebration,
   Others,
 } from "./style";
 
@@ -55,7 +54,6 @@ const PostWrite = () => {
   const [postShape, setPostShape] = useState("");
   const [postPurpose, setPostPurpose] = useState("");
 
-  console.log(postSize, postShape, postPurpose);
   const addTitle = (e) => {
     setTitle(e.target.value);
   };

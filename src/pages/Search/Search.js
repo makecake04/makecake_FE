@@ -14,7 +14,6 @@ import {
   Input,
   SearchIcon,
   Bell,
-  EmptySpace,
   Container,
   CommendText,
   PlaceList1,
@@ -32,9 +31,6 @@ const Search = (props) => {
   const [selected, setSelected] = React.useState("");
   const [searchInput, setSearchInput] = React.useState("");
   const searchResult = useSelector((state) => state.search.list);
-  console.log(selected, searchInput);
-  // const select = useParams().select
-
   const changeSelectOption = (e) => {
     setSelected(e.target.value);
   };
@@ -104,7 +100,6 @@ const Search = (props) => {
         />
       </HeaderWrap>
 
-      {/* <EmptySpace /> */}
       <SeoulAreaText>* 현재는 서울시 내에서만 검색이 가능합니다.</SeoulAreaText>
 
       <Container>
@@ -257,7 +252,6 @@ const Search = (props) => {
         </PlaceList2>
       </Container>
       <EmptySpace2 />
-      {/* <SeoulAreaText>현재는 서울시 내에서만 검색이 가능합니다.</SeoulAreaText> */}
     </SDetailWrap>
   );
 };

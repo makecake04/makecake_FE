@@ -67,14 +67,6 @@ export const Bell = styled.img.attrs({
   margin-top: 0.85rem;
   cursor: pointer;
 `;
-
-export const EmptySpace = styled.div`
-  width: 390px;
-  height: 7vh;
-  background-color: white;
-  margin: auto;
-`;
-
 export const Container = styled.div`
   width: 364px;
   height: 138px;

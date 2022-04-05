@@ -72,7 +72,7 @@ const Profile = (props) => {
       dispatch(userAction.editProfileDB(nickname, fileInput.current.files[0]));
     }
   };
-  console.log(nickname);
+
   return (
     <ProfileWrap>
       <SubWrap>

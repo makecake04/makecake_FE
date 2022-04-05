@@ -1,6 +1,5 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
-import axios from "axios";
 import { api } from "../../shared/api";
 
 const GET_COMMENT = "GET_COMMENT";
@@ -8,8 +7,6 @@ const ADD_COMMENT = "ADD_COMMENT";
 const DELETE_COMMENT = "DELETE_COMMENT";
 const GET_MY_COMMENT = "GET_MY_COMMENT";
 const COMMENT_REPLACE = "COMMENT_REPLACE";
-// const DELETE_MY_COMMENT = "DELETE_MY_COMMENT";
-
 const getComment = createAction(GET_COMMENT, (commentList) => ({
   commentList,
 }));
@@ -37,7 +34,6 @@ const getCommentDB = (postId, page_num) => {
     api
       .getComment(postId, page_num)
       .then((res) => {
-        console.log(res.data);
         dispatch(getComment(res.data));
       })
       .catch((err) => {
@@ -47,25 +43,10 @@ const getCommentDB = (postId, page_num) => {
 };
 
 const addCommentDB = (postId, content) => {
-  const token = localStorage.getItem("token");
   return function (dispatch, getState, { history }) {
-    // api
     api
       .postComment(postId, content)
-      // .post("https://devssk.shop/comments/10307" , {
-      //     // .addComment1(content)
-      //     content: content,
-      //     headers: {Authorization : `${token}`}
-      //     })
       .then((res) => {
-        console.log(res.data);
-        // const doc = {
-        //   commentId: res.data,
-        //   content: content,
-        //   createdDate: res.data,
-        //   nickname: getState().user.user.nickname
-
-        // }
         dispatch(addComment(postId, content));
         window.location.reload();
       })
@@ -76,15 +57,10 @@ const addCommentDB = (postId, content) => {
 };
 
 const deleteCommentDB = (commentId) => {
-  const token = localStorage.getItem("token");
   return function (dispatch, getState, { history }) {
-    //   axios
-    //   .delete(`https://devssk.shop/comments/${commentId}` , {
-    // })
     api
       .deleteComment(commentId)
       .then((res) => {
-        // dispatch(deleteComment(commentId));
         window.location.reload();
       })
       .catch((e) => {

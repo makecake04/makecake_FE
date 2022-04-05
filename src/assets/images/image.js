@@ -77,9 +77,8 @@ import noti_bigcake from "./home/noti-bigcake.svg";
 import noti_check_dot from "./home/noti-check-dot.svg";
 import event from "./home/event.svg";
 
-//logo
-import main_logo from "./logo/main-logo.svg";
-import profile_image from "./logo/profile-image.png";
+//profile
+import profile_image from "./profile/profile-image.png";
 
 //map-marker
 import grey from "./map-marker/grey.png";
@@ -206,7 +205,6 @@ export {
   noti_heart,
   noti_bigcake,
   noti_check_dot,
-  main_logo,
   event,
   profile_image,
   grey,

@@ -1,6 +1,5 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
-import axios from "axios";
 import Swal from "sweetalert2";
 
 import { api } from "../../shared/api";
@@ -30,7 +29,6 @@ const initialState = {
 
 //add post
 const addPostDB = (title, content, size, shape, purpose, designId) => {
-  // const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState) {
     let post = {
       title: title,
@@ -39,16 +37,6 @@ const addPostDB = (title, content, size, shape, purpose, designId) => {
       shape: shape,
       purpose: purpose,
     };
-    // axios
-    //   .post(
-    //     `https://devssk.shop/posts/${designId}`,
-    //     { ...post },
-    //     {
-    //       headers: {
-    //         Authorization: `${token_key}`,
-    //       },
-    //     }
-    //   )
     api
       .postPost(post, designId)
       .then((res) => {
@@ -62,18 +50,7 @@ const addPostDB = (title, content, size, shape, purpose, designId) => {
 
 //get one post
 const getOnePostDB = (postId) => {
-  // const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState) {
-    // axios
-    //   .get(
-    //     `https://devssk.shop/api/designs/${postId}`,
-
-    //     {
-    //       headers: {
-    //         Authorization: `${token_key}`,
-    //       },
-    //     }
-    //   )
     api
       .getOnePost(postId)
       .then((res) => {
@@ -93,7 +70,6 @@ const getOnePostDB = (postId) => {
 
 //edit post
 const editPostDB = (title, content, size, shape, purpose, postId) => {
-  // const token_key = `${localStorage.getItem("token")}`;
   return function (dispatch, getState) {
     let post = {
       title: title,
@@ -102,16 +78,6 @@ const editPostDB = (title, content, size, shape, purpose, postId) => {
       shape: shape,
       purpose: purpose,
     };
-    // axios
-    //   .put(
-    //     `https://devssk.shop/posts/${postId}`,
-    //     { ...post },
-    //     {
-    //       headers: {
-    //         Authorization: `${token_key}`,
-    //       },
-    //     }
-    //   )
     api
       .putPost(post, postId)
       .then((res) => {
@@ -125,14 +91,6 @@ const editPostDB = (title, content, size, shape, purpose, postId) => {
 
 const deletePostDB = (postId) => {
   return async function (dispatch, getState) {
-    // const token_key = `${localStorage.getItem("token")}`;
-
-    // axios
-    //   .delete(`https://devssk.shop/posts/${postId}`, {
-    //     headers: {
-    //       Authorization: `${token_key}`,
-    //     },
-    //   })
     api
       .deletePost(postId)
       .then((res) => {
@@ -145,20 +103,7 @@ const deletePostDB = (postId) => {
 };
 
 const addLikePostDB = (postId, myLike) => {
-  // const token = localStorage.getItem("token");
   return function (dispatch, getState) {
-    // axios
-    //   .post(
-    //     `https://devssk.shop/posts/like/${postId}`,
-    //     {
-    //       myLike: myLike,
-    //     },
-    //     {
-    //       headers: {
-    //         Authorization: `${token}`,
-    //       },
-    //     }
-    //   )
     api
       .postLikePost(postId, myLike)
       .then((res) => {

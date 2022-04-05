@@ -86,7 +86,6 @@ function App() {
                 path="/post/write/:designid/:postid"
                 element={<PostWrite />}
               />
-              {/* <Route path="/*" element={<NotFound />} /> */}
             </Route>
             {!is_session && <Route path="/" element={<FirstPage />} />}
             <Route path="/mydesign" element={<MyDesign />} />
@@ -180,50 +179,5 @@ const Setting = styled.div`
   max-height: 100vh;
   /* overflow-y: scroll; */
 `;
-
-// const WebView = styled.div`
-//   width: 100vw;
-//   height: 100vh;
-//   background: url(${background});
-//   /* center center / cover no-repeat; */
-//   background-size: cover;
-//   @media (max-width: 500px) {
-//     background: none;
-//     background-color: #fee9ee;
-//   }
-// `;
-
-// const MobileView = styled.div`
-//   width: 100%;
-//   max-width: 390px;
-//   height: 75%;
-//   position: relative;
-//   margin: 0 auto;
-//   left: 20%;
-//   /* box-sizing: border-box; */
-//   background-color: #fcfcfc;
-//   overflow-y: auto;
-//   /* overflow: hidden; */
-//   transform: translate(0%, 15%);
-//   border-radius: 2rem;
-//   outline: 5px solid #f9c9c9;
-//   & ::-webkit-scrollbar {
-//     display: none;
-//   }
-
-//   @media (max-height: 1000px) {
-//     height: 85%;
-//     transform: translate(0%, 9%);
-//   }
-
-//   @media (max-width: 500px) {
-//     height: 100%;
-//     min-height: 100vh;
-//     left: 0;
-//     transform: translate(0%, 0%);
-//     border-radius: 0;
-//     outline: none;
-//   }
-// `;
 
 export default App;

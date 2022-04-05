@@ -16,7 +16,6 @@ const searchPlaceDB = (searchType, searchText) => {
     api
       .getSearch(searchType, searchText)
       .then((res) => {
-        console.log(res);
         dispatch(setSearch(res.data));
       })
       .catch((err) => {
@@ -32,7 +31,6 @@ const mapInfoDB = (storeId) => {
       .mapSearch(storeId)
       .then((res) => {
         dispatch(setSearch([res.data]));
-        console.log(res.data);
       })
       .catch((err) => {
         console.log("리스트 불러오기 실패", err);

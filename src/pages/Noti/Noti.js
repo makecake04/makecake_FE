@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import noti, { actionCreators as notiAction } from "../../redux/modules/noti";
+import { actionCreators as notiAction } from "../../redux/modules/noti";
 import { useDispatch } from "react-redux";
 
 //import css
@@ -41,10 +41,8 @@ const Noti = (props) => {
 
   const notiFixList = useSelector((state) => state.noti.fixlist);
   const notiPersonalList = useSelector((state) => state.noti.personallist);
-  console.log(notiFixList, notiPersonalList);
 
   useEffect(() => {
-    // notiData?.length === 0
     dispatch(notiAction.getNotiDB());
   }, []);
 
@@ -70,7 +68,6 @@ const Noti = (props) => {
                   v.type === "BETA"
                     ? window.location.replace(v.redirectUrl)
                     : window.open(v.redirectUrl);
-                  // window.open(v.redirectUrl);
                 }}
               >
                 <ImgWrap>
@@ -99,23 +96,19 @@ const Noti = (props) => {
                   <PersonalListBox
                     key={idx}
                     onClick={() => {
-                      // window.open(v.redirectUrl);
                       window.location.replace(v.redirectUrl);
                     }}
                   >
                     <ImgWrap>
-                      {/* {v.type === "LIKE" ? <NotiHeart /> : <NotiComment />} */}
                       {v.type === "LIKE" && <NotiHeart />}
                       {v.type === "COMMENT" && <NotiComment />}
                       {v.type === "AD" && <CakeIcon />}
                       {v.type === "NOTICE" && <CakeIcon />}
                       {v.type === "BETA" && <CakeIcon />}
-                      {/* <CakeIcon/> */}
                     </ImgWrap>
 
                     <PersoNalTextWrap>
                       <MainText>{v.mainContent}</MainText>
-                      {/* {!v.checked && <NotiCheckDot />} */}
                       <SubText>{v.subContent}</SubText>
                       <TimeText>{v.timeDiff}</TimeText>
                     </PersoNalTextWrap>

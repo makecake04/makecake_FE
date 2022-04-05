@@ -55,7 +55,6 @@ const LoginEmail = () => {
 
       <Input
         placeholder="아이디"
-        // type="text"
         value={username}
         onChange={(e) => {
           changeUsername(e.target.value);

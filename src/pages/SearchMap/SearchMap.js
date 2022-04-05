@@ -44,7 +44,6 @@ const SearchMap = () => {
   };
 
   const searchs = useSelector((state) => state.search.list);
-  console.log(searchs);
 
   const storeData = searchs.filter((a) => a.storeId === +storeId);
 
@@ -79,9 +78,7 @@ const SearchMap = () => {
   };
 
   useEffect(() => {
-    // if (searchs.length === 0) {
     dispatch(searchAction.mapInfoDB(storeId));
-    // }
   }, []);
 
   const onKeyPress = (e) => {

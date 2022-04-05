@@ -10,9 +10,6 @@ import {
 import { useDispatch } from "react-redux";
 import { actionCreators as storeAction } from "../../redux/modules/store";
 
-//import css
-import { Container } from "./style";
-
 const Home = (props) => {
   const dispatch = useDispatch();
 
@@ -22,13 +19,11 @@ const Home = (props) => {
 
   return (
     <React.Fragment>
-      {/* <Container> */}
       <SearchBar />
       <HotStoreList />
       <AdList />
       <BestCake />
       <NewReview />
-      {/* </Container> */}
     </React.Fragment>
   );
 };

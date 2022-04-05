@@ -23,7 +23,6 @@ import {
 const HotStoreList = (props) => {
   const store_list = useSelector((state) => state.store.list);
   const dispatch = useDispatch();
-  const storeId = store_list.homeStoreDtoList;
   const navigate = useNavigate();
 
   const settings = {

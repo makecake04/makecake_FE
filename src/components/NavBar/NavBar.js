@@ -1,12 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-
-import { useNavigate } from "react-router-dom";
-import { Outlet } from "react-router-dom";
+import { useNavigate, Outlet } from "react-router-dom";
+import Swal from "sweetalert2";
 
 import { actionCreators as storeAction } from "../../redux/modules/store";
-
-import Swal from "sweetalert2";
 
 //css
 import {
@@ -35,13 +32,7 @@ const NavBar = (props) => {
       setActiveNav("home");
     } else if (pathName === "/cake") {
       setActiveNav("cake");
-    } else if (
-      pathName === "/design/list" ||
-      pathName.includes("/post/")
-      // pathName === "/post/:id" ||
-      // pathName === "/post/write/:designid" ||
-      // pathName === "/post/write/:designid/:postid"
-    ) {
+    } else if (pathName === "/design/list" || pathName.includes("/post/")) {
       setActiveNav("design");
     } else if (
       pathName === "/mypage" ||

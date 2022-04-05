@@ -684,7 +684,6 @@ const StoreDetail = (props) => {
                         <span>
                           {m.type} {m.size}
                         </span>
-                        {/* <hr /> */}
                         <span>{m.price}</span>
                       </CategoryItem>
                       <CategoryDetail>
@@ -709,7 +708,6 @@ const StoreDetail = (props) => {
                     <CategoryWrap key={i}>
                       <CategoryItem>
                         <span>{t.flavor}</span>
-                        {/* <hr /> */}
                         <span>{t.addedPrice}</span>
                       </CategoryItem>
                       <CategoryDetail>
@@ -734,7 +732,6 @@ const StoreDetail = (props) => {
                     <CategoryWrap key={i}>
                       <CategoryItem>
                         <span>{o.name}</span>
-                        {/* <hr /> */}
                         <span>{o.price}</span>
                       </CategoryItem>
                       <CategoryDetail>

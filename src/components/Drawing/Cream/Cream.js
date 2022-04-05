@@ -30,63 +30,54 @@ const Cream = (props) => {
         img.scale(0.14);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     } else if (shape === "round_flower") {
       new fabric.Image.fromURL(`${round_flower}`, (img) => {
         img.scale(0.14);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     } else if (shape === "round_shell") {
       new fabric.Image.fromURL(`${round_shell}`, (img) => {
         img.scale(0.14);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     } else if (shape === "square_normal") {
       new fabric.Image.fromURL(`${square_normal}`, (img) => {
         img.scale(0.14);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     } else if (shape === "square_flower") {
       new fabric.Image.fromURL(`${square_flower}`, (img) => {
         img.scale(0.14);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     } else if (shape === "square_shell") {
       new fabric.Image.fromURL(`${square_shell}`, (img) => {
         img.scale(0.14);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     } else if (shape === "heart_normal") {
       new fabric.Image.fromURL(`${heart_normal}`, (img) => {
         img.scale(0.14);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     } else if (shape === "heart_flower") {
       new fabric.Image.fromURL(`${heart_flower}`, (img) => {
         img.scale(0.14);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     } else if (shape === "heart_shell") {
       new fabric.Image.fromURL(`${heart_shell}`, (img) => {
         img.scale(0.14);
         canvas.setActiveObject(img);
         canvas.add(img).centerObject(img).renderAll();
-        console.log(canvas);
       });
     }
   };
