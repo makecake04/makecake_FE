@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as searchAction } from "../../redux/modules/search";
 import Swal from "sweetalert2";
@@ -30,7 +30,6 @@ const Search = (props) => {
   const dispatch = useDispatch();
   const [selected, setSelected] = React.useState("");
   const [searchInput, setSearchInput] = React.useState("");
-  const searchResult = useSelector((state) => state.search.list);
   const changeSelectOption = (e) => {
     setSelected(e.target.value);
   };

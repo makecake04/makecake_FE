@@ -36,7 +36,6 @@ import {
 } from "./style";
 
 Modal.setAppElement("#root");
-
 const Order = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

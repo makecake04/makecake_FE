@@ -33,12 +33,13 @@ import {
   close,
 } from "../../../assets/images/image";
 
+Modal.setAppElement("#root");
 const OrderWrite = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const design_id = useParams().designId;
   const order_id = useParams().orderId;
-  const [active, setActive] = React.useState(true);
+  const [active, setActive] = useState(true);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [inputs, setInputs] = useState({});
   const design_detail = useSelector((state) => state.design.design_detail);

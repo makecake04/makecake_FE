@@ -64,23 +64,12 @@ export const SearchIcon = styled.img.attrs({
 `;
 
 export const StoreInfoWrap = styled.div`
-  /* display: flex;
-  height: 100px;
-  margin-top: 10px;
-  margin-bottom: 40px; */
   display: flex;
   max-width: 390px;
   width: 100%;
   height: 110px;
   position: fixed;
-  /* top: 0; */
-
   bottom: 0px;
-
-  /* bottom: 0; */
-  /* border-top-left-radius: 10px;
-  border-top-right-radius: 10px; */
-  /* background-color: #f3f3f3; */
   z-index: 1;
   background: white;
 `;

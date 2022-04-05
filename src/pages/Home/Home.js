@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import {
   SearchBar,
@@ -13,7 +13,7 @@ import { actionCreators as storeAction } from "../../redux/modules/store";
 const Home = (props) => {
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(storeAction.getHotListDB());
   }, []);
 

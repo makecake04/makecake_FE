@@ -27,7 +27,7 @@ import {
 
 //image
 import { preview_icon } from "../../assets/images/image";
-import { current } from "immer";
+
 import Compressor from "compressorjs";
 
 const ReviewWrite = (props) => {

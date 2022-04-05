@@ -86,7 +86,6 @@ export const Info = styled.div`
 
 export const OrderItem = styled.div`
   text-align: left;
-  /* display: flex; */
   margin-bottom: 1.2rem;
   align-items: center;
   div:first-child {

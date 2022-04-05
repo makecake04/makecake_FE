@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import Modal from "react-modal";
@@ -33,6 +33,7 @@ import {
   NeedPostingText,
 } from "./style";
 
+Modal.setAppElement("#root");
 const MyDraw = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
@@ -33,10 +33,10 @@ const Profile = (props) => {
   const navigate = useNavigate();
   const user_info = useSelector((state) => state.user.userInfo);
   const preview = useSelector((state) => state.review.preview);
-  const [fileName, setFileName] = React.useState(null);
-  const fileInput = React.useRef();
+  const [fileName, setFileName] = useState(null);
+  const fileInput = useRef();
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(userAction.getUserInfoDB());
   }, []);
 
@@ -50,7 +50,7 @@ const Profile = (props) => {
     };
   };
 
-  const [nickname, setNickname] = React.useState(user_info.nickname);
+  const [nickname, setNickname] = useState(user_info.nickname);
 
   const changeNickname = (e) => {
     setNickname(e.target.value);

@@ -67,7 +67,6 @@ export const SearchBar = styled.div`
   color: #777777;
   font-weight: 500;
   span {
-    /* margin-left: -15px; */
     padding: 0.4rem 0rem 0.4rem 2.2rem;
     width: 161px;
   }

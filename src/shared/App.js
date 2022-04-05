@@ -92,7 +92,6 @@ function App() {
             <Route path="/react/post" element={<ReactPost />} />
             <Route path="/react/store" element={<ReactStore />} />
             <Route path="/react/cake" element={<ReactCake />} />
-
             <Route path="/noti" element={<Noti />} />
             <Route path="/order" element={<Order />} />
             <Route path="/order/:id" element={<OrderStore />} />
@@ -141,8 +140,6 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  /* background: #f9c9c9; */
-  /* overflow: hidden; */
   position: relative;
   #wrap {
     width: 100%;
@@ -177,7 +174,6 @@ const Setting = styled.div`
   width: 100%;
   height: auto;
   max-height: 100vh;
-  /* overflow-y: scroll; */
 `;
 
 export default App;

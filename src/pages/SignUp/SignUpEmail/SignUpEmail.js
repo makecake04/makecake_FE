@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useDispatch } from "react-redux";
 import { usernameCheck } from "../../../shared/SignUpRule";
@@ -19,26 +19,24 @@ import {
 
 const SignUpEmail = () => {
   const dispatch = useDispatch();
-  const [username, setUsername] = React.useState("");
+  const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
   // 중복 체크
-  const [usernameCurrent, setUsernameCurrent] = React.useState(false);
+  const [usernameCurrent, setUsernameCurrent] = useState(false);
 
   // 유효성 검사
-  const [isUsername, setIsUsername] = React.useState("");
+  const [isUsername, setIsUsername] = useState("");
 
   // 에러 메세지 상태 저장
-  const [usernameMessage, setUsernameMessage] = React.useState("");
+  const [usernameMessage, setUsernameMessage] = useState("");
 
   // 비활성화 여부
-  const [active, setActive] = React.useState(true);
+  const [active, setActive] = useState(true);
 
   const checkActive = () => {
     usernameCheck(usernameCurrent) ? setActive(false) : setActive(true);
   };
-
-  const [isCheckUsername, setIsCheckUsername] = React.useState(false);
 
   const is_Username = (e) => {
     setUsername(e.target.value);
