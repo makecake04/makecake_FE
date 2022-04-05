@@ -50,7 +50,7 @@
 ### 💬 커뮤니케이션 툴
 
 - Gather
-- Slack
+- Notion
 - Github
 - Zoom
 
@@ -86,6 +86,217 @@
 - 협업을 하다보면 Task 진전도를 알아야 하는 상황을 자주 마주칠 수 있습니다. 이를 사전에 인지하고 풀어나가기 위해서 각각의 Task를 시각화 할 필요가 있었습니다. 노션 페이지를 활용하여 담당자와 진행상황을 칸반에 작성하여 공유했습니다.
 
 ## 🙈 **4. 트러블 슈팅**
+### 1. canvas 오브젝트의 색상 즉각 변경 기능, 뒤로가기 & 앞으로가기 기능을 패브릭 라이브러리에서 제공하지 않는 문제
+
+- 캔버스 내 각각의 오브젝트 마다 오브젝트의 색상을 변경하는 속성이 달라 각자 case를 파악하고 처리
+
+```javascript
+  //color change
+  const colorChange = (e) => {
+    let obj = canvas.getActiveObject();
+    if (icon === "backgroundColor" || (obj && icon === "backgroundColor")) {
+      canvas.backgroundColor = e.target.value;
+    } else if (obj) {
+      if (!obj.filters && obj.fill !== null && !obj._objects) {
+        obj.set({ fill: e.target.value });
+      } else if (obj._objects) {
+        for (let i = 0; i < obj._objects.length; i++) {
+          obj._objects[i].set({
+            fill: e.target.value,
+          });
+        }
+      } else if (obj.filters) {
+        let tint = new fabric.Image.filters.BlendColor({
+          color: e.target.value,
+          mode: "multiply",
+        });
+        obj.filters.push(tint);
+        obj.applyFilters();
+        obj.filters.pop(); //reset the filter so the obj's color can be changed in response to the color picker
+      } else {
+        obj.set({ stroke: e.target.value });
+      }
+    }
+    setPickerColor(e.target.value);
+    canvas.renderAll();
+  };
+```
+
+- 드로잉 모드가 시작됐을 때의 canvas object length를 state로 저장 </br>
+➤ undo 하면 canvas object들에 접근해서 마지막 object를 pop하고 redoData array 에 push </br> (드로잉 모드가 시작됐을 때의 canvas object length랑 현재 canvas object length 가 같아지면 return) 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ➤ redo 하면 redoData array 의 마지막 object를 pop하고 undoData array 에 push
+
+```javascript
+let redoData = [];
+  let undoData = [];
+  //Start Free Drawing
+  const drawing = (canvas) => {
+    let originData = canvas._objects.length;
+    setOriginLength(originData);
+    setIsDrawing(true);
+    canvas.isDrawingMode = true;
+    canvas.freeDrawingBrush.color = pickerColor;
+    // canvas.freeDrawingCursor = "none";
+    canvas.renderAll();
+  };
+
+  //undo
+  const undo = () => {
+    let newLength = canvas._objects.length;
+    if (newLength <= originLength) return;
+    let popData = canvas._objects.pop();
+    redoData.push(popData);
+    canvas.renderAll();
+  };
+
+  //redo
+  const redo = () => {
+    if (redoData.length === 0) return;
+    let popData = redoData.pop();
+    undoData.push(popData);
+    canvas._objects.push(popData);
+    canvas.renderAll();
+  };
+```
+
+### 2. react-intersection-observer의 useInView() 사용 시, 동일 페이지 내 탭 변환할 때 inView가 작동되지 않아 무한스크롤이 되지 않는 문제
+- mapping 되는 배열 중에 가장 마지막 요소에만 ref를 걸어줌
+➤ 완벽하게 해결되지 않음
+
+```javascript
+likeStore.map((v, idx) => {
+              return (
+                <OneStore
+                  key={idx}
+                  ref={likeStore.length === idx + 1 ? refStore : null}
+                  onClick={() => {
+                    navigate(`/storedetail/${v.storeId}`);
+                  }}
+                >
+```
+- 탭 마다 inView를 나눠서 진행 
+
+```javascript
+  useEffect(() => {
+    if (toggleState === 1) {
+      dispatch(storeAction.getLikeStoreDB(pageNumber));
+    } else if (toggleState === 2) {
+      dispatch(storeAction.getMyReviewDB(pageNumber));
+    }
+  }, [pageNumber, toggleState]);
+
+  useEffect(() => {
+    if (inViewStore) {
+      setPageNumber(pageNumber + 1);
+    } else if (inViewReview) {
+      setPageNumber(pageNumber + 1);
+    }
+  }, [inViewStore, inViewReview]);
+```
+### 3. 도안 모아보기, 케이크 모아보기, 마이페이지 등 탭으로 나눠진 페이지에서 다른 페이지로 이동하면 default 탭으로 탭위치가 초기화되는 문제
+- modules 에서 sortType action과 reducer를 새로 만들어서 탭의 state 값을 리덕스로 관리
+
+```javascript
+// sortType action
+const setDesignSortType = createAction(SET_DESIGN_SORTTYPE, (list) => ({
+  list,
+}));
+const setMyDesignSortType = createAction(SET_MYDESIGN_SORTTYPE, (list) => ({
+  list,
+}));
+```
+
+```javascript
+// reducer
+    [SET_DESIGN_SORTTYPE]: (state, action) =>
+      produce(state, (draft) => {
+        draft.design_sort_type = action.payload.list;
+      }),
+    [SET_MYDESIGN_SORTTYPE]: (state, action) =>
+      produce(state, (draft) => {
+        draft.mydesign_sort_type = action.payload.list;
+      }),
+```
+
+```javascript
+// dispatch action
+        <NewButton
+          onClick={() => {
+            setSortType("createdDate");
+            dispatch(designAction.setDesignSortType("createdDate"));
+          }}
+          sortType={sortType}
+        >
+          최신순
+        </NewButton>
+
+        <LikeButton
+          onClick={() => {
+            setSortType("likeCnt");
+            dispatch(designAction.setDesignSortType("likeCnt"));
+          }}
+          sortType={sortType}
+        >
+          좋아요순
+        </LikeButton>
+        <CommentButton
+          onClick={() => {
+            setSortType("commentCnt");
+            dispatch(designAction.setDesignSortType("commentCnt"));
+          }}
+          sortType={sortType}
+        >
+          댓글순
+        </CommentButton>
+        <CheckButton
+          onClick={() => {
+            setSortType("viewCnt");
+            dispatch(designAction.setDesignSortType("viewCnt"));
+          }}
+          sortType={sortType}
+        >
+          조회수순
+        </CheckButton>
+```
+
+### 4. 케이크 이미지 모달, 매장 상세, 게시글 등 새로고침을 하지 않고 페이지를 이동할때 이전 데이터가 잠시 남아있는 문제
+- 페이지를 이동하는 이벤트 발생 시점에 기존 저장소를 비워줌
+
+```javascript
+/// dispatch action
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => {
+          setModalIsOpen(false);
+          dispatch(cakeAction.cakeImage({}));
+        }}
+```
+
+```javascript
+/// action
+const getCakeList = createAction(GET_CAKE_LIST, (list) => ({ list }));
+const cakeImage = createAction(CAKE_IMAGE, (img) => ({ img }));
+```
 
 ## 🗣 **5. 피드백 및 개선 사항**
-피드백 정리 <a href="https://www.notion.so/05da5680b0744123a55b34cfa3d1d2d4">NOTION</a>
+### 피드백 정리 Notion <a href="https://www.notion.so/05da5680b0744123a55b34cfa3d1d2d4"><img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white&link=https://available-parent-09c.notion.site/12-aac1c51225424d16bda9bcce1bdb2360"></a> 
+
+### 개선사항
+- 케이크탭에서 매장으로 가면 홈으로 바로 갈수가 없어요. </br>
+➤ 매장 상세페이지에도 네비바를 추가하여 해결완료!
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/97425158/161767294-fa238e55-1f48-4a83-9671-a3bd8aa45ff1.gif)
+
+- 매장검색 결과에서 매장 정보가 아래 숨어서 완전히 안보여요. </br>
+➤ 매장 정보를 지도 위에 띄워서 해결 완료!
+
+![ezgif com-gif-maker 복사본](https://user-images.githubusercontent.com/97425158/161790965-af0b15d6-6317-4b4b-bd01-6f08c1012d73.gif)
+
+- 게시글 작성 시, 줄바꿈하고 등록했을 때 반영이 안돼요. </br>
+➤ 게시글 페이지에 white-space 속성값을 추가하여 해결완료!
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/97425158/161795793-3f4b2698-f00e-4226-a157-339efbb24cb3.gif)
+
+
+
