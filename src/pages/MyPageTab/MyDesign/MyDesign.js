@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import Modal from "react-modal";
 
 import { actionCreators as designAction } from "../../../redux/modules/design";
+import { actionCreators as postAction } from "../../../redux/modules/post";
 
 //css
 import {
@@ -153,6 +154,7 @@ const MyDraw = (props) => {
                     src={a.img}
                     alt="post design"
                     onClick={() => {
+                      dispatch(postAction.getOnePost([]));
                       navigate(`/post/${a.postId}`);
                     }}
                   />
