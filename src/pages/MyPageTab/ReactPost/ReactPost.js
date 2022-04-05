@@ -142,6 +142,7 @@ const ReactWrite = (props) => {
                       key={idx}
                       ref={likedesign.length === idx + 1 ? refDesign : null}
                       onClick={() => {
+                        dispatch(postAction.getOnePost([]));
                         navigate(`/post/${v.postId}`);
                       }}
                     >
@@ -190,6 +191,7 @@ const ReactWrite = (props) => {
                     >
                       <ContentText
                         onClick={() => {
+                          dispatch(postAction.getOnePost([]));
                           navigate(`/post/${v.postId}`);
                         }}
                       >
@@ -197,6 +199,7 @@ const ReactWrite = (props) => {
                       </ContentText>
                       <InsertDt
                         onClick={() => {
+                          dispatch(postAction.getOnePost([]));
                           navigate(`/post/${v.postId}`);
                         }}
                       >
@@ -206,6 +209,7 @@ const ReactWrite = (props) => {
                       <NicknameAndDelete>
                         <NickName
                           onClick={() => {
+                            dispatch(postAction.getOnePost([]));
                             navigate(`/post/${v.postId}`);
                           }}
                         >
