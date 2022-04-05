@@ -3,7 +3,7 @@
 # **<span style="color:#23C8AF">메이크케이크(MakeCake) - 커스텀 케이크 주문 과정을 도와주는 서비스 </span>**
 
 <p align="center"><a href="https://make-cake.com">MAKE CAKE</a></p>
-<!-- <a href="https://make-cake.com"><img src="https://user-images.githubusercontent.com/97425158/161680492-266f80e7-709d-41c5-82b0-eb025f387f9c.png"></a> -->
+
 <p align="center"><img src="https://user-images.githubusercontent.com/97425158/161680492-266f80e7-709d-41c5-82b0-eb025f387f9c.png"></p>
 
 ## MakeCake Notion <a href="https://www.notion.so/4-Make-Cake-335c038c8d354afeb549b6dbe7b9a8f5"><img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white&link=https://available-parent-09c.notion.site/12-aac1c51225424d16bda9bcce1bdb2360"></a>
@@ -35,9 +35,17 @@
   * 황성원 👩🏻‍🎨
   * 이지해 👩‍🎨
 
-### 🔧 사용 기술 
+### 🔧 사용 기술
 
-<a href="https://ko.reactjs.org/" target="_blank"><img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/></a>    <a href="https://javascript.info/" target="_blank"><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white"/></a>    <a href="https://ko.redux.js.org/" target="_blank"><img src="https://img.shields.io/badge/Redux-764ABC?style=flat-square&logo=Redux&logoColor=white"/></a>    <a href="https://styled-components.com/" target="_blank"><img src="https://img.shields.io/badge/Styled-components-DB7093?style=flat-square&logo=Styled-components&logoColor=white"/></a>
+![리액트](https://user-images.githubusercontent.com/97425158/161745107-cc062718-9c52-4446-8f14-9faba0b9dea7.svg)
+![자바스크립트](https://user-images.githubusercontent.com/97425158/161745127-a3fa5ed0-ceb6-427a-94d1-834d762fd3b4.svg)
+![에이치티엠엘](https://user-images.githubusercontent.com/97425158/161745161-566f015b-0ec2-4bba-82aa-f3bb7498bdd7.svg)
+![씨에스에스](https://user-images.githubusercontent.com/97425158/161745198-92ff3896-7ce0-4946-a8b4-e6d23223eb3b.svg)
+![리덕스](https://user-images.githubusercontent.com/97425158/161745222-ea0ba9bf-86e4-48cb-8a44-f8d8bfec2d02.svg)
+![악시오스](https://user-images.githubusercontent.com/97425158/161745239-453b4075-7bd0-4c63-9c5a-5c1d76021b8d.svg)
+![스타일드컴포넌트](https://user-images.githubusercontent.com/97425158/161745269-27a8a71d-788d-4bdf-97e8-f86c97b224a9.svg)
+![클라우드프론트](https://user-images.githubusercontent.com/97425158/161745404-114d6c7d-c720-4370-b0dd-4aea4893bb1d.svg)
+![아마존S3](https://user-images.githubusercontent.com/97425158/161744999-3ae8a4d1-48d8-41fc-af06-c601f6e1fc4d.svg)
 
 ### 💬 커뮤니케이션 툴
 
