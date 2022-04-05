@@ -668,6 +668,7 @@ export const CreatedDateP = styled.p`
 export const Pwrap = styled.p`
   word-break: break-all;
   padding: 0px 20px;
+  white-space: pre-wrap;
 `;
 
 export const ImgWrapTwo = styled.div`

@@ -24,6 +24,7 @@ import {
   IconWrapper,
   OptionWrapper,
   PostInfo,
+  ContentText,
   CommentWrapper,
   CommentInput,
   SendButton,
@@ -208,7 +209,7 @@ const PostDetail = () => {
 
       <PostInfo>
         <h3>{post.title}</h3>
-        <p style={{ whiteSpace: "pre-wrap" }}>{post.content}</p>
+        <ContentText>{post.content}</ContentText>
       </PostInfo>
 
       <CommentWrapper>
