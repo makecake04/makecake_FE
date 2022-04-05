@@ -173,7 +173,6 @@ const logInDB = (username, password) => {
         window.location.replace("/");
       })
       .catch((err) => {
-        // alert("아이디 혹은 비밀번호를 다시 확인해주세요.");
         Swal.fire({
           title: "아이디 혹은 비밀번호를 다시 확인해주세요.",
           showCancelButton: false,
@@ -199,7 +198,11 @@ const loginCheckDB = () => {
         );
       })
       .catch((err) => {
-        console.log("로그인 확인 실패", err);
+        console.log("로그인 확인 실패", err.response.data);
+        if (err.response.data.message === "유효기간이 지난 토큰입니다.") {
+          localStorage.removeItem("token");
+          window.location.replace("/");
+        }
       });
   };
 };

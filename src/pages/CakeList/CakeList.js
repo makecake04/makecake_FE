@@ -116,7 +116,7 @@ const CakeList = (props) => {
                     dispatch(cakeAction.getCakeImageDB(v.cakeId));
                     setTimeout(() => {
                       setModalIsOpen(true);
-                    }, 70);
+                    }, 100);
                   }}
                   alt="cakeImage"
                 />
