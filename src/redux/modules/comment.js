@@ -4,9 +4,9 @@ import { api } from "../../shared/api";
 
 const GET_COMMENT = "GET_COMMENT";
 const ADD_COMMENT = "ADD_COMMENT";
-const DELETE_COMMENT = "DELETE_COMMENT";
 const GET_MY_COMMENT = "GET_MY_COMMENT";
 const COMMENT_REPLACE = "COMMENT_REPLACE";
+
 const getComment = createAction(GET_COMMENT, (commentList) => ({
   commentList,
 }));
@@ -14,9 +14,7 @@ const addComment = createAction(ADD_COMMENT, (postId, content) => ({
   postId,
   content,
 }));
-const deleteComment = createAction(DELETE_COMMENT, (commentId) => ({
-  commentId,
-}));
+
 const getMyComment = createAction(GET_MY_COMMENT, (commentList) => ({
   commentList,
 }));
@@ -129,7 +127,6 @@ const actionCreators = {
   getCommentDB,
   addComment,
   addCommentDB,
-  deleteComment,
   deleteCommentDB,
   getMyCommentDB,
   commentReplace,

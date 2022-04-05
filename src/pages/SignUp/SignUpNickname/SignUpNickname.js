@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { actionCreators as userAction } from "../../../redux/modules/user";
@@ -17,7 +17,7 @@ import {
 
 const SignUpNickname = () => {
   const dispatch = useDispatch();
-  const [nickname, setNickname] = React.useState("");
+  const [nickname, setNickname] = useState("");
   const navigate = useNavigate();
 
   const username = useSelector((state) => state.user.username);
@@ -25,7 +25,7 @@ const SignUpNickname = () => {
   const passwordCheck = useSelector((state) => state.user.passwordCheck);
 
   // 비활성화 여부
-  const [active, setActive] = React.useState(true);
+  const [active, setActive] = useState(true);
 
   const checkActive = () => {
     if (!nicknameCheck(nickname)) {

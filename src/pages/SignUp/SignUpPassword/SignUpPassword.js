@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { pwdCheck } from "../../../shared/SignUpRule";
-import { useSelector } from "react-redux";
 import { actionCreators as userAction } from "../../../redux/modules/user";
 import Swal from "sweetalert2";
 
@@ -22,22 +21,22 @@ const SignUpPassword = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [password, setPassword] = React.useState("");
-  const [passwordCheck, setPasswordCheck] = React.useState("");
+  const [password, setPassword] = useState("");
+  const [passwordCheck, setPasswordCheck] = useState("");
 
   // 중복 체크
-  const [passwordCurrent, setPasswordCurrent] = React.useState("");
+  const [passwordCurrent, setPasswordCurrent] = useState("");
 
   // 유효성 검사
-  const [isPassword, setIsPassword] = React.useState("");
-  const [isPasswordCheck, setIsPasswordCheck] = React.useState("");
+  const [isPassword, setIsPassword] = useState("");
+  const [isPasswordCheck, setIsPasswordCheck] = useState("");
 
   // 에러 메세지 상태 저장
-  const [passwordMessage, setPasswordMessage] = React.useState("");
-  const [passwordCheckMessage, setPasswordCheckMessage] = React.useState("");
+  const [passwordMessage, setPasswordMessage] = useState("");
+  const [passwordCheckMessage, setPasswordCheckMessage] = useState("");
 
   // 비활성화 여부
-  const [active, setActive] = React.useState(true);
+  const [active, setActive] = useState(true);
 
   const checkActive = () => {
     password !== "" && passwordCheck !== ""

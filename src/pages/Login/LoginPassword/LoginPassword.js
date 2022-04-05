@@ -9,11 +9,11 @@ import { Container, Input, NextButton, BlackBackButton, H, P } from "./style";
 const LoginPassword = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [password, setPassword] = React.useState("");
+  const [password, setPassword] = useState("");
   const username = useSelector((state) => state.user.username);
 
   // 비활성화 여부
-  const [active, setActive] = React.useState(true);
+  const [active, setActive] = useState(true);
 
   const checkActive = () => {
     password !== "" ? setActive(false) : setActive(true);

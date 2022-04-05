@@ -15,10 +15,7 @@ import {
   store_plus_button,
 } from "../../assets/images/image";
 
-export const StoreDetailContainer = styled.div`
-  /* overflow-y: auto;
-  height: 100%; */
-`;
+export const StoreDetailContainer = styled.div``;
 
 export const DetailWrap = styled.div``;
 
@@ -683,12 +680,8 @@ export const ImgWrapTwo = styled.div`
 `;
 
 export const ButtonWrap = styled.div`
-  /* margin: 20px 20px 0px 0px; */
   margin: 1.25rem 0 0 20.25rem;
   display: flex;
-  /* -webkit-justify-content: end;
-  -moz-justify-content: end; */
-  /* justify-content: end; */
 `;
 
 export const EditButton = styled.button`
@@ -764,14 +757,12 @@ export const ReviewSvg = styled.img.attrs({
   alt: "img",
 })`
   position: absolute;
-  /* bottom: 1.3rem;
-right: 1.3rem; */
+
   width: 5rem;
   height: 5rem;
   bottom: 2.5rem;
   right: 1.8rem;
   cursor: pointer;
-  /* z-index: 2; */
 `;
 
 export const Toggle = styled.div`

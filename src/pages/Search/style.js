@@ -4,8 +4,6 @@ import styled from "styled-components";
 import { noti_icon, search_icon } from "../../assets/images/image";
 
 export const SDetailWrap = styled.div`
-  /* overflow: scroll;
-  height: calc(100% - 6rem); */
   box-sizing: border-box;
   width: 100%;
 `;
@@ -148,7 +146,6 @@ export const SeoulAreaText = styled.p`
   font-size: 15px;
   color: #777777;
   text-align: center;
-  /* margin-top: 15px; */
 `;
 
 export const EmptySpace2 = styled.div`

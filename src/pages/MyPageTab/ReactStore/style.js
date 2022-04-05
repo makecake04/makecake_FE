@@ -295,9 +295,6 @@ export const ReviewContent = styled.p`
 export const ButtonWrapper = styled.div`
   display: flex;
   margin: 1.25rem 0 0 18.25rem;
-  /* justify-content: end; */
-  /* -webkit-justify-content: end;
-  -moz-justify-content: end; */
   button:first-child {
     width: 80px;
     height: 35px;

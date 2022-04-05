@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import { useDispatch, useSelector } from "react-redux";
@@ -41,8 +41,8 @@ const ReactStore = (props) => {
   const [refStore, inViewStore] = useInView();
   const [refReview, inViewReview] = useInView();
 
-  const [toggleState, setToggleState] = React.useState(1);
-  const [pageNumber, setPageNumber] = React.useState(0);
+  const [toggleState, setToggleState] = useState(1);
+  const [pageNumber, setPageNumber] = useState(0);
 
   const likeStore = useSelector((state) => state.store.likeStore);
   const myReview = useSelector((state) => state.store.myReview);

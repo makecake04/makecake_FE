@@ -1,9 +1,8 @@
-import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { actionCreators as notiAction } from "../../redux/modules/noti";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { actionCreators as notiAction } from "../../redux/modules/noti";
 
 //import css
 import {
@@ -36,7 +35,6 @@ import { useSelector } from "react-redux";
 const Noti = (props) => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  const [checked, setChecked] = useState("false");
   const dispatch = useDispatch();
 
   const notiFixList = useSelector((state) => state.noti.fixlist);

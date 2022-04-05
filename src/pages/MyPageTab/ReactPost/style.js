@@ -228,7 +228,6 @@ export const NickName = styled.p`
   font-size: 14px;
   color: #777;
   text-decoration: underline;
-  /* font-weight: 500; */
   cursor: pointer;
 `;
 
@@ -312,7 +311,6 @@ export const CommentWrap = styled.div`
   flex-direction: column;
   width: 350px;
   margin: auto;
-  /* border-bottom: 1px solid #E5E5E5; */
 `;
 
 export const InsertDt = styled.p`

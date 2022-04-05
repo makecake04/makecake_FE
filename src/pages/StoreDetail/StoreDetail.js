@@ -128,8 +128,6 @@ const StoreDetail = (props) => {
   const store_info = useSelector((state) => state.store.store);
   const is_session = localStorage.getItem("token");
 
-  const preview = useSelector((state) => state.review.preview);
-
   const toggleTab = (index) => {
     setToggleState(index);
   };
@@ -162,10 +160,6 @@ const StoreDetail = (props) => {
     } else {
       dispatch(cakeAction.addLikeCakeDB(cake_id.cakeId, !my_like.myLike));
     }
-  };
-
-  const saveInformation = (storeId) => {
-    navigate(`/searchmap/${storeId}`);
   };
 
   useEffect(() => {

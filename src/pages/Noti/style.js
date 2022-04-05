@@ -138,7 +138,6 @@ export const NotNotiText = styled.p`
 
 export const LoginBox = styled.div`
   width: 201px;
-  /* height: 120px; */
   margin: 150px auto auto auto;
 `;
 

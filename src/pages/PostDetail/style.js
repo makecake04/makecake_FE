@@ -65,7 +65,6 @@ export const ProfileImage = styled.div`
   overflow: hidden;
   img {
     object-fit: cover;
-    /* display: block; */
     width: 100%;
     height: 100%;
   }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import { useSelector, useDispatch } from "react-redux";
@@ -29,15 +29,16 @@ import {
   VerticalLine,
 } from "./style";
 
+Modal.setAppElement("#root");
 const MyPage = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user_info = useSelector((state) => state.user.userInfo);
 
-  const [modalIsOpen, setModalIsOpen] = React.useState(false);
-  const [modalIsOpen2, setModalIsOpen2] = React.useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen2, setModalIsOpen2] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(userAction.getUserInfoDB());
   }, []);
 
