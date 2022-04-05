@@ -147,6 +147,10 @@ export const PostInfo = styled.div`
   }
 `;
 
+export const ContentText = styled.p`
+  white-space: pre-wrap;
+`;
+
 export const CommentWrapper = styled.section`
   padding: 0.7rem 2.5rem;
   h3 {
