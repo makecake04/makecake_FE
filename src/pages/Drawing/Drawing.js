@@ -60,6 +60,7 @@ import {
   ModalWrap2,
 } from "./style";
 
+Modal.setAppElement("#root");
 const Design = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -99,7 +100,7 @@ const Design = () => {
         });
         obj.filters.push(tint);
         obj.applyFilters();
-        obj.filters.pop(); //reset the filter so the obj's color can be changed in response to the color picker
+        obj.filters.pop(); //reset the filter so that the obj's color can be changed in response to the color picker
       } else {
         obj.set({ stroke: e.target.value });
       }
@@ -155,8 +156,6 @@ const Design = () => {
       square.hasControls = false;
       square.lockMovementX = true;
       square.lockMovementY = true;
-      // canvas.selection = false;
-
       canvas.setActiveObject(square);
       canvas.add(square).centerObject(square).renderAll();
     });
@@ -205,7 +204,6 @@ const Design = () => {
     setIsDrawing(true);
     canvas.isDrawingMode = true;
     canvas.freeDrawingBrush.color = pickerColor;
-    // canvas.freeDrawingCursor = "none";
     canvas.renderAll();
   };
 
@@ -248,14 +246,13 @@ const Design = () => {
     canvas.renderAll();
   };
 
-  //save Canvas as image (png)
+  //complete
   const complete = () => {
     const canvasImage = canvas.toDataURL({
       format: "png",
       multiplier: 1.5,
     });
     dispatch(designAction.addDesignDB(canvasImage));
-    // saveAs(canvasImage, "my cake");
   };
 
   //bring to front

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
@@ -31,15 +31,16 @@ import {
 const DesignList = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [toggle, setToggle] = React.useState(false);
-  const [pageNumber, setPageNumber] = React.useState(0);
-  const [sortType, setSortType] = React.useState("createdDate");
+  const [toggle, setToggle] = useState(false);
+  const [pageNumber, setPageNumber] = useState(0);
+  const [sortType, setSortType] = useState("createdDate");
   const [ref, inView] = useInView();
   const new_list = useSelector((state) => state.design.new_list);
   const like_list = useSelector((state) => state.design.like_list);
   const comment_list = useSelector((state) => state.design.comment_list);
   const view_list = useSelector((state) => state.design.view_list);
   const is_session = localStorage.getItem("token");
+
   const sort = useSelector((state) => state.design.design_sort_type);
 
   useEffect(() => {

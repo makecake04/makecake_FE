@@ -102,7 +102,6 @@ const ReactWrite = (props) => {
               onClick={() => {
                 setToggleState(1);
                 setPageNumber(0);
-
                 dispatch(postAction.setPostSortType(1));
               }}
               toggleState={toggleState}
@@ -113,7 +112,6 @@ const ReactWrite = (props) => {
               onClick={() => {
                 setToggleState(2);
                 setPageNumber(0);
-
                 dispatch(postAction.setPostSortType(2));
               }}
               toggleState={toggleState}
