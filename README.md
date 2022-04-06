@@ -306,4 +306,12 @@ const cakeImage = createAction(CAKE_IMAGE, (img) => ({ img }));
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/97425158/161824870-109b7f47-a6be-4370-bd9b-3d6c45064b26.gif)
 
+- 홈탭에서 최신 리뷰 누르면 매장 상세페이지의 리뷰 탭으로 이동하게 해주세요. </br>
+➤ useNavigate() 변수에 state 값을 넘겨주고, 해당 페이지에서 useLocation() 으로 state 값 유무 판별하여 useState 초기값 설정하여 해결완료!
 
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/97425158/161903341-4db9e242-c4f8-4fe8-9cfd-cd37bb8a6a58.gif)
+
+- 도안 그리기에서 사용했던 색상 재사용이 안돼요. </br>
+➤ colorpicker input 에 onClick을 추가하여 컬리피커 클릭하면 바로 전에 사용했던 (useState으로 저장된) 색상으로 변경하여 해결완료!
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/97425158/161904045-26203032-2f6d-446c-aedc-8bfce2584d32.gif)
