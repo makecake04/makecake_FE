@@ -128,7 +128,7 @@
 - 드로잉 모드가 시작됐을 때의 canvas object length를 state로 저장 </br>
 ➤ undo 하면 canvas object들에 접근해서 마지막 object를 pop하고 redoData array 에 push </br> (드로잉 모드가 시작됐을 때의 canvas object length랑 현재 canvas object length 가 같아지면 return) 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ➤ redo 하면 redoData array 의 마지막 object를 pop하고 undoData array 에 push
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ➤ redo 하면 redoData array 의 마지막 object를 pop하고 undoData array에 push하여 해결완료!
 
 ```javascript
 let redoData = [];
@@ -164,7 +164,7 @@ let redoData = [];
 ```
 
 ### 4-2. react-intersection-observer의 useInView() 사용 시, 동일 페이지 내 탭 변환할 때 inView가 작동되지 않아 무한스크롤이 되지 않는 문제
-- mapping 되는 배열 중에 가장 마지막 요소에만 ref를 걸어줌
+- mapping 되는 배열 중에 가장 마지막 요소에만 ref를 걸어줌</br>
 ➤ 완벽하게 해결되지 않음
 
 ```javascript
@@ -178,7 +178,7 @@ likeStore.map((v, idx) => {
                   }}
                 >
 ```
-- 탭 마다 inView를 나눠서 진행 
+- 탭 마다 inView를 나눠서 진행하여 해결완료!
 
 ```javascript
   useEffect(() => {
@@ -198,7 +198,7 @@ likeStore.map((v, idx) => {
   }, [inViewStore, inViewReview]);
 ```
 ### 4-3. 도안 모아보기, 케이크 모아보기, 마이페이지 등 탭으로 나눠진 페이지에서 다른 페이지로 이동하면 default 탭으로 탭위치가 초기화되는 문제
-- modules 에서 sortType action과 reducer를 새로 만들어서 탭의 state 값을 리덕스로 관리
+- modules 에서 sortType action과 reducer를 새로 만들어서 탭의 state 값을 리덕스로 관리하여 해결완료!
 
 ```javascript
 // sortType action
@@ -264,7 +264,7 @@ const setMyDesignSortType = createAction(SET_MYDESIGN_SORTTYPE, (list) => ({
 ```
 
 ### 4-4. 케이크 이미지 모달, 매장 상세, 게시글 등 새로고침을 하지 않고 페이지를 이동할때 이전 데이터가 잠시 남아있는 문제
-- 페이지를 이동하는 이벤트 발생 시점에 기존 저장소를 비워줌
+- 페이지를 이동하는 이벤트 발생 시점에 기존 저장소를 비워서 해결완료!
 
 ```javascript
 /// dispatch action
