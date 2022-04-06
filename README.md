@@ -282,6 +282,24 @@ const getCakeList = createAction(GET_CAKE_LIST, (list) => ({ list }));
 const cakeImage = createAction(CAKE_IMAGE, (img) => ({ img }));
 ```
 
+### 4-5. 이미지 렌더링 속도 개선
+- compressorjs 라이브러리를 사용하여 사용자가 업로드한 사진을 압축 </br>
+➤ Browser Image Compression 라이브러리도 이미지의 사이즈를 줄이거나 용량을 압축해주는 라이브러리이지만 이미지의 사이즈 값을 조절하면 원본 이미지의 비율을 유지하지 못한다. 
+그래서 원본의 비율을 유지하면서 화질만 낮춰서(파일 크기를 줄여서) 압축할 수 있는 compressorjs 라이브러리를 사용했다.
+- 원본 비율은 유지하고 사용자 입장에서 허용할 수 있는 최소 화질을 모바일/데스크탑에서 테스트하여 화질 60% 압축
+
+```javascript
+  const selectFiles = () => {
+    const currentFile = fileInput.current.files[0];
+    new Compressor(currentFile, {
+      quality: 0.6,
+      success(result) {
+        setFile(result);
+      },
+    });
+```
+<p align="center"><img src="https://user-images.githubusercontent.com/97425158/162008040-82e9f285-66df-41b2-82f5-05cdbe1ed511.png"></a></p>
+
 ## 🗣 **5. 피드백 및 개선 사항**
 ### 피드백 정리 Notion <a href="https://www.notion.so/05da5680b0744123a55b34cfa3d1d2d4"><img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white&link=https://available-parent-09c.notion.site/12-aac1c51225424d16bda9bcce1bdb2360"></a> 
 
