@@ -53,6 +53,7 @@
 ### 💬 커뮤니케이션 툴
 
 - Gather
+- Slack
 - Notion
 - Github
 - Zoom
