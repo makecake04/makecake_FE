@@ -303,7 +303,7 @@ const cakeImage = createAction(CAKE_IMAGE, (img) => ({ img }));
 ```
 <p align="center"><img src="https://user-images.githubusercontent.com/97425158/162008040-82e9f285-66df-41b2-82f5-05cdbe1ed511.png"></a></p> -->
 
-## 🗣 **5. 피드백 및 개선 사항**
+## 🗣 **3. 피드백 및 개선 사항**
 ### 피드백 정리 Notion <a href="https://www.notion.so/05da5680b0744123a55b34cfa3d1d2d4"><img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white&link=https://available-parent-09c.notion.site/12-aac1c51225424d16bda9bcce1bdb2360"></a> 
 
 ### 개선사항
