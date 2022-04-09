@@ -76,7 +76,9 @@
 
 따라서 웹에서 쉽고 간편하게 레터링 케이크 제작, 주문 등을 가능하게 하여 유저친화적 UI/UX 접근성이 높은 커뮤니티 플랫폼을 목표로 개발하였습니다.
 
-## ✔️ **3. 작업시 준수했던 사항**
+ <a href="https://github.com/makecake04/makecake_FE/wiki"><h1>메이크케이크 프론트엔드의 고민 살펴보기  - WIKI</h1></a>
+ 
+<!-- ## ✔️ **3. 작업시 준수했던 사항**
 3-1. 스크럼
 
 - 매일 오전 10시, 간단한 미팅을 통해 각자의 작업 상황과 특이사항을 공유하였습니다. 특이사항은 문제 해결 과정 속에서 겪었던 이슈와 도움 및 수정이 필요한지 여부를 공유하였습니다. 그 후, Task를 역할분담하여 효율적으로 TodoList를 해결하였습니다. 지속적인 소통 결과, 조금 여유있게 프로덕트를 배포할 수 있었습니다.
@@ -299,7 +301,7 @@ const cakeImage = createAction(CAKE_IMAGE, (img) => ({ img }));
       },
     });
 ```
-<p align="center"><img src="https://user-images.githubusercontent.com/97425158/162008040-82e9f285-66df-41b2-82f5-05cdbe1ed511.png"></a></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/97425158/162008040-82e9f285-66df-41b2-82f5-05cdbe1ed511.png"></a></p> -->
 
 ## 🗣 **5. 피드백 및 개선 사항**
 ### 피드백 정리 Notion <a href="https://www.notion.so/05da5680b0744123a55b34cfa3d1d2d4"><img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white&link=https://available-parent-09c.notion.site/12-aac1c51225424d16bda9bcce1bdb2360"></a> 
