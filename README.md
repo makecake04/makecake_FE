@@ -1,6 +1,6 @@
 
 
-# **<p align="center"><span style="color:#23C8AF">메이크케이크(MakeCake) - 레터링 케이크의 모든 주문 과정을 도와주는 서비스 </span></p>**
+# **<p align="center"><span style="color:#23C8AF">메이크케이크(MakeCake) </br> 레터링 케이크의 모든 주문 과정을 도와주는 서비스 </span></p>**
 
 
 <p align="center"><a href="https://make-cake.com">MAKE CAKE</a></p>
