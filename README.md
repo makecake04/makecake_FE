@@ -75,8 +75,6 @@
 저희는 레터링 케이크 도안을 직접 제작 및 주문 할 수 있는 기능을 지원하고, 서로 도안을 게시글에 작성하여 공유하며 소통할 수 있는 커뮤니티를 개발하고 싶었습니다.
 
 따라서 웹에서 쉽고 간편하게 레터링 케이크 제작, 주문 등을 가능하게 하여 유저친화적 UI/UX 접근성이 높은 커뮤니티 플랫폼을 목표로 개발하였습니다.
-
- <a href="https://github.com/makecake04/makecake_FE/wiki"><h1>메이크케이크 프론트엔드의 고민 살펴보기  - WIKI</h1></a>
  
 <!-- ## ✔️ **3. 작업시 준수했던 사항**
 3-1. 스크럼
@@ -337,4 +335,4 @@ const cakeImage = createAction(CAKE_IMAGE, (img) => ({ img }));
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/97425158/161904045-26203032-2f6d-446c-aedc-8bfce2584d32.gif)
 
-## 🗣 **4. 트러블 슈팅**
+## 🧐 **4. 트러블 슈팅**
