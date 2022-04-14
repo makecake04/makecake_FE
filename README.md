@@ -336,3 +336,16 @@ const cakeImage = createAction(CAKE_IMAGE, (img) => ({ img }));
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/97425158/161904045-26203032-2f6d-446c-aedc-8bfce2584d32.gif)
 
 ## 🧐 **4. 트러블 슈팅**
+**[라이브러리에서 제공하지 않는 기능 구현 - WIKI](https://github.com/makecake04/makecake_FE/wiki/canvas-%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8%EC%9D%98-%EC%83%89%EC%83%81-%EC%A6%89%EA%B0%81-%EB%B3%80%EA%B2%BD-%EA%B8%B0%EB%8A%A5,-%EB%92%A4%EB%A1%9C%EA%B0%80%EA%B8%B0-&-%EC%95%9E%EC%9C%BC%EB%A1%9C%EA%B0%80%EA%B8%B0-%EA%B8%B0%EB%8A%A5%EC%9D%80-%ED%8C%A8%EB%B8%8C%EB%A6%AD-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EC%97%90%EC%84%9C-%EC%A0%9C%EA%B3%B5%ED%95%98%EC%A7%80-%EC%95%8A%EB%8A%94%EB%8D%B0-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%B4%EA%B2%B0%ED%95%A0%EA%B9%8C%3F)**
+
+**[ec2 서버 다운 - WIKI](https://github.com/makecake04/makecake_BE/wiki/%5B%ED%8A%B8%EB%9F%AC%EB%B8%94%EC%8A%88%ED%8C%85%5D-EC2-%EC%84%9C%EB%B2%84-%EB%8B%A4%EC%9A%B4)**
+
+**[이미지 렌더링 속도 개선을 위한 리사이징 - WIKI](https://github.com/makecake04/makecake_BE/wiki/%5B%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85%5D-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%86%8D%EB%8F%84-%EA%B0%9C%EC%84%A0%EC%9D%84-%EC%9C%84%ED%95%9C-%EB%A6%AC%EC%82%AC%EC%9D%B4%EC%A7%95)**
+
+**[매장 검색 기능 개선 - NOTION](https://puffy-net-2c4.notion.site/4ff9795f085c458093082638c2d5ec75)**
+
+**[복잡한 데이터 구조로 인한 매장 상세 정보 조회 어려움 - WIKI (준비중)]()**
+
+**[JPA N+1문제 해결 - NOTION](https://puffy-net-2c4.notion.site/JPA-N-1-c00fc7a9bac64d99b3d4baf1a6868d97)**
+
+**[데이터 수집 및 클렌징을 위한 백오피스 - WIKI (준비중)]()**
