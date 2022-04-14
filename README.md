@@ -13,6 +13,10 @@
 
 ## 📺 시연영상
 
+[![image](https://www.youtube.com/watch?v=T9QGqgg9Y40)
+
+## 🎤 발표영상
+
 [![image](https://user-images.githubusercontent.com/97425158/161682290-d885e68c-5f59-4429-a4b9-fa673ed39585.svg)](https://www.youtube.com/watch?v=7CAoUo4Ma4c&t=3s)
 
 ## 📅 제작기간 
