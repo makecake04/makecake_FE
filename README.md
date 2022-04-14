@@ -336,3 +336,5 @@ const cakeImage = createAction(CAKE_IMAGE, (img) => ({ img }));
 ➤ colorpicker input 에 onClick을 추가하여 컬리피커 클릭하면 바로 전에 사용했던 (useState으로 저장된) 색상으로 변경하여 해결완료!
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/97425158/161904045-26203032-2f6d-446c-aedc-8bfce2584d32.gif)
+
+## 🗣 **4. 트러블 슈팅**
