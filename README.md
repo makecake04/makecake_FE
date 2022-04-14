@@ -338,14 +338,12 @@ const cakeImage = createAction(CAKE_IMAGE, (img) => ({ img }));
 ## 🧐 **4. 트러블 슈팅**
 **[라이브러리에서 제공하지 않는 기능 구현 - WIKI](https://github.com/makecake04/makecake_FE/wiki/canvas-%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8%EC%9D%98-%EC%83%89%EC%83%81-%EC%A6%89%EA%B0%81-%EB%B3%80%EA%B2%BD-%EA%B8%B0%EB%8A%A5,-%EB%92%A4%EB%A1%9C%EA%B0%80%EA%B8%B0-&-%EC%95%9E%EC%9C%BC%EB%A1%9C%EA%B0%80%EA%B8%B0-%EA%B8%B0%EB%8A%A5%EC%9D%80-%ED%8C%A8%EB%B8%8C%EB%A6%AD-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EC%97%90%EC%84%9C-%EC%A0%9C%EA%B3%B5%ED%95%98%EC%A7%80-%EC%95%8A%EB%8A%94%EB%8D%B0-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%B4%EA%B2%B0%ED%95%A0%EA%B9%8C%3F)**
 
-**[ec2 서버 다운 - WIKI](https://github.com/makecake04/makecake_BE/wiki/%5B%ED%8A%B8%EB%9F%AC%EB%B8%94%EC%8A%88%ED%8C%85%5D-EC2-%EC%84%9C%EB%B2%84-%EB%8B%A4%EC%9A%B4)**
+**[동일 페이지 내, 다른 탭들에서의 무한스크롤 - WIKI](https://github.com/makecake04/makecake_FE/wiki/react-intersection-observer%EC%9D%98-useInView()-%EC%82%AC%EC%9A%A9-%EC%8B%9C,-%EB%8F%99%EC%9D%BC-%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%82%B4-%ED%83%AD-%EB%B3%80%ED%99%98%ED%95%A0-%EB%95%8C-inView%EA%B0%80-%EC%9E%91%EB%8F%99%EB%90%98%EC%A7%80-%EC%95%8A%EB%8A%94%EB%8D%B0-%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4%EC%9D%84-%EC%96%B4%EB%96%BB%EA%B2%8C-%EA%B5%AC%ED%98%84%ED%95%A0%EA%B9%8C%3F)**
 
-**[이미지 렌더링 속도 개선을 위한 리사이징 - WIKI](https://github.com/makecake04/makecake_BE/wiki/%5B%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85%5D-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%86%8D%EB%8F%84-%EA%B0%9C%EC%84%A0%EC%9D%84-%EC%9C%84%ED%95%9C-%EB%A6%AC%EC%82%AC%EC%9D%B4%EC%A7%95)**
+**[탭들로 나뉘어진 페이지에서의 탭 위치 초기화 - WIKI](https://github.com/makecake04/makecake_FE/wiki/%EB%8F%84%EC%95%88-%EB%AA%A8%EC%95%84%EB%B3%B4%EA%B8%B0,-%EC%BC%80%EC%9D%B4%ED%81%AC-%EB%AA%A8%EC%95%84%EB%B3%B4%EA%B8%B0,-%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%93%B1-%ED%83%AD%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%88%A0%EC%A7%84-%ED%8E%98%EC%9D%B4%EC%A7%80%EC%97%90%EC%84%9C-%EB%8B%A4%EB%A5%B8-%ED%8E%98%EC%9D%B4%EC%A7%80%EB%A1%9C-%EC%9D%B4%EB%8F%99%ED%95%98%EB%A9%B4-default-%ED%83%AD%EC%9C%BC%EB%A1%9C-%ED%83%AD%EC%9C%84%EC%B9%98%EA%B0%80-%EC%B4%88%EA%B8%B0%ED%99%94%EB%90%98%EB%8A%94-%EB%AC%B8%EC%A0%9C)**
 
-**[매장 검색 기능 개선 - NOTION](https://puffy-net-2c4.notion.site/4ff9795f085c458093082638c2d5ec75)**
+**[리액트 라이프사이클로 인한 화면 전환 문제 - WIKI](https://github.com/makecake04/makecake_FE/wiki/%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%82%AC%EC%9D%B4%ED%81%B4%EB%A1%9C-%EC%9D%B8%ED%95%9C-%ED%99%94%EB%A9%B4-%EC%A0%84%ED%99%98-%EB%AC%B8%EC%A0%9C#%EC%BC%80%EC%9D%B4%ED%81%AC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%AA%A8%EB%8B%AC-%EB%A7%A4%EC%9E%A5-%EC%83%81%EC%84%B8-%EA%B2%8C%EC%8B%9C%EA%B8%80-%EB%93%B1-%EC%83%88%EB%A1%9C%EA%B3%A0%EC%B9%A8%EC%9D%84-%ED%95%98%EC%A7%80-%EC%95%8A%EA%B3%A0-%ED%8E%98%EC%9D%B4%EC%A7%80%EB%A5%BC-%EC%9D%B4%EB%8F%99%ED%95%98%EB%A9%B4-%EC%9D%B4%EC%A0%84-%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B0%80-%EC%9E%A0%EC%8B%9C-%EB%82%A8%EC%95%84%EC%9E%88%EB%8A%94-%EB%AC%B8%EC%A0%9C)**
 
-**[복잡한 데이터 구조로 인한 매장 상세 정보 조회 어려움 - WIKI (준비중)]()**
+**[이미지 리사이즈를 통한 로딩 시간 개선 - WIKI](https://github.com/makecake04/makecake_FE/wiki/%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%86%8D%EB%8F%84-%EA%B0%9C%EC%84%A0)**
 
-**[JPA N+1문제 해결 - NOTION](https://puffy-net-2c4.notion.site/JPA-N-1-c00fc7a9bac64d99b3d4baf1a6868d97)**
 
-**[데이터 수집 및 클렌징을 위한 백오피스 - WIKI (준비중)]()**
